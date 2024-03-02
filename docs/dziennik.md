@@ -8,3 +8,6 @@ Wiedzę będę czerpał z książki "Flutter for begginners - third edition". Ko
 
 ## 01.03.2024
 - odinstalowałem poprzednią instalację Fluttera i zainstalowałem na nowo Fluttera metodą Snap
+
+## 02.03.2024
+- utworzyłem projekt na GitHub i zdefiniowałem kolejne feature'y i potrzebne zmiany
