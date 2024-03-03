@@ -11,3 +11,8 @@ Wiedzę będę czerpał z książki "Flutter for begginners - third edition". Ko
 
 ## 02.03.2024
 - utworzyłem projekt na GitHub i zdefiniowałem kolejne feature'y i potrzebne zmiany
+
+## 03.03.2024
+- skończyłem pierwszy rozdział książki o Flutterze
+- uruchomiłe emulator telefonu Pixel 3a
+- utworzyłem projekt hello_world i uruchomiłem w emulatorze
