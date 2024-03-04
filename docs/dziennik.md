@@ -16,3 +16,6 @@ Wiedzę będę czerpał z książki "Flutter for begginners - third edition". Ko
 - skończyłem pierwszy rozdział książki o Flutterze
 - uruchomiłe emulator telefonu Pixel 3a
 - utworzyłem projekt hello_world i uruchomiłem w emulatorze
+
+## 04.03.2024
+- przeczytałem kolejny rozdział książki, poświęcony językowi Dart
