@@ -19,3 +19,6 @@ Wiedzę będę czerpał z książki "Flutter for begginners - third edition". Ko
 
 ## 04.03.2024
 - przeczytałem kolejny rozdział książki, poświęcony językowi Dart
+
+## 05.03.2024
+- poznałem OOP w Dart, domieszki, generyki i fundamenty programowania asynchronicznego
