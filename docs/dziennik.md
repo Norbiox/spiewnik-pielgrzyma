@@ -22,3 +22,6 @@ Wiedzę będę czerpał z książki "Flutter for begginners - third edition". Ko
 
 ## 05.03.2024
 - poznałem OOP w Dart, domieszki, generyki i fundamenty programowania asynchronicznego
+
+## 06.03.2024
+- poznałem typy oraz podstawy budowy widgetów we Flutterze
