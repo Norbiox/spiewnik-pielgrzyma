@@ -25,3 +25,6 @@ Wiedzę będę czerpał z książki "Flutter for begginners - third edition". Ko
 
 ## 06.03.2024
 - poznałem typy oraz podstawy budowy widgetów we Flutterze
+
+## 07.03.2024
+- zapoznałem się z podstawowymi wbudowanymi widgetami
