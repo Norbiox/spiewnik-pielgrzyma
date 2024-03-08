@@ -28,3 +28,5 @@ Wiedzę będę czerpał z książki "Flutter for begginners - third edition". Ko
 
 ## 07.03.2024
 - zapoznałem się z podstawowymi wbudowanymi widgetami
+## 08.03.2024
+- poznałem metody uzyskiwania inputu od użytkowników, formatki oraz obsługę gestów
