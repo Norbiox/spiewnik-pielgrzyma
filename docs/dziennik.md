@@ -28,5 +28,10 @@ Wiedzę będę czerpał z książki "Flutter for begginners - third edition". Ko
 
 ## 07.03.2024
 - zapoznałem się z podstawowymi wbudowanymi widgetami
+
 ## 08.03.2024
 - poznałem metody uzyskiwania inputu od użytkowników, formatki oraz obsługę gestów
+
+## 09.03.2024
+- zapoznałem się z kolejną porcją widgetów, podstawowymi możliwościami ich stylowania
+- SliverList może być przydatne w tym projekcie - dodałem notkę do odpowiedniego taska w projekcie na GitHubie
