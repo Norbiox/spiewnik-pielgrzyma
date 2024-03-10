@@ -35,3 +35,6 @@ Wiedzę będę czerpał z książki "Flutter for begginners - third edition". Ko
 ## 09.03.2024
 - zapoznałem się z kolejną porcją widgetów, podstawowymi możliwościami ich stylowania
 - SliverList może być przydatne w tym projekcie - dodałem notkę do odpowiedniego taska w projekcie na GitHubie
+
+## 10.03.2024
+- zapoznałem się z routingiem we Flutterze
