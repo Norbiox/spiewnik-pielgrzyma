@@ -38,3 +38,7 @@ Wiedzę będę czerpał z książki "Flutter for begginners - third edition". Ko
 
 ## 10.03.2024
 - zapoznałem się z routingiem we Flutterze
+
+## 11.03.2024
+- poznałem sposób na tworzenie własnych animacji przejść między ekranami
+- przegląd metod przechowywania i przekazywania stanu między widgetami
