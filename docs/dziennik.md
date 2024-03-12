@@ -42,3 +42,6 @@ Wiedzę będę czerpał z książki "Flutter for begginners - third edition". Ko
 ## 11.03.2024
 - poznałem sposób na tworzenie własnych animacji przejść między ekranami
 - przegląd metod przechowywania i przekazywania stanu między widgetami
+
+## 12.03.2024
+- nauczyłem się dodawania i używania pluginów, oraz tego gdzie ich szukać: https://pub.dev
