@@ -45,3 +45,6 @@ Wiedzę będę czerpał z książki "Flutter for begginners - third edition". Ko
 
 ## 12.03.2024
 - nauczyłem się dodawania i używania pluginów, oraz tego gdzie ich szukać: https://pub.dev
+
+## 13.03.2024
+- stworzyłem projekt w Firebase i zapoznałem się z możliwościami jakie daje
