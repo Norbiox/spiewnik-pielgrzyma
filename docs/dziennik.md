@@ -48,3 +48,9 @@ Wiedzę będę czerpał z książki "Flutter for begginners - third edition". Ko
 
 ## 13.03.2024
 - stworzyłem projekt w Firebase i zapoznałem się z możliwościami jakie daje
+
+## 14.03.2024
+- zerknąłem na możliwości animowania widgetów (narazie nie będę tego potrzebował)
+- dowiedziałem się jak testować kod oraz widgety
+- nauczyłem się debugowania aplikacji
+- dowiedziałem się w jaki sposób przygotować aplikację do wdrożenia oraz wdrożyć ją w sklepie Google Play, Apple App Store i Firebase
