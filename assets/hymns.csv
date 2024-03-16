@@ -1,0 +1,876 @@
+index;filename;number;title;group;subgroup
+0;001.txt;1;Alleluja, chwalcie Pana;I. Bóg Trójjedyny;1. Chwała i dziękczynienie
+1;002.txt;2;Barankowi chwałę, cześć;I. Bóg Trójjedyny;1. Chwała i dziękczynienie
+2;003.txt;3;Bądź Panu cześć;I. Bóg Trójjedyny;1. Chwała i dziękczynienie
+3;004.txt;4;Boże wielki, pełnyś chwał;I. Bóg Trójjedyny;1. Chwała i dziękczynienie
+4;005.txt;5;Chcę o Jezusie moim śpiewać;I. Bóg Trójjedyny;1. Chwała i dziękczynienie
+5;006.txt;6;Barankowi cześć;I. Bóg Trójjedyny;1. Chwała i dziękczynienie
+6;007.txt;7;Chciejmy Zbawcę wielbić szczerze;I. Bóg Trójjedyny;1. Chwała i dziękczynienie
+7;008.txt;8;Chwalże, ma duszo, Mocarza;I. Bóg Trójjedyny;1. Chwała i dziękczynienie
+8;009.txt;9;Chwałę daj Panu, o duszo moja;I. Bóg Trójjedyny;1. Chwała i dziękczynienie
+9;010.txt;10;Czego chcesz od nas, Panie;I. Bóg Trójjedyny;1. Chwała i dziękczynienie
+10;011.txt;11;Dajcie Panu chwałę;I. Bóg Trójjedyny;1. Chwała i dziękczynienie
+11;012.txt;12;Dziękujmy Bogu wraz;I. Bóg Trójjedyny;1. Chwała i dziękczynienie
+12;013.txt;13;Jezusowi chcę śpiewać ku chwale;I. Bóg Trójjedyny;1. Chwała i dziękczynienie
+13;014.txt;14;Gdybym języków miał tysiące;I. Bóg Trójjedyny;1. Chwała i dziękczynienie
+14;015.txt;15;Gdy na ten świat;I. Bóg Trójjedyny;1. Chwała i dziękczynienie
+15;016.txt;16;Królu niebios;I. Bóg Trójjedyny;1. Chwała i dziękczynienie
+16;017.txt;17;O, Panu bądź cześć;I. Bóg Trójjedyny;1. Chwała i dziękczynienie
+17;018.txt;18;Pan dobry jest;I. Bóg Trójjedyny;1. Chwała i dziękczynienie
+18;019.txt;19;Panu wszyscy zaśpiewajcie;I. Bóg Trójjedyny;1. Chwała i dziękczynienie
+19;020.txt;20;Pan Zastępów godzien chwały;I. Bóg Trójjedyny;1. Chwała i dziękczynienie
+20;021.txt;21;Przekrasny Jezu, wszego świata Królu;I. Bóg Trójjedyny;1. Chwała i dziękczynienie
+21;022.txt;22;Uwielbiam miłość niepojętą;I. Bóg Trójjedyny;1. Chwała i dziękczynienie
+22;023.txt;23;Strójcie, wierni, harfy wasze;I. Bóg Trójjedyny;1. Chwała i dziękczynienie
+23;024.txt;24;Święty, Święty, Święty;I. Bóg Trójjedyny;1. Chwała i dziękczynienie
+24;025.txt;25;Z żądnością czekałem na Pana;I. Bóg Trójjedyny;1. Chwała i dziękczynienie
+25;026.txt;26;Wielbijmy Ojca pieniem chwał;I. Bóg Trójjedyny;1. Chwała i dziękczynienie
+26;027.txt;27;Przyjdź, Zbawienie pogan, przyjdź;I. Bóg Trójjedyny;2. Adwent i narodzenie Jezusa
+27;028.txt;28;Jak mam powitać Ciebie;I. Bóg Trójjedyny;2. Adwent i narodzenie Jezusa
+28;029.txt;29;Jak pięknie lśni jutrzenki blask;I. Bóg Trójjedyny;2. Adwent i narodzenie Jezusa
+29;030.txt;30;Nadchodził, zbliżał się;I. Bóg Trójjedyny;2. Adwent i narodzenie Jezusa
+30;031.txt;31;Podnieścież się, wy wierzchy bram!;I. Bóg Trójjedyny;2. Adwent i narodzenie Jezusa
+31;032.txt;32;Czas radości, wesołości;I. Bóg Trójjedyny;2. Adwent i narodzenie Jezusa
+32;033.txt;33;Aniołowie z niebios nucą chwały śpiew;I. Bóg Trójjedyny;2. Adwent i narodzenie Jezusa
+33;034.txt;34;Chwalcie Boga, o chrześcijanie;I. Bóg Trójjedyny;2. Adwent i narodzenie Jezusa
+34;035.txt;35;Chwała Bogu, chwała w górze;I. Bóg Trójjedyny;2. Adwent i narodzenie Jezusa
+35;036.txt;36;Cicha noc;I. Bóg Trójjedyny;2. Adwent i narodzenie Jezusa
+36;037.txt;37;Dziateczki, dziateczki;I. Bóg Trójjedyny;2. Adwent i narodzenie Jezusa
+37;038.txt;38;Gałązka drobna, wątła z Jessego trysła pnia;I. Bóg Trójjedyny;2. Adwent i narodzenie Jezusa
+38;039.txt;39;Niebo wykrzykuj!;I. Bóg Trójjedyny;2. Adwent i narodzenie Jezusa
+39;040.txt;40;O, błogosławiony;I. Bóg Trójjedyny;2. Adwent i narodzenie Jezusa
+40;041.txt;41;O, szczęśliwa noc;I. Bóg Trójjedyny;2. Adwent i narodzenie Jezusa
+41;042.txt;42;Pośpieszcie, o wierni;I. Bóg Trójjedyny;2. Adwent i narodzenie Jezusa
+42;043.txt;43;Strójcie się, o gwiazdy, chwałą;I. Bóg Trójjedyny;2. Adwent i narodzenie Jezusa
+43;044.txt;44;W żłobie leży;I. Bóg Trójjedyny;2. Adwent i narodzenie Jezusa
+44;045.txt;45;Wznieście Bogu chwały pienia;I. Bóg Trójjedyny;2. Adwent i narodzenie Jezusa
+45;046.txt;46;Znam wieść prześliczną, dawną wieść;I. Bóg Trójjedyny;2. Adwent i narodzenie Jezusa
+46;047.txt;47;Z niebieskich wyżyn schodzę dziś;I. Bóg Trójjedyny;2. Adwent i narodzenie Jezusa
+47;048.txt;48;Cóżeś uczynił, Jezusie kochany;I. Bóg Trójjedyny;3. Śmierć, zmartwychwstanie i wniebowstąpienie Jezusa
+48;049.txt;49;Jezu, życia mego życie;I. Bóg Trójjedyny;3. Śmierć, zmartwychwstanie i wniebowstąpienie Jezusa
+49;050.txt;50;Najdroższy Jezu, czyjaż wielka wina;I. Bóg Trójjedyny;3. Śmierć, zmartwychwstanie i wniebowstąpienie Jezusa
+50;051.txt;51;Na Golgotę, duszo, śpiesz;I. Bóg Trójjedyny;3. Śmierć, zmartwychwstanie i wniebowstąpienie Jezusa
+51;052.txt;52;Na krzyżu, Jezu, zmarłeś;I. Bóg Trójjedyny;3. Śmierć, zmartwychwstanie i wniebowstąpienie Jezusa
+52;053.txt;53;O głowo krwią zbroczona;I. Bóg Trójjedyny;3. Śmierć, zmartwychwstanie i wniebowstąpienie Jezusa
+53;054.txt;54;Strumyków pięć I źródeł pięć;I. Bóg Trójjedyny;3. Śmierć, zmartwychwstanie i wniebowstąpienie Jezusa
+54;055.txt;55;Tysiąckrotnie pozdrowiony;I. Bóg Trójjedyny;3. Śmierć, zmartwychwstanie i wniebowstąpienie Jezusa
+55;056.txt;56;Na myśl o wieńcu z cierni;I. Bóg Trójjedyny;3. Śmierć, zmartwychwstanie i wniebowstąpienie Jezusa
+56;057.txt;57;Alleluja, sławny nastał dzień!;I. Bóg Trójjedyny;3. Śmierć, zmartwychwstanie i wniebowstąpienie Jezusa
+57;058.txt;58;Dziś nam nastał dzień wspaniały;I. Bóg Trójjedyny;3. Śmierć, zmartwychwstanie i wniebowstąpienie Jezusa
+58;059.txt;59;O śmierci, gdzież jest bodziec twój?;I. Bóg Trójjedyny;3. Śmierć, zmartwychwstanie i wniebowstąpienie Jezusa
+59;060.txt;60;Nastał nam czas przeradosny;I. Bóg Trójjedyny;3. Śmierć, zmartwychwstanie i wniebowstąpienie Jezusa
+60;061.txt;61;Jezus żyje, z Nim i ja!;I. Bóg Trójjedyny;3. Śmierć, zmartwychwstanie i wniebowstąpienie Jezusa
+61;062.txt;62;Przeminęła, przeminęła;I. Bóg Trójjedyny;3. Śmierć, zmartwychwstanie i wniebowstąpienie Jezusa
+62;063.txt;63;W ciemnej nocy z Bożej mocy;I. Bóg Trójjedyny;3. Śmierć, zmartwychwstanie i wniebowstąpienie Jezusa
+63;064.txt;64;Radość pienia dziękczynienia;I. Bóg Trójjedyny;3. Śmierć, zmartwychwstanie i wniebowstąpienie Jezusa
+64;065.txt;65;Wstał z martwych mój Zbawiciel;I. Bóg Trójjedyny;3. Śmierć, zmartwychwstanie i wniebowstąpienie Jezusa
+65;066.txt;66;W ciemny grób złożon Pan;I. Bóg Trójjedyny;3. Śmierć, zmartwychwstanie i wniebowstąpienie Jezusa
+66;067.txt;67;W górę serca, Boże dzieci;I. Bóg Trójjedyny;3. Śmierć, zmartwychwstanie i wniebowstąpienie Jezusa
+67;068.txt;68;Jezus jako Król panuje;I. Bóg Trójjedyny;3. Śmierć, zmartwychwstanie i wniebowstąpienie Jezusa
+68;069.txt;69;Królewski strój się śpieszcie nieść;I. Bóg Trójjedyny;3. Śmierć, zmartwychwstanie i wniebowstąpienie Jezusa
+69;070.txt;70;Zbawicielu wywyższony;I. Bóg Trójjedyny;3. Śmierć, zmartwychwstanie i wniebowstąpienie Jezusa
+70;071.txt;71;Cudowna siła zlała się;I. Bóg Trójjedyny;4. Duch Święty
+71;072.txt;72;Jak błogie, wieczne szczęście nam;I. Bóg Trójjedyny;4. Duch Święty
+72;073.txt;73;Na Twój święty Kościół cały;I. Bóg Trójjedyny;4. Duch Święty
+73;074.txt;74;Me serce pełne chwał;I. Bóg Trójjedyny;4. Duch Święty
+74;075.txt;75;Duchu Pana;I. Bóg Trójjedyny;4. Duch Święty
+75;076.txt;76;Na Twym ołtarzu, Panie;I. Bóg Trójjedyny;4. Duch Święty
+76;077.txt;77;Nawiedź nas, Duchu Święty;I. Bóg Trójjedyny;4. Duch Święty
+77;078.txt;78;Niegdyś pierwsi tam uczniowie;I. Bóg Trójjedyny;4. Duch Święty
+78;079.txt;79;O Boże, Duchu, o Światłości;I. Bóg Trójjedyny;4. Duch Święty
+79;080.txt;80;Oby, Jezu, znów w tym świecie;I. Bóg Trójjedyny;4. Duch Święty
+80;081.txt;81;Otwórzmy dziś swych serc podwoje;I. Bóg Trójjedyny;4. Duch Święty
+81;082.txt;82;O, by już wkrótce rozgorzały;I. Bóg Trójjedyny;4. Duch Święty
+82;083.txt;83;Panie, wysłuchać modłów chciej;I. Bóg Trójjedyny;4. Duch Święty
+83;084.txt;84;O Zbawicielu drogi;I. Bóg Trójjedyny;4. Duch Święty
+84;085.txt;85;Wielką radość, pokój błogi;I. Bóg Trójjedyny;4. Duch Święty
+85;086.txt;86;Przyjdź, Duchu Święty;I. Bóg Trójjedyny;4. Duch Święty
+86;087.txt;87;Ześlij, Panie, Swego Ducha;I. Bóg Trójjedyny;4. Duch Święty
+87;088.txt;88;Znasz ty już ten kraj;I. Bóg Trójjedyny;4. Duch Święty
+88;089.txt;89;Boża miłość nad nami trwa;I. Bóg Trójjedyny;5. Miłość Pańska
+89;090.txt;90;Bóg jest miłością;I. Bóg Trójjedyny;5. Miłość Pańska
+90;091.txt;91;Chcę śpiewać o miłości Jezusa;I. Bóg Trójjedyny;5. Miłość Pańska
+91;092.txt;92;Chrystus kocha nas niezmiernie;I. Bóg Trójjedyny;5. Miłość Pańska
+92;093.txt;93;Czyż tron Twój;I. Bóg Trójjedyny;5. Miłość Pańska
+93;094.txt;94;Głośmy radośnie wszyscy wraz;I. Bóg Trójjedyny;5. Miłość Pańska
+94;095.txt;95;Miłość cudowna;I. Bóg Trójjedyny;5. Miłość Pańska
+95;096.txt;96;O, ta miłość Twoja, Panie;I. Bóg Trójjedyny;5. Miłość Pańska
+96;097.txt;97;Podziwiam, podziwiam;I. Bóg Trójjedyny;5. Miłość Pańska
+97;098.txt;98;Przewyższa rozum wielka miłość Twa;I. Bóg Trójjedyny;5. Miłość Pańska
+98;099.txt;99;Zobacz, jak Pan Go miłował;I. Bóg Trójjedyny;5. Miłość Pańska
+99;100.txt;100;Znam miłość Jezusa wspaniałą;I. Bóg Trójjedyny;5. Miłość Pańska
+100;101.txt;101;Boży Baranku!;I. Bóg Trójjedyny;6.Dzieło pojedniania
+101;102.txt;102;Chrystus Pan opuścił niebios sławę;I. Bóg Trójjedyny;6.Dzieło pojedniania
+102;103.txt;103;Jeden tylko godzien nieść;I. Bóg Trójjedyny;6.Dzieło pojedniania
+103;104.txt;104;Czy znasz to imię;I. Bóg Trójjedyny;6.Dzieło pojedniania
+104;105.txt;105;Golgoty to szczyt;I. Bóg Trójjedyny;6.Dzieło pojedniania
+105;106.txt;106;Ja pragnę Jezu śpiewać;I. Bóg Trójjedyny;6.Dzieło pojedniania
+106;107.txt;107;Jeden przyszedł na ziemię;I. Bóg Trójjedyny;6.Dzieło pojedniania
+107;108.txt;108;Krzyż Pański mocno trwa;I. Bóg Trójjedyny;6.Dzieło pojedniania
+108;109.txt;109;Łaski wspaniałej się strumień zlał;I. Bóg Trójjedyny;6.Dzieło pojedniania
+109;110.txt;110;Najlepszy Lekarz zbliża się;I. Bóg Trójjedyny;6.Dzieło pojedniania
+110;111.txt;111;O Golgoto, w ciszy twej;I. Bóg Trójjedyny;6.Dzieło pojedniania
+111;112.txt;112;Nic dodać nie możesz do łaski;I. Bóg Trójjedyny;6.Dzieło pojedniania
+112;113.txt;113;O, mów mi, mów o Jezusie;I. Bóg Trójjedyny;6.Dzieło pojedniania
+113;114.txt;114;Ożywcze źródło tryska;I. Bóg Trójjedyny;6.Dzieło pojedniania
+114;115.txt;115;Pod krzyżem mego Zbawcy;I. Bóg Trójjedyny;6.Dzieło pojedniania
+115;116.txt;116;O, zaśpiewaj ty z radości;I. Bóg Trójjedyny;6.Dzieło pojedniania
+116;117.txt;117;Przesłodka jest wieść o Jezusie;I. Bóg Trójjedyny;6.Dzieło pojedniania
+117;118.txt;118;Przez różnych ziem krainy;I. Bóg Trójjedyny;6.Dzieło pojedniania
+118;119.txt;119;Tam na wzgórzu stał;I. Bóg Trójjedyny;6.Dzieło pojedniania
+119;120.txt;120;W Twej łasce, Panie;I. Bóg Trójjedyny;6.Dzieło pojedniania
+120;121.txt;121;Bóg chce wszystkim ludziom;II. Droga Zbawienia;7. Wezwanie do Jezusa
+121;122.txt;122;Idź pod krzyż z ciężary swymi;II. Droga Zbawienia;7. Wezwanie do Jezusa
+122;123.txt;123;Chrystusa ogłoś serca swego Królem;II. Droga Zbawienia;7. Wezwanie do Jezusa
+123;124.txt;124;Czemuż dusza twoja lgnie;II. Droga Zbawienia;7. Wezwanie do Jezusa
+124;125.txt;125;Co to za niezliczony tłum;II. Droga Zbawienia;7. Wezwanie do Jezusa
+125;126.txt;126;Cóż to w cichych chwilach nocy;II. Droga Zbawienia;7. Wezwanie do Jezusa
+126;127.txt;127;Czym ci Jezusa miłość jest, czym?;II. Droga Zbawienia;7. Wezwanie do Jezusa
+127;128.txt;128;Czy Twe serce w Jezusie szczęśliwe;II. Droga Zbawienia;7. Wezwanie do Jezusa
+128;129.txt;129;Czy zobaczę cię przy zdroju;II. Droga Zbawienia;7. Wezwanie do Jezusa
+129;130.txt;130;Jezus woła ciebie, duszo;II. Droga Zbawienia;7. Wezwanie do Jezusa
+130;131.txt;131;Dlaczego się temu tak bardzo dziwicie;II. Droga Zbawienia;7. Wezwanie do Jezusa
+131;132.txt;132;Do ciebie, duszo, zbliżam się;II. Droga Zbawienia;7. Wezwanie do Jezusa
+132;133.txt;133;Ducha cię dotknęło tchnienie;II. Droga Zbawienia;7. Wezwanie do Jezusa
+133;134.txt;134;Do cudnej pielgrzymujemy chwały;II. Droga Zbawienia;7. Wezwanie do Jezusa
+134;135.txt;135;Głos Jezusa słychać;II. Droga Zbawienia;7. Wezwanie do Jezusa
+135;136.txt;136;Jezus woła pośród zgiełku;II. Droga Zbawienia;7. Wezwanie do Jezusa
+136;137.txt;137;Duszo, słuchaj cudnej wieści;II. Droga Zbawienia;7. Wezwanie do Jezusa
+137;138.txt;138;Głośno biją niebios dzwony;II. Droga Zbawienia;7. Wezwanie do Jezusa
+138;139.txt;139;I czemuż wciąż czekasz;II. Droga Zbawienia;7. Wezwanie do Jezusa
+139;140.txt;140;Jest miejsca dość, jest jeszcze czas;II. Droga Zbawienia;7. Wezwanie do Jezusa
+140;141.txt;141;Imię Jezus wiecznie świeże;II. Droga Zbawienia;7. Wezwanie do Jezusa
+141;142.txt;142;Już bracie, siostro;II. Droga Zbawienia;7. Wezwanie do Jezusa
+142;143.txt;143;Już pociąg łaski Bożej;II. Droga Zbawienia;7. Wezwanie do Jezusa
+143;144.txt;144;Kiedy ci w świecie smutno, źle;II. Droga Zbawienia;7. Wezwanie do Jezusa
+144;145.txt;145;Kiedy usłyszysz śmierci głos;II. Droga Zbawienia;7. Wezwanie do Jezusa
+145;146.txt;146;Miły głos Ducha odzywa się;II. Droga Zbawienia;7. Wezwanie do Jezusa
+146;147.txt;147;Krótki jest czas;II. Droga Zbawienia;7. Wezwanie do Jezusa
+147;148.txt;148;Oj, pamiętaj, bracie;II. Droga Zbawienia;7. Wezwanie do Jezusa
+148;149.txt;149;Mam Przyjaciela;II. Droga Zbawienia;7. Wezwanie do Jezusa
+149;150.txt;150;Powstań, powstań z nieprawości;II. Droga Zbawienia;7. Wezwanie do Jezusa
+150;151.txt;151;Masz Jezusa, serca pokój;II. Droga Zbawienia;7. Wezwanie do Jezusa
+151;152.txt;152;Nie masz miejsca dla Jezusa;II. Droga Zbawienia;7. Wezwanie do Jezusa
+152;153.txt;153;Na Jezusa krzyż spoglądaj;II. Droga Zbawienia;7. Wezwanie do Jezusa
+153;154.txt;154;Niech pragnący bierze ten życia dar;II. Droga Zbawienia;7. Wezwanie do Jezusa
+154;155.txt;155;Przyjacielu, patrz;II. Droga Zbawienia;7. Wezwanie do Jezusa
+155;156.txt;156;O duszo, pośpieszaj do krzyża;II. Droga Zbawienia;7. Wezwanie do Jezusa
+156;157.txt;157;Ojczyzna w górze już otwarta;II. Droga Zbawienia;7. Wezwanie do Jezusa
+157;158.txt;158;Wędrowcze, wróć do Ojca, wróć!;II. Droga Zbawienia;7. Wezwanie do Jezusa
+158;159.txt;159;O nie chodź, nie bądź światem sam;II. Droga Zbawienia;7. Wezwanie do Jezusa
+159;160.txt;160;O wpuść w głębinę duszy, wpuść;II. Droga Zbawienia;7. Wezwanie do Jezusa
+160;161.txt;161;O, wróć, o, wróć!;II. Droga Zbawienia;7. Wezwanie do Jezusa
+161;162.txt;162;O wstań, rodzinny opuść kraj;II. Droga Zbawienia;7. Wezwanie do Jezusa
+162;163.txt;163;O, zaczekaj, rozważ sobie;II. Droga Zbawienia;7. Wezwanie do Jezusa
+163;164.txt;164;Pan zwołuje owce z błędnych dróg;II. Droga Zbawienia;7. Wezwanie do Jezusa
+164;165.txt;165;Patrz, kto stoi u twych drzwi!;II. Droga Zbawienia;7. Wezwanie do Jezusa
+165;166.txt;166;Pójdźcie wszyscy po zbawienie;II. Droga Zbawienia;7. Wezwanie do Jezusa
+166;167.txt;167;Pójdź do Zbawcy, droga duszo;II. Droga Zbawienia;7. Wezwanie do Jezusa
+167;168.txt;168;Pójdź do Jezusa, dziś jeszcze czas;II. Droga Zbawienia;7. Wezwanie do Jezusa
+168;169.txt;169;Trwa jeszcze łaska Boża;II. Droga Zbawienia;7. Wezwanie do Jezusa
+169;170.txt;170;Pójdź tylko do Mnie;II. Droga Zbawienia;7. Wezwanie do Jezusa
+170;171.txt;171;Próżne są wymówki twe;II. Droga Zbawienia;7. Wezwanie do Jezusa
+171;172.txt;172;Przecudna wieść w świat cały płynie;II. Droga Zbawienia;7. Wezwanie do Jezusa
+172;173.txt;173;Stań, bracie miły, stań!;II. Droga Zbawienia;7. Wezwanie do Jezusa
+173;174.txt;174;Tak blisko, celu;II. Droga Zbawienia;7. Wezwanie do Jezusa
+174;175.txt;175;Znam słówko małe;II. Droga Zbawienia;7. Wezwanie do Jezusa
+175;176.txt;176;Znam strumień, co płynie;II. Droga Zbawienia;7. Wezwanie do Jezusa
+176;177.txt;177;Boże mój, który widzisz;II. Droga Zbawienia;8. Przebudzenie i pokuta
+177;178.txt;178;Bracie, skądże twe starania;II. Droga Zbawienia;8. Przebudzenie i pokuta
+178;179.txt;179;Czy ty od grzechów wolnym być tu chcesz;II. Droga Zbawienia;8. Przebudzenie i pokuta
+179;180.txt;180;Gdzie znajdę Pana;II. Droga Zbawienia;8. Przebudzenie i pokuta
+180;181.txt;181;Gdzież mi pociechy szukać lub nadziei;II. Droga Zbawienia;8. Przebudzenie i pokuta
+181;182.txt;182;Jezus grzesznych przyjąć chce!;II. Droga Zbawienia;8. Przebudzenie i pokuta
+182;183.txt;183;Jezus zdradzony, zupełnie Sam;II. Droga Zbawienia;8. Przebudzenie i pokuta
+183;184.txt;184;Idź łzy otrzyj swoje;II. Droga Zbawienia;8. Przebudzenie i pokuta
+184;185.txt;185;Kiedy w serce w grzech wplątane;II. Droga Zbawienia;8. Przebudzenie i pokuta
+185;186.txt;186;Na krzyżum przelał krew;II. Droga Zbawienia;8. Przebudzenie i pokuta
+186;187.txt;187;Kto wiary spojrzenie skieruje na krzyż;II. Droga Zbawienia;8. Przebudzenie i pokuta
+187;188.txt;188;Nie zapomnij, nie zapomnij;II. Droga Zbawienia;8. Przebudzenie i pokuta
+188;189.txt;189;Nie błądź, nie błądź!;II. Droga Zbawienia;8. Przebudzenie i pokuta
+189;190.txt;190;O Boże, proszę;II. Droga Zbawienia;8. Przebudzenie i pokuta
+190;191.txt;191;Padnij pod krzyżem!;II. Droga Zbawienia;8. Przebudzenie i pokuta
+191;192.txt;192;O, mów, czy krew Swą wylał Pan;II. Droga Zbawienia;8. Przebudzenie i pokuta
+192;193.txt;193;O smutny, bolesny to stan;II. Droga Zbawienia;8. Przebudzenie i pokuta
+193;194.txt;194;Panie, w Swym słowie do nas przemawiasz;II. Droga Zbawienia;8. Przebudzenie i pokuta
+194;195.txt;195;Po dwóch drogach;II. Droga Zbawienia;8. Przebudzenie i pokuta
+195;196.txt;196;Pośpiesz, pośpiesz do pokutowania;II. Droga Zbawienia;8. Przebudzenie i pokuta
+196;197.txt;197;Prócz liści nic;II. Droga Zbawienia;8. Przebudzenie i pokuta
+197;198.txt;198;Daj się całkiem dziś uchwycić;II. Droga Zbawienia;9. Oddanie się Panu
+198;199.txt;199;Długo światła szukaliśmy;II. Droga Zbawienia;9. Oddanie się Panu
+199;200.txt;200;Gdzieżeś, ukochany mój Jezu Chryste?;II. Droga Zbawienia;9. Oddanie się Panu
+200;201.txt;201;Jak Sam, Panie, chcesz, niech będzie ;II. Droga Zbawienia;9. Oddanie się Panu
+201;202.txt;202;Hymn wdzięczności płynie z duszy;II. Droga Zbawienia;9. Oddanie się Panu
+202;203.txt;203;Ja, o Panie, i mój dom;II. Droga Zbawienia;9. Oddanie się Panu
+203;204.txt;204;Ja pójdę z Tobą, dokąd chcesz;II. Droga Zbawienia;9. Oddanie się Panu
+204;205.txt;205;Któż poznał myśli Pana;II. Droga Zbawienia;9. Oddanie się Panu
+205;206.txt;206;Nie omijaj mnie;II. Droga Zbawienia;9. Oddanie się Panu
+206;207.txt;207;O, Jezusie, zbaw mą duszę!;II. Droga Zbawienia;9. Oddanie się Panu
+207;208.txt;208;O, pójdźcie, posłuchajcie;II. Droga Zbawienia;9. Oddanie się Panu
+208;209.txt;209;Przy tym pozostanę już;II. Droga Zbawienia;9. Oddanie się Panu
+209;210.txt;210;Rzuć, człowiecze, marny świat;II. Droga Zbawienia;9. Oddanie się Panu
+210;211.txt;211;Skało, którą rozwarł Bóg;II. Droga Zbawienia;9. Oddanie się Panu
+211;212.txt;212;Stwórz serce czyste we mnie;II. Droga Zbawienia;9. Oddanie się Panu
+212;213.txt;213;Tak jakim jest;II. Droga Zbawienia;9. Oddanie się Panu
+213;214.txt;214;To wcale nie taki wielki trud;II. Droga Zbawienia;9. Oddanie się Panu
+214;215.txt;215;Weźmij, Jezu, życie me;II. Droga Zbawienia;9. Oddanie się Panu
+215;216.txt;216;Tu serce me!;II. Droga Zbawienia;9. Oddanie się Panu
+216;217.txt;217;Ujmij mą dłoń!;II. Droga Zbawienia;9. Oddanie się Panu
+217;218.txt;218;W niebie wielka radość;II. Droga Zbawienia;9. Oddanie się Panu
+218;219.txt;219;W Swej litości, łaskawości;II. Droga Zbawienia;9. Oddanie się Panu
+219;220.txt;220;Wszystko Tobie dziś oddaję;II. Droga Zbawienia;9. Oddanie się Panu
+220;221.txt;221;Wybrać mi radzono skarb;II. Droga Zbawienia;9. Oddanie się Panu
+221;222.txt;222;Ach, oby Zbawcy wzór cierpienia;II. Droga Zbawienia;10. Odrodzenie
+222;223.txt;223;Bez zasług mych ukochał mnie;II. Droga Zbawienia;10. Odrodzenie
+223;224.txt;224;Chcę kochać Ciebie, Boży Synu;II. Droga Zbawienia;10. Odrodzenie
+224;225.txt;225;Jest źródło;II. Droga Zbawienia;10. Odrodzenie
+225;226.txt;226;Jam Twą własnością!;II. Droga Zbawienia;10. Odrodzenie
+226;227.txt;227;Niewinny Ty Baranku Boży;II. Droga Zbawienia;10. Odrodzenie
+227;228.txt;228;Jezu, ma radości;II. Droga Zbawienia;10. Odrodzenie
+228;229.txt;229;O, Miłości, coś raczyła;II. Droga Zbawienia;10. Odrodzenie
+229;230.txt;230;Jezusowi chcę poświęcić;II. Droga Zbawienia;10. Odrodzenie
+230;231.txt;231;Jezu Ty kochasz mnie wieczną miłością;II. Droga Zbawienia;10. Odrodzenie
+231;232.txt;232;Kiedy żyłem w grzechach swych;II. Droga Zbawienia;10. Odrodzenie
+232;233.txt;233;Znalazłem grunt, gdzie ma kotwica;II. Droga Zbawienia;10. Odrodzenie
+233;234.txt;234;Miłości, wnieś słoneczny brzask;II. Droga Zbawienia;10. Odrodzenie
+234;235.txt;235;Miłość Boża granic nie ma;II. Droga Zbawienia;10. Odrodzenie
+235;236.txt;236;Zbawił mnie Pan!;II. Droga Zbawienia;10. Odrodzenie
+236;237.txt;237;Nie mogę pojąć, jak Tyś - święty Bóg;II. Droga Zbawienia;10. Odrodzenie
+237;238.txt;238;Tylko Ciebie, Jezu drogi;II. Droga Zbawienia;10. Odrodzenie
+238;239.txt;239;Nie należę już do siebie;II. Droga Zbawienia;10. Odrodzenie
+239;240.txt;240;Nie wiem, dlaczego miłość Swą;II. Droga Zbawienia;10. Odrodzenie
+240;241.txt;241;Nie znałem Jezusa;II. Droga Zbawienia;10. Odrodzenie
+241;242.txt;242;Odpuszczone są me winy;II. Droga Zbawienia;10. Odrodzenie
+242;243.txt;243;O, Jezu grzechy moje;II. Droga Zbawienia;10. Odrodzenie
+243;244.txt;244;Rozkoszy pełne miejsce znam;II. Droga Zbawienia;10. Odrodzenie
+244;245.txt;245;Samotny wśród morskich;II. Droga Zbawienia;10. Odrodzenie
+245;246.txt;246;Spełniło się teraz!;II. Droga Zbawienia;10. Odrodzenie
+246;247.txt;247;Śmiem w to wierzyć i wiedzieć;II. Droga Zbawienia;10. Odrodzenie
+247;248.txt;248;Ty tylko, Jezu;II. Droga Zbawienia;10. Odrodzenie
+248;249.txt;249;Ułaskawienia dostąpiłem;II. Droga Zbawienia;10. Odrodzenie
+249;250.txt;250;Z pokorą, z podziwem spoglądam;II. Droga Zbawienia;10. Odrodzenie
+250;251.txt;251;Z mych tysięcy godzin życia;II. Droga Zbawienia;10. Odrodzenie
+251;252.txt;252;W mą duszę promień słońca padł;II. Droga Zbawienia;10. Odrodzenie
+252;253.txt;253;Bliżej, o, bliżej;II. Droga Zbawienia;11. Poświęcenie
+253;254.txt;254;Błogo, o, błogo pokojem Twym żyć;II. Droga Zbawienia;11. Poświęcenie
+254;255.txt;255;Gdy spojrzę tylko na cudowny krzyż;II. Droga Zbawienia;11. Poświęcenie
+255;256.txt;256;Być, Jezu, Twym;II. Droga Zbawienia;11. Poświęcenie
+256;257.txt;257;Daj serce dla chwały Twej;II. Droga Zbawienia;11. Poświęcenie
+257;258.txt;258;Duchowi Świętemu, gdy karać cię chce;II. Droga Zbawienia;11. Poświęcenie
+258;259.txt;259;Drogą jasną, ścieżką prostą;II. Droga Zbawienia;11. Poświęcenie
+259;260.txt;260;Gdyś się całkiem oddał Panu;II. Droga Zbawienia;11. Poświęcenie
+260;261.txt;261;Głębiej, o, głębiej ukorzyć się chcę;II. Droga Zbawienia;11. Poświęcenie
+261;262.txt;262;Królu mój, Królu chwały;II. Droga Zbawienia;11. Poświęcenie
+262;263.txt;263;Jam nie swój, nie, jam zwolniony;II. Droga Zbawienia;11. Poświęcenie
+263;264.txt;264;Jam w grzechach niegdyś martwy był;II. Droga Zbawienia;11. Poświęcenie
+264;265.txt;265;Jedno w sercu, jedno mam życzenie;II. Droga Zbawienia;11. Poświęcenie
+265;266.txt;266;O, imię najzacniejsze;II. Droga Zbawienia;11. Poświęcenie
+266;267.txt;267;Jestem, Panie, Twój;II. Droga Zbawienia;11. Poświęcenie
+267;268.txt;268;Już bez zakonu — o, błogie życie;II. Droga Zbawienia;11. Poświęcenie
+268;269.txt;269;Jezusa krew, teń święty zdrój;II. Droga Zbawienia;11. Poświęcenie
+269;270.txt;270;O Panie, pragnie dusza ma;II. Droga Zbawienia;11. Poświęcenie
+270;271.txt;271;Jezus Chrystus — brzmi poselstwo;II. Droga Zbawienia;11. Poświęcenie
+271;272.txt;272;Krzyż żąda ofiary;II. Droga Zbawienia;11. Poświęcenie
+272;273.txt;273;Oblicza Twego pragnąc;II. Droga Zbawienia;11. Poświęcenie
+273;274.txt;274;Mój wznoszę wzrok do niebios stron;II. Droga Zbawienia;11. Poświęcenie
+274;275.txt;275;Nie mogę, nie chcę żyć samemu sobie;II. Droga Zbawienia;11. Poświęcenie
+275;276.txt;276;Nie o szczęście;II. Droga Zbawienia;11. Poświęcenie
+276;277.txt;277;Oddałem Panu serce me;II. Droga Zbawienia;11. Poświęcenie
+277;278.txt;278;O jak błogo jest, gdy wola nasza;II. Droga Zbawienia;11. Poświęcenie
+278;279.txt;279;Ognisty miecz Cheruba;II. Droga Zbawienia;11. Poświęcenie
+279;280.txt;280;O Jezu, ja pragnę omyty być z plam;II. Droga Zbawienia;11. Poświęcenie
+280;281.txt;281;O Jezu, Twą jest sprawa ta;II. Droga Zbawienia;11. Poświęcenie
+281;282.txt;282;O, kiedy pragniesz, zbliż się;II. Droga Zbawienia;11. Poświęcenie
+282;283.txt;283;O, objaw się miły Jezu;II. Droga Zbawienia;11. Poświęcenie
+283;284.txt;284;O, strzeż mnie, Panie, w dzień i w noc;II. Droga Zbawienia;11. Poświęcenie
+284;285.txt;285;Pragniesz—li przekleństw swych grzechów się zbyć;II. Droga Zbawienia;11. Poświęcenie
+285;286.txt;286;Spojrzeniem przenikaj mnie Swym;II. Droga Zbawienia;11. Poświęcenie
+286;287.txt;287;Twa postać jasna staje;II. Droga Zbawienia;11. Poświęcenie
+287;288.txt;288;Ucisz mnie Panie, to prośbą jest mą;II. Droga Zbawienia;11. Poświęcenie
+288;289.txt;289;Ucz chodzić mnie z Bogiem;II. Droga Zbawienia;11. Poświęcenie
+289;290.txt;290;Umarłem ja i z Nim położon w grób;II. Droga Zbawienia;11. Poświęcenie
+290;291.txt;291;Wieść skryte z Bogiem życie;II. Droga Zbawienia;11. Poświęcenie
+291;292.txt;292;Panie, mną, Bo w Tobie wolność ma;II. Droga Zbawienia;11. Poświęcenie
+292;293.txt;293;Jak błogo zbawionym być;II. Droga Zbawienia;12. Pokój i radość
+293;294.txt;294;Błogiej radości nastąpił mi czas;II. Droga Zbawienia;12. Pokój i radość
+294;295.txt;295;Gdy Ciebie widzę, Jezu mój;II. Droga Zbawienia;12. Pokój i radość
+295;296.txt;296;Dziś jasność w duszy mojej lśni;II. Droga Zbawienia;12. Pokój i radość
+296;297.txt;297;Gdy pokój niebieski;II. Droga Zbawienia;12. Pokój i radość
+297;298.txt;298;Ja idę tą drogą, co wiedzie do chwał;II. Droga Zbawienia;12. Pokój i radość
+298;299.txt;299;Jak błogo wiedzieć: Jezus jest mój;II. Droga Zbawienia;12. Pokój i radość
+299;300.txt;300;Jakże ja szczęśliwy;II. Droga Zbawienia;12. Pokój i radość
+300;301.txt;301;Ja mam piosenkę od Jezusa;II. Droga Zbawienia;12. Pokój i radość
+301;302.txt;302;Jam na krzyżu Zbawcę znalazł;II. Droga Zbawienia;12. Pokój i radość
+302;303.txt;303;Jezus grzechy me zmył;II. Droga Zbawienia;12. Pokój i radość
+303;304.txt;304;Jezus przyszedł nas wybawić;II. Droga Zbawienia;12. Pokój i radość
+304;305.txt;305;Mam wspaniałego Zbawiciela;II. Droga Zbawienia;12. Pokój i radość
+305;306.txt;306;Na Baranku ja spoczywam;II. Droga Zbawienia;12. Pokój i radość
+306;307.txt;307;Mój jest Zbawiciel, ustały już żale;II. Droga Zbawienia;12. Pokój i radość
+307;308.txt;308;Nad skarby jest droższym mi Jezus mój;II. Droga Zbawienia;12. Pokój i radość
+308;309.txt;309;Niegdyś noc mnie ogarniała;II. Droga Zbawienia;12. Pokój i radość
+309;310.txt;310;O cudny dzień, o cudny czas;II. Droga Zbawienia;12. Pokój i radość
+310;311.txt;311;Od kiedy Pan mi pewność dał;II. Droga Zbawienia;12. Pokój i radość
+311;312.txt;312;Radośnie wyśpiewuje;II. Droga Zbawienia;12. Pokój i radość
+312;313.txt;313;Pokój w Jezusie;II. Droga Zbawienia;12. Pokój i radość
+313;314.txt;314;Radosną pieśń chwały w sercu mam;II. Droga Zbawienia;12. Pokój i radość
+314;315.txt;315;Słoneczne pola, promienne wzgórza;II. Droga Zbawienia;12. Pokój i radość
+315;316.txt;316;Jezus moim hasłem;II. Droga Zbawienia;12. Pokój i radość
+316;317.txt;317;W mojej duszy radość brzmi;II. Droga Zbawienia;12. Pokój i radość
+317;318.txt;318;Oj, błogosławiony;II. Droga Zbawienia;12. Pokój i radość
+318;319.txt;319;Znam imię nad imiona;II. Droga Zbawienia;12. Pokój i radość
+319;320.txt;320;Ach potrzebuję Cię;III. Życie Chrześcijanina;13. Obcowanie z Panem
+320;321.txt;321;Bądź wola Twoja;III. Życie Chrześcijanina;13. Obcowanie z Panem
+321;322.txt;322;Chcesz—li wiedzieć, co ja wiem;III. Życie Chrześcijanina;13. Obcowanie z Panem
+322;323.txt;323;Choć się zdaje , żem jest sam;III. Życie Chrześcijanina;13. Obcowanie z Panem
+323;324.txt;324;Chodzić wciąż z Panem;III. Życie Chrześcijanina;13. Obcowanie z Panem
+324;325.txt;325;Co złożę Zbawicielowi;III. Życie Chrześcijanina;13. Obcowanie z Panem
+325;326.txt;326;Cóż miałbym, gdyby nie był mnie;III. Życie Chrześcijanina;13. Obcowanie z Panem
+326;327.txt;327;Dziękuję Tobie, Ojcze mój;III. Życie Chrześcijanina;13. Obcowanie z Panem
+327;328.txt;328;Czemuż się mam tak smętny;III. Życie Chrześcijanina;13. Obcowanie z Panem
+328;329.txt;329;Drzewko jedno znam zielone;III. Życie Chrześcijanina;13. Obcowanie z Panem
+329;330.txt;330;Gdybym Cię nie miał;III. Życie Chrześcijanina;13. Obcowanie z Panem
+330;331.txt;331;Gdym nędzny, grzechów pełny;III. Życie Chrześcijanina;13. Obcowanie z Panem
+331;332.txt;332;Gdy cię troska zacznie gnieść;III. Życie Chrześcijanina;13. Obcowanie z Panem
+332;333.txt;333;Gdzież jest mój Miły?;III. Życie Chrześcijanina;13. Obcowanie z Panem
+333;334.txt;334;Gwiazdą w mych ciemnościach;III. Życie Chrześcijanina;13. Obcowanie z Panem
+334;335.txt;335;Jak błogo, iż znalazłem;III. Życie Chrześcijanina;13. Obcowanie z Panem
+335;336.txt;336;Jako rzeka zwiększa głębię swoich fal;III. Życie Chrześcijanina;13. Obcowanie z Panem
+336;337.txt;337;Jak słodko imię Jezus brzmi;III. Życie Chrześcijanina;13. Obcowanie z Panem
+337;338.txt;338;Jaśniejąca chwało;III. Życie Chrześcijanina;13. Obcowanie z Panem
+338;339.txt;339;Jedno jest potrzebne, Panie;III. Życie Chrześcijanina;13. Obcowanie z Panem
+339;340.txt;340;Jezu, któż jak Ty;III. Życie Chrześcijanina;13. Obcowanie z Panem
+340;341.txt;341;Już się nie bój dłużej;III. Życie Chrześcijanina;13. Obcowanie z Panem
+341;342.txt;342;Kto los swój oddał w ręce Boga;III. Życie Chrześcijanina;13. Obcowanie z Panem
+342;343.txt;343;O Panie Jezu miły;III. Życie Chrześcijanina;13. Obcowanie z Panem
+343;344.txt;344;Kto poda sercu, ulgi zdrój?;III. Życie Chrześcijanina;13. Obcowanie z Panem
+344;345.txt;345;Nad wszystko pożądany;III. Życie Chrześcijanina;13. Obcowanie z Panem
+345;346.txt;346;Naucz mnie wierzyć, naucz miłować;III. Życie Chrześcijanina;13. Obcowanie z Panem
+346;347.txt;347;Nie opuść mnie, bo czekam ja na Ciebie;III. Życie Chrześcijanina;13. Obcowanie z Panem
+347;348.txt;348;Niechaj piękność Jezusa;III. Życie Chrześcijanina;13. Obcowanie z Panem
+348;349.txt;349;O dobry Boże, życia drogi;III. Życie Chrześcijanina;13. Obcowanie z Panem
+349;350.txt;350;Nim Pana ja znalazłem;III. Życie Chrześcijanina;13. Obcowanie z Panem
+350;351.txt;351;O, ugnij mnie;III. Życie Chrześcijanina;13. Obcowanie z Panem
+351;352.txt;352;Pan Bóg jest mą siłą;III. Życie Chrześcijanina;13. Obcowanie z Panem
+352;353.txt;353;O, wzywaj Mnie!;III. Życie Chrześcijanina;13. Obcowanie z Panem
+353;354.txt;354;Ucz modłów mnie;III. Życie Chrześcijanina;13. Obcowanie z Panem
+354;355.txt;355;Pohańbiony mój Kapłanie;III. Życie Chrześcijanina;13. Obcowanie z Panem
+355;356.txt;356;Przed Tobą, Panie, nic;III. Życie Chrześcijanina;13. Obcowanie z Panem
+356;357.txt;357;Potrzebnyś mi, o Panie mój;III. Życie Chrześcijanina;13. Obcowanie z Panem
+357;358.txt;358;Przyjaciela mam;III. Życie Chrześcijanina;13. Obcowanie z Panem
+358;359.txt;359;To imię Jezus słodko brzmi;III. Życie Chrześcijanina;13. Obcowanie z Panem
+359;360.txt;360;Swój wierny obraz, Panie;III. Życie Chrześcijanina;13. Obcowanie z Panem
+360;361.txt;361;U nóg Zbawiciela;III. Życie Chrześcijanina;13. Obcowanie z Panem
+361;362.txt;362;W pamięci miej;III. Życie Chrześcijanina;13. Obcowanie z Panem
+362;363.txt;363;Wszędzie Jezus Sam mną kieruje;III. Życie Chrześcijanina;13. Obcowanie z Panem
+363;364.txt;364;Tyś ucieczką moją;III. Życie Chrześcijanina;13. Obcowanie z Panem
+364;365.txt;365;Wszędzie mi z Jezusem błogo;III. Życie Chrześcijanina;13. Obcowanie z Panem
+365;366.txt;366;Znam przeczysty i wspaniały;III. Życie Chrześcijanina;13. Obcowanie z Panem
+366;367.txt;367;W świętej, głębokiej ciszy;III. Życie Chrześcijanina;13. Obcowanie z Panem
+367;368.txt;368;Za rękę weź mnie, Panie;III. Życie Chrześcijanina;13. Obcowanie z Panem
+368;369.txt;369;Z Panem dnia każdego chodź;III. Życie Chrześcijanina;13. Obcowanie z Panem
+369;370.txt;370;Bóg obietnice Swe spełni;III. Życie Chrześcijanina;14. Ufność w Panu
+370;371.txt;371;Co Bóg ci obiecał, na pewno też da;III. Życie Chrześcijanina;14. Ufność w Panu
+371;372.txt;372;Bóg wierny słowom Swym;III. Życie Chrześcijanina;14. Ufność w Panu
+372;373.txt;373;Choć w życiu tym nie pojmiesz już;III. Życie Chrześcijanina;14. Ufność w Panu
+373;374.txt;374;Chwała Ci, Jezu, o Królu nasz;III. Życie Chrześcijanina;14. Ufność w Panu
+374;375.txt;375;Czekaj, duszo moja, W pokornej czci;III. Życie Chrześcijanina;14. Ufność w Panu
+375;376.txt;376;Duszo, nie lękaj się, lecz wierz;III. Życie Chrześcijanina;14. Ufność w Panu
+376;377.txt;377;Dziecię, nie płacz, nie narzekaj;III. Życie Chrześcijanina;14. Ufność w Panu
+377;378.txt;378;Gdy się wiara moja chwieje;III. Życie Chrześcijanina;14. Ufność w Panu
+378;379.txt;379;Gdy się życia srożą burze;III. Życie Chrześcijanina;14. Ufność w Panu
+379;380.txt;380;Jako gołębica chyża;III. Życie Chrześcijanina;14. Ufność w Panu
+380;381.txt;381;Gdy u boku Zbawca mój;III. Życie Chrześcijanina;14. Ufność w Panu
+381;382.txt;382;Gdy ze mną Bóg, niech stanie;III. Życie Chrześcijanina;14. Ufność w Panu
+382;383.txt;383;Jeden skarb bym posiąść chciał;III. Życie Chrześcijanina;14. Ufność w Panu
+383;384.txt;384;Jest dobrym to, co czyni Bóg;III. Życie Chrześcijanina;14. Ufność w Panu
+384;385.txt;385;Jezus Chrystus jest tym samym;III. Życie Chrześcijanina;14. Ufność w Panu
+385;386.txt;386;Jezus, Lekarz nad lekarze;III. Życie Chrześcijanina;14. Ufność w Panu
+386;387.txt;387;Jezus zawieść mię nie może;III. Życie Chrześcijanina;14. Ufność w Panu
+387;388.txt;388;Jezu, krzyż swój pragnę nosić;III. Życie Chrześcijanina;14. Ufność w Panu
+388;389.txt;389;Kto się w opiekę poda Panu swemu;III. Życie Chrześcijanina;14. Ufność w Panu
+389;390.txt;390;Jezu, Ty niewysłowioną;III. Życie Chrześcijanina;14. Ufność w Panu
+390;391.txt;391;Jezu, Zbawco mojej duszy;III. Życie Chrześcijanina;14. Ufność w Panu
+391;392.txt;392;Łaską trzeba żyć;III. Życie Chrześcijanina;14. Ufność w Panu
+392;393.txt;393;Krwawią się twe rany, ciężki staczasz bój;III. Życie Chrześcijanina;14. Ufność w Panu
+393;394.txt;394;Jezusowa silna dłoń;III. Życie Chrześcijanina;14. Ufność w Panu
+394;395.txt;395;Któż doda sił na podróż;III. Życie Chrześcijanina;14. Ufność w Panu
+395;396.txt;396;Kto zaufa Panu;III. Życie Chrześcijanina;14. Ufność w Panu
+396;397.txt;397;Mój Ojciec w niebie dobrze wie;III. Życie Chrześcijanina;14. Ufność w Panu
+397;398.txt;398;Mój wierny Bóg;III. Życie Chrześcijanina;14. Ufność w Panu
+398;399.txt;399;Mówi świat, iż niebezpiecznie;III. Życie Chrześcijanina;14. Ufność w Panu
+399;400.txt;400;Na Jezusa, Króla swego;III. Życie Chrześcijanina;14. Ufność w Panu
+400;401.txt;401;Najlepszy z wszystkich przyjaciel;III. Życie Chrześcijanina;14. Ufność w Panu
+401;402.txt;402;Nie puszczę Cię, Jezu mój;III. Życie Chrześcijanina;14. Ufność w Panu
+402;403.txt;403;Nie wiem, co dzień przyniesie mi;III. Życie Chrześcijanina;14. Ufność w Panu
+403;404.txt;404;Przecudnie piękny świecie;III. Życie Chrześcijanina;14. Ufność w Panu
+404;405.txt;405;O duszo moja, dzięki składaj;III. Życie Chrześcijanina;14. Ufność w Panu
+405;406.txt;406;O, jak błogo żyć dla Ciebie;III. Życie Chrześcijanina;14. Ufność w Panu
+406;407.txt;407;Pan cię w opiece ma, o nie trwóż się;III. Życie Chrześcijanina;14. Ufność w Panu
+407;408.txt;408;Panie, otwórz usta moje;III. Życie Chrześcijanina;14. Ufność w Panu
+408;409.txt;409;Pan Jezus pewną skałą;III. Życie Chrześcijanina;14. Ufność w Panu
+409;410.txt;410;Pasterzem mym Pan;III. Życie Chrześcijanina;14. Ufność w Panu
+410;411.txt;411;Pod Twą obronę, Ojcze na niebie;III. Życie Chrześcijanina;14. Ufność w Panu
+411;412.txt;412;Polecaj Panu drogi;III. Życie Chrześcijanina;14. Ufność w Panu
+412;413.txt;413;Później się dowiesz;III. Życie Chrześcijanina;14. Ufność w Panu
+413;414.txt;414;Precz ode mnie, ciężkie troski;III. Życie Chrześcijanina;14. Ufność w Panu
+414;415.txt;415;Sam Pan Bóg raczy być pasterzem moim;III. Życie Chrześcijanina;14. Ufność w Panu
+415;416.txt;416;Przyjacielem naszym Jezus;III. Życie Chrześcijanina;14. Ufność w Panu
+416;417.txt;417;Wierzę, - próśb wysłucha Bóg;III. Życie Chrześcijanina;14. Ufność w Panu
+417;418.txt;418;Spójrz Panie, burza szaleje;III. Życie Chrześcijanina;14. Ufność w Panu
+418;419.txt;419;Swe nadzieje w Panu złóż;III. Życie Chrześcijanina;14. Ufność w Panu
+419;420.txt;420;Ufam, jako dziecię;III. Życie Chrześcijanina;14. Ufność w Panu
+420;421.txt;421;Tobie tylko, Panie Jezu;III. Życie Chrześcijanina;14. Ufność w Panu
+421;422.txt;422;W tajemny sposób w świecie tym;III. Życie Chrześcijanina;14. Ufność w Panu
+422;423.txt;423;W objęciu Jezusowym;III. Życie Chrześcijanina;14. Ufność w Panu
+423;424.txt;424;Wszystko powiedz Jezusowi;III. Życie Chrześcijanina;14. Ufność w Panu
+424;425.txt;425;Zbawco, wiedź Sam dziecię Swe;III. Życie Chrześcijanina;14. Ufność w Panu
+425;426.txt;426;Zbawienia z łaski mam dostąpić;III. Życie Chrześcijanina;14. Ufność w Panu
+426;427.txt;427;Z dala od Jezusa;III. Życie Chrześcijanina;14. Ufność w Panu
+427;428.txt;428;Wszyscy, co składają W Panu swe ufanie;III. Życie Chrześcijanina;14. Ufność w Panu
+428;429.txt;429;Z głębokiej nędzy mojej dna;III. Życie Chrześcijanina;14. Ufność w Panu
+429;430.txt;430;Z Panem pragnę w wierze chodzić;III. Życie Chrześcijanina;14. Ufność w Panu
+430;431.txt;431;Bądź pasterzem naszym, Panie;III. Życie Chrześcijanina;15. Naśladowanie Jezusa
+431;432.txt;432;Biedne ptaszki mają swoje gniazdka;III. Życie Chrześcijanina;15. Naśladowanie Jezusa
+432;433.txt;433;Chcę przy Tobie zostać, Panie;III. Życie Chrześcijanina;15. Naśladowanie Jezusa
+433;434.txt;434;Czymżeśmy bez Ciebie, Jezu?;III. Życie Chrześcijanina;15. Naśladowanie Jezusa
+434;435.txt;435;Czy godzi się smucić, mój drogi, i łkać;III. Życie Chrześcijanina;15. Naśladowanie Jezusa
+435;436.txt;436;Chcę do Jezusa mego;III. Życie Chrześcijanina;15. Naśladowanie Jezusa
+436;437.txt;437;Do światła dąż nim siła twa;III. Życie Chrześcijanina;15. Naśladowanie Jezusa
+437;438.txt;438;Dziecino Boża, cicho cierp;III. Życie Chrześcijanina;15. Naśladowanie Jezusa
+438;439.txt;439;Dzień po dniu Tobie, Jezusie mój, żyć;III. Życie Chrześcijanina;15. Naśladowanie Jezusa
+439;440.txt;440;Gdy mam tylko Jego;III. Życie Chrześcijanina;15. Naśladowanie Jezusa
+440;441.txt;441;Już czas się puścić w drogę;III. Życie Chrześcijanina;15. Naśladowanie Jezusa
+441;442.txt;442;Gdy nazbyt stromą zda tobie się droga;III. Życie Chrześcijanina;15. Naśladowanie Jezusa
+442;443.txt;443;Dopóki Zbawcę mam;III. Życie Chrześcijanina;15. Naśladowanie Jezusa
+443;444.txt;444;Ja przed światem nie chcę skarg zanosić;III. Życie Chrześcijanina;15. Naśladowanie Jezusa
+444;445.txt;445;Kiedy wkoło burze;III. Życie Chrześcijanina;15. Naśladowanie Jezusa
+445;446.txt;446;Kiedy ból chce ciebie strawić;III. Życie Chrześcijanina;15. Naśladowanie Jezusa
+446;447.txt;447;Kochaj;III. Życie Chrześcijanina;15. Naśladowanie Jezusa
+447;448.txt;448;Ku Tobie, Boże mój;III. Życie Chrześcijanina;15. Naśladowanie Jezusa
+448;449.txt;449;Mój Pasterzu i mój Wodzu;III. Życie Chrześcijanina;15. Naśladowanie Jezusa
+449;450.txt;450;Na dół Chrystus zstąpił;III. Życie Chrześcijanina;15. Naśladowanie Jezusa
+450;451.txt;451;Mówisz, że miłujesz Boga;III. Życie Chrześcijanina;15. Naśladowanie Jezusa
+451;452.txt;452;Muszę mieć Cię, Zbawicielu;III. Życie Chrześcijanina;15. Naśladowanie Jezusa
+452;453.txt;453;Pokojem Pan, Choć noc spowiła świat;III. Życie Chrześcijanina;15. Naśladowanie Jezusa
+453;454.txt;454;Niechaj w sercach radość płonie;III. Życie Chrześcijanina;15. Naśladowanie Jezusa
+454;455.txt;455;Niech cię to nie trwoży;III. Życie Chrześcijanina;15. Naśladowanie Jezusa
+455;456.txt;456;O pielgrzymie, dokąd śpieszysz;III. Życie Chrześcijanina;15. Naśladowanie Jezusa
+456;457.txt;457;Słyszę, jak mnie wzywa Jezus;III. Życie Chrześcijanina;15. Naśladowanie Jezusa
+457;458.txt;458;O wielki Mocarzu, Wybawco Ty mój;III. Życie Chrześcijanina;15. Naśladowanie Jezusa
+458;459.txt;459;Pielgrzymem jestem do niebios stron;III. Życie Chrześcijanina;15. Naśladowanie Jezusa
+459;460.txt;460;Pójdę za Jezusem;III. Życie Chrześcijanina;15. Naśladowanie Jezusa
+460;461.txt;461;Raźniej będziem kroczyć;III. Życie Chrześcijanina;15. Naśladowanie Jezusa
+461;462.txt;462;W pamięci zawsze, duszo, miej;III. Życie Chrześcijanina;15. Naśladowanie Jezusa
+462;463.txt;463;Sam nie czyń nic;III. Życie Chrześcijanina;15. Naśladowanie Jezusa
+463;464.txt;464;Szczęśliwy, jestem tu w pielgrzymce mej;III. Życie Chrześcijanina;15. Naśladowanie Jezusa
+464;465.txt;465;Wędrujemy raźno w Ojczyznę swą;III. Życie Chrześcijanina;15. Naśladowanie Jezusa
+465;466.txt;466;W świetle krocz;III. Życie Chrześcijanina;15. Naśladowanie Jezusa
+466;467.txt;467;Wodzem naszym, bracia;III. Życie Chrześcijanina;15. Naśladowanie Jezusa
+467;468.txt;468;Znam Przewodnika w mej pielgrzymce;III. Życie Chrześcijanina;15. Naśladowanie Jezusa
+468;469.txt;469;Zwróć swój na Jezusa;III. Życie Chrześcijanina;15. Naśladowanie Jezusa
+469;470.txt;470;Żyć tak, jak Mistrz mój;III. Życie Chrześcijanina;15. Naśladowanie Jezusa
+470;471.txt;471;Za Jezusem pójde w życia drogę;III. Życie Chrześcijanina;15. Naśladowanie Jezusa
+471;472.txt;472;Był strudzony i zbolały;III. Życie Chrześcijanina;16. Praca w służbie Pana
+472;473.txt;473;Chociaż słabi, jednak śmiemy;III. Życie Chrześcijanina;16. Praca w służbie Pana
+473;474.txt;474;Słyszysz, jak Pan Jezus woła;III. Życie Chrześcijanina;16. Praca w służbie Pana
+474;475.txt;475;Czy dla innych pożytkiem twe życie?;III. Życie Chrześcijanina;16. Praca w służbie Pana
+475;476.txt;476;Puszczaj chleb swój w każdym czasie;III. Życie Chrześcijanina;16. Praca w służbie Pana
+476;477.txt;477;Dla Zbawcy chcemy walczyć wciąż;III. Życie Chrześcijanina;16. Praca w służbie Pana
+477;478.txt;478;Daj nam, Panie, Ducha wiary;III. Życie Chrześcijanina;16. Praca w służbie Pana
+478;479.txt;479;Do pracy, bracia, stańcie wraz;III. Życie Chrześcijanina;16. Praca w służbie Pana
+479;480.txt;480;Działaj, bo noc nadejdzie;III. Życie Chrześcijanina;16. Praca w służbie Pana
+480;481.txt;481;Dzień w służbie Zbawiciela;III. Życie Chrześcijanina;16. Praca w służbie Pana
+481;482.txt;482;Gdy grzech twój ku ziemi cię tłoczy;III. Życie Chrześcijanina;16. Praca w służbie Pana
+482;483.txt;483;Jak szczęśliwy;III. Życie Chrześcijanina;16. Praca w służbie Pana
+483;484.txt;484;Gdzie się troski ścielą;III. Życie Chrześcijanina;16. Praca w służbie Pana
+484;485.txt;485;Jak Jezusa swego kochasz, jak?;III. Życie Chrześcijanina;16. Praca w służbie Pana
+485;486.txt;486;Jak wiele błądzi owiec;III. Życie Chrześcijanina;16. Praca w służbie Pana
+486;487.txt;487;Jak zwycięsko kroczy Jezus;III. Życie Chrześcijanina;16. Praca w służbie Pana
+487;488.txt;488;Już się złotych zbóż kołysze łan;III. Życie Chrześcijanina;16. Praca w służbie Pana
+488;489.txt;489;Wierzyć mnie, Panie, ucz;III. Życie Chrześcijanina;16. Praca w służbie Pana
+489;490.txt;490;Mistrz szuka żniwiarzy;III. Życie Chrześcijanina;16. Praca w służbie Pana
+490;491.txt;491;Ni znaczyć, ni błyszczeć nie chcę;III. Życie Chrześcijanina;16. Praca w służbie Pana
+491;492.txt;492;Swe dzieło, Panie, wznów;III. Życie Chrześcijanina;16. Praca w służbie Pana
+492;493.txt;493;O, czy widzisz świat znękany?;III. Życie Chrześcijanina;16. Praca w służbie Pana
+493;494.txt;494;O, nie czekaj aż nadejdzie;III. Życie Chrześcijanina;16. Praca w służbie Pana
+494;495.txt;495;Z Panem umierać;III. Życie Chrześcijanina;16. Praca w służbie Pana
+495;496.txt;496;Otom Jest, Królu mój;III. Życie Chrześcijanina;16. Praca w służbie Pana
+496;497.txt;497;Prawdy nasienie ty tylko siej;III. Życie Chrześcijanina;16. Praca w służbie Pana
+497;498.txt;498;Tak mocno głos Pasterza brzmi;III. Życie Chrześcijanina;16. Praca w służbie Pana
+498;499.txt;499;Tam na krzyżu krwią oblany;III. Życie Chrześcijanina;16. Praca w służbie Pana
+499;500.txt;500;Wielbim łaskę Twoją, Panie;III. Życie Chrześcijanina;16. Praca w służbie Pana
+500;501.txt;501;Wyznawajcie Chrystusa z radością;III. Życie Chrześcijanina;16. Praca w służbie Pana
+501;502.txt;502;W serca miłość dał nam Bóg;III. Życie Chrześcijanina;16. Praca w służbie Pana
+502;503.txt;503;W służbę Swą woła Pan, Bracia;III. Życie Chrześcijanina;16. Praca w służbie Pana
+503;504.txt;504;Ze zginienia masz wyrywać Dusze;III. Życie Chrześcijanina;16. Praca w służbie Pana
+504;505.txt;505;Z wszystkich krain, ze wszech stron;III. Życie Chrześcijanina;16. Praca w służbie Pana
+505;506.txt;506;Zbudź, Panie, ducha ojców wiary;III. Życie Chrześcijanina;16. Praca w służbie Pana
+506;507.txt;507;Bracia, sztandar Chrystusowy;III. Życie Chrześcijanina;17. Bój wiary i zwycięstwo
+507;508.txt;508;Bojowniku Bogu miły;III. Życie Chrześcijanina;17. Bój wiary i zwycięstwo
+508;509.txt;509;Daj nam, Panie, wytrwać w czasie burz;III. Życie Chrześcijanina;17. Bój wiary i zwycięstwo
+509;510.txt;510;Jako Daniel wiernym bądź;III. Życie Chrześcijanina;17. Bój wiary i zwycięstwo
+510;511.txt;511;Chcemy, o Chryste, do śmierci być Twoi;III. Życie Chrześcijanina;17. Bój wiary i zwycięstwo
+511;512.txt;512;Choć burza huczy w koło nas;III. Życie Chrześcijanina;17. Bój wiary i zwycięstwo
+512;513.txt;513;Ciemne się chmury piętrzą;III. Życie Chrześcijanina;17. Bój wiary i zwycięstwo
+513;514.txt;514;Choćby góry wysokie i strome;III. Życie Chrześcijanina;17. Bój wiary i zwycięstwo
+514;515.txt;515;Dlaczego w twym oku;III. Życie Chrześcijanina;17. Bój wiary i zwycięstwo
+515;516.txt;516;Gdy droga zbyt trudną wydaje ci się;III. Życie Chrześcijanina;17. Bój wiary i zwycięstwo
+516;517.txt;517;Biały sztandar chwały nam wspaniale lśni!;III. Życie Chrześcijanina;17. Bój wiary i zwycięstwo
+517;518.txt;518;Ej, niejedną jeszcze łezką;III. Życie Chrześcijanina;17. Bój wiary i zwycięstwo
+518;519.txt;519;Jezu, zwycięstwo daj!;III. Życie Chrześcijanina;17. Bój wiary i zwycięstwo
+519;520.txt;520;Któż to przed stolicą Bożą?;III. Życie Chrześcijanina;17. Bój wiary i zwycięstwo
+520;521.txt;521;Kto przezwycięży ten pożywał będzie;III. Życie Chrześcijanina;17. Bój wiary i zwycięstwo
+521;522.txt;522;Ludu Pański, czuwaj;III. Życie Chrześcijanina;17. Bój wiary i zwycięstwo
+522;523.txt;523;Mała łódka drży na grzbiecie;III. Życie Chrześcijanina;17. Bój wiary i zwycięstwo
+523;524.txt;524;Mnie do Nieba dążyć trzeba;III. Życie Chrześcijanina;17. Bój wiary i zwycięstwo
+524;525.txt;525;O, wstań już! Twa senność niech zniknie;III. Życie Chrześcijanina;17. Bój wiary i zwycięstwo
+525;526.txt;526;Na krzyż kieruj wzrok;III. Życie Chrześcijanina;17. Bój wiary i zwycięstwo
+526;527.txt;527;O Jezu, zostań z nami;III. Życie Chrześcijanina;17. Bój wiary i zwycięstwo
+527;528.txt;528;O, niech cię nie zwodzi;III. Życie Chrześcijanina;17. Bój wiary i zwycięstwo
+528;529.txt;529;O, wstań, o, wstań dla Pana;III. Życie Chrześcijanina;17. Bój wiary i zwycięstwo
+529;530.txt;530;Powiedzcie, jak mam smutnym być;III. Życie Chrześcijanina;17. Bój wiary i zwycięstwo
+530;531.txt;531;Powstańcież dziś do boju;III. Życie Chrześcijanina;17. Bój wiary i zwycięstwo
+531;532.txt;532;Przejść możem nawet ocean;III. Życie Chrześcijanina;17. Bój wiary i zwycięstwo
+532;533.txt;533;Spojrzyj na Jezusa, wiarą pośpiesz Doń;III. Życie Chrześcijanina;17. Bój wiary i zwycięstwo
+533;534.txt;534;Śmiało zwycięską chorągiew podnieśmy;III. Życie Chrześcijanina;17. Bój wiary i zwycięstwo
+534;535.txt;535;Twe czoło smutki mroczą;III. Życie Chrześcijanina;17. Bój wiary i zwycięstwo
+535;536.txt;536;Warownym grodem jest nasz Bóg;III. Życie Chrześcijanina;17. Bój wiary i zwycięstwo
+536;537.txt;537;Wierz tu mocno każdy dzień;III. Życie Chrześcijanina;17. Bój wiary i zwycięstwo
+537;538.txt;538;"„Za Mną"" Wódz nasz, Chrystus mówi";III. Życie Chrześcijanina;17. Bój wiary i zwycięstwo
+538;539.txt;539;Wzmacniaj się w Panu swym;III. Życie Chrześcijanina;17. Bój wiary i zwycięstwo
+539;540.txt;540;Bądźcie czujni;III. Życie Chrześcijanina;18. Przyjście Pańskie i górna włość
+540;541.txt;541;Idzie noc, straszna noc;III. Życie Chrześcijanina;18. Przyjście Pańskie i górna włość
+541;542.txt;542;Być może nad ranem, gdy zorza zabłyśnie;III. Życie Chrześcijanina;18. Przyjście Pańskie i górna włość
+542;543.txt;543;Już się zdobią drzewa W swe Zielone liście;III. Życie Chrześcijanina;18. Przyjście Pańskie i górna włość
+543;544.txt;544;Gdy sławny ten nadejdzie dzień ;III. Życie Chrześcijanina;18. Przyjście Pańskie i górna włość
+544;545.txt;545;Idzie Pan Jezus po wybraną Swoją;III. Życie Chrześcijanina;18. Przyjście Pańskie i górna włość
+545;546.txt;546;Kiedy wieczny dzień zaświta;III. Życie Chrześcijanina;18. Przyjście Pańskie i górna włość
+546;547.txt;547;Na chyżych skrzydłach leci czas;III. Życie Chrześcijanina;18. Przyjście Pańskie i górna włość
+547;548.txt;548;Ocknijcie się, uśpieni;III. Życie Chrześcijanina;18. Przyjście Pańskie i górna włość
+548;549.txt;549;Pan przyjdzie wnet;III. Życie Chrześcijanina;18. Przyjście Pańskie i górna włość
+549;550.txt;550;Powstań ze snu, Boży zborze;III. Życie Chrześcijanina;18. Przyjście Pańskie i górna włość
+550;551.txt;551;Idzie Zbawiciel;III. Życie Chrześcijanina;18. Przyjście Pańskie i górna włość
+551;552.txt;552;Przebudź się, duszo, ze snu ciężkiego;III. Życie Chrześcijanina;18. Przyjście Pańskie i górna włość
+552;553.txt;553;Tak długo, Panie, czeka Cię;III. Życie Chrześcijanina;18. Przyjście Pańskie i górna włość
+553;554.txt;554;Przyjdź Twe królestwo!;III. Życie Chrześcijanina;18. Przyjście Pańskie i górna włość
+554;555.txt;555;Raduj, ciesz się, małe, wierne stadko Pańskie;III. Życie Chrześcijanina;18. Przyjście Pańskie i górna włość
+555;556.txt;556;Raz przyjdzie Pan!;III. Życie Chrześcijanina;18. Przyjście Pańskie i górna włość
+556;557.txt;557;Ja przyjdę wnet!;III. Życie Chrześcijanina;18. Przyjście Pańskie i górna włość
+557;558.txt;558;Tak, wkrótce, wkrótce przyjdzie dzień;III. Życie Chrześcijanina;18. Przyjście Pańskie i górna włość
+558;559.txt;559;W górę serca, ludu Boży;III. Życie Chrześcijanina;18. Przyjście Pańskie i górna włość
+559;560.txt;560;"„Zbudźcie się!"" - tak ci wołają";III. Życie Chrześcijanina;18. Przyjście Pańskie i górna włość
+560;561.txt;561;Zostaje jeszcze odpocznienie;III. Życie Chrześcijanina;18. Przyjście Pańskie i górna włość
+561;562.txt;562;Będziem tu nad brzegiem czekać;III. Życie Chrześcijanina;18. Przyjście Pańskie i górna włość
+562;563.txt;563;Jeszcze niewiele tylko cierpień, łez;III. Życie Chrześcijanina;18. Przyjście Pańskie i górna włość
+563;564.txt;564;Brzmi radosna ta wieść;III. Życie Chrześcijanina;18. Przyjście Pańskie i górna włość
+564;565.txt;565;Czy się zejdziem tam u rzeki;III. Życie Chrześcijanina;18. Przyjście Pańskie i górna włość
+565;566.txt;566;Do górnej ojczyzny pociąga mnie stąd;III. Życie Chrześcijanina;18. Przyjście Pańskie i górna włość
+566;567.txt;567;Do nieba, serce moje;III. Życie Chrześcijanina;18. Przyjście Pańskie i górna włość
+567;568.txt;568;Gdy się zakończą cierpienia i łzy;III. Życie Chrześcijanina;18. Przyjście Pańskie i górna włość
+568;569.txt;569;Jak będzie nam;III. Życie Chrześcijanina;18. Przyjście Pańskie i górna włość
+569;570.txt;570;Jam stęskniony;III. Życie Chrześcijanina;18. Przyjście Pańskie i górna włość
+570;571.txt;571;Jam stęskniony w górne kraje;III. Życie Chrześcijanina;18. Przyjście Pańskie i górna włość
+571;572.txt;572;Już brzeg Jordanu w blasku zórz;III. Życie Chrześcijanina;18. Przyjście Pańskie i górna włość
+572;573.txt;573;Już jaśnieje z daleka nam kraj;III. Życie Chrześcijanina;18. Przyjście Pańskie i górna włość
+573;574.txt;574;My do ojczystych śpieszym stron;III. Życie Chrześcijanina;18. Przyjście Pańskie i górna włość
+574;575.txt;575;Kto wskaże mi drogę do miasta górnego?;III. Życie Chrześcijanina;18. Przyjście Pańskie i górna włość
+575;576.txt;576;O cudny kraj;III. Życie Chrześcijanina;18. Przyjście Pańskie i górna włość
+576;577.txt;577;O mej ojczyźnie chcę śpiewać wciąż;III. Życie Chrześcijanina;18. Przyjście Pańskie i górna włość
+577;578.txt;578;O nadziejo, światło w ciemnej nocy!;III. Życie Chrześcijanina;18. Przyjście Pańskie i górna włość
+578;579.txt;579;Pielgrzymujem w kraj Kanaanu;III. Życie Chrześcijanina;18. Przyjście Pańskie i górna włość
+579;580.txt;580;Pięknyś ty, wdzięcznyś ty;III. Życie Chrześcijanina;18. Przyjście Pańskie i górna włość
+580;581.txt;581;Po części dziś oglądam blask;III. Życie Chrześcijanina;18. Przyjście Pańskie i górna włość
+581;582.txt;582;Poznałem mieszkanie pokoju;III. Życie Chrześcijanina;18. Przyjście Pańskie i górna włość
+582;583.txt;583;Przychodźcie do Mnie! - woła Pan;III. Życie Chrześcijanina;18. Przyjście Pańskie i górna włość
+583;584.txt;584;Ujrzałem już w oddali;III. Życie Chrześcijanina;18. Przyjście Pańskie i górna włość
+584;585.txt;585;Wracamy w dom;III. Życie Chrześcijanina;18. Przyjście Pańskie i górna włość
+585;586.txt;586;Wielem słyszał o mieście;III. Życie Chrześcijanina;18. Przyjście Pańskie i górna włość
+586;587.txt;587;W niebie ojczysta włość;III. Życie Chrześcijanina;18. Przyjście Pańskie i górna włość
+587;588.txt;588;W ojczysty dom!;III. Życie Chrześcijanina;18. Przyjście Pańskie i górna włość
+588;589.txt;589;Za ojczyzną zatęskniła;III. Życie Chrześcijanina;18. Przyjście Pańskie i górna włość
+589;590.txt;590;O Ojcze, Synu, Duchu Święty;IV. Społeczność Świętych;19. Chrzest i Wieczerza Pańska
+590;591.txt;591;Jam winny krzew, a wy latoroślami;IV. Społeczność Świętych;19. Chrzest i Wieczerza Pańska
+591;592.txt;592;Ozdóbże się, duszo miła;IV. Społeczność Świętych;19. Chrzest i Wieczerza Pańska
+592;593.txt;593;Owieczką jam Jezusa;IV. Społeczność Świętych;19. Chrzest i Wieczerza Pańska
+593;594.txt;594;O Jezu, oto bracia Twoi;IV. Społeczność Świętych;19. Chrzest i Wieczerza Pańska
+594;595.txt;595;Serce pójdź w cierpieniu Pana;IV. Społeczność Świętych;19. Chrzest i Wieczerza Pańska
+595;596.txt;596;Baranku nasz!;IV. Społeczność Świętych;20. Zgromadzenie wierzących
+596;597.txt;597;Kościele, któż twe tajnie zgadł;IV. Społeczność Świętych;20. Zgromadzenie wierzących
+597;598.txt;598;Boże święty, objaw się;IV. Społeczność Świętych;20. Zgromadzenie wierzących
+598;599.txt;599;Bracia, ogłaszajcie;IV. Społeczność Świętych;20. Zgromadzenie wierzących
+599;600.txt;600;Czyś słyszał, że Kościół jest żywy;IV. Społeczność Świętych;20. Zgromadzenie wierzących
+600;601.txt;601;Jako pasterz dobry, Panie;IV. Społeczność Świętych;20. Zgromadzenie wierzących
+601;602.txt;602;Jak miło i przyjemnie przychodzić w Boży dom;IV. Społeczność Świętych;20. Zgromadzenie wierzących
+602;603.txt;603;Jezu drogi, myśmy się;IV. Społeczność Świętych;20. Zgromadzenie wierzących
+603;604.txt;604;Jak wielką miłość Bóg dał nam!;IV. Społeczność Świętych;20. Zgromadzenie wierzących
+604;605.txt;605;Jezusie miłosierny;IV. Społeczność Świętych;20. Zgromadzenie wierzących
+605;606.txt;606;Jaśnieje wewnętrzne wszech chrześcijan życie;IV. Społeczność Świętych;20. Zgromadzenie wierzących
+606;607.txt;607;Kiedy przed stolicą Boga raz staniemy;IV. Społeczność Świętych;20. Zgromadzenie wierzących
+607;608.txt;608;Kościoła grunt jedyny;IV. Społeczność Świętych;20. Zgromadzenie wierzących
+608;609.txt;609;O Panie, zostań z nami;IV. Społeczność Świętych;20. Zgromadzenie wierzących
+609;610.txt;610;Niech łaska Twoja, Panie;IV. Społeczność Świętych;20. Zgromadzenie wierzących
+610;611.txt;611;Przez wszystkie kraje wionie zwycięsko Pański duch;IV. Społeczność Świętych;20. Zgromadzenie wierzących
+611;612.txt;612;Ojcze nasz, Ty, któryś w niebie;IV. Społeczność Świętych;20. Zgromadzenie wierzących
+612;613.txt;613;O, wąska droga ta;IV. Społeczność Świętych;20. Zgromadzenie wierzących
+613;614.txt;614;Pobłogosław Panie;IV. Społeczność Świętych;20. Zgromadzenie wierzących
+614;615.txt;615;Pan Bóg jest obecny!;IV. Społeczność Świętych;20. Zgromadzenie wierzących
+615;616.txt;616;Tu miejsca dość;IV. Społeczność Świętych;20. Zgromadzenie wierzących
+616;617.txt;617;Przyjdżże do nas, blasku chwały;IV. Społeczność Świętych;20. Zgromadzenie wierzących
+617;618.txt;618;Zbawicielu, myśmy się;IV. Społeczność Świętych;20. Zgromadzenie wierzących
+618;619.txt;619;Serca razem połączone;IV. Społeczność Świętych;20. Zgromadzenie wierzących
+619;620.txt;620;Toruj Jezu;IV. Społeczność Świętych;20. Zgromadzenie wierzących
+620;621.txt;621;Zwycięska, jasna rzesza;IV. Społeczność Świętych;20. Zgromadzenie wierzących
+621;622.txt;622;Zjednoczył dziś ze wszystkich stron;IV. Społeczność Świętych;20. Zgromadzenie wierzących
+622;623.txt;623;Z Bogiem bądźcie, aż się zejdziem znów!;IV. Społeczność Świętych;20. Zgromadzenie wierzących
+623;624.txt;624;Gdy Zbawiciel;IV. Społeczność Świętych;21. Dla młodzieży
+624;625.txt;625;Dokądże tak szybko, o chłopcze mój?;IV. Społeczność Świętych;21. Dla młodzieży
+625;626.txt;626;Ja chciałbym być jak Jezus;IV. Społeczność Świętych;21. Dla młodzieży
+626;627.txt;627;Jak to dobrze wiedzieć, żeś Ty, Jezu;IV. Społeczność Świętych;21. Dla młodzieży
+627;628.txt;628;Jezus Pan miłuje mnie;IV. Społeczność Świętych;21. Dla młodzieży
+628;629.txt;629;Jakże wielką radość mam;IV. Społeczność Świętych;21. Dla młodzieży
+629;630.txt;630;Maleńką jam dzieciną jest;IV. Społeczność Świętych;21. Dla młodzieży
+630;631.txt;631;Mój Ojciec ma w niebiesiech tron;IV. Społeczność Świętych;21. Dla młodzieży
+631;632.txt;632;Pan Jezus chce ze mnie zrobić;IV. Społeczność Świętych;21. Dla młodzieży
+632;633.txt;633;Pójdźcie do Mnie;IV. Społeczność Świętych;21. Dla młodzieży
+633;634.txt;634;Słuchaj, kwitnąca młodzieży;IV. Społeczność Świętych;21. Dla młodzieży
+634;635.txt;635;Wiesz ty, ile gwiazdek świeci;IV. Społeczność Świętych;21. Dla młodzieży
+635;636.txt;636;Teraz w młodych życia latach;IV. Społeczność Świętych;21. Dla młodzieży
+636;637.txt;637;Wiesz ty, kto cię tak miłuje;IV. Społeczność Świętych;21. Dla młodzieży
+637;638.txt;638;Złączmy wszyscy swoje głosy;IV. Społeczność Świętych;21. Dla młodzieży
+638;639.txt;639;Z nieba, gdzie gwiazd tyle;IV. Społeczność Świętych;21. Dla młodzieży
+639;640.txt;640;Błogosław, Boże, parze tej;IV. Społeczność Świętych;22. Ślub
+640;641.txt;641;O Boże, spełnij tych życzenia;IV. Społeczność Świętych;22. Ślub
+641;642.txt;642;Błogosław im, błogosław im!;IV. Społeczność Świętych;22. Ślub
+642;643.txt;643;O, przed wami stoi Pan;IV. Społeczność Świętych;22. Ślub
+643;644.txt;644;O, szczęsny dom, gdzie radzi Cię witają;IV. Społeczność Świętych;22. Ślub
+644;645.txt;645;Serca, ręce wasze złączył;IV. Społeczność Świętych;22. Ślub
+645;646.txt;646;Swej miłości ogniwem połączył was Pan;IV. Społeczność Świętych;22. Ślub
+646;647.txt;647;Za ręce bierz ich, Panie;IV. Społeczność Świętych;22. Ślub
+647;648.txt;648;Dość mam, dosyć tego świata;IV. Społeczność Świętych;23. Pogrzeb
+648;649.txt;649;Do widzenia w onym lepszym kraju;IV. Społeczność Świętych;23. Pogrzeb
+649;650.txt;650;Mój Jezus żyw! Cóż to śmierć znaczy;IV. Społeczność Świętych;23. Pogrzeb
+650;651.txt;651;Gdzie duszy ojczyzna, jej pokój, jej raj?;IV. Społeczność Świętych;23. Pogrzeb
+651;652.txt;652;O, ja wiem w kogo wierzę;IV. Społeczność Świętych;23. Pogrzeb
+652;653.txt;653;Pokój po bojach, światło po ćmach;IV. Społeczność Świętych;23. Pogrzeb
+653;654.txt;654;W górze, powyżej gwiazd;IV. Społeczność Świętych;23. Pogrzeb
+654;655.txt;655;Raz skończy się dźwięk zwykłych pień;IV. Społeczność Świętych;23. Pogrzeb
+655;656.txt;656;Spoczniesz sobie po pielgrzymce;IV. Społeczność Świętych;23. Pogrzeb
+656;657.txt;657;U Pańskich nóg posłusznie już;IV. Społeczność Świętych;23. Pogrzeb
+657;658.txt;658;Wiem ja, że w niebie jest miejsce krasne;IV. Społeczność Świętych;23. Pogrzeb
+658;659.txt;659;Już słoneczko jasne pola ozłociło;IV. Społeczność Świętych;24. Pory dnia i roku
+659;660.txt;660;Kiedy ranne wstają zorze;IV. Społeczność Świętych;24. Pory dnia i roku
+660;661.txt;661;O serce, wstań i śpiewaj;IV. Społeczność Świętych;24. Pory dnia i roku
+661;662.txt;662;Czeladka Twa wieczorem;IV. Społeczność Świętych;24. Pory dnia i roku
+662;663.txt;663;Dzień się nachylił, słońca blask już zgasi;IV. Społeczność Świętych;24. Pory dnia i roku
+663;664.txt;664;Gdy wieczorem gwiazdki płoną;IV. Społeczność Świętych;24. Pory dnia i roku
+664;665.txt;665;O Panie, zostań ze mną!;IV. Społeczność Świętych;24. Pory dnia i roku
+665;666.txt;666;Przeminął dnia jasnego i gwar, i znój;IV. Społeczność Świętych;24. Pory dnia i roku
+666;667.txt;667;Spoczęły lasy, sioła;IV. Społeczność Świętych;24. Pory dnia i roku
+667;668.txt;668;Witaj, cichy, witaj mi, wieczorze;IV. Społeczność Świętych;24. Pory dnia i roku
+668;669.txt;669;Jezu, bądź nam hasłem dziś;IV. Społeczność Świętych;24. Pory dnia i roku
+669;670.txt;670;Na nowo jeden rok przeminął;IV. Społeczność Świętych;24. Pory dnia i roku
+670;671.txt;671;Aż dotąd mnie prowadził Bóg;IV. Społeczność Świętych;24. Pory dnia i roku
+671;672.txt;672;Rok zbliża się do końca;IV. Społeczność Świętych;24. Pory dnia i roku
+672;673.txt;673;Już dobiegł rok do końca;IV. Społeczność Świętych;24. Pory dnia i roku
+673;674.txt;674;Boże oświeć nas! Błagamy;I. Bóg Trójjedyny;1. Chwała i dziękczynienie
+674;675.txt;675;Boże, z Twoich rąk żyjemy;I. Bóg Trójjedyny;1. Chwała i dziękczynienie
+675;676.txt;676;Gdym ja pod krzyżem gdzie Jezus zmarł;I. Bóg Trójjedyny;1. Chwała i dziękczynienie
+676;677.txt;677;Ojcze nasz, Boże, który jesteś w niebie;I. Bóg Trójjedyny;1. Chwała i dziękczynienie
+677;678.txt;678;Wszechmocny, błogi Ojcze nasz;I. Bóg Trójjedyny;1. Chwała i dziękczynienie
+678;679.txt;679;Ach, ubogi żłobie;I. Bóg Trójjedyny;2. Adwent i narodzenie Jezusa
+679;680.txt;680;Bóg się rodzi;I. Bóg Trójjedyny;2. Adwent i narodzenie Jezusa
+680;681.txt;681;Dziś w Betlejemie;I. Bóg Trójjedyny;2. Adwent i narodzenie Jezusa
+681;682.txt;682;Gdy się Chrystus rodzi;I. Bóg Trójjedyny;2. Adwent i narodzenie Jezusa
+682;683.txt;683;Kto w stajence cicho śpi;I. Bóg Trójjedyny;2. Adwent i narodzenie Jezusa
+683;684.txt;684;Mędrcy świata;I. Bóg Trójjedyny;2. Adwent i narodzenie Jezusa
+684;685.txt;685;Na Judei błoniach wonnych już zapadła noc;I. Bóg Trójjedyny;2. Adwent i narodzenie Jezusa
+685;686.txt;686;O, Betlejemie mały;I. Bóg Trójjedyny;2. Adwent i narodzenie Jezusa
+686;687.txt;687;Pierzchaj, nocy ciemna, przed jasnością gód;I. Bóg Trójjedyny;2. Adwent i narodzenie Jezusa
+687;688.txt;688;Miał koronę cierniową;I. Bóg Trójjedyny;3. Śmierć, zmartwychwstanie i wniebowstąpienie Jezusa
+688;689.txt;689;Na krzyżu Pan, Zbawiciel zmarł;I. Bóg Trójjedyny;3. Śmierć, zmartwychwstanie i wniebowstąpienie Jezusa
+689;690.txt;690;Oczy płaczą, łzy się leją;I. Bóg Trójjedyny;3. Śmierć, zmartwychwstanie i wniebowstąpienie Jezusa
+690;691.txt;691;O zraniony, Jezu mój;I. Bóg Trójjedyny;3. Śmierć, zmartwychwstanie i wniebowstąpienie Jezusa
+691;692.txt;692;Po zwycięskim boju chwały;I. Bóg Trójjedyny;3. Śmierć, zmartwychwstanie i wniebowstąpienie Jezusa
+692;693.txt;693;W bezgranicznej miłości Swej;I. Bóg Trójjedyny;3. Śmierć, zmartwychwstanie i wniebowstąpienie Jezusa
+693;694.txt;694;Gdy pięćdziesiąty nadszedł dzień;I. Bóg Trójjedyny;4. Duch Święty
+694;695.txt;695;Panie, zsyłasz święte deszcze;I. Bóg Trójjedyny;4. Duch Święty
+695;696.txt;696;Przyjdź, Duchu Boży, w potędze Swej;I. Bóg Trójjedyny;4. Duch Święty
+696;697.txt;697;Albowiem tak Bóg świat umiłował;I. Bóg Trójjedyny;5. Miłość Pańska
+697;698.txt;698;Święta miłość Jezusowa niech połączy nas;I. Bóg Trójjedyny;5. Miłość Pańska
+698;699.txt;699;W trzecim rozdziale napisał nam Jan;I. Bóg Trójjedyny;5. Miłość Pańska
+699;700.txt;700;Cudną nowinę zwiastował nam Bóg;I. Bóg Trójjedyny;6.Dzieło pojedniania
+700;701.txt;701;Radość zbawienia, z serc płynie chwały głos;I. Bóg Trójjedyny;6.Dzieło pojedniania
+701;702.txt;702;Ciągle niezdecydowany;II. Droga Zbawienia;7. Wezwanie do Jezusa
+702;703.txt;703;Chodźże do źródła żywota;II. Droga Zbawienia;7. Wezwanie do Jezusa
+703;704.txt;704;Czy brzemię trosk przygniata cię;II. Droga Zbawienia;7. Wezwanie do Jezusa
+704;705.txt;705;Dlaczego smutkiem zdjętyś tak;II. Droga Zbawienia;7. Wezwanie do Jezusa
+705;706.txt;706;Do drzwi twego serca się zbliża Gość;II. Droga Zbawienia;7. Wezwanie do Jezusa
+706;707.txt;707;Gdy ciężarem utrudzony;II. Droga Zbawienia;7. Wezwanie do Jezusa
+707;708.txt;708;Jest cichy port, duszo, czyś zapomniała?;II. Droga Zbawienia;7. Wezwanie do Jezusa
+708;709.txt;709;Minie wiosna ulubiona;II. Droga Zbawienia;7. Wezwanie do Jezusa
+709;710.txt;710;O Boże ześlij na mnie łaski zdrój;II. Droga Zbawienia;7. Wezwanie do Jezusa
+710;711.txt;711;O, bracie kochany, w tym świecie szerokim;II. Droga Zbawienia;7. Wezwanie do Jezusa
+711;712.txt;712;O pójdź na Golgotę;II. Droga Zbawienia;7. Wezwanie do Jezusa
+712;713.txt;713;Ostatni zew jeszcze, rozlega się wciąż;II. Droga Zbawienia;7. Wezwanie do Jezusa
+713;714.txt;714;Owiec zgubionych Pasterz wciąż szuka;II. Droga Zbawienia;7. Wezwanie do Jezusa
+714;715.txt;715;Patrz, wytrysnął strumyk Boży;II. Droga Zbawienia;7. Wezwanie do Jezusa
+715;716.txt;716;Pozwól, że ci dam pytanie;II. Droga Zbawienia;7. Wezwanie do Jezusa
+716;717.txt;717;Pójdź do Zbawcy;II. Droga Zbawienia;7. Wezwanie do Jezusa
+717;718.txt;718;Przyszedłem do Jezusa w nędzy mej;II. Droga Zbawienia;7. Wezwanie do Jezusa
+718;719.txt;719;Spójrz, o duszo, na ten cud zbawienia;II. Droga Zbawienia;7. Wezwanie do Jezusa
+719;720.txt;720;Stań wędrowcze;II. Droga Zbawienia;7. Wezwanie do Jezusa
+720;721.txt;721;Zważonyś przed Panem - za lekkoś tu żył;II. Droga Zbawienia;7. Wezwanie do Jezusa
+721;722.txt;722;Bez Boga w swych grzechach jam tyle żył lat;II. Droga Zbawienia;8. Przebudzenie i pokuta
+722;723.txt;723;Co oczyszcza z grzechu mnie;II. Droga Zbawienia;8. Przebudzenie i pokuta
+723;724.txt;724;Do nóg Chrystusa niosę;II. Droga Zbawienia;8. Przebudzenie i pokuta
+724;725.txt;725;Jeruzalemie, grodzie mój;II. Droga Zbawienia;8. Przebudzenie i pokuta
+725;726.txt;726;Jak wiele na świecie nauk przepięknych;II. Droga Zbawienia;8. Przebudzenie i pokuta
+726;727.txt;727;Moc grzechu dręczy lud zaślepiony;II. Droga Zbawienia;8. Przebudzenie i pokuta
+727;728.txt;728;O, cudowny jest mój Zbawiciel;II. Droga Zbawienia;8. Przebudzenie i pokuta
+728;729.txt;729;O, Zbawco, wznoszę chwały śpiew;II. Droga Zbawienia;8. Przebudzenie i pokuta
+729;730.txt;730;Pasterz dobry szuka;II. Droga Zbawienia;8. Przebudzenie i pokuta
+730;731.txt;731;Powiedzcie mi, bracia i siostry;II. Droga Zbawienia;8. Przebudzenie i pokuta
+731;732.txt;732;Teraz z żalem wyznać muszę;II. Droga Zbawienia;8. Przebudzenie i pokuta
+732;733.txt;733;Gdybym świat pozyskał w życiu moim;II. Droga Zbawienia;9. Oddanie się Panu
+733;734.txt;734;Gdy do Pana przyjdę;II. Droga Zbawienia;9. Oddanie się Panu
+734;735.txt;735;Jezu, ma słodyczy;II. Droga Zbawienia;9. Oddanie się Panu
+735;736.txt;736;Jezusa uczniem pragnę być;II. Droga Zbawienia;9. Oddanie się Panu
+736;737.txt;737;Kwiat przepiękny znalazłem w młodości;II. Droga Zbawienia;9. Oddanie się Panu
+737;738.txt;738;Mój Boże, w ręku Twym;II. Droga Zbawienia;9. Oddanie się Panu
+738;739.txt;739;My własnością Pana;II. Droga Zbawienia;9. Oddanie się Panu
+739;740.txt;740;On jest tu, On jest tu;II. Droga Zbawienia;9. Oddanie się Panu
+740;741.txt;741;Przed Twym otłarzem łask;II. Droga Zbawienia;9. Oddanie się Panu
+741;742.txt;742;W więzach grzechu, jak w niewoli;II. Droga Zbawienia;9. Oddanie się Panu
+742;743.txt;743;Byłem zmazany przez świat i przez grzech;II. Droga Zbawienia;10. Odrodzenie
+743;744.txt;744;Zaśpiewaj Bogu serce me;II. Droga Zbawienia;10. Odrodzenie
+744;745.txt;745;Ten świat swym urokiem nie wabi mnie już;II. Droga Zbawienia;11. Poświęcenie
+745;746.txt;746;W Chrystusie bezgranicznej miłości płonie żar;II. Droga Zbawienia;11. Poświęcenie
+746;747.txt;747;Jak jestem szczęśliwy w Jezusie!;II. Droga Zbawienia;12. Pokój i radość
+747;748.txt;748;Jam uczniem Zbawiciela;II. Droga Zbawienia;12. Pokój i radość
+748;749.txt;749;My mamy już zbawienie;II. Droga Zbawienia;12. Pokój i radość
+749;750.txt;750;Niebiańską radość w sercu mym;II. Droga Zbawienia;12. Pokój i radość
+750;751.txt;751;O, dzień radosny, dzień zbawienia;II. Droga Zbawienia;12. Pokój i radość
+751;752.txt;752;O, świata zbawienie, miłości Twej zew;II. Droga Zbawienia;12. Pokój i radość
+752;753.txt;753;Radujmy się zbawieni;II. Droga Zbawienia;12. Pokój i radość
+753;754.txt;754;Sercem radosnym śpiewać dziś będę;II. Droga Zbawienia;12. Pokój i radość
+754;755.txt;755;Ach, zmiłuj się, I obmyj mnie;III. Życie Chrześcijanina;13. Obcowanie z Panem
+755;756.txt;756;Bądź Ty ze mną nieustannie;III. Życie Chrześcijanina;13. Obcowanie z Panem
+756;757.txt;757;Cudnego mi Zbawcę w Jezusie Bóg dał;III. Życie Chrześcijanina;13. Obcowanie z Panem
+757;758.txt;758;Gdzież serce, gdzie ojczyzna twa?;III. Życie Chrześcijanina;13. Obcowanie z Panem
+758;759.txt;759;Kto w tym burzliwym życiu;III. Życie Chrześcijanina;13. Obcowanie z Panem
+759;760.txt;760;Naucz modlić się Boże do Ciebie;III. Życie Chrześcijanina;13. Obcowanie z Panem
+760;761.txt;761;Nie w wymowie słów modlitwy mej;III. Życie Chrześcijanina;13. Obcowanie z Panem
+761;762.txt;762;Nie zawsze będę pielgrzymował;III. Życie Chrześcijanina;13. Obcowanie z Panem
+762;763.txt;763;Odbijając się w lazurze;III. Życie Chrześcijanina;13. Obcowanie z Panem
+763;764.txt;764;Ojcze Niebieski;III. Życie Chrześcijanina;13. Obcowanie z Panem
+764;765.txt;765;Panie, będę Cię wysławiać;III. Życie Chrześcijanina;13. Obcowanie z Panem
+765;766.txt;766;Przedwieczne Twe Słowo;III. Życie Chrześcijanina;13. Obcowanie z Panem
+766;767.txt;767;Tak jak jeleń do potoku z utęsknieniem szybko mknie;III. Życie Chrześcijanina;13. Obcowanie z Panem
+767;768.txt;768;U stóp Twych świętych korzymy się wraz;III. Życie Chrześcijanina;13. Obcowanie z Panem
+768;769.txt;769;Wnijdź, Jezu mój;III. Życie Chrześcijanina;13. Obcowanie z Panem
+769;770.txt;770;Z niedoli wielkiej, z udręczenia;III. Życie Chrześcijanina;13. Obcowanie z Panem
+770;771.txt;771;Zniż się ku nam z wysokości;III. Życie Chrześcijanina;13. Obcowanie z Panem
+771;772.txt;772;Dlaczego smutny los? Wciąż pytasz się;III. Życie Chrześcijanina;14. Ufność w Panu
+772;773.txt;773;Gdy ciebie otoczą cierpienia i smutki;III. Życie Chrześcijanina;14. Ufność w Panu
+773;774.txt;774;Gdy wszystko drży, zapada w dół;III. Życie Chrześcijanina;14. Ufność w Panu
+774;775.txt;775;Imię Jego: Cudny;III. Życie Chrześcijanina;14. Ufność w Panu
+775;776.txt;776;Kiedy chmury ciemne cię zatrwożą;III. Życie Chrześcijanina;14. Ufność w Panu
+776;777.txt;777;Módl się dalej, nie przestań nie;III. Życie Chrześcijanina;14. Ufność w Panu
+777;778.txt;778;Na Twoim zasnę łonie, Jezusie mój;III. Życie Chrześcijanina;14. Ufność w Panu
+778;779.txt;779;Nie lękaj się nie, Za ciebie Pan zmarł;III. Życie Chrześcijanina;14. Ufność w Panu
+779;780.txt;780;Pewność zbawienia mam;III. Życie Chrześcijanina;14. Ufność w Panu
+780;781.txt;781;Szczęśliwym już w mym Zbawcy teraz;III. Życie Chrześcijanina;14. Ufność w Panu
+781;782.txt;782;Tę pewność mam że żadna siła;III. Życie Chrześcijanina;14. Ufność w Panu
+782;783.txt;783;Miłości czystej wzorze;III. Życie Chrześcijanina;15. Naśladowanie Jezusa
+783;784.txt;784;Przeszedłem ten świat dookoła;III. Życie Chrześcijanina;15. Naśladowanie Jezusa
+784;785.txt;785;Usuń Boże me zwątpienia;III. Życie Chrześcijanina;15. Naśladowanie Jezusa
+785;786.txt;786;Czyż ja muszę bez owocu;III. Życie Chrześcijanina;16. Praca w służbie Pana
+786;787.txt;787;Do pracy śpiesz, posłuchaj jak cię woła Pan;III. Życie Chrześcijanina;16. Praca w służbie Pana
+787;788.txt;788;Dusz rybakami uczynię was;III. Życie Chrześcijanina;16. Praca w służbie Pana
+788;789.txt;789;Kto ze łzami sieje;III. Życie Chrześcijanina;16. Praca w służbie Pana
+789;790.txt;790;My jesteśmy powołani;III. Życie Chrześcijanina;16. Praca w służbie Pana
+790;791.txt;791;Niwy już dojrzały i czekają nas;III. Życie Chrześcijanina;16. Praca w służbie Pana
+791;792.txt;792;O, gdzie żeńcy są, aby zebrać już;III. Życie Chrześcijanina;16. Praca w służbie Pana
+792;793.txt;793;Służebnicy, o czemuż stoicie?;III. Życie Chrześcijanina;16. Praca w służbie Pana
+793;794.txt;794;Życie to, jedno, dał Bóg;III. Życie Chrześcijanina;16. Praca w służbie Pana
+794;795.txt;795;Bracia, do czynu wielkiego powstańmy;III. Życie Chrześcijanina;17. Bój wiary i zwycięstwo
+795;796.txt;796;Myśmy, bracia, Chrystusa żołnierze;III. Życie Chrześcijanina;17. Bój wiary i zwycięstwo
+796;797.txt;797;My za wiarę Chrystusową;III. Życie Chrześcijanina;17. Bój wiary i zwycięstwo
+797;798.txt;798;O, bracie mój, swe modły ślij;III. Życie Chrześcijanina;17. Bój wiary i zwycięstwo
+798;799.txt;799;Rozwińmy, bracia, sztandar swój;III. Życie Chrześcijanina;17. Bój wiary i zwycięstwo
+799;800.txt;800;To nie chmury bracia, zawisnęły;III. Życie Chrześcijanina;17. Bój wiary i zwycięstwo
+800;801.txt;801;Błoga radość, Pan nasz nadchodzi;III. Życie Chrześcijanina;18. Przyjście Pańskie i górna włość
+801;802.txt;802;Kraj przecudny w górze znam;III. Życie Chrześcijanina;18. Przyjście Pańskie i górna włość
+802;803.txt;803;O, miasto cudne, miasto cne;III. Życie Chrześcijanina;18. Przyjście Pańskie i górna włość
+803;804.txt;804;O, przyjdź królestwo Twoje;III. Życie Chrześcijanina;18. Przyjście Pańskie i górna włość
+804;805.txt;805;Oto przychodzę rychło;III. Życie Chrześcijanina;18. Przyjście Pańskie i górna włość
+805;806.txt;806;Święty dom przyobiecał Bóg tym dać;III. Życie Chrześcijanina;18. Przyjście Pańskie i górna włość
+806;807.txt;807;Wdzięczny, rozkoszny Syjonie;III. Życie Chrześcijanina;18. Przyjście Pańskie i górna włość
+807;808.txt;808;Znam kraj, gdzie radość wiecznie trwa;III. Życie Chrześcijanina;18. Przyjście Pańskie i górna włość
+808;809.txt;809;U Ciebie, Święty, wieczny Boże;IV. Społeczność Świętych;19. Chrzest i Wieczerza Pańska
+809;810.txt;810;Błogosław związek nasz;IV. Społeczność Świętych;20. Zgromadzenie wierzących
+810;811.txt;811;Boże, coś Polskę przez tak liczne wieki;IV. Społeczność Świętych;20. Zgromadzenie wierzących
+811;812.txt;812;Łaska naszego Chrystusa i Pana;IV. Społeczność Świętych;20. Zgromadzenie wierzących
+812;813.txt;813;Od ojczystej naszej ziemi;IV. Społeczność Świętych;20. Zgromadzenie wierzących
+813;814.txt;814;O, jak pięknie w zgodzie żyć;IV. Społeczność Świętych;20. Zgromadzenie wierzących
+814;815.txt;815;O, jakże kocham Twój;IV. Społeczność Świętych;20. Zgromadzenie wierzących
+815;816.txt;816;Płyną z serca, płyną w niebo;IV. Społeczność Świętych;20. Zgromadzenie wierzących
+816;817.txt;817;Pociechę niebiańską nam Zbawca dał;IV. Społeczność Świętych;20. Zgromadzenie wierzących
+817;818.txt;818;Prowadzimy tu życie tułacze;IV. Społeczność Świętych;20. Zgromadzenie wierzących
+818;819.txt;819;Teraz już się rozstajemy;IV. Społeczność Świętych;20. Zgromadzenie wierzących
+819;820.txt;820;Wspaniały świat, prawdziwy raj;IV. Społeczność Świętych;20. Zgromadzenie wierzących
+820;821.txt;821;Zbawieni — to szczęśliwa rzesza;IV. Społeczność Świętych;20. Zgromadzenie wierzących
+821;822.txt;822;Chciałbym się wzbić lotem orła hen;IV. Społeczność Świętych;21. Dla młodzieży
+822;823.txt;823;Chętnie, żwawo, my pielgrzymi ziemscy ;IV. Społeczność Świętych;21. Dla młodzieży
+823;824.txt;824;Drobne piasku ziarnka;IV. Społeczność Świętych;21. Dla młodzieży
+824;825.txt;825;Dzieci, jeszcześmy w podróży;IV. Społeczność Świętych;21. Dla młodzieży
+825;826.txt;826;Ja nie ma m złota, ni łąk zielonych;IV. Społeczność Świętych;21. Dla młodzieży
+826;827.txt;827;Jak prędko dolała do mety swej grot;IV. Społeczność Świętych;21. Dla młodzieży
+827;828.txt;828;Jestem jeszcze dziecię małe;IV. Społeczność Świętych;21. Dla młodzieży
+828;829.txt;829;Kto ma tak piękne trzody?;IV. Społeczność Świętych;21. Dla młodzieży
+829;830.txt;830;Młodości dni, dni szczęścia złotej chwili;IV. Społeczność Świętych;21. Dla młodzieży
+830;831.txt;831;Młodości moja, byłaś tak cudna;IV. Społeczność Świętych;21. Dla młodzieży
+831;832.txt;832;Młodości moja;IV. Społeczność Świętych;21. Dla młodzieży
+832;833.txt;833;Mój Jezus kocha mnie;IV. Społeczność Świętych;21. Dla młodzieży
+833;834.txt;834;Niech moim sercem Pan Jezus wciąż włada;IV. Społeczność Świętych;21. Dla młodzieży
+834;835.txt;835;Niedzielna szkółka milsza mi;IV. Społeczność Świętych;21. Dla młodzieży
+835;836.txt;836;Pamiętam jeszcze dobrze;IV. Społeczność Świętych;21. Dla młodzieży
+836;837.txt;837;Piękne dni życia naszego;IV. Społeczność Świętych;21. Dla młodzieży
+837;838.txt;838;Pójdźcie dziatki, pójdźcie;IV. Społeczność Świętych;21. Dla młodzieży
+838;839.txt;839;Prowadź, Jezu, Twoje dziecię;IV. Społeczność Świętych;21. Dla młodzieży
+839;840.txt;840;Przyjaciel małych dzieci jest Chrystus, Zbawca nasz;IV. Społeczność Świętych;21. Dla młodzieży
+840;841.txt;841;Rannego słońca pierwszy promyk lśni;IV. Społeczność Świętych;21. Dla młodzieży
+841;842.txt;842;Spracowany idę spać;IV. Społeczność Świętych;21. Dla młodzieży
+842;843.txt;843;W drodze już jesteśmy;IV. Społeczność Świętych;21. Dla młodzieży
+843;844.txt;844;Wiernie w ślad za Jezusem;IV. Społeczność Świętych;21. Dla młodzieży
+844;845.txt;845;Wiosna nadeszła, cieszmy się;IV. Społeczność Świętych;21. Dla młodzieży
+845;846.txt;846;W jednym małym kątku;IV. Społeczność Świętych;21. Dla młodzieży
+846;847.txt;847;W potężnych rękach Pana;IV. Społeczność Świętych;21. Dla młodzieży
+847;848.txt;848;Wróbelków małych kocha Bóg;IV. Społeczność Świętych;21. Dla młodzieży
+848;849.txt;849;Wspominam te chwile gdy byłem dzieciną;IV. Społeczność Świętych;21. Dla młodzieży
+849;850.txt;850;Zgodnie, bracia, chcemy wszyscy razem;IV. Społeczność Świętych;21. Dla młodzieży
+850;851.txt;851;Błogosław Panie, na ich ślubowanie;IV. Społeczność Świętych;22. Ślub
+851;852.txt;852;Daj Boże Swym dziatkom na wszystkie ich dni;IV. Społeczność Świętych;22. Ślub
+852;853.txt;853;Wasze serca, wasze dłonie;IV. Społeczność Świętych;22. Ślub
+853;854.txt;854;Zbawiciel w Kanie Galilejskiej;IV. Społeczność Świętych;22. Ślub
+854;855.txt;855;Z dwóch serc, o Panie, jedno stwórz;IV. Społeczność Świętych;22. Ślub
+855;856.txt;856;Do grobu proch kładziemy;IV. Społeczność Świętych;23. Pogrzeb
+856;857.txt;857;Gdy słońce zajdzie nad naszą ziemią;IV. Społeczność Świętych;23. Pogrzeb
+857;858.txt;858;To życie jest jak cień;IV. Społeczność Świętych;23. Pogrzeb
+858;859.txt;859;Już ostatni za górami promień słońca zgasł;IV. Społeczność Świętych;24. Pory dnia i roku
+859;860.txt;860;Z szybkością wiatru czas przemija;IV. Społeczność Świętych;24. Pory dnia i roku
+860;A01.txt;I;Do śmierci z Biblią świętą;IV. Społeczność Świętych;25. Addenda
+861;A02.txt;II;Dzięki, kochany Ojcze z nieba;IV. Społeczność Świętych;25. Addenda
+862;A03.txt;III;Dzieci Boże, chodźcie wznieść;IV. Społeczność Świętych;25. Addenda
+863;A04.txt;IV;Dzięki Tobie za Twe dary;IV. Społeczność Świętych;25. Addenda
+864;A05.txt;V;Gdy rozmyślam, Święty Boże;IV. Społeczność Świętych;25. Addenda
+865;A06.txt;VI;Jakie drogie dziś chwile;IV. Społeczność Świętych;25. Addenda
+866;A07.txt;VII;Możesz poznać Pana dziś!;IV. Społeczność Świętych;25. Addenda
+867;A08.txt;VIII;My mamy pewną skałę;IV. Społeczność Świętych;25. Addenda
+868;A09.txt;IX;Prowadź, prowadź mnie Sam;IV. Społeczność Świętych;25. Addenda
+869;A10.txt;X;Wszystkie nasze dzienne sprawy;IV. Społeczność Świętych;25. Addenda
+870;A11.txt;XI;Choćbym wszystko miał;IV. Społeczność Świętych;25. Addenda
+871;A12.txt;XII;Niegdyś gdy byłem w kajdanach grzechu;IV. Społeczność Świętych;25. Addenda
+872;A13.txt;XIII;Z głębi serc tych dwojga wzlata;IV. Społeczność Świętych;25. Addenda
+873;A14.txt;XIV;O, nie smuć się, lecz walcz z niedolą;IV. Społeczność Świętych;25. Addenda
+874;A15.txt;XV;Z smutku, niedoli, zmartwień i trosk;IV. Społeczność Świętych;25. Addenda
