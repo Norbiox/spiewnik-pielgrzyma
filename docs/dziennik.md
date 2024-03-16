@@ -54,3 +54,9 @@ Wiedzę będę czerpał z książki "Flutter for begginners - third edition". Ko
 - dowiedziałem się jak testować kod oraz widgety
 - nauczyłem się debugowania aplikacji
 - dowiedziałem się w jaki sposób przygotować aplikację do wdrożenia oraz wdrożyć ją w sklepie Google Play, Apple App Store i Firebase
+
+## 15.03.2024
+- utworzyłem projekt Flutter
+
+## 16.03.2024
+- dodałem klasę przechowującą szczegóły pieśni
