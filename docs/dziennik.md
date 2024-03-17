@@ -60,3 +60,7 @@ Wiedzę będę czerpał z książki "Flutter for begginners - third edition". Ko
 
 ## 16.03.2024
 - dodałem klasę przechowującą szczegóły pieśni
+
+## 17.03.2024
+- zbudowałem stronę domową aplikacji
+- zbudowałem podstawową, przewijalną listę pieśni
