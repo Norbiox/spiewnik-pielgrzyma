@@ -64,3 +64,8 @@ Wiedzę będę czerpał z książki "Flutter for begginners - third edition". Ko
 ## 17.03.2024
 - zbudowałem stronę domową aplikacji
 - zbudowałem podstawową, przewijalną listę pieśni
+
+## 18.03.2024
+- dowiedziałem się więcej o zarządzaniu stanem aplikacji
+- dodałem bibliotekę "provider"
+- użyłem biblioteki do inicjalizacji listy pieśni i przechowywania jej

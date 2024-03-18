@@ -1,8 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:spiewnik_pielgrzyma/hymns/hymns_list.dart';
 import 'package:spiewnik_pielgrzyma/hymns/hymns_list_page.dart';
 
 void main() {
-  runApp(const MyApp());
+  WidgetsFlutterBinding.ensureInitialized();
+  runApp(MultiProvider(providers: [
+    ChangeNotifierProvider(create: (_) => HymnsListProvider()),
+  ], child: const MyApp()));
 }
 
 class MyApp extends StatelessWidget {
