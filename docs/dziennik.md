@@ -69,3 +69,6 @@ Wiedzę będę czerpał z książki "Flutter for begginners - third edition". Ko
 - dowiedziałem się więcej o zarządzaniu stanem aplikacji
 - dodałem bibliotekę "provider"
 - użyłem biblioteki do inicjalizacji listy pieśni i przechowywania jej
+
+## 19.03.2024
+- dodałem suwak do listy pieśni
