@@ -2,8 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:spiewnik_pielgrzyma/hymns/hymns_list.dart';
 
-class HymnsListPage extends StatelessWidget {
+class HymnsListPage extends StatefulWidget {
   const HymnsListPage({super.key});
+
+  @override
+  State<HymnsListPage> createState() => _HymnsListPageState();
+}
+
+class _HymnsListPageState extends State<HymnsListPage> {
+  final ScrollController _scrollController = ScrollController();
 
   @override
   Widget build(BuildContext context) {
@@ -14,13 +21,20 @@ class HymnsListPage extends StatelessWidget {
         return const Center(child: CircularProgressIndicator());
       }
 
-      return CustomScrollView(slivers: [
-        SliverList(delegate: SliverChildBuilderDelegate((context, index) {
-          return ListTile(
-            title: Text(hymnsList[index].fullTitle),
-          );
-        }))
-      ]);
+      return Scrollbar(
+        thumbVisibility: true,
+        thickness: 10.0,
+        interactive: true,
+        controller: _scrollController,
+        child: ListView.builder(
+            controller: _scrollController,
+            itemCount: hymnsList.length,
+            itemBuilder: (context, index) {
+              return ListTile(
+                title: Text(hymnsList[index].fullTitle),
+              );
+            }),
+      );
     });
   }
 }
