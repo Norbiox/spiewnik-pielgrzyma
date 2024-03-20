@@ -72,3 +72,6 @@ Wiedzę będę czerpał z książki "Flutter for begginners - third edition". Ko
 
 ## 19.03.2024
 - dodałem suwak do listy pieśni
+
+## 20.03.2024
+- bezskutecznie próbowałem sprawić, by lista pieśni nie przewijała się do początku po przełączeniu się na inną zakładkę
