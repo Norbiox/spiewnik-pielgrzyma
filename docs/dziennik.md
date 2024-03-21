@@ -75,3 +75,8 @@ Wiedzę będę czerpał z książki "Flutter for begginners - third edition". Ko
 
 ## 20.03.2024
 - bezskutecznie próbowałem sprawić, by lista pieśni nie przewijała się do początku po przełączeniu się na inną zakładkę
+
+## 21.03.2024
+- przeniosłem MyHomePage do osobnego pliku
+- lista pieśni zapamiętuje pozycję podczas przełączania się pomiędzy tabami
+    - osiągnąłem to z użyciem `AutomaticKeepAliveClientMixin` znalezionego w odpowiedzi w [tym wątku na StackOverflow](https://stackoverflow.com/questions/49087703/preserving-state-between-tab-view-pages)
