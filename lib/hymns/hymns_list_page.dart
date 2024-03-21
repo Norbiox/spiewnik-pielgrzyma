@@ -9,11 +9,14 @@ class HymnsListPage extends StatefulWidget {
   State<HymnsListPage> createState() => _HymnsListPageState();
 }
 
-class _HymnsListPageState extends State<HymnsListPage> {
+class _HymnsListPageState extends State<HymnsListPage>
+    with AutomaticKeepAliveClientMixin<HymnsListPage> {
   final ScrollController _scrollController = ScrollController();
 
   @override
   Widget build(BuildContext context) {
+    super.build(context);
+
     return Consumer<HymnsListProvider>(builder: (context, provider, child) {
       final hymnsList = provider.hymnsList;
 
@@ -37,4 +40,7 @@ class _HymnsListPageState extends State<HymnsListPage> {
       );
     });
   }
+
+  @override
+  bool get wantKeepAlive => true;
 }
