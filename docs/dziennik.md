@@ -80,3 +80,7 @@ Wiedzę będę czerpał z książki "Flutter for begginners - third edition". Ko
 - przeniosłem MyHomePage do osobnego pliku
 - lista pieśni zapamiętuje pozycję podczas przełączania się pomiędzy tabami
     - osiągnąłem to z użyciem `AutomaticKeepAliveClientMixin` znalezionego w odpowiedzi w [tym wątku na StackOverflow](https://stackoverflow.com/questions/49087703/preserving-state-between-tab-view-pages)
+
+## 22.03.2024
+- dodałem podstawową wersję strony z tekstem pieśni
+- dodałem otwieranie strony pieśni z poziomu listy
