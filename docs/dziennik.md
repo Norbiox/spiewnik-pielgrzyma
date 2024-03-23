@@ -84,3 +84,7 @@ Wiedzę będę czerpał z książki "Flutter for begginners - third edition". Ko
 ## 22.03.2024
 - dodałem podstawową wersję strony z tekstem pieśni
 - dodałem otwieranie strony pieśni z poziomu listy
+
+## 23.03.2024
+- dodałem abstrakcję repozytorium ulubionych pieśni
+- zaimplementowałem repozytorium w oparciu o Set w pamięci oraz w oparciu o SharedPreferences
