@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:spiewnik_pielgrzyma/hymns/hymn_page.dart';
+import 'package:spiewnik_pielgrzyma/hymns/hymn_tile_widget.dart';
 import 'package:spiewnik_pielgrzyma/hymns/hymns_list.dart';
 
 class HymnsListPage extends StatefulWidget {
@@ -34,13 +35,7 @@ class _HymnsListPageState extends State<HymnsListPage>
             controller: _scrollController,
             itemCount: hymnsList.length,
             itemBuilder: (context, index) {
-              return ListTile(
-                  title: Text(hymnsList[index].fullTitle),
-                  onTap: () {
-                    Navigator.of(context).push(MaterialPageRoute(
-                      builder: (context) => HymnPage(hymn: hymnsList[index]),
-                    ));
-                  });
+              return HymnTileWidget(hymn: hymnsList[index]);
             }),
       );
     });

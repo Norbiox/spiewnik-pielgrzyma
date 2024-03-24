@@ -1,0 +1,20 @@
+import 'package:flutter/material.dart';
+import 'package:spiewnik_pielgrzyma/hymns/hymn.dart';
+import 'package:spiewnik_pielgrzyma/hymns/hymn_page.dart';
+
+class HymnTileWidget extends StatelessWidget {
+  final Hymn hymn;
+
+  const HymnTileWidget({super.key, required this.hymn});
+
+  @override
+  Widget build(BuildContext context) {
+    return ListTile(
+        title: Text(hymn.fullTitle),
+        onTap: () {
+          Navigator.of(context).push(MaterialPageRoute(
+            builder: (context) => HymnPage(hymn: hymn),
+          ));
+        });
+  }
+}
