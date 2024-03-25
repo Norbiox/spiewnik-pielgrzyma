@@ -88,3 +88,7 @@ Wiedzę będę czerpał z książki "Flutter for begginners - third edition". Ko
 ## 23.03.2024
 - dodałem abstrakcję repozytorium ulubionych pieśni
 - zaimplementowałem repozytorium w oparciu o Set w pamięci oraz w oparciu o SharedPreferences
+
+## 24.03.2024
+- zrobiłem działające ikony Favorite, można je już klikać dodając w ten sposób pieśni do listy ulubionych
+- niestety implementacja pozostawia wiele do życzenia w kwestii wydajności...
