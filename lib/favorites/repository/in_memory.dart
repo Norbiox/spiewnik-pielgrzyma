@@ -1,6 +1,8 @@
+import 'package:flutter/material.dart';
 import 'package:spiewnik_pielgrzyma/favorites/repository/abstract.dart';
 
-class InMemoryFavoritesRepository implements FavoritesRepository {
+class InMemoryFavoritesRepository extends ChangeNotifier
+    implements FavoritesRepository {
   final Set<String> favorites = {};
 
   InMemoryFavoritesRepository();
@@ -13,11 +15,13 @@ class InMemoryFavoritesRepository implements FavoritesRepository {
   @override
   Future<void> add(String id) async {
     favorites.add(id);
+    notifyListeners();
   }
 
   @override
   Future<void> remove(String id) async {
     favorites.remove(id);
+    notifyListeners();
   }
 
   @override

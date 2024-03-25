@@ -1,7 +1,9 @@
+import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:spiewnik_pielgrzyma/favorites/repository/abstract.dart';
 
-class SharedPreferencesFavoritesRepository implements FavoritesRepository {
+class SharedPreferencesFavoritesRepository extends ChangeNotifier
+    implements FavoritesRepository {
   late SharedPreferences _storage;
   final String _key = 'favoriteHymns';
 
@@ -10,6 +12,7 @@ class SharedPreferencesFavoritesRepository implements FavoritesRepository {
     if (!_storage.containsKey(_key)) {
       _storage.setStringList(_key, <String>[]);
     }
+    notifyListeners();
   }
 
   @override
@@ -34,6 +37,7 @@ class SharedPreferencesFavoritesRepository implements FavoritesRepository {
 
     favorites.add(id);
     _storage.setStringList(_key, favorites.toList());
+    notifyListeners();
   }
 
   @override
@@ -44,6 +48,7 @@ class SharedPreferencesFavoritesRepository implements FavoritesRepository {
     }
     favorites.remove(id);
     _storage.setStringList(_key, favorites.toList());
+    notifyListeners();
   }
 
   Future<Set<String>> _getFavoritesSet() async {
