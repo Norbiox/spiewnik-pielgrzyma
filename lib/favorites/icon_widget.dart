@@ -24,10 +24,10 @@ class _FavoriteIconWidgetState extends State<FavoriteIconWidget> {
   }
 
   void _onPressed() async {
-    if (await repository.isFavorite(widget.hymn.number)) {
-      await repository.remove(widget.hymn.number);
+    if (await repository.isFavorite(widget.hymn)) {
+      await repository.remove(widget.hymn);
     } else {
-      await repository.add(widget.hymn.number);
+      await repository.add(widget.hymn);
     }
     setState(() {});
   }
@@ -35,7 +35,7 @@ class _FavoriteIconWidgetState extends State<FavoriteIconWidget> {
   @override
   Widget build(BuildContext context) {
     return FutureBuilder(
-        future: repository.isFavorite(widget.hymn.number),
+        future: repository.isFavorite(widget.hymn),
         builder: (context, snapshot) {
           if (snapshot.hasData) {
             return IconButton(

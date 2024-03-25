@@ -1,57 +1,65 @@
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:spiewnik_pielgrzyma/favorites/repository/abstract.dart';
+import 'package:spiewnik_pielgrzyma/hymns/hymn.dart';
+import 'package:spiewnik_pielgrzyma/hymns/hymns_list.dart';
 
 class SharedPreferencesFavoritesRepository extends ChangeNotifier
     implements FavoritesRepository {
-  late SharedPreferences _storage;
+  final HymnsListProvider hymnsListProvider;
+  final SharedPreferences storage;
   final String _key = 'favoriteHymns';
 
-  SharedPreferencesFavoritesRepository(SharedPreferences storage) {
-    _storage = storage;
-    if (!_storage.containsKey(_key)) {
-      _storage.setStringList(_key, <String>[]);
+  SharedPreferencesFavoritesRepository(this.storage, this.hymnsListProvider) {
+    if (!storage.containsKey(_key)) {
+      storage.setStringList(_key, <String>[]);
     }
     notifyListeners();
   }
 
   @override
-  Future<bool> isFavorite(String id) async {
-    return await _getFavoritesSet().then((value) => value.contains(id));
+  Future<bool> isFavorite(Hymn hymn) async {
+    return await _getFavoritesSet()
+        .then((value) => value.contains(hymn.number));
   }
 
   @override
-  Future<List<String>> getFavorites() async {
-    if (!_storage.containsKey(_key)) {
-      return <String>[];
-    }
-    return _storage.getStringList(_key)!.toList();
-  }
-
-  @override
-  Future<void> add(String id) async {
+  Future<void> add(Hymn hymn) async {
     final favorites = await _getFavoritesSet();
-    if (favorites.contains(id)) {
+    if (favorites.contains(hymn.number)) {
       return;
     }
 
-    favorites.add(id);
-    _storage.setStringList(_key, favorites.toList());
+    favorites.add(hymn.number);
+    storage.setStringList(_key, favorites.toList());
     notifyListeners();
   }
 
   @override
-  Future<void> remove(String id) async {
+  Future<void> remove(Hymn hymn) async {
     final favorites = await _getFavoritesSet();
-    if (!favorites.contains(id)) {
+    if (!favorites.contains(hymn.number)) {
       return;
     }
-    favorites.remove(id);
-    _storage.setStringList(_key, favorites.toList());
+    favorites.remove(hymn.number);
+    storage.setStringList(_key, favorites.toList());
     notifyListeners();
+  }
+
+  @override
+  Future<List<Hymn>> getFavorites() async {
+    if (!storage.containsKey(_key)) {
+      return <Hymn>[];
+    }
+    return storage
+        .getStringList(_key)!
+        .map((e) => hymnsListProvider.hymnsList
+            .firstWhere((element) => element.number == e))
+        .toList();
   }
 
   Future<Set<String>> _getFavoritesSet() async {
-    return await getFavorites().then((value) => value.toSet());
+    return await getFavorites()
+        .then((value) => value.map((e) => e.number).toSet());
   }
 }

@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:spiewnik_pielgrzyma/favorites/provider.dart';
 import 'package:spiewnik_pielgrzyma/favorites/repository/shared_preferences.dart';
 import 'package:spiewnik_pielgrzyma/home.dart';
 import 'package:spiewnik_pielgrzyma/hymns/hymns_list.dart';
-import 'package:spiewnik_pielgrzyma/hymns/hymns_list_page.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -13,7 +11,8 @@ void main() {
     runApp(MultiProvider(providers: [
       ChangeNotifierProvider(create: (_) => HymnsListProvider()),
       ChangeNotifierProvider(
-          create: (_) => SharedPreferencesFavoritesRepository(value)),
+          create: (_) =>
+              SharedPreferencesFavoritesRepository(value, HymnsListProvider())),
     ], child: const MyApp()));
   });
 }
