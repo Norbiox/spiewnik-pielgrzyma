@@ -93,3 +93,6 @@ Wiedzę będę czerpał z książki "Flutter for begginners - third edition". Ko
 - zrobiłem działające ikony Favorite, można je już klikać dodając w ten sposób pieśni do listy ulubionych
 - niestety implementacja pozostawia wiele do życzenia w kwestii wydajności...
 - poprawiłem enkapsulację FavoriteRepository - repo działa teraz na obiektach *Hymn*
+
+## 25.03.2024
+- dodałem listę ulubionych pieśni
