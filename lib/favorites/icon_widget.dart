@@ -4,48 +4,35 @@ import 'package:spiewnik_pielgrzyma/favorites/repository/abstract.dart';
 import 'package:spiewnik_pielgrzyma/favorites/repository/shared_preferences.dart';
 import 'package:spiewnik_pielgrzyma/hymns/hymn.dart';
 
-class FavoriteIconWidget extends StatefulWidget {
+class FavoriteIconWidget extends StatelessWidget {
   final Hymn hymn;
 
   const FavoriteIconWidget({super.key, required this.hymn});
 
   @override
-  State<FavoriteIconWidget> createState() => _FavoriteIconWidgetState();
-}
-
-class _FavoriteIconWidgetState extends State<FavoriteIconWidget> {
-  late FavoritesRepository repository;
-
-  @override
-  void initState() {
-    super.initState();
-    repository = Provider.of<SharedPreferencesFavoritesRepository>(context,
-        listen: false);
-  }
-
-  void _onPressed() async {
-    if (await repository.isFavorite(widget.hymn)) {
-      await repository.remove(widget.hymn);
-    } else {
-      await repository.add(widget.hymn);
-    }
-    setState(() {});
-  }
-
-  @override
   Widget build(BuildContext context) {
-    return FutureBuilder(
-        future: repository.isFavorite(widget.hymn),
-        builder: (context, snapshot) {
-          if (snapshot.hasData) {
-            return IconButton(
-              icon:
-                  Icon(snapshot.data! ? Icons.favorite : Icons.favorite_border),
-              onPressed: _onPressed,
-            );
-          } else {
-            return const CircularProgressIndicator();
-          }
-        });
+    return Consumer<SharedPreferencesFavoritesRepository>(
+      builder: (context, value, child) {
+        return FutureBuilder(
+            future: value.isFavorite(hymn),
+            builder: (context, snapshot) {
+              if (!snapshot.hasData) {
+                return const SizedBox(child: CircularProgressIndicator());
+              }
+
+              return IconButton(
+                icon: Icon(
+                    snapshot.data! ? Icons.favorite : Icons.favorite_border),
+                onPressed: () async {
+                  if (await value.isFavorite(hymn)) {
+                    await value.remove(hymn);
+                  } else {
+                    await value.add(hymn);
+                  }
+                },
+              );
+            });
+      },
+    );
   }
 }

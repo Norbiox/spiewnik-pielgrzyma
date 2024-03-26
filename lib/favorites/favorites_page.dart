@@ -26,19 +26,22 @@ class _FavoritesPageState extends State<FavoritesPage>
   Widget build(BuildContext context) {
     super.build(context);
 
-    return FutureBuilder(
-      future: repository.getFavorites(),
-      builder: (context, snapshot) {
-        if (!snapshot.hasData) {
-          return Center(child: Text("Nie masz jeszcze ulubionych pieśni"));
-        }
+    return Consumer<SharedPreferencesFavoritesRepository>(
+        builder: (builder, value, child) {
+      return FutureBuilder(
+        future: value.getFavorites(),
+        builder: (context, snapshot) {
+          if (!snapshot.hasData) {
+            return Center(child: Text("Nie masz jeszcze ulubionych pieśni"));
+          }
 
-        return ListView(
-            children: snapshot.data!
-                .map((hymn) => HymnTileWidget(hymn: hymn))
-                .toList());
-      },
-    );
+          return ListView(
+              children: snapshot.data!
+                  .map((hymn) => HymnTileWidget(hymn: hymn))
+                  .toList());
+        },
+      );
+    });
   }
 
   @override
