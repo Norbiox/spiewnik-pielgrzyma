@@ -32,5 +32,18 @@ void main() {
       expect(await repository.getFavorites(),
           {hymnsListProvider.hymnsList[0], hymnsListProvider.hymnsList[1]});
     });
+
+    test('hymns should be in order by number', () async {
+      final repository =
+          InMemoryFavoritesRepository(hymnsListProvider: hymnsListProvider);
+      await repository.add(hymnsListProvider.hymnsList[22]);
+      await repository.add(hymnsListProvider.hymnsList[11]);
+      await repository.add(hymnsListProvider.hymnsList[13]);
+      expect(await repository.getFavorites(), {
+        hymnsListProvider.hymnsList[11],
+        hymnsListProvider.hymnsList[13],
+        hymnsListProvider.hymnsList[22]
+      });
+    });
   });
 }
