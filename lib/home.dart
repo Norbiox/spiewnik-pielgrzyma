@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:spiewnik_pielgrzyma/favorites/favorites_page.dart';
 import 'package:spiewnik_pielgrzyma/hymns/hymns_list_page.dart';
 
 class MyHomePage extends StatelessWidget {
@@ -24,7 +25,7 @@ class MyHomePage extends StatelessWidget {
           body: const TabBarView(
             children: [
               HymnsListPage(),
-              Text('TODO: ulubione pieśni'),
+              FavoritesPage(),
               Text('TODO: listy użytkownika'),
             ],
           )),
