@@ -7,15 +7,17 @@ void main() {
 
   group('Test InMemoryFavoritesRepository', () {
     final hymnsListProvider = HymnsListProvider();
-    final repository =
-        InMemoryFavoritesRepository(hymnsListProvider: hymnsListProvider);
 
     test('should add favorite', () async {
+      final repository =
+          InMemoryFavoritesRepository(hymnsListProvider: hymnsListProvider);
       await repository.add(hymnsListProvider.hymnsList[0]);
       expect(await repository.isFavorite(hymnsListProvider.hymnsList[0]), true);
     });
 
     test('should remove favorite', () async {
+      final repository =
+          InMemoryFavoritesRepository(hymnsListProvider: hymnsListProvider);
       await repository.add(hymnsListProvider.hymnsList[0]);
       await repository.remove(hymnsListProvider.hymnsList[0]);
       expect(
@@ -23,6 +25,8 @@ void main() {
     });
 
     test('should get favorites', () async {
+      final repository =
+          InMemoryFavoritesRepository(hymnsListProvider: hymnsListProvider);
       await repository.add(hymnsListProvider.hymnsList[0]);
       await repository.add(hymnsListProvider.hymnsList[1]);
       expect(await repository.getFavorites(),
