@@ -96,3 +96,4 @@ Wiedzę będę czerpał z książki "Flutter for begginners - third edition". Ko
 
 ## 25.03.2024
 - dodałem listę ulubionych pieśni
+- dodałem sortowanie po indeksie pieśni w liście ulubionych
