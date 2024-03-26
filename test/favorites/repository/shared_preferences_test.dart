@@ -49,5 +49,20 @@ void main() async {
       await repository.add(hymnsList[1]);
       expect(await repository.getFavorites(), {hymnsList[0], hymnsList[1]});
     });
+
+    test('hymns should be in order by number', () async {
+      final SharedPreferencesFavoritesRepository repository =
+          await SharedPreferences.getInstance().then((value) {
+        return SharedPreferencesFavoritesRepository(value, HymnsListProvider());
+      });
+
+      final hymnsList = await loadHymnsList();
+
+      await repository.add(hymnsList[22]);
+      await repository.add(hymnsList[11]);
+      await repository.add(hymnsList[13]);
+      expect(await repository.getFavorites(),
+          {hymnsList[11], hymnsList[13], hymnsList[22]});
+    });
   });
 }

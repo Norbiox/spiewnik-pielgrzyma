@@ -24,8 +24,8 @@ class HymnsListProvider with ChangeNotifier {
   HymnsListProvider() {
     loadHymnsList().then((hymns) {
       _hymnsList = hymns;
+      notifyListeners();
     });
-    notifyListeners();
     log("loaded ${_hymnsList.length} hymns");
   }
 }
