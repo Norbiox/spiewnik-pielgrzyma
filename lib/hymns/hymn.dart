@@ -2,13 +2,15 @@ import 'package:equatable/equatable.dart';
 import 'package:flutter/services.dart';
 
 class Hymn extends Equatable {
+  final int index;
   final String number;
   final String filename;
   final String title;
   final String group;
   final String subgroup;
 
-  Hymn(this.number, this.filename, this.title, this.group, this.subgroup);
+  const Hymn(this.index, this.number, this.filename, this.title, this.group,
+      this.subgroup);
 
   String get fullTitle => "$number. $title";
 

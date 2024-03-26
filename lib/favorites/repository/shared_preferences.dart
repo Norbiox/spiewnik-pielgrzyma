@@ -56,7 +56,7 @@ class SharedPreferencesFavoritesRepository extends ChangeNotifier
         .map((e) => hymnsListProvider.hymnsList
             .firstWhere((element) => element.number == e))
         .toList();
-    hymns.sort((a, b) => a.number.compareTo(b.number));
+    hymns.sort((a, b) => a.index.compareTo(b.index));
     return hymns;
   }
 

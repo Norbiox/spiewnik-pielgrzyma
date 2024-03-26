@@ -12,7 +12,8 @@ Future<List<Hymn>> loadHymnsList() async {
       const CsvToListConverter(fieldDelimiter: ';', shouldParseNumbers: false)
           .convert(_rawData);
   return List<Hymn>.from(hymnsDetails.sublist(1).map(
-        (hymn) => Hymn(hymn[2], hymn[1], hymn[3], hymn[4], hymn[5]),
+        (hymn) => Hymn(
+            int.parse(hymn[0]), hymn[2], hymn[1], hymn[3], hymn[4], hymn[5]),
       ));
 }
 
