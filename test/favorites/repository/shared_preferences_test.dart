@@ -7,30 +7,47 @@ void main() async {
   TestWidgetsFlutterBinding.ensureInitialized(); // needed for access to assets
   SharedPreferences.setMockInitialValues({});
 
-  final hymnsListProvider = HymnsListProvider();
-  final SharedPreferencesFavoritesRepository repository =
-      await SharedPreferences.getInstance().then((value) {
-    return SharedPreferencesFavoritesRepository(value, hymnsListProvider);
-  });
-
   group('Test SharedPreferencesFavoritesRepository', () {
+    setUp(() {
+      SharedPreferences.setMockInitialValues({});
+    });
+
     test('should add favorite', () async {
-      await repository.add(hymnsListProvider.hymnsList[0]);
-      expect(await repository.isFavorite(hymnsListProvider.hymnsList[0]), true);
+      final SharedPreferencesFavoritesRepository repository =
+          await SharedPreferences.getInstance().then((value) {
+        return SharedPreferencesFavoritesRepository(value, HymnsListProvider());
+      });
+
+      final hymnsList = await loadHymnsList();
+
+      await repository.add(hymnsList[0]);
+      expect(await repository.isFavorite(hymnsList[0]), true);
     });
 
     test('should remove favorite', () async {
-      await repository.add(hymnsListProvider.hymnsList[0]);
-      await repository.remove(hymnsListProvider.hymnsList[0]);
-      expect(
-          await repository.isFavorite(hymnsListProvider.hymnsList[0]), false);
+      final SharedPreferencesFavoritesRepository repository =
+          await SharedPreferences.getInstance().then((value) {
+        return SharedPreferencesFavoritesRepository(value, HymnsListProvider());
+      });
+
+      final hymnsList = await loadHymnsList();
+
+      await repository.add(hymnsList[0]);
+      await repository.remove(hymnsList[0]);
+      expect(await repository.isFavorite(hymnsList[0]), false);
     });
 
     test('should get favorites', () async {
-      await repository.add(hymnsListProvider.hymnsList[0]);
-      await repository.add(hymnsListProvider.hymnsList[1]);
-      expect(await repository.getFavorites(),
-          {hymnsListProvider.hymnsList[0], hymnsListProvider.hymnsList[1]});
+      final SharedPreferencesFavoritesRepository repository =
+          await SharedPreferences.getInstance().then((value) {
+        return SharedPreferencesFavoritesRepository(value, HymnsListProvider());
+      });
+
+      final hymnsList = await loadHymnsList();
+
+      await repository.add(hymnsList[0]);
+      await repository.add(hymnsList[1]);
+      expect(await repository.getFavorites(), {hymnsList[0], hymnsList[1]});
     });
   });
 }
