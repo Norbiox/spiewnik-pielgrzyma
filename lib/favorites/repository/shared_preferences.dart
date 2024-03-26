@@ -51,11 +51,13 @@ class SharedPreferencesFavoritesRepository extends ChangeNotifier
     if (!storage.containsKey(_key)) {
       return <Hymn>[];
     }
-    return storage
+    List<Hymn> hymns = storage
         .getStringList(_key)!
         .map((e) => hymnsListProvider.hymnsList
             .firstWhere((element) => element.number == e))
         .toList();
+    hymns.sort((a, b) => a.number.compareTo(b.number));
+    return hymns;
   }
 
   Future<Set<String>> _getFavoritesSet() async {
