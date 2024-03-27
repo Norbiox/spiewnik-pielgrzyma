@@ -100,3 +100,4 @@ Wiedzę będę czerpał z książki "Flutter for begginners - third edition". Ko
 
 ## 26.03.2024
 - zaaplikowałem automatyczne poprawki zasugerowane przez Darta
+- dodałem wczytywanie tekstów do funkcji wczytującej pieśni tak, by były wczytywane wszystkie przy starcie aplikacji
