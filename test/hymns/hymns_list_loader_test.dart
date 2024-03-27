@@ -12,7 +12,7 @@ void main() {
       expect(hymns, isNotEmpty);
       expect(
         hymns[0],
-        Hymn("1", "001.txt", "Alleluja, chwalcie Pana", "I. Bóg Trójjedyny",
+        const Hymn("1", "001.txt", "Alleluja, chwalcie Pana", "I. Bóg Trójjedyny",
             "1. Chwała i dziękczynienie"),
       );
     });

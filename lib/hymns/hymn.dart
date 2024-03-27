@@ -15,7 +15,7 @@ class Hymn extends Equatable {
   String get fullTitle => "$number. $title";
 
   Future<List<String>> getText() async {
-    final String text = await rootBundle.loadString("assets/texts/" + filename);
+    final String text = await rootBundle.loadString("assets/texts/$filename");
     return text.split('\n').sublist(1);
   }
 

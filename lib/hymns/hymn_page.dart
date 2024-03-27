@@ -12,7 +12,7 @@ class HymnPage extends StatelessWidget {
         future: hymn.getText(),
         builder: (BuildContext context, AsyncSnapshot<List<String>> snapshot) {
           if (!snapshot.hasData) {
-            return Center(child: CircularProgressIndicator());
+            return const Center(child: CircularProgressIndicator());
           }
 
           return Scaffold(
