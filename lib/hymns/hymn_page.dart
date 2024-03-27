@@ -8,22 +8,14 @@ class HymnPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return FutureBuilder(
-        future: hymn.getText(),
-        builder: (BuildContext context, AsyncSnapshot<List<String>> snapshot) {
-          if (!snapshot.hasData) {
-            return const Center(child: CircularProgressIndicator());
-          }
-
-          return Scaffold(
-              appBar: AppBar(title: Text(hymn.fullTitle)),
-              body: ListView(
-                children: snapshot.data!
-                    .map((line) => Text(line,
-                        textAlign: TextAlign.left,
-                        style: Theme.of(context).textTheme.bodyLarge))
-                    .toList(),
-              ));
-        });
+    return Scaffold(
+        appBar: AppBar(title: Text(hymn.fullTitle)),
+        body: ListView(
+          children: hymn.text
+              .map((line) => Text(line,
+                  textAlign: TextAlign.left,
+                  style: Theme.of(context).textTheme.bodyLarge))
+              .toList(),
+        ));
   }
 }
