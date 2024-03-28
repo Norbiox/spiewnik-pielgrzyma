@@ -25,8 +25,22 @@ class FavoriteIconWidget extends StatelessWidget {
                 onPressed: () async {
                   if (await value.isFavorite(hymn)) {
                     await value.remove(hymn);
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      SnackBar(
+                          content: Text(
+                              "Usunięto pieśń ${hymn.number} z ulubionych"),
+                          action: SnackBarAction(
+                            label: 'Przywróć',
+                            onPressed: () async => await value.add(hymn),
+                          )),
+                    );
                   } else {
                     await value.add(hymn);
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      SnackBar(
+                          content: Text(
+                              "Dodano pieśń ${hymn.number} do ulubionych")),
+                    );
                   }
                 },
               );
