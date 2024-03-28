@@ -32,7 +32,8 @@ class _FavoritesPageState extends State<FavoritesPage>
         future: value.getFavorites(),
         builder: (context, snapshot) {
           if (!snapshot.hasData) {
-            return const Center(child: Text("Nie masz jeszcze ulubionych pieśni"));
+            return const Center(
+                child: Text("Nie masz jeszcze ulubionych pieśni"));
           }
 
           return ListView(
