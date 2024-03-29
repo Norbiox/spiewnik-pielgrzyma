@@ -104,3 +104,7 @@ Wiedzę będę czerpał z książki "Flutter for begginners - third edition". Ko
 
 ## 27.03.2024
 - dodałem SnackBar z informacją o dodaniu lub usunięciu pieśni z listy ulubionych
+
+## 28.03.2024
+- zamieniłem `dart analyze` na `flutter analyze` w workflow
+- wprowadziłem poprawki tak, by build przechodził na zielono
