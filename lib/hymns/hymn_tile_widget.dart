@@ -12,7 +12,11 @@ class HymnTileWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListTile(
         leading: FavoriteIconWidget(hymn: hymn),
-        title: Text(hymn.fullTitle),
+        title: Text(
+          hymn.fullTitle,
+          maxLines: 1,
+          overflow: TextOverflow.ellipsis,
+        ),
         onTap: () {
           Navigator.of(context).push(MaterialPageRoute(
             builder: (context) => HymnPage(hymn: hymn),
