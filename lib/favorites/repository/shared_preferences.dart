@@ -9,59 +9,50 @@ class SharedPreferencesFavoritesRepository extends ChangeNotifier
   final HymnsListProvider hymnsListProvider;
   final SharedPreferences storage;
   final String _key = 'favoriteHymns';
+  late Set<String> _favorites = {};
 
   SharedPreferencesFavoritesRepository(this.storage, this.hymnsListProvider) {
     if (!storage.containsKey(_key)) {
       storage.setStringList(_key, <String>[]);
     }
+    _favorites = storage.getStringList(_key)!.toSet();
     notifyListeners();
   }
 
   @override
   Future<bool> isFavorite(Hymn hymn) async {
-    return await _getFavoritesSet()
-        .then((value) => value.contains(hymn.number));
+    return _favorites.contains(hymn.number);
   }
 
   @override
   Future<void> add(Hymn hymn) async {
-    final favorites = await _getFavoritesSet();
-    if (favorites.contains(hymn.number)) {
+    if (_favorites.contains(hymn.number)) {
       return;
     }
 
-    favorites.add(hymn.number);
-    storage.setStringList(_key, favorites.toList());
+    _favorites.add(hymn.number);
+    storage.setStringList(_key, _favorites.toList());
     notifyListeners();
   }
 
   @override
   Future<void> remove(Hymn hymn) async {
-    final favorites = await _getFavoritesSet();
-    if (!favorites.contains(hymn.number)) {
+    if (!_favorites.contains(hymn.number)) {
       return;
     }
-    favorites.remove(hymn.number);
-    storage.setStringList(_key, favorites.toList());
+
+    _favorites.remove(hymn.number);
+    storage.setStringList(_key, _favorites.toList());
     notifyListeners();
   }
 
   @override
   Future<List<Hymn>> getFavorites() async {
-    if (!storage.containsKey(_key)) {
-      return <Hymn>[];
-    }
-    List<Hymn> hymns = storage
-        .getStringList(_key)!
+    List<Hymn> hymns = _favorites
         .map((e) => hymnsListProvider.hymnsList
             .firstWhere((element) => element.number == e))
         .toList();
     hymns.sort((a, b) => a.index.compareTo(b.index));
     return hymns;
-  }
-
-  Future<Set<String>> _getFavoritesSet() async {
-    return await getFavorites()
-        .then((value) => value.map((e) => e.number).toSet());
   }
 }
