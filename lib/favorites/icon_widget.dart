@@ -29,12 +29,14 @@ class FavoriteIconWidget extends StatelessWidget {
                     if (!context.mounted) return;
                     ScaffoldMessenger.of(context).showSnackBar(
                       SnackBar(
-                          content: Text(
-                              "Usunięto pieśń ${hymn.number} z ulubionych"),
-                          action: SnackBarAction(
-                            label: 'Przywróć',
-                            onPressed: () async => await value.add(hymn),
-                          )),
+                        content:
+                            Text("Usunięto pieśń ${hymn.number} z ulubionych"),
+                        action: SnackBarAction(
+                          label: 'Przywróć',
+                          onPressed: () async => await value.add(hymn),
+                        ),
+                        duration: const Duration(seconds: 2),
+                      ),
                     );
                   } else {
                     await value.add(hymn);
@@ -42,8 +44,14 @@ class FavoriteIconWidget extends StatelessWidget {
                     if (!context.mounted) return;
                     ScaffoldMessenger.of(context).showSnackBar(
                       SnackBar(
-                          content: Text(
-                              "Dodano pieśń ${hymn.number} do ulubionych")),
+                        content:
+                            Text("Dodano pieśń ${hymn.number} do ulubionych"),
+                        action: SnackBarAction(
+                          label: 'Cofnij',
+                          onPressed: () async => await value.remove(hymn),
+                        ),
+                        duration: const Duration(seconds: 2),
+                      ),
                     );
                   }
                 },
