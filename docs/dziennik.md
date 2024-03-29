@@ -108,3 +108,4 @@ Wiedzę będę czerpał z książki "Flutter for begginners - third edition". Ko
 ## 28.03.2024
 - zamieniłem `dart analyze` na `flutter analyze` w workflow
 - wprowadziłem poprawki tak, by build przechodził na zielono
+- zmieniłem sposób przechowywania ulubionych pieśni na InMemory+SharedPreferences
