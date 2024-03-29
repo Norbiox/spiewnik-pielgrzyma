@@ -25,6 +25,8 @@ class FavoriteIconWidget extends StatelessWidget {
                 onPressed: () async {
                   if (await value.isFavorite(hymn)) {
                     await value.remove(hymn);
+
+                    if (!context.mounted) return;
                     ScaffoldMessenger.of(context).showSnackBar(
                       SnackBar(
                           content: Text(
@@ -36,6 +38,8 @@ class FavoriteIconWidget extends StatelessWidget {
                     );
                   } else {
                     await value.add(hymn);
+
+                    if (!context.mounted) return;
                     ScaffoldMessenger.of(context).showSnackBar(
                       SnackBar(
                           content: Text(
