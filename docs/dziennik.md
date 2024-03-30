@@ -112,3 +112,6 @@ Wiedzę będę czerpał z książki "Flutter for begginners - third edition". Ko
 
 ## 29.03.2024
 - drobne poprawki w UI
+
+## 30.03.2024
+- wyciągnąłem widget listy pieśni do osobnego pliku
