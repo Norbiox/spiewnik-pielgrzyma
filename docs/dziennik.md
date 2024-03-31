@@ -115,3 +115,6 @@ Wiedzę będę czerpał z książki "Flutter for begginners - third edition". Ko
 
 ## 30.03.2024
 - wyciągnąłem widget listy pieśni do osobnego pliku
+
+## 31.03.2024
+- dodałem podstawowe wyszukiwanie po numerach i tytułach pieśni
