@@ -26,33 +26,33 @@ class FavoriteIconWidget extends StatelessWidget {
                   if (await value.isFavorite(hymn)) {
                     await value.remove(hymn);
 
-                    if (!context.mounted) return;
-                    ScaffoldMessenger.of(context).showSnackBar(
-                      SnackBar(
-                        content:
-                            Text("Usunięto pieśń ${hymn.number} z ulubionych"),
-                        action: SnackBarAction(
-                          label: 'Przywróć',
-                          onPressed: () async => await value.add(hymn),
-                        ),
-                        duration: const Duration(seconds: 2),
-                      ),
-                    );
+                    // if (!context.mounted) return;
+                    // ScaffoldMessenger.of(context).showSnackBar(
+                    //   SnackBar(
+                    //     content:
+                    //         Text("Usunięto pieśń ${hymn.number} z ulubionych"),
+                    //     action: SnackBarAction(
+                    //       label: 'Przywróć',
+                    //       onPressed: () async => await value.add(hymn),
+                    //     ),
+                    //     duration: const Duration(seconds: 2),
+                    //   ),
+                    // );
                   } else {
                     await value.add(hymn);
 
-                    if (!context.mounted) return;
-                    ScaffoldMessenger.of(context).showSnackBar(
-                      SnackBar(
-                        content:
-                            Text("Dodano pieśń ${hymn.number} do ulubionych"),
-                        action: SnackBarAction(
-                          label: 'Cofnij',
-                          onPressed: () async => await value.remove(hymn),
-                        ),
-                        duration: const Duration(seconds: 2),
-                      ),
-                    );
+                    // if (!context.mounted) return;
+                    // ScaffoldMessenger.of(context).showSnackBar(
+                    //   SnackBar(
+                    //     content:
+                    //         Text("Dodano pieśń ${hymn.number} do ulubionych"),
+                    //     action: SnackBarAction(
+                    //       label: 'Cofnij',
+                    //       onPressed: () async => await value.remove(hymn),
+                    //     ),
+                    //     duration: const Duration(seconds: 2),
+                    //   ),
+                    // );
                   }
                 },
               );
