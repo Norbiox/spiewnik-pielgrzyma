@@ -118,3 +118,6 @@ Wiedzę będę czerpał z książki "Flutter for begginners - third edition". Ko
 
 ## 31.03.2024
 - dodałem podstawowe wyszukiwanie po numerach i tytułach pieśni
+
+## 1.03.2024
+- poprawiłem performance listy pieśni dodając `prototypeItem` do buildera

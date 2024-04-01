@@ -31,6 +31,7 @@ class _HymnsListWidgetState extends State<HymnsListWidget>
       child: ListView.builder(
           controller: _scrollController,
           itemCount: widget.hymnsList.length,
+          prototypeItem: const ListTile(),
           itemBuilder: (context, index) {
             return HymnTileWidget(hymn: widget.hymnsList[index]);
           }),
