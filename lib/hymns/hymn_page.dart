@@ -10,12 +10,15 @@ class HymnPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(title: Text(hymn.fullTitle)),
-        body: ListView(
-          children: hymn.text
-              .map((line) => Text(line,
-                  textAlign: TextAlign.left,
-                  style: Theme.of(context).textTheme.bodyLarge))
-              .toList(),
+        body: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: ListView(
+            children: hymn.text
+                .map((line) => Text(line,
+                    textAlign: TextAlign.left,
+                    style: Theme.of(context).textTheme.bodyLarge))
+                .toList(),
+          ),
         ));
   }
 }
