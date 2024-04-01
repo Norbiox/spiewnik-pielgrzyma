@@ -124,3 +124,4 @@ Wiedzę będę czerpał z książki "Flutter for begginners - third edition". Ko
 - tymczasowo wyłączyłem snackbary ponieważ nie chowają się na androidzie
 - dodałem padding w widoku pieśni
 - dodałem ikonę "Ulubiona" do widoku pieśni
+- usprawniłem wyszukiwanie pieśni - dodałem system oparty o obliczanie score'a na podstawie występowania szukanego tekstu w numerze, tytule i tekście pieśni

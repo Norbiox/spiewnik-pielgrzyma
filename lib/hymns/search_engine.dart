@@ -1,15 +1,65 @@
 import 'package:spiewnik_pielgrzyma/hymns/hymn.dart';
 
 class HymnsSearchEngine {
-  static List<Hymn> search(List<Hymn> list, String query) {
-    return list
-        .where((element) =>
-            _removePolishCharacters(element.fullTitle.toLowerCase())
-                .contains(_removePolishCharacters(query.toLowerCase())))
+  final double minimalScoreValue;
+
+  HymnsSearchEngine({this.minimalScoreValue = 10.0});
+
+  List<Hymn> search(List<Hymn> list, String query) {
+    if (query.isEmpty) {
+      return list;
+    }
+
+    List<(Hymn, double)> scoredHymns = list
+        .map((hymn) => (hymn, calculateScore(hymn, query)))
+        .where((element) => element.$2 >= minimalScoreValue)
         .toList();
+
+    scoredHymns.sort((a, b) {
+      if (a.$2 > b.$2) {
+        return -1;
+      }
+      if (a.$2 < b.$2) {
+        return 1;
+      }
+      return a.$1.index.compareTo(b.$1.index);
+    });
+
+    return scoredHymns.map((e) => e.$1).toList();
   }
 
-  static String _removePolishCharacters(String input) {
+  double calculateScore(Hymn hymn, String query) {
+    double score = 0.0;
+
+    if (query.isEmpty) {
+      return score;
+    }
+
+    String cleanQuery = _removePolishCharacters(query).toLowerCase();
+    String cleanTitle = _removePolishCharacters(hymn.fullTitle).toLowerCase();
+    String cleanText =
+        _removePolishCharacters(hymn.text.join(' ')).toLowerCase();
+
+    cleanQuery.split(' ').forEach((word) {
+      if (hymn.number == word) {
+        score += 100.0;
+      }
+      if (hymn.number.contains(word)) {
+        score += 50.0;
+      }
+    });
+
+    if (cleanTitle.contains(cleanQuery)) {
+      score += 40.0;
+    }
+    if (cleanText.contains(cleanQuery)) {
+      score += 10.0;
+    }
+
+    return score;
+  }
+
+  String _removePolishCharacters(String input) {
     Map<String, String> polishCharactersMap = {
       'ą': 'a',
       'ć': 'c',

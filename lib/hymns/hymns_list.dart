@@ -51,6 +51,6 @@ class HymnsListProvider with ChangeNotifier {
   }
 
   List<Hymn> searchHymns(String query) {
-    return HymnsSearchEngine.search(_hymnsList, query);
+    return HymnsSearchEngine().search(_hymnsList, query);
   }
 }
