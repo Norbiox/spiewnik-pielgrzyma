@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:spiewnik_pielgrzyma/favorites/icon_widget.dart';
 import 'package:spiewnik_pielgrzyma/hymns/hymn.dart';
 
 class HymnPage extends StatelessWidget {
@@ -9,7 +10,12 @@ class HymnPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(title: Text(hymn.fullTitle)),
+        appBar: AppBar(
+          title: Text(hymn.fullTitle),
+          actions: <Widget>[
+            FavoriteIconWidget(hymn: hymn),
+          ],
+        ),
         body: Padding(
           padding: const EdgeInsets.all(8.0),
           child: ListView(

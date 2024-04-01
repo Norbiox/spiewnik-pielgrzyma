@@ -123,3 +123,4 @@ Wiedzę będę czerpał z książki "Flutter for begginners - third edition". Ko
 - poprawiłem performance listy pieśni dodając `prototypeItem` do buildera
 - tymczasowo wyłączyłem snackbary ponieważ nie chowają się na androidzie
 - dodałem padding w widoku pieśni
+- dodałem ikonę "Ulubiona" do widoku pieśni
