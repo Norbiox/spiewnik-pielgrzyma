@@ -27,7 +27,7 @@ class _HymnsListPageState extends State<HymnsListPage> {
       return Scaffold(
           body: Column(children: [
         Padding(
-            padding: const EdgeInsets.all(16.0),
+            padding: const EdgeInsets.fromLTRB(24.0, 8.0, 24.0, 8.0),
             child: TextField(
                 controller: searchController,
                 onChanged: (value) => updateSearchText(value),
