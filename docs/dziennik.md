@@ -125,3 +125,6 @@ Wiedzę będę czerpał z książki "Flutter for begginners - third edition". Ko
 - dodałem padding w widoku pieśni
 - dodałem ikonę "Ulubiona" do widoku pieśni
 - usprawniłem wyszukiwanie pieśni - dodałem system oparty o obliczanie score'a na podstawie występowania szukanego tekstu w numerze, tytule i tekście pieśni
+
+## 2.03.2024
+- dodałem brakujące testy search engine
