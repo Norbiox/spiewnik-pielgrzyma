@@ -35,10 +35,9 @@ class HymnsSearchEngine {
       return score;
     }
 
-    String cleanQuery = _removePolishCharacters(query).toLowerCase();
-    String cleanTitle = _removePolishCharacters(hymn.fullTitle).toLowerCase();
-    String cleanText =
-        _removePolishCharacters(hymn.text.join(' ')).toLowerCase();
+    String cleanQuery = _removeAccents(query).toLowerCase();
+    String cleanTitle = _removeAccents(hymn.fullTitle).toLowerCase();
+    String cleanText = _removeAccents(hymn.text.join(' ')).toLowerCase();
 
     cleanQuery.split(' ').forEach((word) {
       if (hymn.number == word) {
@@ -59,7 +58,7 @@ class HymnsSearchEngine {
     return score;
   }
 
-  String _removePolishCharacters(String input) {
+  String _removeAccents(String input) {
     Map<String, String> polishCharactersMap = {
       'ą': 'a',
       'ć': 'c',
