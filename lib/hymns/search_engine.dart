@@ -35,9 +35,12 @@ class HymnsSearchEngine {
       return score;
     }
 
-    String cleanQuery = _removeAccents(query).toLowerCase();
-    String cleanTitle = _removeAccents(hymn.fullTitle).toLowerCase();
-    String cleanText = _removeAccents(hymn.text.join(' ')).toLowerCase();
+    String cleanQuery =
+        _removeSpecialCharacters(_removeAccents(query.toLowerCase()));
+    String cleanTitle =
+        _removeSpecialCharacters(_removeAccents(hymn.fullTitle.toLowerCase()));
+    String cleanText = _removeSpecialCharacters(
+        _removeAccents(hymn.text.join(' ').toLowerCase()));
 
     cleanQuery.split(' ').forEach((word) {
       if (hymn.number == word) {
@@ -85,5 +88,11 @@ class HymnsSearchEngine {
     });
 
     return input;
+  }
+
+  String _removeSpecialCharacters(String input) {
+    return input
+        .replaceAll(RegExp(r'[^a-zA-Z0-9 ]'), ' ')
+        .replaceAll(RegExp(r'\s+'), ' ');
   }
 }

@@ -128,3 +128,6 @@ Wiedzę będę czerpał z książki "Flutter for begginners - third edition". Ko
 
 ## 2.03.2024
 - dodałem brakujące testy search engine
+
+## 3.03.2024
+- dodałem ignorowanie znaków specjalnych podczas wyszukiwania pieśni

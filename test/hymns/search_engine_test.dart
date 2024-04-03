@@ -9,7 +9,8 @@ void main() {
         ["Jednak", "druga"]),
     Hymn(1, "2", "002.txt", "Pieśń druga", "group", "subgroup", []),
     Hymn(2, "10", "010.txt", "Pieśń dziesiąta", "group", "subgroup", []),
-    Hymn(3, "20", "020.txt", "Pieśń dwudziesta", "group", "subgroup", []),
+    Hymn(3, "20", "020.txt", "Pieśń dwudziesta", "group", "subgroup",
+        ["Niechaj teraz, za Twą wolą"]),
   ];
 
   test("should return full list if query is empty", () {
@@ -34,5 +35,9 @@ void main() {
 
   test("should score by part of title higher than part of text", () {
     expect(engine.search(hymns, "druga"), <Hymn>[hymns[1], hymns[0]]);
+  });
+
+  test("should ignore special characters", () {
+    expect(engine.search(hymns, "teraz za twa"), <Hymn>[hymns[3]]);
   });
 }
