@@ -131,3 +131,7 @@ Wiedzę będę czerpał z książki "Flutter for begginners - third edition". Ko
 
 ## 3.03.2024
 - dodałem ignorowanie znaków specjalnych podczas wyszukiwania pieśni
+
+## 4.03.2024
+- założyłem projekt w Firebase i podpiąłem aplikację
+- utworzyłem bazę danych w Firebase i zacząłem się dokształcać
