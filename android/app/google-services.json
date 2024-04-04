@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "289951990586",
+    "project_id": "spiewnik-pielgrzyma-50fa3",
+    "storage_bucket": "spiewnik-pielgrzyma-50fa3.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:289951990586:android:5a12b32fcef13032714603",
+        "android_client_info": {
+          "package_name": "com.example.spiewnik_pielgrzyma"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDZ6h5cTWK3SA670XFxozgjiEbs2d5quZ4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

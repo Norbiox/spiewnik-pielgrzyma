@@ -39,6 +39,7 @@ dependencies:
   equatable: ^2.0.5
   provider: ^6.1.2
   shared_preferences: ^2.2.2
+  firebase_core: ^2.28.0
 
 dev_dependencies:
   flutter_test:
