@@ -1,15 +1,22 @@
 import 'package:flutter/material.dart';
+import 'package:get_it/get_it.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:spiewnik_pielgrzyma/favorites/repository/shared_preferences.dart';
 import 'package:spiewnik_pielgrzyma/home.dart';
 import 'package:spiewnik_pielgrzyma/hymns/hymns_list.dart';
 
-void main() {
+final getIt = GetIt.instance;
+
+void setup() {
   WidgetsFlutterBinding.ensureInitialized();
+  getIt.registerSingleton<HymnsListProvider>(HymnsListProvider());
+}
+
+void main() {
+  setup();
   SharedPreferences.getInstance().then((value) {
     runApp(MultiProvider(providers: [
-      ChangeNotifierProvider(create: (_) => HymnsListProvider()),
       ChangeNotifierProvider(
           create: (_) =>
               SharedPreferencesFavoritesRepository(value, HymnsListProvider())),
