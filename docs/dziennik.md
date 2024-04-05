@@ -135,3 +135,6 @@ Wiedzę będę czerpał z książki "Flutter for begginners - third edition". Ko
 ## 4.03.2024
 - założyłem projekt w Firebase i podpiąłem aplikację
 - utworzyłem bazę danych w Firebase i zacząłem się dokształcać
+
+## 5.03.2024
+- narazie zawiesiłem prace nad integracją z Firebase, postanowiłem wypuścić pierwszą wersję aplikacji działającą zupełnie offline
