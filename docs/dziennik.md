@@ -139,3 +139,6 @@ Wiedzę będę czerpał z książki "Flutter for begginners - third edition". Ko
 ## 5.03.2024
 - narazie zawiesiłem prace nad integracją z Firebase, postanowiłem wypuścić pierwszą wersję aplikacji działającą zupełnie offline
 - zacząłem wdrażać get_it i watch_it dla późniejszej wygody
+
+## 6.03.2024
+- dokończyłem migrację na get_it+watch_it
