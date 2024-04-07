@@ -142,3 +142,6 @@ Wiedzę będę czerpał z książki "Flutter for begginners - third edition". Ko
 
 ## 6.03.2024
 - dokończyłem migrację na get_it+watch_it
+
+## 7.03.2024
+- dodałem stronę list użytkownika z przyciskiem do tworzenia list

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:spiewnik_pielgrzyma/custom_lists/custom_lists_page.dart';
 import 'package:spiewnik_pielgrzyma/favorites/favorites_page.dart';
 import 'package:spiewnik_pielgrzyma/hymns/hymns_list_page.dart';
 
@@ -26,7 +27,7 @@ class MyHomePage extends StatelessWidget {
             children: [
               HymnsListPage(),
               FavoritesPage(),
-              Text('TODO: listy użytkownika'),
+              CustomListsPage(),
             ],
           )),
     );
