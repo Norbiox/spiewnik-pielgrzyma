@@ -119,29 +119,29 @@ Wiedzę będę czerpał z książki "Flutter for begginners - third edition". Ko
 ## 31.03.2024
 - dodałem podstawowe wyszukiwanie po numerach i tytułach pieśni
 
-## 1.03.2024
+## 1.04.2024
 - poprawiłem performance listy pieśni dodając `prototypeItem` do buildera
 - tymczasowo wyłączyłem snackbary ponieważ nie chowają się na androidzie
 - dodałem padding w widoku pieśni
 - dodałem ikonę "Ulubiona" do widoku pieśni
 - usprawniłem wyszukiwanie pieśni - dodałem system oparty o obliczanie score'a na podstawie występowania szukanego tekstu w numerze, tytule i tekście pieśni
 
-## 2.03.2024
+## 2.04.2024
 - dodałem brakujące testy search engine
 
-## 3.03.2024
+## 3.04.2024
 - dodałem ignorowanie znaków specjalnych podczas wyszukiwania pieśni
 
-## 4.03.2024
+## 4.04.2024
 - założyłem projekt w Firebase i podpiąłem aplikację
 - utworzyłem bazę danych w Firebase i zacząłem się dokształcać
 
-## 5.03.2024
+## 5.04.2024
 - narazie zawiesiłem prace nad integracją z Firebase, postanowiłem wypuścić pierwszą wersję aplikacji działającą zupełnie offline
 - zacząłem wdrażać get_it i watch_it dla późniejszej wygody
 
-## 6.03.2024
+## 6.04.2024
 - dokończyłem migrację na get_it+watch_it
 
-## 7.03.2024
+## 7.04.2024
 - dodałem stronę list użytkownika z przyciskiem do tworzenia list
