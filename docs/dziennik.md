@@ -145,3 +145,6 @@ Wiedzę będę czerpał z książki "Flutter for begginners - third edition". Ko
 
 ## 7.04.2024
 - dodałem stronę list użytkownika z przyciskiem do tworzenia list
+
+## 8.04.2024
+- kombinowałem nieco z repozytorium list użytkownika, prace w toku
