@@ -148,3 +148,6 @@ Wiedzę będę czerpał z książki "Flutter for begginners - third edition". Ko
 
 ## 8.04.2024
 - kombinowałem nieco z repozytorium list użytkownika, prace w toku
+
+## 9.04.2024
+- próbowałem z listami coś podziałać, ale muszę najpierw więcej poczytać o zarządzaniu stanem
