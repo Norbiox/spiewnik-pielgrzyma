@@ -151,3 +151,6 @@ Wiedzę będę czerpał z książki "Flutter for begginners - third edition". Ko
 
 ## 9.04.2024
 - próbowałem z listami coś podziałać, ale muszę najpierw więcej poczytać o zarządzaniu stanem
+
+## 10.04.2024
+- dokształcałem się z Fluttera przez podcasty
