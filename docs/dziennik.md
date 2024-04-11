@@ -154,3 +154,8 @@ Wiedzę będę czerpał z książki "Flutter for begginners - third edition". Ko
 
 ## 10.04.2024
 - dokształcałem się z Fluttera przez podcasty
+
+## 11.04.2024
+- dodałem podstawową listę list użytkownika
+- lista jest przewijalna
+- można zmieniać kolejność list na liście

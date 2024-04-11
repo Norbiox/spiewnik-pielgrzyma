@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:get_it/get_it.dart';
+import 'package:spiewnik_pielgrzyma/custom_lists/custom_lists_list_widget.dart';
+import 'package:spiewnik_pielgrzyma/custom_lists/list.dart';
+import 'package:spiewnik_pielgrzyma/custom_lists/repository.dart';
 
 class CustomListsPage extends StatelessWidget {
   const CustomListsPage({super.key});
@@ -7,16 +11,16 @@ class CustomListsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: const Text("Nie utworzyłeś jeszcze żadnej listy"),
+      body: CustomListsListWidget(),
       floatingActionButton: FloatingActionButton(
         onPressed: () async {
           var newListName = await _showCreateListDialog(context);
           if (newListName != null) {
-            print("Creating new list: $newListName");
+            GetIt.I<CustomListsRepository>().add(CustomList(newListName, []));
           }
         },
-        child: const Icon(Icons.add),
         tooltip: "Dodaj nową listę",
+        child: const Icon(Icons.add),
       ),
     );
   }

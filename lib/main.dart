@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:spiewnik_pielgrzyma/custom_lists/repository.dart';
 import 'package:spiewnik_pielgrzyma/favorites/repository/abstract.dart';
 import 'package:spiewnik_pielgrzyma/favorites/repository/shared_preferences.dart';
 import 'package:spiewnik_pielgrzyma/home.dart';
@@ -15,6 +16,10 @@ void setup() {
       () => SharedPreferences.getInstance());
   getIt.registerSingletonWithDependencies<FavoritesRepository>(
       () => SharedPreferencesFavoritesRepository(
+          getIt<SharedPreferences>(), getIt<HymnsListProvider>()),
+      dependsOn: [SharedPreferences]);
+  getIt.registerSingletonWithDependencies<CustomListsRepository>(
+      () => CustomListsRepository(
           getIt<SharedPreferences>(), getIt<HymnsListProvider>()),
       dependsOn: [SharedPreferences]);
 }
