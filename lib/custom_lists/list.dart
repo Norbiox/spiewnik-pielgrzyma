@@ -19,7 +19,6 @@ class CustomList extends Equatable {
 
   void add(Hymn hymn) {
     hymnNumbers.add(hymn.number);
-    print(hymnNumbers);
   }
 
   @override
