@@ -3,21 +3,15 @@ import 'package:get_it/get_it.dart';
 import 'package:spiewnik_pielgrzyma/custom_lists/custom_list_tile_widget.dart';
 import 'package:spiewnik_pielgrzyma/custom_lists/list.dart';
 import 'package:spiewnik_pielgrzyma/custom_lists/repository.dart';
+import 'package:watch_it/watch_it.dart';
 
-class CustomListsListWidget extends StatefulWidget {
+class CustomListsListWidget extends StatelessWidget with WatchItMixin {
   const CustomListsListWidget({super.key});
 
   @override
-  State<CustomListsListWidget> createState() => _CustomListsListWidgetState();
-}
-
-class _CustomListsListWidgetState extends State<CustomListsListWidget> {
-  final ScrollController _scrollController = ScrollController();
-  CustomListsRepository repository = GetIt.I<CustomListsRepository>();
-
-  @override
   Widget build(BuildContext context) {
-    final list = repository.customLists;
+    ScrollController scrollController = ScrollController();
+    final list = watchIt<CustomListsRepository>().customLists;
 
     if (list.isEmpty) {
       return const Text("Nie utworzyłeś jeszcze żadnej listy");
@@ -27,12 +21,10 @@ class _CustomListsListWidgetState extends State<CustomListsListWidget> {
       thumbVisibility: true,
       thickness: 10.0,
       interactive: true,
-      controller: _scrollController,
+      controller: scrollController,
       child: ReorderableListView.builder(
         onReorder: (oldIndex, newIndex) {
-          setState(() {
-            _updateItems(oldIndex, newIndex);
-          });
+          _updateItems(oldIndex, newIndex);
         },
         itemCount: list.length,
         prototypeItem: const ListTile(),
@@ -41,11 +33,12 @@ class _CustomListsListWidgetState extends State<CustomListsListWidget> {
           child: CustomListTileWidget(list: list[index]),
         ),
       ),
-      // CustomListTileWidget(list: list[index])),
     );
   }
 
   void _updateItems(int oldIndex, int newIndex) {
+    final repository = GetIt.I<CustomListsRepository>();
+
     if (newIndex > oldIndex) {
       newIndex -= 1;
     }
