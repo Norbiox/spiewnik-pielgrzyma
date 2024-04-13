@@ -163,3 +163,8 @@ Wiedzę będę czerpał z książki "Flutter for begginners - third edition". Ko
 ## 12.04.2024
 - naprawiłem buga związanego z niewyświetlaniem się nowo utworzonej listy na widoku list
 - plan na jutro: walidacja list, usuwanie list
+
+## 13.04.2024
+- dodałem klasę-kontener na listy użytkownika
+- nowa klasa waliduje, czy nazwy list się nie powtarzają
+- pozostaje nauczyć repozytorium i widgety z niej korzystać
