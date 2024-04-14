@@ -168,3 +168,6 @@ Wiedzę będę czerpał z książki "Flutter for begginners - third edition". Ko
 - dodałem klasę-kontener na listy użytkownika
 - nowa klasa waliduje, czy nazwy list się nie powtarzają
 - pozostaje nauczyć repozytorium i widgety z niej korzystać
+
+## 14.04.2024
+- dodałem więcej testów, wykrywając masę błędów i poprawiając je
