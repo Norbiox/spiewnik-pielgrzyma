@@ -1,15 +1,15 @@
 import 'dart:collection';
 
-import 'package:equatable/equatable.dart';
+import 'package:flutter/foundation.dart';
 import 'package:get_it/get_it.dart';
 import 'package:spiewnik_pielgrzyma/hymns/hymn.dart';
 import 'package:spiewnik_pielgrzyma/hymns/hymns_list.dart';
 
-class CustomList extends Equatable {
-  final String name;
-  final List<String> hymnNumbers;
+class CustomList {
+  String name;
+  List<String> hymnNumbers;
 
-  const CustomList(this.name, this.hymnNumbers);
+  CustomList(this.name, this.hymnNumbers);
 
   List<Hymn> get hymns {
     return hymnNumbers
@@ -24,7 +24,15 @@ class CustomList extends Equatable {
   }
 
   @override
-  List<Object> get props => [name, hymnNumbers];
+  int get hashCode =>
+      Object.hashAll([name.hashCode + Object.hashAll(hymnNumbers)]);
+
+  @nonVirtual
+  @override
+  bool operator ==(Object other) => hashCode == other.hashCode;
+
+  @override
+  String toString() => "CustomList('$name', $hymnNumbers)";
 }
 
 class NonUniqueListName extends ArgumentError {}
@@ -47,7 +55,7 @@ class CustomLists extends ListBase<CustomList> {
 
   @override
   void operator []=(int index, CustomList item) {
-    if (l.any((CustomList element) => element.name == item.name) &&
+    if (l.any((CustomList el) => el.name == item.name) &&
         (l.length <= index || l[index].name != item.name)) {
       throw NonUniqueListName();
     }
@@ -56,10 +64,10 @@ class CustomLists extends ListBase<CustomList> {
   }
 
   @override
-  void add(CustomList item) {
-    if (l.any((CustomList element) => element.name == item.name)) {
+  void add(CustomList element) {
+    if (l.any((CustomList el) => el.name == element.name)) {
       throw NonUniqueListName();
     }
-    l.add(item);
+    l.add(element);
   }
 }

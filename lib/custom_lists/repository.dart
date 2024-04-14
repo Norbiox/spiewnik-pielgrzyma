@@ -3,6 +3,8 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:spiewnik_pielgrzyma/custom_lists/list.dart';
 import 'package:spiewnik_pielgrzyma/hymns/hymns_list.dart';
 
+class NotACustomListKey extends TypeError {}
+
 class CustomListsRepository extends ChangeNotifier {
   final SharedPreferences storage;
   final HymnsListProvider hymnsListProvider;
@@ -30,6 +32,13 @@ class CustomListsRepository extends ChangeNotifier {
     return "customList_$name";
   }
 
+  String _getListNameFromKey(String key) {
+    if (!key.startsWith("customList_")) {
+      throw NotACustomListKey();
+    }
+    return key.split('_').sublist(1).join('_');
+  }
+
   void save(List<CustomList> lists) {
     for (final customList in lists) {
       storage.setStringList(
@@ -37,11 +46,5 @@ class CustomListsRepository extends ChangeNotifier {
     }
     storage.setStringList(_key, lists.map((e) => e.name).toList());
     notifyListeners();
-  }
-
-  void add(CustomList list) {
-    final currentLists = customLists;
-    currentLists.add(list);
-    save(currentLists);
   }
 }
