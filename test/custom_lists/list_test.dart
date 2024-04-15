@@ -52,33 +52,12 @@ void main() async {
       expect(() => list.add(CustomList("test", [])), throwsArgumentError);
     });
 
-    test('should prevent from setting item with name that already exists', () {
-      CustomLists list = CustomLists();
-      list.add(CustomList("test1"));
-      list.add(CustomList("test2"));
-      expect(() => {list[0] = CustomList("test2")}, throwsArgumentError);
-      expect(() => {list[2] = CustomList("test2")}, throwsArgumentError);
-    });
-
-    test('should not prevent from resetting item with same name', () {
-      CustomLists list = CustomLists();
-      list.add(CustomList("test1"));
-      expect(() => {list[0] = CustomList("test1")}, returnsNormally);
-    });
-
     test('add hymn to the second list', () {
       CustomLists list = CustomLists();
       list.add(CustomList("test1"));
       list.add(CustomList("test2"));
-      list
-          .firstWhere((element) => element.name == "test2")
-          .add(const Hymn(0, "12", "", "", "", "", []));
-      expect(
-          list
-              .firstWhere((element) => element.name == "test2")
-              .hymnNumbers
-              .length,
-          1);
+      list[1].add(const Hymn(0, "12", "", "", "", "", []));
+      expect(list[1].hymnNumbers.length, 1);
     });
   });
 }

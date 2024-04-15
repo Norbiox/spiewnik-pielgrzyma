@@ -1,5 +1,3 @@
-import 'dart:collection';
-
 import 'package:flutter/foundation.dart';
 import 'package:get_it/get_it.dart';
 import 'package:spiewnik_pielgrzyma/hymns/hymn.dart';
@@ -9,7 +7,9 @@ class CustomList {
   final String name;
   List<String> hymnNumbers;
 
-  CustomList(this.name, [this.hymnNumbers = const <String>[]]);
+  CustomList(this.name, [this.hymnNumbers = const <String>[]]) {
+    hymnNumbers = List.from(hymnNumbers);
+  }
 
   List<Hymn> get hymns {
     return hymnNumbers
@@ -37,37 +37,35 @@ class CustomList {
 
 class NonUniqueListName extends ArgumentError {}
 
-class CustomLists extends ListBase<CustomList> {
-  List<CustomList> l = [];
+class CustomLists {
+  List<CustomList> _innerList = [];
 
-  CustomLists();
+  CustomLists([List<CustomList> initialValue = const []]) {
+    validate(initialValue);
+    _innerList = initialValue;
+  }
 
-  @override
+  void validate(List<CustomList> list) {
+    if (list.map((e) => e.name).toSet().length < list.length) {
+      throw NonUniqueListName();
+    }
+  }
+
   set length(int newLength) {
-    l.length = newLength;
+    _innerList.length = newLength;
   }
 
-  @override
-  int get length => l.length;
+  int get length => _innerList.length;
 
-  @override
-  CustomList operator [](int index) => l[index];
+  CustomList operator [](int index) => _innerList[index];
 
-  @override
-  void operator []=(int index, CustomList item) {
-    if (l.any((CustomList el) => el.name == item.name) &&
-        (l.length <= index || l[index].name != item.name)) {
-      throw NonUniqueListName();
-    }
-
-    l[index] = item;
+  void add(CustomList list) {
+    List<CustomList> newList = List.from(_innerList)..add(list);
+    validate(newList);
+    _innerList = newList;
   }
 
-  @override
-  void add(CustomList element) {
-    if (l.any((CustomList el) => el.name == element.name)) {
-      throw NonUniqueListName();
-    }
-    l.add(element);
+  void remove(CustomList list) {
+    _innerList.removeWhere((el) => el.name == list.name);
   }
 }
