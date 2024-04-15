@@ -74,4 +74,12 @@ class ListOfCustomLists {
     _innerList.removeAt(index);
     _innerList.insert(newIndex, list);
   }
+
+  void rename(CustomList list, String newName) {
+    int index = _innerList.indexOf(list);
+    List<CustomList> newList = List.from(_innerList)
+      ..insert(index, CustomList(newName, list.hymnNumbers));
+    validate(newList);
+    _innerList = newList;
+  }
 }

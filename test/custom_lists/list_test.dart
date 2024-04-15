@@ -95,5 +95,18 @@ void main() async {
       expect(list[1].name, equals("test3"));
       expect(list[2].name, equals("test2"));
     });
+
+    test('rename list', () {
+      ListOfCustomLists list = ListOfCustomLists(
+          [CustomList("test1"), CustomList("test2"), CustomList("test3")]);
+      list.rename(list[1], "test4");
+      expect(list[1].name, equals("test4"));
+    });
+
+    test('should throw error on renaming when new name already exists', () {
+      ListOfCustomLists list = ListOfCustomLists(
+          [CustomList("test1"), CustomList("test2"), CustomList("test3")]);
+      expect(() => list.rename(list[1], "test1"), throwsArgumentError);
+    });
   });
 }
