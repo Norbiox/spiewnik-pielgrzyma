@@ -173,4 +173,5 @@ Wiedzę będę czerpał z książki "Flutter for begginners - third edition". Ko
 - dodałem więcej testów, wykrywając masę błędów i poprawiając je
 
 ## 15.04.2024
--
+- dodałem więcej metod do listy list użytkownika
+- refaktoring
