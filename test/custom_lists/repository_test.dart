@@ -26,7 +26,7 @@ void main() async {
           await SharedPreferences.getInstance().then(
               (value) => CustomListsRepository(value, HymnsListProvider()));
 
-      CustomLists list = CustomLists();
+      ListOfCustomLists list = ListOfCustomLists();
       repository.save(list);
 
       expect(repository.customLists.length, 0);
@@ -37,7 +37,7 @@ void main() async {
           await SharedPreferences.getInstance().then(
               (value) => CustomListsRepository(value, HymnsListProvider()));
 
-      CustomLists list = CustomLists();
+      ListOfCustomLists list = ListOfCustomLists();
       list.add(CustomList("test", ["1", "2"]));
       repository.save(list);
 
@@ -50,7 +50,7 @@ void main() async {
           await SharedPreferences.getInstance().then(
               (value) => CustomListsRepository(value, HymnsListProvider()));
 
-      CustomLists list = CustomLists();
+      ListOfCustomLists list = ListOfCustomLists();
       list.add(CustomList("test1"));
       list.add(CustomList("test2"));
       repository.save(list);

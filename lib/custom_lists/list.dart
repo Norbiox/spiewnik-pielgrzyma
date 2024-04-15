@@ -37,10 +37,10 @@ class CustomList {
 
 class NonUniqueListName extends ArgumentError {}
 
-class CustomLists {
+class ListOfCustomLists {
   List<CustomList> _innerList = [];
 
-  CustomLists([List<CustomList> initialValue = const []]) {
+  ListOfCustomLists([List<CustomList> initialValue = const []]) {
     validate(initialValue);
     _innerList = initialValue;
   }

@@ -29,31 +29,31 @@ void main() async {
     });
 
     test('should be able to be created as empty list', () {
-      CustomLists list = CustomLists();
+      ListOfCustomLists list = ListOfCustomLists();
       expect(list.length, 0);
     });
 
     test('should be able to add list', () {
-      CustomLists list = CustomLists();
+      ListOfCustomLists list = ListOfCustomLists();
       list.add(CustomList("test"));
       expect(list.length, 1);
     });
 
     test('should be able to remove list', () {
-      CustomLists list = CustomLists();
+      ListOfCustomLists list = ListOfCustomLists();
       list.add(CustomList("test"));
       list.remove(list[0]);
       expect(list.length, 0);
     });
 
     test('should prevent from adding second item with same name', () {
-      CustomLists list = CustomLists();
+      ListOfCustomLists list = ListOfCustomLists();
       list.add(CustomList("test"));
       expect(() => list.add(CustomList("test", [])), throwsArgumentError);
     });
 
     test('add hymn to the second list', () {
-      CustomLists list = CustomLists();
+      ListOfCustomLists list = ListOfCustomLists();
       list.add(CustomList("test1"));
       list.add(CustomList("test2"));
       list[1].add(const Hymn(0, "12", "", "", "", "", []));
