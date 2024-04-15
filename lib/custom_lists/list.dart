@@ -9,7 +9,7 @@ class CustomList {
   final String name;
   List<String> hymnNumbers;
 
-  CustomList(this.name, this.hymnNumbers);
+  CustomList(this.name, [this.hymnNumbers = const <String>[]]);
 
   List<Hymn> get hymns {
     return hymnNumbers

@@ -51,8 +51,8 @@ void main() async {
               (value) => CustomListsRepository(value, HymnsListProvider()));
 
       CustomLists list = CustomLists();
-      list.add(CustomList("test1", []));
-      list.add(CustomList("test2", []));
+      list.add(CustomList("test1"));
+      list.add(CustomList("test2"));
       repository.save(list);
 
       expect(repository.customLists.length, 2);
@@ -64,8 +64,8 @@ void main() async {
     //             (value) => CustomListsRepository(value, HymnsListProvider()));
 
     //     CustomLists list = CustomLists();
-    //     list.add(CustomList("test1", []));
-    //     list.add(CustomList("test2", []));
+    //     list.add(CustomList("test1"));
+    //     list.add(CustomList("test2"));
     //     repository.save(list);
 
     //     CustomList test2List = list.removeAt(1);
@@ -75,7 +75,7 @@ void main() async {
 
     //     expect(
     //         repository.customLists ==
-    //             [CustomList("test2", []), CustomList("test1", [])],
+    //             [CustomList("test2"), CustomList("test1")],
     //         true);
     //   });
   });
