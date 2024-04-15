@@ -68,4 +68,10 @@ class ListOfCustomLists {
   void remove(CustomList list) {
     _innerList.removeWhere((el) => el.name == list.name);
   }
+
+  void setIndex(CustomList list, int newIndex) {
+    int index = _innerList.indexOf(list);
+    _innerList.removeAt(index);
+    _innerList.insert(newIndex, list);
+  }
 }

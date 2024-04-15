@@ -59,5 +59,41 @@ void main() async {
       list[1].add(const Hymn(0, "12", "", "", "", "", []));
       expect(list[1].hymnNumbers.length, 1);
     });
+
+    test('move list to the beginning of lists', () {
+      ListOfCustomLists list = ListOfCustomLists(
+          [CustomList("test1"), CustomList("test2"), CustomList("test3")]);
+      list.setIndex(list[2], 0);
+      expect(list[0].name, equals("test3"));
+      expect(list[1].name, equals("test1"));
+      expect(list[2].name, equals("test2"));
+    });
+
+    test('move list to the end of lists', () {
+      ListOfCustomLists list = ListOfCustomLists(
+          [CustomList("test1"), CustomList("test2"), CustomList("test3")]);
+      list.setIndex(list[0], 2);
+      expect(list[0].name, equals("test2"));
+      expect(list[1].name, equals("test3"));
+      expect(list[2].name, equals("test1"));
+    });
+
+    test('move list from the beginning to the center of lists', () {
+      ListOfCustomLists list = ListOfCustomLists(
+          [CustomList("test1"), CustomList("test2"), CustomList("test3")]);
+      list.setIndex(list[0], 1);
+      expect(list[0].name, equals("test2"));
+      expect(list[1].name, equals("test1"));
+      expect(list[2].name, equals("test3"));
+    });
+
+    test('move list from the end to the center of lists', () {
+      ListOfCustomLists list = ListOfCustomLists(
+          [CustomList("test1"), CustomList("test2"), CustomList("test3")]);
+      list.setIndex(list[2], 1);
+      expect(list[0].name, equals("test1"));
+      expect(list[1].name, equals("test3"));
+      expect(list[2].name, equals("test2"));
+    });
   });
 }
