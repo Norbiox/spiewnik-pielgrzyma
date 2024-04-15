@@ -171,3 +171,6 @@ Wiedzę będę czerpał z książki "Flutter for begginners - third edition". Ko
 
 ## 14.04.2024
 - dodałem więcej testów, wykrywając masę błędów i poprawiając je
+
+## 15.04.2024
+-

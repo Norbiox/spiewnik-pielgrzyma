@@ -60,14 +60,6 @@ void main() async {
       expect(() => {list[2] = CustomList("test2", [])}, throwsArgumentError);
     });
 
-    // test('should prevent from renaming item with name that already exists', () {
-    //   CustomLists list = CustomLists();
-    //   list.add(CustomList("test1", []));
-    //   list.add(CustomList("test2", []));
-    //   expect(() => {list[0].name = "test2"}, throwsArgumentError);
-    //   expect(() => {list[1].name = "test1"}, throwsArgumentError);
-    // });
-
     test('should not prevent from resetting item with same name', () {
       CustomLists list = CustomLists();
       list.add(CustomList("test1", []));

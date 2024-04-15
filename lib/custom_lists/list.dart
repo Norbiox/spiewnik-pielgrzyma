@@ -6,7 +6,7 @@ import 'package:spiewnik_pielgrzyma/hymns/hymn.dart';
 import 'package:spiewnik_pielgrzyma/hymns/hymns_list.dart';
 
 class CustomList {
-  String name;
+  final String name;
   List<String> hymnNumbers;
 
   CustomList(this.name, this.hymnNumbers);
