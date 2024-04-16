@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:get_it/get_it.dart';
 import 'package:spiewnik_pielgrzyma/custom_lists/custom_list_tile_widget.dart';
 import 'package:spiewnik_pielgrzyma/custom_lists/list.dart';
 import 'package:spiewnik_pielgrzyma/custom_lists/repository.dart';

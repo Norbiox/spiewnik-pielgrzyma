@@ -22,10 +22,10 @@ class ListOfBigNumbers extends ListBase<int> {
   }
 
   @override
-  void add(int value) {
-    if (value < 1000000) {
+  void add(int element) {
+    if (element < 1000000) {
       throw ArgumentError("Value is not big enough");
     }
-    innerList.add(value);
+    innerList.add(element);
   }
 }

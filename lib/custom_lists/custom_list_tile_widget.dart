@@ -14,7 +14,7 @@ class CustomListTileWidget extends StatelessWidget {
       title: Text(list.name),
       subtitle: Text("pieśni: ${list.hymnNumbers.length.toString()}"),
       trailing: IconButton(
-        icon: Icon(Icons.delete),
+        icon: const Icon(Icons.delete),
         onPressed: () async {
           await _showDeleteListDialog(context, list);
         },
