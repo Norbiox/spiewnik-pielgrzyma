@@ -178,3 +178,4 @@ Wiedzę będę czerpał z książki "Flutter for begginners - third edition". Ko
 
 ## 16.04.2024
 - nauczyłem repozytorium list użytkownika operować na nowych modelach
+- użyłem nowych modeli i repo w widgetach
