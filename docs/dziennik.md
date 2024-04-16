@@ -175,3 +175,6 @@ Wiedzę będę czerpał z książki "Flutter for begginners - third edition". Ko
 ## 15.04.2024
 - dodałem więcej metod do listy list użytkownika
 - refaktoring
+
+## 16.04.2024
+- nauczyłem repozytorium list użytkownika operować na nowych modelach

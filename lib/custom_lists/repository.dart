@@ -16,19 +16,37 @@ class CustomListsRepository extends ChangeNotifier {
     }
   }
 
-  List<CustomList> get customLists {
-    return storage
+  void save(ListOfCustomLists lists) {
+    // save existing lists
+    for (final customList in lists.elements) {
+      storage.setStringList(
+          customListKey(customList.name), customList.hymnNumbers);
+    }
+    storage.setStringList(_key, lists.elements.map((e) => e.name).toList());
+    // remove old lists
+    final customListNames = lists.elements.map((e) => e.name);
+    final keysToBeRemoved = storage.getKeys().where((el) =>
+        el.startsWith("customList_") &&
+        !customListNames.contains(_getListNameFromKey(el)));
+    for (final key in keysToBeRemoved) {
+      storage.remove(key);
+    }
+    notifyListeners();
+  }
+
+  ListOfCustomLists get customLists {
+    return ListOfCustomLists(storage
         .getStringList(_key)!
         .map((listName) => _loadList(listName))
-        .toList();
+        .toList());
   }
 
   CustomList _loadList(String name) {
-    List<String> hymnsNumbers = storage.getStringList(_customListKey(name))!;
+    List<String> hymnsNumbers = storage.getStringList(customListKey(name))!;
     return CustomList(name, hymnsNumbers);
   }
 
-  String _customListKey(String name) {
+  String customListKey(String name) {
     return "customList_$name";
   }
 
@@ -37,14 +55,5 @@ class CustomListsRepository extends ChangeNotifier {
       throw NotACustomListKey();
     }
     return key.split('_').sublist(1).join('_');
-  }
-
-  void save(List<CustomList> lists) {
-    for (final customList in lists) {
-      storage.setStringList(
-          _customListKey(customList.name), customList.hymnNumbers);
-    }
-    storage.setStringList(_key, lists.map((e) => e.name).toList());
-    notifyListeners();
   }
 }

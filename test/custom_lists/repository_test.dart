@@ -2,6 +2,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:spiewnik_pielgrzyma/custom_lists/list.dart';
 import 'package:spiewnik_pielgrzyma/custom_lists/repository.dart';
+import 'package:spiewnik_pielgrzyma/hymns/hymn.dart';
 import 'package:spiewnik_pielgrzyma/hymns/hymns_list.dart';
 
 void main() async {
@@ -37,8 +38,9 @@ void main() async {
           await SharedPreferences.getInstance().then(
               (value) => CustomListsRepository(value, HymnsListProvider()));
 
-      ListOfCustomLists list = ListOfCustomLists();
-      list.add(CustomList("test", ["1", "2"]));
+      ListOfCustomLists list = ListOfCustomLists([
+        CustomList("test", ["1", "2"])
+      ]);
       repository.save(list);
 
       expect(repository.customLists.length, 1);
@@ -50,33 +52,85 @@ void main() async {
           await SharedPreferences.getInstance().then(
               (value) => CustomListsRepository(value, HymnsListProvider()));
 
-      ListOfCustomLists list = ListOfCustomLists();
-      list.add(CustomList("test1"));
-      list.add(CustomList("test2"));
+      ListOfCustomLists list =
+          ListOfCustomLists([CustomList("test1"), CustomList("test2")]);
       repository.save(list);
 
       expect(repository.customLists.length, 2);
     });
 
-    //   test('saves list with two custom lists after reordering', () async {
-    //     final CustomListsRepository repository =
-    //         await SharedPreferences.getInstance().then(
-    //             (value) => CustomListsRepository(value, HymnsListProvider()));
+    test('saves list after change - add hymn to a list', () async {
+      final CustomListsRepository repository =
+          await SharedPreferences.getInstance().then(
+              (value) => CustomListsRepository(value, HymnsListProvider()));
 
-    //     CustomLists list = CustomLists();
-    //     list.add(CustomList("test1"));
-    //     list.add(CustomList("test2"));
-    //     repository.save(list);
+      ListOfCustomLists list = ListOfCustomLists([
+        CustomList("test", ["1", "2"])
+      ]);
+      repository.save(list);
 
-    //     CustomList test2List = list.removeAt(1);
+      list[0].add(
+          const Hymn(0, "3", "filename", "title", "group", "subgroup", []));
+      repository.save(list);
 
-    //     list.insert(0, test2List);
-    //     repository.save(list);
+      expect(repository.customLists.length, 1);
+      expect(repository.customLists[0],
+          equals(CustomList("test", ["1", "2", "3"])));
+    });
 
-    //     expect(
-    //         repository.customLists ==
-    //             [CustomList("test2"), CustomList("test1")],
-    //         true);
-    //   });
+    test('saves list after change - remove hymn from list', () async {
+      final CustomListsRepository repository =
+          await SharedPreferences.getInstance().then(
+              (value) => CustomListsRepository(value, HymnsListProvider()));
+
+      ListOfCustomLists list = ListOfCustomLists([
+        CustomList("test", ["1", "2"])
+      ]);
+      repository.save(list);
+
+      list[0].remove(const Hymn(1, "1", "", "", "", "", []));
+      repository.save(list);
+
+      expect(repository.customLists.length, 1);
+      expect(repository.customLists[0], equals(CustomList("test", ["2"])));
+    });
+
+    test('no residues are left in storage after custom list is removed',
+        () async {
+      SharedPreferences storage = await SharedPreferences.getInstance();
+      final CustomListsRepository repository =
+          CustomListsRepository(storage, HymnsListProvider());
+
+      ListOfCustomLists list = ListOfCustomLists([
+        CustomList("test", ["1", "2"])
+      ]);
+      repository.save(list);
+
+      list.remove(CustomList("test"));
+      repository.save(list);
+
+      expect(repository.customLists.length, 0);
+      expect(storage.getKeys().contains(repository.customListKey("test")),
+          equals(false));
+    });
+
+    test('add one list and remove other', () async {
+      final CustomListsRepository repository =
+          await SharedPreferences.getInstance().then(
+              (value) => CustomListsRepository(value, HymnsListProvider()));
+
+      ListOfCustomLists list = ListOfCustomLists([
+        CustomList("test", ["1", "2"])
+      ]);
+      repository.save(list);
+
+      list.add(CustomList("new list", ["3", "4"]));
+      list.remove(CustomList("test"));
+      repository.save(list);
+
+      expect(repository.customLists.length, 1);
+      expect(repository.customLists[0].name, "new list");
+      expect(repository.customLists[0].hymnNumbers, ["3", "4"]);
+    });
   });
 }

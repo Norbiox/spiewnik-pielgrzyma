@@ -1,3 +1,5 @@
+import 'dart:collection';
+
 import 'package:flutter/foundation.dart';
 import 'package:get_it/get_it.dart';
 import 'package:spiewnik_pielgrzyma/hymns/hymn.dart';
@@ -21,6 +23,10 @@ class CustomList {
 
   void add(Hymn hymn) {
     hymnNumbers.add(hymn.number);
+  }
+
+  void remove(Hymn hymn) {
+    hymnNumbers.removeWhere((el) => el == hymn.number);
   }
 
   @override
@@ -50,6 +56,8 @@ class ListOfCustomLists {
       throw NonUniqueListName();
     }
   }
+
+  List<CustomList> get elements => UnmodifiableListView(_innerList);
 
   set length(int newLength) {
     _innerList.length = newLength;
