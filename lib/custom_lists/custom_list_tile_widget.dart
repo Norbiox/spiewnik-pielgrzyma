@@ -24,6 +24,9 @@ class CustomListTileWidget extends StatelessWidget {
 
   Future<void> _showDeleteListDialog(
       BuildContext context, CustomList list) async {
+    final repository = GetIt.I<CustomListsRepository>();
+    final lists = repository.customLists;
+
     return showDialog(
       context: context,
       builder: (BuildContext context) {
@@ -37,7 +40,8 @@ class CustomListTileWidget extends StatelessWidget {
             FilledButton(
                 child: const Text("Tak"),
                 onPressed: () {
-                  GetIt.I<CustomListsRepository>().remove(list);
+                  lists.remove(list);
+                  repository.save(lists);
                   Navigator.pop(context);
                 })
           ],

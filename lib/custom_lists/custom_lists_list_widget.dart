@@ -13,7 +13,7 @@ class CustomListsListWidget extends StatelessWidget with WatchItMixin {
     ScrollController scrollController = ScrollController();
     final list = watchIt<CustomListsRepository>().customLists;
 
-    if (list.isEmpty) {
+    if (list.elements.isEmpty) {
       return const Text("Nie utworzyłeś jeszcze żadnej listy");
     }
 
@@ -43,9 +43,8 @@ class CustomListsListWidget extends StatelessWidget with WatchItMixin {
       newIndex -= 1;
     }
 
-    List<CustomList> list = repository.customLists;
-    final item = list.removeAt(oldIndex);
-    list.insert(newIndex, item);
+    ListOfCustomLists list = repository.customLists;
+    list.setIndex(list[oldIndex], newIndex);
     repository.save(list);
   }
 }

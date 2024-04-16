@@ -9,14 +9,17 @@ class CustomListsPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final repository = GetIt.I<CustomListsRepository>();
+    final list = repository.customLists;
+
     return Scaffold(
       body: const CustomListsListWidget(),
       floatingActionButton: FloatingActionButton(
         onPressed: () async {
           var newListName = await _showCreateListDialog(context);
           if (newListName != null) {
-            GetIt.I<CustomListsRepository>()
-                .add(CustomList(newListName, const []));
+            list.add(CustomList(newListName));
+            repository.save(list);
           }
         },
         tooltip: "Dodaj nową listę",

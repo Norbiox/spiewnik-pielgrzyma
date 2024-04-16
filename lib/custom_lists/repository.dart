@@ -56,4 +56,12 @@ class CustomListsRepository extends ChangeNotifier {
     }
     return key.split('_').sublist(1).join('_');
   }
+
+  void cleanup() {
+    storage
+        .getKeys()
+        .where((element) => element.startsWith("customList_"))
+        .map((e) => storage.remove(e));
+    storage.remove(_key);
+  }
 }
