@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:spiewnik_pielgrzyma/hymns/hymn.dart';
-import 'package:spiewnik_pielgrzyma/hymns/hymn_tile_widget.dart';
+import 'package:spiewnik_pielgrzyma/hymns/model/hymn.dart';
+import 'package:spiewnik_pielgrzyma/hymns/widgets/hymn_tile.dart';
 
 class HymnsListWidget extends StatefulWidget {
   final List<Hymn> hymnsList;

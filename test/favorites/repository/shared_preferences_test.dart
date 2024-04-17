@@ -1,7 +1,7 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:spiewnik_pielgrzyma/favorites/repository/shared_preferences.dart';
-import 'package:spiewnik_pielgrzyma/hymns/hymns_list.dart';
+import 'package:spiewnik_pielgrzyma/hymns/lib/provider.dart';
 
 void main() async {
   TestWidgetsFlutterBinding.ensureInitialized(); // needed for access to assets

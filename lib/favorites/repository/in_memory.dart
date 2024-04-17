@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:spiewnik_pielgrzyma/favorites/repository/abstract.dart';
-import 'package:spiewnik_pielgrzyma/hymns/hymn.dart';
-import 'package:spiewnik_pielgrzyma/hymns/hymns_list.dart';
+import 'package:spiewnik_pielgrzyma/hymns/model/hymn.dart';
+import 'package:spiewnik_pielgrzyma/hymns/lib/provider.dart';
 
 class InMemoryFavoritesRepository extends ChangeNotifier
     implements FavoritesRepository {

@@ -1,7 +1,7 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:spiewnik_pielgrzyma/hymns/hymn.dart';
+import 'package:spiewnik_pielgrzyma/hymns/model/hymn.dart';
 
-import 'package:spiewnik_pielgrzyma/hymns/hymns_list.dart';
+import 'package:spiewnik_pielgrzyma/hymns/lib/provider.dart';
 
 void main() {
   TestWidgetsFlutterBinding.ensureInitialized(); // needed for access to assets

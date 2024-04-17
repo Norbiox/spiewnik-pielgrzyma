@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:spiewnik_pielgrzyma/custom_lists/custom_list_tile_widget.dart';
-import 'package:spiewnik_pielgrzyma/custom_lists/list.dart';
-import 'package:spiewnik_pielgrzyma/custom_lists/repository.dart';
+import 'package:spiewnik_pielgrzyma/custom_lists/model/list_of_lists.dart';
+import 'package:spiewnik_pielgrzyma/custom_lists/widgets/list_tile.dart';
+import 'package:spiewnik_pielgrzyma/custom_lists/repository/list_of_lists.dart';
 import 'package:watch_it/watch_it.dart';
 
 class CustomListsListWidget extends StatelessWidget with WatchItMixin {

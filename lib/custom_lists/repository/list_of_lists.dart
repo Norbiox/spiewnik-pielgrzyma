@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:spiewnik_pielgrzyma/custom_lists/list.dart';
-import 'package:spiewnik_pielgrzyma/hymns/hymns_list.dart';
+import 'package:spiewnik_pielgrzyma/custom_lists/model/list.dart';
+import 'package:spiewnik_pielgrzyma/custom_lists/model/list_of_lists.dart';
+import 'package:spiewnik_pielgrzyma/hymns/lib/provider.dart';
 
 class NotACustomListKey extends TypeError {}
 

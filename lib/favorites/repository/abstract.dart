@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:spiewnik_pielgrzyma/hymns/hymn.dart';
+import 'package:spiewnik_pielgrzyma/hymns/model/hymn.dart';
 
 abstract class FavoritesRepository extends ChangeNotifier {
   Future<bool> isFavorite(Hymn hymn);

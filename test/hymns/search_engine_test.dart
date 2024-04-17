@@ -1,6 +1,6 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:spiewnik_pielgrzyma/hymns/hymn.dart';
-import 'package:spiewnik_pielgrzyma/hymns/search_engine.dart';
+import 'package:spiewnik_pielgrzyma/hymns/model/hymn.dart';
+import 'package:spiewnik_pielgrzyma/hymns/lib/search_engine.dart';
 
 void main() {
   HymnsSearchEngine engine = HymnsSearchEngine();

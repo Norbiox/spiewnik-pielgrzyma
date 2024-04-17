@@ -1,9 +1,10 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:spiewnik_pielgrzyma/custom_lists/list.dart';
-import 'package:spiewnik_pielgrzyma/custom_lists/repository.dart';
-import 'package:spiewnik_pielgrzyma/hymns/hymn.dart';
-import 'package:spiewnik_pielgrzyma/hymns/hymns_list.dart';
+import 'package:spiewnik_pielgrzyma/custom_lists/model/list.dart';
+import 'package:spiewnik_pielgrzyma/custom_lists/model/list_of_lists.dart';
+import 'package:spiewnik_pielgrzyma/custom_lists/repository/list_of_lists.dart';
+import 'package:spiewnik_pielgrzyma/hymns/model/hymn.dart';
+import 'package:spiewnik_pielgrzyma/hymns/lib/provider.dart';
 
 void main() async {
   TestWidgetsFlutterBinding.ensureInitialized();

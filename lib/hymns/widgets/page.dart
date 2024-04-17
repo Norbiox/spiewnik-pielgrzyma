@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:spiewnik_pielgrzyma/hymns/hymns_list.dart';
-import 'package:spiewnik_pielgrzyma/hymns/hymns_list_widget.dart';
+import 'package:spiewnik_pielgrzyma/hymns/lib/provider.dart';
+import 'package:spiewnik_pielgrzyma/hymns/widgets/hymns_list.dart';
 import 'package:watch_it/watch_it.dart';
 
 class HymnsListPage extends WatchingStatefulWidget {

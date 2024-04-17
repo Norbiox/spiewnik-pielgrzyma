@@ -1,6 +1,6 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:spiewnik_pielgrzyma/favorites/repository/in_memory.dart';
-import 'package:spiewnik_pielgrzyma/hymns/hymns_list.dart';
+import 'package:spiewnik_pielgrzyma/hymns/lib/provider.dart';
 
 void main() {
   TestWidgetsFlutterBinding.ensureInitialized(); // needed for access to assets

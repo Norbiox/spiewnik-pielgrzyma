@@ -4,8 +4,8 @@ import 'dart:developer';
 import 'package:csv/csv.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:spiewnik_pielgrzyma/hymns/hymn.dart';
-import 'package:spiewnik_pielgrzyma/hymns/search_engine.dart';
+import 'package:spiewnik_pielgrzyma/hymns/model/hymn.dart';
+import 'package:spiewnik_pielgrzyma/hymns/lib/search_engine.dart';
 
 Future<List<String>> loadHymnText(String filename) async {
   return await rootBundle

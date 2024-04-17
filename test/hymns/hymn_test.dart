@@ -1,6 +1,6 @@
 import 'package:flutter_test/flutter_test.dart';
 
-import 'package:spiewnik_pielgrzyma/hymns/hymn.dart';
+import 'package:spiewnik_pielgrzyma/hymns/model/hymn.dart';
 
 void main() {
   test("fullTitle should contain number and title - arabic number", () {

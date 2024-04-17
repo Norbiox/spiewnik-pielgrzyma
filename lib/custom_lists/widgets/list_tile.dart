@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
-import 'package:spiewnik_pielgrzyma/custom_lists/list.dart';
-import 'package:spiewnik_pielgrzyma/custom_lists/repository.dart';
+import 'package:spiewnik_pielgrzyma/custom_lists/model/list.dart';
+import 'package:spiewnik_pielgrzyma/custom_lists/repository/list_of_lists.dart';
 
 class CustomListTileWidget extends StatelessWidget {
   final CustomList list;
