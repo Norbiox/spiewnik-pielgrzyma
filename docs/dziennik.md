@@ -182,3 +182,7 @@ Wiedzę będę czerpał z książki "Flutter for begginners - third edition". Ko
 
 ## 17.04.2024
 - zaktualizowałem strukturę projektu
+
+## 18.04.2024
+- poczytałem o SQLite
+- zacząłem planować migrację z SharedPreferences do SQLite
