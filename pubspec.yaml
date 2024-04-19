@@ -43,6 +43,8 @@ dependencies:
   firebase_database: ^10.5.0
   get_it: ^7.6.8
   watch_it: ^1.4.1
+  sqflite: ^2.3.3
+  sqflite_common_ffi: ^2.3.3
 
 dev_dependencies:
   flutter_test:

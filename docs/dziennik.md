@@ -186,3 +186,7 @@ Wiedzę będę czerpał z książki "Flutter for begginners - third edition". Ko
 ## 18.04.2024
 - poczytałem o SQLite
 - zacząłem planować migrację z SharedPreferences do SQLite
+
+## 19.04.2024
+- zmigrowałem pieśni do SQLa
+- przygotowałem podwaliny pod migrację z SharedPreferences do SQLite
