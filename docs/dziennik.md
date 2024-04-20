@@ -190,3 +190,6 @@ Wiedzę będę czerpał z książki "Flutter for begginners - third edition". Ko
 ## 19.04.2024
 - zmigrowałem pieśni do SQLa
 - przygotowałem podwaliny pod migrację z SharedPreferences do SQLite
+
+## 20.04.2024
+- zmieniłem nazwy plików z tekstami, by pasowały do struktury w bazie danych, zachowując kompatybilność wsteczną
