@@ -1,3 +1,4 @@
+import 'package:flutter/services.dart';
 import 'package:sqflite/sqlite_api.dart';
 
 Future onConfigure(Database db) async {
@@ -6,6 +7,8 @@ Future onConfigure(Database db) async {
 
 Future onCreate(Database db, int version) async {
   var batch = db.batch();
+  String hymnsSql = await rootBundle.loadString("assets/hymns.sql");
+  batch.execute(hymnsSql);
   await batch.commit();
 }
 
