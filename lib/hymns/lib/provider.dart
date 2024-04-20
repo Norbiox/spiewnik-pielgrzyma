@@ -4,8 +4,10 @@ import 'dart:developer';
 import 'package:csv/csv.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:spiewnik_pielgrzyma/hymns/database/query.dart';
 import 'package:spiewnik_pielgrzyma/hymns/model/hymn.dart';
 import 'package:spiewnik_pielgrzyma/hymns/lib/search_engine.dart';
+import 'package:sqflite/sqflite.dart';
 
 Future<List<String>> loadHymnText(String filename) async {
   return await rootBundle
@@ -37,17 +39,33 @@ Future<List<Hymn>> loadHymnsList() async {
       ));
 }
 
+// Future<List<Hymn>> loadHymnsFromDatabase() async {
+Future<List<Hymn>> loadHymnsFromDatabase(Database database) async {
+  log("Querying database for hymns");
+  List<Map> queryResult = await database.rawQuery(getHymnsList);
+
+  return List<Hymn>.from(queryResult.map((hymn) => Hymn(
+        hymn['id'],
+        hymn['number'],
+        "${hymn['number']}.txt",
+        hymn['title'],
+        hymn['groupName'],
+        hymn['subgroupName'],
+        const [],
+      )));
+}
+
 class HymnsListProvider with ChangeNotifier {
   List<Hymn> _hymnsList = [];
 
   UnmodifiableListView<Hymn> get hymnsList => UnmodifiableListView(_hymnsList);
 
-  HymnsListProvider() {
-    loadHymnsList().then((hymns) {
+  HymnsListProvider(Database database) {
+    loadHymnsFromDatabase(database).then((hymns) {
       _hymnsList = hymns;
+      log("loaded ${_hymnsList.length} hymns");
       notifyListeners();
     });
-    log("loaded ${_hymnsList.length} hymns");
   }
 
   List<Hymn> searchHymns(String query) {

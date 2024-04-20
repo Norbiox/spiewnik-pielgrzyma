@@ -2,16 +2,12 @@ CREATE TABLE HymnGroups (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     name TEXT NOT NULL UNIQUE
 );
-
-
 CREATE TABLE HymnSubgroups (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     name TEXT NOT NULL UNIQUE,
     groupId INTEGER,
     FOREIGN KEY (groupId) REFERENCES HymnGroups(id) ON DELETE CASCADE
 );
-  
-
 CREATE TABLE Hymns (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     number CHAR(3) UNIQUE,
@@ -19,16 +15,12 @@ CREATE TABLE Hymns (
     groupId INTEGER,
     FOREIGN KEY (groupId) REFERENCES HymnSubgroups(id) ON DELETE CASCADE
 );
-
-
 INSERT INTO HymnGroups (id,name)
 VALUES 
   (1, 'I. Bóg Trójjedyny'),
   (2, 'II. Droga Zbawienia'),
   (3, 'III. Życie Chrześcijanina'),
   (4, 'IV. Społeczność Świętych');
-
-
 INSERT INTO HymnSubgroups (id,name,groupId)
 VALUES
   (1, '1. Chwała i dziękczynienie', 1),
@@ -56,8 +48,6 @@ VALUES
   (23, '23. Pogrzeb', 4),
   (24, '24. Pory dnia i roku', 4),
   (25, '25. Addenda', 4);
-
-
 INSERT INTO Hymns (number,title,groupId)
 VALUES
   ('1', 'Alleluja, chwalcie Pana', 1),

@@ -18,17 +18,19 @@ void setup() {
     var factory = databaseFactory;
     return await factory.openDatabase('db.sqlite', options: databaseOptions);
   });
-  getIt.registerSingleton<HymnsListProvider>(HymnsListProvider());
+  getIt.registerSingletonWithDependencies<HymnsListProvider>(
+      () => HymnsListProvider(getIt<Database>()),
+      dependsOn: [Database]);
   getIt.registerSingletonAsync<SharedPreferences>(
       () => SharedPreferences.getInstance());
   getIt.registerSingletonWithDependencies<FavoritesRepository>(
       () => SharedPreferencesFavoritesRepository(
           getIt<SharedPreferences>(), getIt<HymnsListProvider>()),
-      dependsOn: [SharedPreferences]);
+      dependsOn: [SharedPreferences, HymnsListProvider]);
   getIt.registerSingletonWithDependencies<CustomListsRepository>(
       () => CustomListsRepository(
           getIt<SharedPreferences>(), getIt<HymnsListProvider>()),
-      dependsOn: [SharedPreferences]);
+      dependsOn: [SharedPreferences, HymnsListProvider]);
 }
 
 void main() {
