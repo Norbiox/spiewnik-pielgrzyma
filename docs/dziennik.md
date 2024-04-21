@@ -194,3 +194,7 @@ Wiedzę będę czerpał z książki "Flutter for begginners - third edition". Ko
 ## 20.04.2024
 - zmieniłem nazwy plików z tekstami, by pasowały do struktury w bazie danych, zachowując kompatybilność wsteczną
 - pieśni są już ładowane z bazy sqlite
+
+## 21.04.2024
+- dodałem brakujące ładowanie tekstów pieśni do loadera
+- usunąłem pozostałości po ładowaniu pieśni z pliku csv

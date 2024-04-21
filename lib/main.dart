@@ -8,7 +8,6 @@ import 'package:spiewnik_pielgrzyma/favorites/repository/shared_preferences.dart
 import 'package:spiewnik_pielgrzyma/home.dart';
 import 'package:spiewnik_pielgrzyma/hymns/lib/provider.dart';
 import 'package:sqflite/sqflite.dart';
-import 'package:sqflite/sqlite_api.dart';
 
 final getIt = GetIt.instance;
 
