@@ -198,3 +198,4 @@ Wiedzę będę czerpał z książki "Flutter for begginners - third edition". Ko
 ## 21.04.2024
 - dodałem brakujące ładowanie tekstów pieśni do loadera
 - usunąłem pozostałości po ładowaniu pieśni z pliku csv
+- dodałem testy migracji
