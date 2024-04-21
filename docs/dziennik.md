@@ -199,3 +199,4 @@ Wiedzę będę czerpał z książki "Flutter for begginners - third edition". Ko
 - dodałem brakujące ładowanie tekstów pieśni do loadera
 - usunąłem pozostałości po ładowaniu pieśni z pliku csv
 - dodałem testy migracji
+- naprawiłem błąd pojawiający się przy startupie aplikacji związany z użyciem HymnListProvider'a przed jego załadowaniem
