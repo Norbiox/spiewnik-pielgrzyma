@@ -17,7 +17,7 @@ void main() {
     final provider = HymnsListProvider(db);
     await Future.delayed(const Duration(seconds: 1));
 
-    expect(provider.hymnsList[0].index, 1);
+    expect(provider.hymnsList[0].id, 1);
     expect(provider.hymnsList[0].number, '1');
     expect(provider.hymnsList[0].title, 'Alleluja, chwalcie Pana');
     expect(provider.hymnsList[0].group, 'I. Bóg Trójjedyny');

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:spiewnik_pielgrzyma/custom_lists/widgets/page.dart';
-import 'package:spiewnik_pielgrzyma/favorites/widgets/page.dart';
+import 'package:spiewnik_pielgrzyma/favorites/page.dart';
 import 'package:spiewnik_pielgrzyma/hymns/widgets/page.dart';
 
 class MyHomePage extends StatelessWidget {

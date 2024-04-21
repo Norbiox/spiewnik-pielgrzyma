@@ -1,5 +1,5 @@
 class Hymn {
-  final int index;
+  final int id;
   final String number;
   final String filename;
   final String title;
@@ -8,7 +8,7 @@ class Hymn {
   final List<String> text;
   bool isFavorite;
 
-  Hymn(this.index, this.number, this.filename, this.title, this.group,
+  Hymn(this.id, this.number, this.filename, this.title, this.group,
       this.subgroup, this.text,
       {this.isFavorite = false});
 

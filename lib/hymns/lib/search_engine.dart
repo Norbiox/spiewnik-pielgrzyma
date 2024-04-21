@@ -22,7 +22,7 @@ class HymnsSearchEngine {
       if (a.$2 < b.$2) {
         return 1;
       }
-      return a.$1.index.compareTo(b.$1.index);
+      return a.$1.id.compareTo(b.$1.id);
     });
 
     return scoredHymns.map((e) => e.$1).toList();

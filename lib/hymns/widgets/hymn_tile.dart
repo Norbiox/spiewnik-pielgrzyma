@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:spiewnik_pielgrzyma/favorites/widgets/icon.dart';
+import 'package:spiewnik_pielgrzyma/hymns/widgets/favorite_icon.dart';
 import 'package:spiewnik_pielgrzyma/hymns/model/hymn.dart';
 import 'package:spiewnik_pielgrzyma/hymns/widgets/hymn_page.dart';
 

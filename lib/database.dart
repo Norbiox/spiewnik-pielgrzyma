@@ -35,7 +35,7 @@ Future onUpgrade(Database db, int oldVersion, int newVersion) async {
   log("Running onUpgrade database migration");
   var batch = db.batch();
 
-  if (oldVersion >= 2) {
+  if (oldVersion >= 1) {
     addIsFavoriteColumn(batch);
   }
 

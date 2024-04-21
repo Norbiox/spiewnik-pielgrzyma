@@ -200,3 +200,4 @@ Wiedzę będę czerpał z książki "Flutter for begginners - third edition". Ko
 - usunąłem pozostałości po ładowaniu pieśni z pliku csv
 - dodałem testy migracji
 - naprawiłem błąd pojawiający się przy startupie aplikacji związany z użyciem HymnListProvider'a przed jego załadowaniem
+- zmigrowałem się z systemem ulubionych pieśni na bazę danych i usunąłem stary kod

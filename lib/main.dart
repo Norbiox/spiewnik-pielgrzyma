@@ -3,8 +3,6 @@ import 'package:get_it/get_it.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:spiewnik_pielgrzyma/custom_lists/repository/list_of_lists.dart';
 import 'package:spiewnik_pielgrzyma/database.dart';
-import 'package:spiewnik_pielgrzyma/favorites/repository/abstract.dart';
-import 'package:spiewnik_pielgrzyma/favorites/repository/shared_preferences.dart';
 import 'package:spiewnik_pielgrzyma/home.dart';
 import 'package:spiewnik_pielgrzyma/hymns/lib/provider.dart';
 import 'package:sqflite/sqflite.dart';
@@ -22,10 +20,6 @@ void setup() {
       dependsOn: [Database]);
   getIt.registerSingletonAsync<SharedPreferences>(
       () => SharedPreferences.getInstance());
-  getIt.registerSingletonWithDependencies<FavoritesRepository>(
-      () => SharedPreferencesFavoritesRepository(
-          getIt<SharedPreferences>(), getIt<HymnsListProvider>()),
-      dependsOn: [SharedPreferences, HymnsListProvider]);
   getIt.registerSingletonWithDependencies<CustomListsRepository>(
       () => CustomListsRepository(
           getIt<SharedPreferences>(), getIt<HymnsListProvider>()),

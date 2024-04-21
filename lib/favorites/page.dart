@@ -1,22 +1,19 @@
-import 'package:flutter/widgets.dart';
-import 'package:spiewnik_pielgrzyma/favorites/repository/abstract.dart';
-import 'package:spiewnik_pielgrzyma/hymns/model/hymn.dart';
+import 'package:flutter/material.dart';
+import 'package:spiewnik_pielgrzyma/hymns/lib/provider.dart';
 import 'package:spiewnik_pielgrzyma/hymns/widgets/hymns_list.dart';
 import 'package:watch_it/watch_it.dart';
 
-class FavoritesPage extends StatelessWidget with WatchItMixin {
+class FavoritesPage extends WatchingWidget {
   const FavoritesPage({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final favorites = watchFuture(
-        (FavoritesRepository favRepo) => favRepo.getFavorites(),
-        initialValue: <Hymn>[]);
+    final HymnsListProvider hymnsList = GetIt.I<HymnsListProvider>();
+    watch(hymnsList);
 
-    if (!favorites.hasData) {
-      return const Text("Nie masz jeszcze ulubionych pieśni");
-    }
-
-    return HymnsListWidget(hymnsList: favorites.data!);
+    return HymnsListWidget(
+        hymnsList: hymnsList.hymnsList
+            .where((element) => element.isFavorite == true)
+            .toList());
   }
 }
