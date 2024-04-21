@@ -9,7 +9,7 @@ void main() {
   sqfliteFfiInit();
   WidgetsFlutterBinding.ensureInitialized();
 
-  test('Test hymns are loaded with all expected fields', () async {
+  test('hymns are loaded with all expected fields', () async {
     var db = await databaseFactoryFfi.openDatabase(inMemoryDatabasePath,
         options: databaseOptions);
     db.update('Hymns', {'isFavorite': 1}, where: 'id = 1');
@@ -25,5 +25,23 @@ void main() {
     expect(provider.hymnsList[0].isFavorite, true);
 
     await db.close();
+  });
+
+  test('toggleIsFavorite', () async {
+    var db = await databaseFactoryFfi.openDatabase(inMemoryDatabasePath,
+        options: databaseOptions);
+
+    final provider = HymnsListProvider(db);
+    await Future.delayed(const Duration(seconds: 1));
+
+    bool currentState = await provider.toggleIsFavorite(provider.hymnsList[8]);
+    expect(currentState, true);
+    expect(provider.hymnsList[8].isFavorite, true);
+    expect(await db.query('Hymns').then((value) => value[8]['isFavorite']), 1);
+
+    bool currentState2 = await provider.toggleIsFavorite(provider.hymnsList[8]);
+    expect(currentState2, false);
+    expect(provider.hymnsList[8].isFavorite, false);
+    expect(await db.query('Hymns').then((value) => value[8]['isFavorite']), 0);
   });
 }

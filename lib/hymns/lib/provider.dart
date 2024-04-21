@@ -53,10 +53,11 @@ class HymnsListProvider with ChangeNotifier {
     return HymnsSearchEngine().search(_hymnsList, query);
   }
 
-  void toggleIsFavorite(Hymn hymn) async {
+  Future<bool> toggleIsFavorite(Hymn hymn) async {
     hymn.isFavorite = !hymn.isFavorite;
-    db.update('Hymns', {'isFavorite': hymn.isFavorite ? 1 : 0},
+    await db.update('Hymns', {'isFavorite': hymn.isFavorite ? 1 : 0},
         where: 'id = ${hymn.id}');
     notifyListeners();
+    return hymn.isFavorite;
   }
 }

@@ -15,7 +15,9 @@ class FavoriteIconWidget extends WatchingWidget {
 
     return IconButton(
       icon: Icon(hymn.isFavorite ? Icons.favorite : Icons.favorite_border),
-      onPressed: () => hymnsList.toggleIsFavorite(hymn),
+      onPressed: () async {
+        await hymnsList.toggleIsFavorite(hymn);
+      },
     );
   }
 }
