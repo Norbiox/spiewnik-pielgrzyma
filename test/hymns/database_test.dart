@@ -8,6 +8,18 @@ void main() {
   sqfliteFfiInit();
   WidgetsFlutterBinding.ensureInitialized();
 
+  group('Test migrations', () {
+    test('Test "isFavorite" column is added to "Hymns" table', () async {
+      var db = await databaseFactoryFfi.openDatabase(inMemoryDatabasePath,
+          options: databaseOptions);
+
+      expect(
+          await db.query('Hymns').then((value) => value[0]['isFavorite']), 0);
+
+      await db.close();
+    });
+  });
+
   group('Test queries', () {
     test('Test getHymnsList returns all hymns', () async {
       var db = await databaseFactoryFfi.openDatabase(inMemoryDatabasePath,

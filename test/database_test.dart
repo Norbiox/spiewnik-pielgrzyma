@@ -9,8 +9,7 @@ void main() {
   WidgetsFlutterBinding.ensureInitialized();
 
   test('Test database is created and populated with hymns', () async {
-    var factory = databaseFactoryFfi;
-    var db = await factory.openDatabase(inMemoryDatabasePath,
+    var db = await databaseFactoryFfi.openDatabase(inMemoryDatabasePath,
         options: databaseOptions);
 
     expect(await db.query('HymnGroups').then((value) => value.length), 4);

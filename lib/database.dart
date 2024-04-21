@@ -1,6 +1,7 @@
 import 'dart:developer';
 
 import 'package:flutter/services.dart';
+import 'package:spiewnik_pielgrzyma/hymns/database/migrations.dart';
 import 'package:sqflite/sqlite_api.dart';
 
 Future<List<String>> loadSqlFromAssets(String assetPath) async {
@@ -23,6 +24,7 @@ Future onCreate(Database db, int version) async {
     log("Running following SQL: $sql");
     batch.execute(sql);
   }
+  addIsFavoriteColumn(batch);
 
   await batch.commit();
   var tables = await db.query("sqlite_master");
@@ -32,11 +34,16 @@ Future onCreate(Database db, int version) async {
 Future onUpgrade(Database db, int oldVersion, int newVersion) async {
   log("Running onUpgrade database migration");
   var batch = db.batch();
+
+  if (oldVersion >= 2) {
+    addIsFavoriteColumn(batch);
+  }
+
   await batch.commit();
 }
 
 OpenDatabaseOptions databaseOptions = OpenDatabaseOptions(
-  version: 1,
+  version: 2,
   onConfigure: onConfigure,
   onCreate: onCreate,
   onUpgrade: onUpgrade,
