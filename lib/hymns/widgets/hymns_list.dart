@@ -20,7 +20,7 @@ class _HymnsListWidgetState extends State<HymnsListWidget>
     super.build(context);
 
     if (widget.hymnsList.isEmpty) {
-      return const Center(child: Text("Brak pieśni"));
+      return const Center(child: CircularProgressIndicator());
     }
 
     return Scrollbar(
