@@ -11,5 +11,3 @@ FROM Hymns
 LEFT JOIN HymnSubgroups ON Hymns.groupId = HymnSubgroups.id
 LEFT JOIN HymnGroups ON HymnSubgroups.groupId = HymnGroups.id;
 ''';
-
-String getHymns = 'SELECT * FROM Hymns;';
