@@ -4,7 +4,7 @@ import 'package:spiewnik_pielgrzyma/hymns/lib/search_engine.dart';
 
 void main() {
   HymnsSearchEngine engine = HymnsSearchEngine();
-  const List<Hymn> hymns = [
+  List<Hymn> hymns = [
     Hymn(0, "1", "001.txt", "Pieśń pierwsza", "group", "subgroup",
         ["Jednak", "druga"]),
     Hymn(1, "2", "002.txt", "Pieśń druga", "group", "subgroup", []),

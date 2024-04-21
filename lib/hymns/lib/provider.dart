@@ -1,5 +1,6 @@
 import 'dart:collection';
 import 'dart:developer';
+import 'dart:ffi';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -28,6 +29,7 @@ Future<List<Hymn>> loadHymns(Database database) async {
       hymnDetails['groupName'],
       hymnDetails['subgroupName'],
       await loadHymnText("${hymnDetails['number']}.txt"),
+      isFavorite: hymnDetails['isFavorite'] == 1,
     ));
   });
 

@@ -34,7 +34,7 @@ void main() async {
       ListOfCustomLists list = ListOfCustomLists();
       list.add(CustomList("test1"));
       list.add(CustomList("test2"));
-      list[1].add(const Hymn(0, "12", "", "", "", "", []));
+      list[1].add(Hymn(0, "12", "", "", "", "", []));
       expect(list[1].hymnNumbers.length, 1);
     });
 

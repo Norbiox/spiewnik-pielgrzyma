@@ -1,6 +1,4 @@
-import 'package:equatable/equatable.dart';
-
-class Hymn extends Equatable {
+class Hymn {
   final int index;
   final String number;
   final String filename;
@@ -8,12 +6,11 @@ class Hymn extends Equatable {
   final String group;
   final String subgroup;
   final List<String> text;
+  bool isFavorite;
 
-  const Hymn(this.index, this.number, this.filename, this.title, this.group,
-      this.subgroup, this.text);
+  Hymn(this.index, this.number, this.filename, this.title, this.group,
+      this.subgroup, this.text,
+      {this.isFavorite = false});
 
   String get fullTitle => "$number. $title";
-
-  @override
-  List<Object> get props => [number, filename, title, group, subgroup];
 }

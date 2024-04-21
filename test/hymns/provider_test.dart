@@ -12,6 +12,7 @@ void main() {
   test('Test hymns are loaded with all expected fields', () async {
     var db = await databaseFactoryFfi.openDatabase(inMemoryDatabasePath,
         options: databaseOptions);
+    db.update('Hymns', {'isFavorite': 1}, where: 'id = 1');
 
     final provider = HymnsListProvider(db);
     await Future.delayed(const Duration(seconds: 1));
@@ -21,6 +22,7 @@ void main() {
     expect(provider.hymnsList[0].title, 'Alleluja, chwalcie Pana');
     expect(provider.hymnsList[0].group, 'I. Bóg Trójjedyny');
     expect(provider.hymnsList[0].subgroup, '1. Chwała i dziękczynienie');
+    expect(provider.hymnsList[0].isFavorite, true);
 
     await db.close();
   });

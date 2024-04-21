@@ -7,7 +7,7 @@ void main() async {
   group('Test CustomList', () {
     test('add hymn to empty list', () {
       CustomList list = CustomList("test");
-      list.add(const Hymn(0, "0", "", "", "", "", []));
+      list.add(Hymn(0, "0", "", "", "", "", []));
       expect(list.hymnNumbers.length, 1);
     });
   });

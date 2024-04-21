@@ -70,8 +70,7 @@ void main() async {
       ]);
       repository.save(list);
 
-      list[0].add(
-          const Hymn(0, "3", "filename", "title", "group", "subgroup", []));
+      list[0].add(Hymn(0, "3", "filename", "title", "group", "subgroup", []));
       repository.save(list);
 
       expect(repository.customLists.length, 1);
@@ -89,7 +88,7 @@ void main() async {
       ]);
       repository.save(list);
 
-      list[0].remove(const Hymn(1, "1", "", "", "", "", []));
+      list[0].remove(Hymn(1, "1", "", "", "", "", []));
       repository.save(list);
 
       expect(repository.customLists.length, 1);

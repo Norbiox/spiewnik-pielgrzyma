@@ -3,6 +3,7 @@ SELECT
   Hymns.id AS id,
   Hymns.number AS number,
   Hymns.title AS title,
+  Hymns.isFavorite AS isFavorite,
   HymnSubgroups.id AS subgroupId,
   HymnSubgroups.name AS subgroupName,
   HymnGroups.id AS groupId,
