@@ -44,12 +44,22 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Śpiewnik Pielgrzyma',
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.blue),
-        useMaterial3: true,
-      ),
-      home: const MyHomePage(),
-    );
+        title: 'Śpiewnik Pielgrzyma',
+        theme: ThemeData(
+          colorScheme: ColorScheme.fromSeed(seedColor: Colors.blue),
+          useMaterial3: true,
+        ),
+        home: const MyHomePage(),
+        builder: (context, widget) {
+          return FutureBuilder(
+              future: getIt.allReady(),
+              builder: (BuildContext context, AsyncSnapshot snapshot) {
+                if (snapshot.hasData) {
+                  return widget!;
+                } else {
+                  return Container(color: Colors.white);
+                }
+              });
+        });
   }
 }
