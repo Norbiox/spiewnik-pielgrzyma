@@ -1,6 +1,7 @@
 import 'dart:developer';
 
 import 'package:flutter/services.dart';
+import 'package:spiewnik_pielgrzyma/custom_lists/database/migrations.dart';
 import 'package:spiewnik_pielgrzyma/hymns/database/migrations.dart';
 import 'package:sqflite/sqlite_api.dart';
 
@@ -25,6 +26,7 @@ Future onCreate(Database db, int version) async {
     batch.execute(sql);
   }
   addIsFavoriteColumn(batch);
+  createCustomListsTable(batch);
 
   await batch.commit();
   var tables = await db.query("sqlite_master");
@@ -38,12 +40,15 @@ Future onUpgrade(Database db, int oldVersion, int newVersion) async {
   if (oldVersion >= 1) {
     addIsFavoriteColumn(batch);
   }
+  if (oldVersion >= 2) {
+    createCustomListsTable(batch);
+  }
 
   await batch.commit();
 }
 
 OpenDatabaseOptions databaseOptions = OpenDatabaseOptions(
-  version: 2,
+  version: 3,
   onConfigure: onConfigure,
   onCreate: onCreate,
   onUpgrade: onUpgrade,

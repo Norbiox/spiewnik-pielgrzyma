@@ -201,3 +201,6 @@ Wiedzę będę czerpał z książki "Flutter for begginners - third edition". Ko
 - dodałem testy migracji
 - naprawiłem błąd pojawiający się przy startupie aplikacji związany z użyciem HymnListProvider'a przed jego załadowaniem
 - zmigrowałem się z systemem ulubionych pieśni na bazę danych i usunąłem stary kod
+
+## 22.04.2024
+- dodałem tablicę na listy użytkownika
