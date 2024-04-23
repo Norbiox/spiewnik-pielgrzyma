@@ -204,3 +204,6 @@ Wiedzę będę czerpał z książki "Flutter for begginners - third edition". Ko
 
 ## 22.04.2024
 - dodałem tablicę na listy użytkownika
+
+## 23.04.2024
+- kminiłem nad nową implementacją list użytkownika
