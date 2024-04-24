@@ -207,3 +207,6 @@ Wiedzę będę czerpał z książki "Flutter for begginners - third edition". Ko
 
 ## 23.04.2024
 - kminiłem nad nową implementacją list użytkownika
+
+## 24.04.2024
+- zbyt zmęczony na kodzenie...
