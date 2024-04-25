@@ -210,3 +210,6 @@ Wiedzę będę czerpał z książki "Flutter for begginners - third edition". Ko
 
 ## 24.04.2024
 - zbyt zmęczony na kodzenie...
+
+## 25.05.2024
+- psucia custom lists ciąg dalszy

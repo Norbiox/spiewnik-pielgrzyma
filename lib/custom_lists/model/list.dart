@@ -1,40 +1,20 @@
-import 'package:flutter/foundation.dart';
-import 'package:get_it/get_it.dart';
+import 'dart:collection';
+
 import 'package:spiewnik_pielgrzyma/hymns/model/hymn.dart';
-import 'package:spiewnik_pielgrzyma/hymns/lib/provider.dart';
 
 class CustomList {
-  final String name;
-  List<String> hymnNumbers;
+  late int id;
+  String name;
+  late int orderingIndex;
+  late DateTime createdAt;
+  late DateTime modifiedAt;
+  late List<Hymn> _hymns;
 
-  CustomList(this.name, [this.hymnNumbers = const <String>[]]) {
-    hymnNumbers = List.from(hymnNumbers);
+  CustomList(
+      this.id, this.name, this.orderingIndex, this.createdAt, this.modifiedAt,
+      [hymns = const <Hymn>[]]) {
+    _hymns = List<Hymn>.from(hymns);
   }
 
-  List<Hymn> get hymns {
-    return hymnNumbers
-        .map((number) => GetIt.I<HymnsListProvider>()
-            .hymnsList
-            .firstWhere((element) => element.number == number))
-        .toList();
-  }
-
-  void add(Hymn hymn) {
-    hymnNumbers.add(hymn.number);
-  }
-
-  void remove(Hymn hymn) {
-    hymnNumbers.removeWhere((el) => el == hymn.number);
-  }
-
-  @override
-  int get hashCode =>
-      Object.hashAll([name.hashCode + Object.hashAll(hymnNumbers)]);
-
-  @nonVirtual
-  @override
-  bool operator ==(Object other) => hashCode == other.hashCode;
-
-  @override
-  String toString() => "CustomList('$name', $hymnNumbers)";
+  UnmodifiableListView<Hymn> get hymns => UnmodifiableListView(_hymns);
 }
