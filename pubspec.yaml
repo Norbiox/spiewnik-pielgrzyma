@@ -45,6 +45,7 @@ dependencies:
   watch_it: ^1.4.1
   sqflite: ^2.3.3
   sqflite_common_ffi: ^2.3.3
+  uuid: ^4.4.0
 
 dev_dependencies:
   flutter_test:
