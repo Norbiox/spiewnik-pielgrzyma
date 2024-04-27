@@ -213,3 +213,7 @@ Wiedzę będę czerpał z książki "Flutter for begginners - third edition". Ko
 
 ## 25.05.2024
 - psucia custom lists ciąg dalszy
+
+## 27.05.2024
+- zmieniłem typ CustomList.ID na UUID
+- dodałem factory do tworzenia nowych CustomList
