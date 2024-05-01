@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:spiewnik_pielgrzyma/custom_lists/repository/list_of_lists.dart';
-import 'package:spiewnik_pielgrzyma/database.dart';
-import 'package:spiewnik_pielgrzyma/home.dart';
-import 'package:spiewnik_pielgrzyma/hymns/lib/provider.dart';
+import 'package:spiewnik_pielgrzyma/infra/persistence/sqlite/database.dart';
+import 'package:spiewnik_pielgrzyma/app/widgets/home.dart';
+import 'package:spiewnik_pielgrzyma/app/providers/hymns/provider.dart';
 import 'package:sqflite/sqflite.dart';
 
 final getIt = GetIt.instance;
@@ -20,10 +19,6 @@ void setup() {
       dependsOn: [Database]);
   getIt.registerSingletonAsync<SharedPreferences>(
       () => SharedPreferences.getInstance());
-  getIt.registerSingletonWithDependencies<CustomListsRepository>(
-      () => CustomListsRepository(
-          getIt<SharedPreferences>(), getIt<HymnsListProvider>()),
-      dependsOn: [SharedPreferences, HymnsListProvider]);
 }
 
 void main() {

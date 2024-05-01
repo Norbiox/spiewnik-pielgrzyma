@@ -1,7 +1,9 @@
 import 'package:clock/clock.dart';
 
+typedef EntityId = String;
+
 class Entity {
-  final String id;
+  final EntityId id;
   DateTime modifiedAt;
 
   Entity(this.id, this.modifiedAt);
