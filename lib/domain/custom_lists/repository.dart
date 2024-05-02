@@ -6,8 +6,8 @@ import 'package:spiewnik_pielgrzyma/seed/exceptions.dart';
 class CustomListNotFoundException extends RepositoryException {}
 
 abstract class CustomListRepository extends ChangeNotifier {
-  CustomList getById(EntityId listId);
-  List<CustomList> getAll();
+  Future<CustomList> getById(EntityId listId);
+  Future<List<CustomList>> getAll();
   void save(CustomList list);
   void saveAll(List<CustomList> list);
   void remove(CustomList list);
