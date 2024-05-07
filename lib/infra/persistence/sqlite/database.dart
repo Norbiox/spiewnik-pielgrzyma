@@ -26,7 +26,7 @@ Future onCreate(Database db, int version) async {
     batch.execute(sql);
   }
   addIsFavoriteColumn(batch);
-  createCustomListsTable(batch);
+  // createCustomListsTable(batch);
 
   await batch.commit();
   var tables = await db.query("sqlite_master");
@@ -40,15 +40,15 @@ Future onUpgrade(Database db, int oldVersion, int newVersion) async {
   if (oldVersion >= 1) {
     addIsFavoriteColumn(batch);
   }
-  if (oldVersion >= 2) {
-    createCustomListsTable(batch);
-  }
+  // if (oldVersion >= 2) {
+  //   createCustomListsTable(batch);
+  // }
 
   await batch.commit();
 }
 
 OpenDatabaseOptions databaseOptions = OpenDatabaseOptions(
-  version: 3,
+  version: 1,
   onConfigure: onConfigure,
   onCreate: onCreate,
   onUpgrade: onUpgrade,

@@ -1,16 +1,24 @@
-class Hymn {
-  final int id;
+import 'package:spiewnik_pielgrzyma/seed/entity.dart';
+
+class Hymn extends Entity {
   final String number;
-  final String filename;
   final String title;
   final String group;
   final String subgroup;
   final List<String> text;
-  bool isFavorite;
+  bool _isFavorite;
 
-  Hymn(this.id, this.number, this.filename, this.title, this.group,
+  Hymn(super.id, super.modifiedAt, this.number, this.title, this.group,
       this.subgroup, this.text,
-      {this.isFavorite = false});
+      [this._isFavorite = false]);
 
   String get fullTitle => "$number. $title";
+
+  bool get isFavorite => _isFavorite;
+
+  toggleIsFavorite() {
+    recordModificationTime(() {
+      _isFavorite = !_isFavorite;
+    });
+  }
 }
