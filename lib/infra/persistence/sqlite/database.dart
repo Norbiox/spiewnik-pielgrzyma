@@ -1,8 +1,7 @@
 import 'dart:developer';
 
 import 'package:flutter/services.dart';
-import 'package:spiewnik_pielgrzyma/infra/persistence/sqlite/custom_lists_repository.dart';
-import 'package:spiewnik_pielgrzyma/infra/persistence/sqlite/hymns_database.dart';
+import 'package:spiewnik_pielgrzyma/infra/persistence/sqlite/hymns_repository.dart';
 import 'package:sqflite/sqlite_api.dart';
 
 Future<List<String>> loadSqlFromAssets(String assetPath) async {
@@ -25,8 +24,7 @@ Future onCreate(Database db, int version) async {
     log("Running following SQL: $sql");
     batch.execute(sql);
   }
-  addIsFavoriteColumn(batch);
-  // createCustomListsTable(batch);
+  addModifiableColumns(batch);
 
   await batch.commit();
   var tables = await db.query("sqlite_master");
@@ -38,11 +36,8 @@ Future onUpgrade(Database db, int oldVersion, int newVersion) async {
   var batch = db.batch();
 
   if (oldVersion >= 1) {
-    addIsFavoriteColumn(batch);
+    addModifiableColumns(batch);
   }
-  // if (oldVersion >= 2) {
-  //   createCustomListsTable(batch);
-  // }
 
   await batch.commit();
 }

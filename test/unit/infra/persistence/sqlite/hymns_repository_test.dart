@@ -54,6 +54,7 @@ void main() {
               options: databaseOptions));
       var savedHymn = await newRepository.getById('1');
       expect(savedHymn.isFavorite, hymn.isFavorite);
+      expect(savedHymn.modifiedAt, hymn.modifiedAt);
     });
 
     test('exception raised when trying to save non-existing hymn', () async {

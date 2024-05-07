@@ -32,7 +32,7 @@ class SqliteHymnRepository extends HymnRepository {
     await Future.forEach(queryResult, (hymnDetails) async {
       hymns[hymnDetails['id']] = Hymn(
         hymnDetails['id'],
-        DateTime.now(),
+        DateTime.parse(hymnDetails['modifiedAt']),
         hymnDetails['number'],
         hymnDetails['title'],
         hymnDetails['groupName'],
@@ -63,16 +63,19 @@ class SqliteHymnRepository extends HymnRepository {
     if (!_hymns.containsKey(hymn.id)) {
       throw HymnNotFoundException();
     }
-    await database.rawUpdate('UPDATE Hymns SET isFavorite = ? WHERE id = ?',
-        [hymn.isFavorite ? 1 : 0, hymn.id]);
+    await database.rawUpdate(
+        'UPDATE Hymns SET isFavorite = ?, modifiedAt = ? WHERE id = ?',
+        [hymn.isFavorite ? 1 : 0, hymn.modifiedAt.toString(), hymn.id]);
     _hymns[hymn.id] = hymn;
     notifyListeners();
   }
 }
 
-void addIsFavoriteColumn(Batch batch) {
+void addModifiableColumns(Batch batch) {
   batch.execute(
       'ALTER TABLE Hymns ADD COLUMN isFavorite INTEGER DEFAULT 0 NOT NULL CHECK (isFavorite IN (0, 1))');
+  batch.execute(
+      "ALTER TABLE Hymns ADD COLUMN modifiedAt TEXT DEFAULT '${DateTime.now().toString()}' NOT NULL");
 }
 
 String getHymnsList = '''
@@ -81,6 +84,7 @@ SELECT
   Hymns.number AS number,
   Hymns.title AS title,
   Hymns.isFavorite AS isFavorite,
+  Hymns.modifiedAt AS modifiedAt,
   HymnSubgroups.id AS subgroupId,
   HymnSubgroups.name AS subgroupName,
   HymnGroups.id AS groupId,
