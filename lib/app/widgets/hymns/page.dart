@@ -16,8 +16,8 @@ class _HymnsListPageState extends State<HymnsListPage> {
 
   String searchText = "";
 
-  void updateSearchText(String text) async {
-    setState(() async {
+  void updateSearchText(String text) {
+    setState(() {
       searchText = text;
     });
   }
@@ -46,6 +46,9 @@ class _HymnsListPageState extends State<HymnsListPage> {
               return const Center(child: CircularProgressIndicator());
             } else {
               final hymns = snapshot.data;
+              if (hymns!.isEmpty) {
+                return const Text("Nic nie znaleziono");
+              }
               return Expanded(child: HymnsListWidget(hymnsList: hymns));
             }
           })

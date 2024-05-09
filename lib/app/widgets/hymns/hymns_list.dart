@@ -19,10 +19,6 @@ class _HymnsListWidgetState extends State<HymnsListWidget>
   Widget build(BuildContext context) {
     super.build(context);
 
-    if (widget.hymnsList.isEmpty) {
-      return const Center(child: CircularProgressIndicator());
-    }
-
     return Scrollbar(
       thumbVisibility: true,
       thickness: 10.0,

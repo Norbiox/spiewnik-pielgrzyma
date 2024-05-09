@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:spiewnik_pielgrzyma/app/providers/hymns/provider.dart';
 import 'package:spiewnik_pielgrzyma/app/widgets/hymns/hymns_list.dart';
+import 'package:spiewnik_pielgrzyma/domain/hymns/model.dart';
 import 'package:watch_it/watch_it.dart';
 
 class FavoritesPage extends WatchingWidget {
@@ -13,11 +14,14 @@ class FavoritesPage extends WatchingWidget {
 
     return FutureBuilder(
         future: provider.searchHymns("", true),
-        builder: (BuildContext context, AsyncSnapshot snapshot) {
+        builder: (BuildContext context, AsyncSnapshot<List<Hymn>> snapshot) {
           if (!snapshot.hasData) {
             return const Expanded(child: HymnsListWidget(hymnsList: []));
           } else {
             final hymns = snapshot.data;
+            if (hymns!.isEmpty) {
+              return const Text("Nie masz jeszcze ulubionych pieśni");
+            }
             return Expanded(child: HymnsListWidget(hymnsList: hymns));
           }
         });
