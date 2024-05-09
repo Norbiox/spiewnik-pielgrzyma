@@ -11,7 +11,7 @@ class CustomListsListWidget extends StatelessWidget with WatchItMixin {
   Widget build(BuildContext context) {
     ScrollController scrollController = ScrollController();
     var repository = GetIt.I<CustomListRepository>();
-    List<CustomList> list = repository.getAll();
+    List<CustomList> list = [];
 
     if (list.isEmpty) {
       return const Text("Nie utworzyłeś jeszcze żadnej listy");
@@ -43,7 +43,7 @@ class CustomListsListWidget extends StatelessWidget with WatchItMixin {
       newIndex -= 1;
     }
 
-    List<CustomList> lists = repository.getAll();
+    List<CustomList> lists = [];
     CustomList list = lists.removeAt(oldIndex);
     lists.insert(newIndex, list);
     repository.saveAll(lists);

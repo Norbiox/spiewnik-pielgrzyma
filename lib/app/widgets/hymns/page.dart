@@ -12,19 +12,19 @@ class HymnsListPage extends WatchingStatefulWidget {
 
 class _HymnsListPageState extends State<HymnsListPage> {
   TextEditingController searchController = TextEditingController();
+  final HymnsListProvider provider = GetIt.I<HymnsListProvider>();
 
   String searchText = "";
 
-  void updateSearchText(String text) {
-    setState(() {
+  void updateSearchText(String text) async {
+    setState(() async {
       searchText = text;
     });
   }
 
   @override
   Widget build(BuildContext context) {
-    final HymnsListProvider hymnsList = GetIt.I<HymnsListProvider>();
-    watch(hymnsList);
+    watch(provider);
 
     return Scaffold(
         body: Column(children: [
@@ -39,8 +39,16 @@ class _HymnsListPageState extends State<HymnsListPage> {
                 labelText: 'Szukaj',
                 hintText: 'Wpisz numer, fragment tytułu lub tekstu pieśni',
               ))),
-      Expanded(
-          child: HymnsListWidget(hymnsList: hymnsList.searchHymns(searchText)))
+      FutureBuilder(
+          future: provider.searchHymns(searchText),
+          builder: (BuildContext context, AsyncSnapshot snapshot) {
+            if (!snapshot.hasData) {
+              return const Center(child: CircularProgressIndicator());
+            } else {
+              final hymns = snapshot.data;
+              return Expanded(child: HymnsListWidget(hymnsList: hymns));
+            }
+          })
     ]));
   }
 }

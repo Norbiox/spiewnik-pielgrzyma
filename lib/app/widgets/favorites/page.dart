@@ -8,12 +8,18 @@ class FavoritesPage extends WatchingWidget {
 
   @override
   Widget build(BuildContext context) {
-    final HymnsListProvider hymnsList = GetIt.I<HymnsListProvider>();
-    watch(hymnsList);
+    final HymnsListProvider provider = GetIt.I<HymnsListProvider>();
+    watch(provider);
 
-    return HymnsListWidget(
-        hymnsList: hymnsList.hymnsList
-            .where((element) => element.isFavorite == true)
-            .toList());
+    return FutureBuilder(
+        future: provider.searchHymns("", true),
+        builder: (BuildContext context, AsyncSnapshot snapshot) {
+          if (!snapshot.hasData) {
+            return const Expanded(child: HymnsListWidget(hymnsList: []));
+          } else {
+            final hymns = snapshot.data;
+            return Expanded(child: HymnsListWidget(hymnsList: hymns));
+          }
+        });
   }
 }
