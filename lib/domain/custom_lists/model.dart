@@ -7,20 +7,20 @@ import 'package:uuid/uuid.dart';
 class CustomList extends Entity {
   String _name;
   late DateTime createdAt;
-  late List<int> _hymns;
+  late List<EntityId> _hymns;
 
   CustomList(super.id, this._name, this.createdAt, super.modifiedAt,
-      [hymns = const <int>[]]) {
-    _hymns = List<int>.from(hymns);
+      [hymns = const <EntityId>[]]) {
+    _hymns = List<EntityId>.from(hymns);
   }
 
   factory CustomList.create(String name) {
     Uuid uuid = const Uuid();
     DateTime now = clock.now();
-    return CustomList(uuid.v1(), name, now, now, List<int>.from([]));
+    return CustomList(uuid.v1(), name, now, now, List<EntityId>.from([]));
   }
 
-  UnmodifiableListView<int> get hymns => UnmodifiableListView(_hymns);
+  UnmodifiableListView<EntityId> get hymns => UnmodifiableListView(_hymns);
 
   String get name => _name;
 
@@ -30,7 +30,7 @@ class CustomList extends Entity {
     });
   }
 
-  void addHymn(int hymnId) {
+  void addHymn(EntityId hymnId) {
     recordModificationTime(() {
       if (_hymns.contains(hymnId)) {
         throw Exception("List already contains this hymn");
@@ -39,7 +39,7 @@ class CustomList extends Entity {
     });
   }
 
-  void removeHymn(int hymnId) {
+  void removeHymn(EntityId hymnId) {
     recordModificationTime(() {
       if (!_hymns.contains(hymnId)) {
         throw Exception("Hymn not found in the list");
@@ -48,7 +48,7 @@ class CustomList extends Entity {
     });
   }
 
-  void changeHymnOrdering(int hymnId, int newIndex) {
+  void changeHymnOrdering(EntityId hymnId, int newIndex) {
     recordModificationTime(() {
       if (!_hymns.contains(hymnId)) {
         throw Exception("Hymn not found in the list");
