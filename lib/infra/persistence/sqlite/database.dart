@@ -1,6 +1,7 @@
 import 'dart:developer';
 
 import 'package:flutter/services.dart';
+import 'package:spiewnik_pielgrzyma/infra/persistence/sqlite/custom_lists_repository.dart';
 import 'package:spiewnik_pielgrzyma/infra/persistence/sqlite/hymns_repository.dart';
 import 'package:sqflite/sqlite_api.dart';
 
@@ -25,6 +26,7 @@ Future onCreate(Database db, int version) async {
     batch.execute(sql);
   }
   addModifiableColumns(batch);
+  createTable(batch);
 
   await batch.commit();
   var tables = await db.query("sqlite_master");

@@ -16,4 +16,20 @@ class Entity {
       rethrow;
     }
   }
+
+  @override
+  String toString() {
+    return '{id: $id}';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    if (other is Entity) {
+      return other.runtimeType == runtimeType && other.id == id;
+    }
+    return false;
+  }
+
+  @override
+  int get hashCode => id.hashCode;
 }

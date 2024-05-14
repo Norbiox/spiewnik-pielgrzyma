@@ -8,7 +8,7 @@ class CustomListNotFoundException extends RepositoryException {}
 abstract class CustomListRepository extends ChangeNotifier {
   Future<CustomList> getById(EntityId listId);
   Future<List<CustomList>> getAll();
-  void save(CustomList list);
-  void saveAll(List<CustomList> list);
-  void remove(CustomList list);
+  Future<void> save(CustomList list);
+  Future<void> saveAll(List<CustomList> list);
+  Future<void> remove(CustomList list);
 }

@@ -15,9 +15,9 @@ void main() {
     test('save existing custom list', () async {
       var repository = InMemoryCustomListRepository();
       var list = CustomList.create("Test");
-      repository.save(list);
+      await repository.save(list);
       list.rename("New name");
-      repository.save(list);
+      await repository.save(list);
       expect(await repository.getById(list.id), list);
     });
 
@@ -31,8 +31,8 @@ void main() {
       var repository = InMemoryCustomListRepository();
       var list1 = CustomList.create("Test1");
       var list2 = CustomList.create("Test2");
-      repository.save(list1);
-      repository.save(list2);
+      await repository.save(list1);
+      await repository.save(list2);
       expect(await repository.getAll(), [list1, list2]);
     });
 
@@ -40,10 +40,10 @@ void main() {
       var repository = InMemoryCustomListRepository();
       var list1 = CustomList.create("Test1");
       var list2 = CustomList.create("Test2");
-      repository.saveAll([list1, list2]);
+      await repository.saveAll([list1, list2]);
       var list3 = CustomList.create("Test3");
       list1.rename("TestTest");
-      repository.saveAll([list1, list3]);
+      await repository.saveAll([list1, list3]);
       expect(await repository.getAll().then((elements) => elements.toSet()),
           {list1, list2, list3});
     });
@@ -52,10 +52,10 @@ void main() {
       var repository = InMemoryCustomListRepository();
       var list1 = CustomList.create("Test1");
       var list2 = CustomList.create("Test2");
-      repository.saveAll([list1, list2]);
+      await repository.saveAll([list1, list2]);
       var list3 = CustomList.create("Test3");
       list1.rename("TestTest");
-      repository.saveAll([list1, list3]);
+      await repository.saveAll([list1, list3]);
       expect(await repository.getAll().then((elements) => elements.toSet()),
           {list1, list2, list3});
     });
@@ -63,8 +63,8 @@ void main() {
     test('remove existing custom list', () async {
       var repository = InMemoryCustomListRepository();
       var list = CustomList.create("Test");
-      repository.save(list);
-      repository.remove(list);
+      await repository.save(list);
+      await repository.remove(list);
       expect(await repository.getAll(), []);
     });
 

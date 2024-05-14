@@ -23,19 +23,19 @@ class InMemoryCustomListRepository extends CustomListRepository {
   }
 
   @override
-  void save(CustomList list) async {
+  Future<void> save(CustomList list) async {
     _database[list.id] = list;
   }
 
   @override
-  void saveAll(List<CustomList> list) async {
+  Future<void> saveAll(List<CustomList> list) async {
     for (var l in list) {
       save(l);
     }
   }
 
   @override
-  void remove(CustomList list) async {
+  Future<void> remove(CustomList list) async {
     if (!_database.containsKey(list.id)) {
       throw CustomListNotFoundException();
     }

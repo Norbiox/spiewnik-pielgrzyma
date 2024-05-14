@@ -10,7 +10,6 @@ class CustomListsListWidget extends StatelessWidget with WatchItMixin {
   @override
   Widget build(BuildContext context) {
     ScrollController scrollController = ScrollController();
-    var repository = GetIt.I<CustomListRepository>();
     List<CustomList> list = [];
 
     if (list.isEmpty) {

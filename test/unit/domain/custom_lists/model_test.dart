@@ -31,35 +31,35 @@ void main() async {
 
     test('new hymn can be added', () {
       CustomList list = CustomList.create("Test List");
-      list.addHymn(1);
-      expect(list.hymns, [1]);
+      list.addHymn("1");
+      expect(list.hymns, ["1"]);
     });
 
     test('hymn not added if already exists', () {
       CustomList list = CustomList.create("Test List");
-      list.addHymn(1);
-      expect(() => list.addHymn(1), throwsA(isA<Exception>()));
+      list.addHymn("1");
+      expect(() => list.addHymn("1"), throwsA(isA<Exception>()));
     });
 
     test('hymn can be removed', () {
       CustomList list = CustomList.create("Test List");
-      list.addHymn(1);
-      list.removeHymn(1);
+      list.addHymn("1");
+      list.removeHymn("1");
       expect(list.hymns, []);
     });
 
     test('hymn cannot be removed if not exists', () {
       CustomList list = CustomList.create("Test List");
-      expect(() => list.removeHymn(1), throwsA(isA<Exception>()));
+      expect(() => list.removeHymn("1"), throwsA(isA<Exception>()));
     });
 
     test('hymns ordering can be changed', () {
       CustomList list = CustomList.create("Test List");
-      list.addHymn(1);
-      list.addHymn(2);
-      list.addHymn(3);
-      list.changeHymnOrdering(2, 0);
-      expect(list.hymns, [2, 1, 3]);
+      list.addHymn("1");
+      list.addHymn("2");
+      list.addHymn("3");
+      list.changeHymnOrdering("2", 0);
+      expect(list.hymns, ["2", "1", "3"]);
     });
   });
 }
