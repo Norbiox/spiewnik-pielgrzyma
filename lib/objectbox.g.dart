@@ -67,7 +67,7 @@ final _entities = <obx_int.ModelEntity>[
   obx_int.ModelEntity(
       id: const obx_int.IdUid(2, 800589818453151630),
       name: 'CustomList',
-      lastPropertyId: const obx_int.IdUid(3, 1633246616272441895),
+      lastPropertyId: const obx_int.IdUid(4, 4310632892841414291),
       flags: 0,
       properties: <obx_int.ModelProperty>[
         obx_int.ModelProperty(
@@ -79,16 +79,11 @@ final _entities = <obx_int.ModelEntity>[
             id: const obx_int.IdUid(2, 5288934644981854549),
             name: 'name',
             type: 9,
-            flags: 0),
-        obx_int.ModelProperty(
-            id: const obx_int.IdUid(3, 1633246616272441895),
-            name: 'createdAt',
-            type: 10,
             flags: 0)
       ],
       relations: <obx_int.ModelRelation>[
         obx_int.ModelRelation(
-            id: const obx_int.IdUid(1, 3822870303656169706),
+            id: const obx_int.IdUid(2, 8403263026867246630),
             name: 'hymns',
             targetId: const obx_int.IdUid(1, 6152171362614126554))
       ],
@@ -130,14 +125,20 @@ Future<obx.Store> openStore(
 obx_int.ModelDefinition getObjectBoxModel() {
   final model = obx_int.ModelInfo(
       entities: _entities,
-      lastEntityId: const obx_int.IdUid(2, 800589818453151630),
-      lastIndexId: const obx_int.IdUid(0, 0),
-      lastRelationId: const obx_int.IdUid(1, 3822870303656169706),
+      lastEntityId: const obx_int.IdUid(3, 7711859934402844449),
+      lastIndexId: const obx_int.IdUid(2, 6171407620707839973),
+      lastRelationId: const obx_int.IdUid(2, 8403263026867246630),
       lastSequenceId: const obx_int.IdUid(0, 0),
-      retiredEntityUids: const [],
+      retiredEntityUids: const [7711859934402844449],
       retiredIndexUids: const [],
-      retiredPropertyUids: const [],
-      retiredRelationUids: const [],
+      retiredPropertyUids: const [
+        1633246616272441895,
+        471737502338298787,
+        1132067619144665822,
+        6432243859513444253,
+        4310632892841414291
+      ],
+      retiredRelationUids: const [3822870303656169706],
       modelVersion: 5,
       modelVersionParserMinimum: 5,
       version: 1);
@@ -204,7 +205,7 @@ obx_int.ModelDefinition getObjectBoxModel() {
         model: _entities[1],
         toOneRelations: (CustomList object) => [],
         toManyRelations: (CustomList object) =>
-            {obx_int.RelInfo<CustomList>.toMany(1, object.id): object.hymns},
+            {obx_int.RelInfo<CustomList>.toMany(2, object.id): object.hymns},
         getId: (CustomList object) => object.id,
         setId: (CustomList object, int id) {
           object.id = id;
@@ -212,27 +213,21 @@ obx_int.ModelDefinition getObjectBoxModel() {
         objectToFB: (CustomList object, fb.Builder fbb) {
           final nameOffset =
               object.name == null ? null : fbb.writeString(object.name!);
-          fbb.startTable(4);
+          fbb.startTable(5);
           fbb.addInt64(0, object.id);
           fbb.addOffset(1, nameOffset);
-          fbb.addInt64(2, object.createdAt?.millisecondsSinceEpoch);
           fbb.finish(fbb.endTable());
           return object.id;
         },
         objectFromFB: (obx.Store store, ByteData fbData) {
           final buffer = fb.BufferContext(fbData);
           final rootOffset = buffer.derefObject(0);
-          final createdAtValue =
-              const fb.Int64Reader().vTableGetNullable(buffer, rootOffset, 8);
-          final object = CustomList()
-            ..id = const fb.Int64Reader().vTableGet(buffer, rootOffset, 4, 0)
-            ..name = const fb.StringReader(asciiOptimization: true)
-                .vTableGetNullable(buffer, rootOffset, 6)
-            ..createdAt = createdAtValue == null
-                ? null
-                : DateTime.fromMillisecondsSinceEpoch(createdAtValue);
+          final nameParam = const fb.StringReader(asciiOptimization: true)
+              .vTableGetNullable(buffer, rootOffset, 6);
+          final object = CustomList(nameParam)
+            ..id = const fb.Int64Reader().vTableGet(buffer, rootOffset, 4, 0);
           obx_int.InternalToManyAccess.setRelInfo<CustomList>(object.hymns,
-              store, obx_int.RelInfo<CustomList>.toMany(1, object.id));
+              store, obx_int.RelInfo<CustomList>.toMany(2, object.id));
           return object;
         })
   };
@@ -279,10 +274,6 @@ class CustomList_ {
   /// See [CustomList.name].
   static final name =
       obx.QueryStringProperty<CustomList>(_entities[1].properties[1]);
-
-  /// See [CustomList.createdAt].
-  static final createdAt =
-      obx.QueryDateProperty<CustomList>(_entities[1].properties[2]);
 
   /// see [CustomList.hymns]
   static final hymns =

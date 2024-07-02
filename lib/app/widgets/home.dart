@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-// import 'package:spiewnik_pielgrzyma/app/widgets/custom_lists/page.dart';
+import 'package:spiewnik_pielgrzyma/app/widgets/custom_lists/page.dart';
 import 'package:spiewnik_pielgrzyma/app/widgets/favorites/page.dart';
 import 'package:spiewnik_pielgrzyma/app/widgets/hymns/page.dart';
 
@@ -27,7 +27,7 @@ class MyHomePage extends StatelessWidget {
             children: [
               HymnsListPage(),
               FavoritesPage(),
-              // CustomListsPage(),
+              CustomListsPage(),
             ],
           )),
     );

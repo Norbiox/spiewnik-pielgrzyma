@@ -8,8 +8,7 @@ class CustomList {
 
   String? name;
 
-  @Property(type: PropertyType.date)
-  DateTime? createdAt;
+  CustomList(this.name);
 
   final hymns = ToMany<Hymn>();
 }
