@@ -1,1 +1,0 @@
-class RepositoryException implements Exception {}

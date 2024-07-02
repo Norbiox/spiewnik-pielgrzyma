@@ -1,4 +1,4 @@
-import 'package:spiewnik_pielgrzyma/domain/hymns/model.dart';
+import 'package:spiewnik_pielgrzyma/models/hymn.dart';
 
 class HymnsSearchEngine {
   final double minimalScoreValue;
@@ -40,13 +40,13 @@ class HymnsSearchEngine {
     String cleanTitle =
         _removeSpecialCharacters(_removeAccents(hymn.fullTitle.toLowerCase()));
     String cleanText = _removeSpecialCharacters(
-        _removeAccents(hymn.text.join(' ').toLowerCase()));
+        _removeAccents(hymn.text!.join(' ').toLowerCase()));
 
     cleanQuery.split(' ').forEach((word) {
       if (hymn.number == word) {
         score += 100.0;
       }
-      if (hymn.number.contains(word)) {
+      if (hymn.number!.contains(word)) {
         score += 50.0;
       }
     });

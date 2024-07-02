@@ -47,6 +47,8 @@ dependencies:
   sqflite_common_ffi: ^2.3.3
   uuid: ^4.4.0
   clock: ^1.1.1
+  objectbox: ^4.0.1
+  objectbox_flutter_libs: any
 
 dev_dependencies:
   flutter_test:
@@ -58,6 +60,8 @@ dev_dependencies:
   # package. See that file for information about deactivating specific lint
   # rules and activating additional ones.
   flutter_lints: ^3.0.0
+  build_runner: ^2.4.9
+  objectbox_generator: any
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec

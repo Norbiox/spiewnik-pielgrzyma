@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:spiewnik_pielgrzyma/app/widgets/hymns/favorite_icon.dart';
-import 'package:spiewnik_pielgrzyma/domain/hymns/model.dart';
+import 'package:spiewnik_pielgrzyma/models/hymn.dart';
 import 'package:spiewnik_pielgrzyma/app/widgets/hymns/hymn_page.dart';
 
 class HymnTileWidget extends StatelessWidget {
