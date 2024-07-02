@@ -12,6 +12,9 @@ class Hymn {
   List<String>? text;
   bool? isFavorite;
 
+  Hymn(this.number, this.title, this.group, this.subgroup, this.text,
+      {this.isFavorite = false});
+
   String get fullTitle => "$number. $title";
 
   toggleIsFavorite() => isFavorite = !isFavorite!;

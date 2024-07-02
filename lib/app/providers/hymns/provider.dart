@@ -11,7 +11,7 @@ class HymnsListProvider with ChangeNotifier {
 
   Future<List<Hymn>> searchHymns(String query,
       [bool favoritesOnly = false]) async {
-    var hymns = await hymnsBox.getAll();
+    var hymns = hymnsBox.getAll();
     if (favoritesOnly) {
       hymns = hymns.where((element) => element.isFavorite == true).toList();
     }
