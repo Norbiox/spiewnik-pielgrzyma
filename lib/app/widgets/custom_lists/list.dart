@@ -1,17 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:spiewnik_pielgrzyma/app/providers/custom_lists/provider.dart';
 import 'package:spiewnik_pielgrzyma/app/widgets/custom_lists/list_tile.dart';
-import 'package:spiewnik_pielgrzyma/infra/objectbox.dart';
 import 'package:spiewnik_pielgrzyma/models/custom_list.dart';
 import 'package:watch_it/watch_it.dart';
 
-class CustomListsListWidget extends StatelessWidget with WatchItMixin {
+class CustomListsListWidget extends WatchingWidget {
   const CustomListsListWidget({super.key});
 
   @override
   Widget build(BuildContext context) {
     ScrollController scrollController = ScrollController();
-    var box = GetIt.I<ObjectBox>();
-    List<CustomList> list = box.customListBox.getAll();
+    CustomListProvider provider = GetIt.I<CustomListProvider>();
+    watch(provider);
+
+    List<CustomList> list = provider.getLists();
 
     if (list.isEmpty) {
       return const Text("Nie utworzyłeś jeszcze żadnej listy");

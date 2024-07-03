@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
+import 'package:spiewnik_pielgrzyma/app/providers/custom_lists/provider.dart';
 import 'package:spiewnik_pielgrzyma/app/widgets/custom_lists/list.dart';
 import 'package:spiewnik_pielgrzyma/infra/objectbox.dart';
 import 'package:spiewnik_pielgrzyma/models/custom_list.dart';
@@ -9,7 +10,7 @@ class CustomListsPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var box = GetIt.I<ObjectBox>();
+    CustomListProvider provider = GetIt.I<CustomListProvider>();
 
     return Scaffold(
       body: const CustomListsListWidget(),
@@ -17,7 +18,7 @@ class CustomListsPage extends StatelessWidget {
         onPressed: () async {
           var newListName = await _showCreateListDialog(context);
           if (newListName != null) {
-            box.customListBox.put(CustomList(newListName));
+            provider.createNewList(newListName);
           }
         },
         tooltip: "Dodaj nową listę",

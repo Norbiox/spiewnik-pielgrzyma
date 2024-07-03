@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
-import 'package:spiewnik_pielgrzyma/infra/objectbox.dart';
+import 'package:spiewnik_pielgrzyma/app/providers/custom_lists/provider.dart';
 import 'package:spiewnik_pielgrzyma/models/custom_list.dart';
 
 class CustomListTileWidget extends StatelessWidget {
@@ -24,7 +24,7 @@ class CustomListTileWidget extends StatelessWidget {
 
   Future<void> _showDeleteListDialog(
       BuildContext context, CustomList list) async {
-    final box = GetIt.I<ObjectBox>();
+    CustomListProvider provider = GetIt.I<CustomListProvider>();
 
     return showDialog(
       context: context,
@@ -39,7 +39,7 @@ class CustomListTileWidget extends StatelessWidget {
             FilledButton(
                 child: const Text("Tak"),
                 onPressed: () {
-                  box.customListBox.remove(list.id);
+                  provider.deleteList(list);
                   Navigator.pop(context);
                 })
           ],

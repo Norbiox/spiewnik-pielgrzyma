@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:spiewnik_pielgrzyma/app/providers/custom_lists/provider.dart';
 import 'package:spiewnik_pielgrzyma/app/providers/hymns/provider.dart';
 import 'package:spiewnik_pielgrzyma/app/widgets/home.dart';
 import 'package:spiewnik_pielgrzyma/infra/objectbox.dart';
@@ -12,6 +13,9 @@ void setup() {
   getIt.registerSingletonAsync<ObjectBox>(() => ObjectBox.create());
   getIt.registerSingletonWithDependencies<HymnsListProvider>(
       () => HymnsListProvider(getIt<ObjectBox>().hymnBox),
+      dependsOn: [ObjectBox]);
+  getIt.registerSingletonWithDependencies<CustomListProvider>(
+      () => CustomListProvider(getIt<ObjectBox>().customListBox),
       dependsOn: [ObjectBox]);
   getIt.registerSingletonAsync<SharedPreferences>(
       () => SharedPreferences.getInstance());
