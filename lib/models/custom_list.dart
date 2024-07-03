@@ -7,8 +7,9 @@ class CustomList {
   int id = 0;
 
   String? name;
+  int? index;
 
-  CustomList(this.name);
+  CustomList(this.name, this.index);
 
   final hymns = ToMany<Hymn>();
 }

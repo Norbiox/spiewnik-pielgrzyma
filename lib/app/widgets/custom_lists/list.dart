@@ -25,7 +25,14 @@ class CustomListsListWidget extends WatchingWidget {
       interactive: true,
       controller: scrollController,
       child: ReorderableListView.builder(
-        onReorder: (oldIndex, newIndex) {},
+        onReorder: (oldIndex, newIndex) {
+          if (oldIndex < newIndex) {
+            newIndex -= 1;
+          }
+          final item = list.removeAt(oldIndex);
+          list.insert(newIndex, item);
+          provider.reindex(list);
+        },
         itemCount: list.length,
         prototypeItem: const ListTile(),
         itemBuilder: (context, index) => Container(
