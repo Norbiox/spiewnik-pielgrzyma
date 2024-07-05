@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
-import 'package:spiewnik_pielgrzyma/domain/custom_lists/model.dart';
-import 'package:spiewnik_pielgrzyma/domain/custom_lists/repository.dart';
+import 'package:spiewnik_pielgrzyma/app/providers/custom_lists/provider.dart';
+import 'package:spiewnik_pielgrzyma/models/custom_list.dart';
 
 class CustomListTileWidget extends StatelessWidget {
   final CustomList list;
@@ -11,7 +11,7 @@ class CustomListTileWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListTile(
-      title: Text(list.name),
+      title: Text(list.name!),
       subtitle: Text("pieśni: ${list.hymns.length.toString()}"),
       trailing: IconButton(
         icon: const Icon(Icons.delete),
@@ -24,7 +24,7 @@ class CustomListTileWidget extends StatelessWidget {
 
   Future<void> _showDeleteListDialog(
       BuildContext context, CustomList list) async {
-    final repository = GetIt.I<CustomListRepository>();
+    CustomListProvider provider = GetIt.I<CustomListProvider>();
 
     return showDialog(
       context: context,
@@ -39,7 +39,7 @@ class CustomListTileWidget extends StatelessWidget {
             FilledButton(
                 child: const Text("Tak"),
                 onPressed: () {
-                  repository.remove(list);
+                  provider.deleteList(list);
                   Navigator.pop(context);
                 })
           ],

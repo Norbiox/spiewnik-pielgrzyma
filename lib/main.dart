@@ -1,33 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:spiewnik_pielgrzyma/app/providers/custom_lists/provider.dart';
 import 'package:spiewnik_pielgrzyma/app/providers/hymns/provider.dart';
-import 'package:spiewnik_pielgrzyma/domain/custom_lists/repository.dart';
-import 'package:spiewnik_pielgrzyma/domain/hymns/repository.dart';
-import 'package:spiewnik_pielgrzyma/infra/persistence/in_memory/custom_lists_repository.dart';
-import 'package:spiewnik_pielgrzyma/infra/persistence/sqlite/database.dart';
 import 'package:spiewnik_pielgrzyma/app/widgets/home.dart';
-import 'package:spiewnik_pielgrzyma/infra/persistence/sqlite/hymns_repository.dart';
-import 'package:sqflite/sqflite.dart';
+import 'package:spiewnik_pielgrzyma/infra/objectbox.dart';
 
 final getIt = GetIt.instance;
 
 void setup() {
   WidgetsFlutterBinding.ensureInitialized();
-  getIt.registerSingletonAsync<Database>(() async {
-    var factory = databaseFactory;
-    return await factory.openDatabase('db.sqlite', options: databaseOptions);
-  });
-  getIt.registerSingletonAsync<HymnRepository>(() async {
-    await getIt.isReady<Database>();
-    return await SqliteHymnRepository.create(getIt.get<Database>());
-  });
+  getIt.registerSingletonAsync<ObjectBox>(() => ObjectBox.create());
   getIt.registerSingletonWithDependencies<HymnsListProvider>(
-      () => HymnsListProvider(getIt<HymnRepository>()),
-      dependsOn: [HymnRepository]);
-  getIt.registerSingletonAsync<CustomListRepository>(() async {
-    return InMemoryCustomListRepository();
-  });
+      () => HymnsListProvider(getIt<ObjectBox>().hymnBox),
+      dependsOn: [ObjectBox]);
+  getIt.registerSingletonWithDependencies<CustomListProvider>(
+      () => CustomListProvider(getIt<ObjectBox>().customListBox),
+      dependsOn: [ObjectBox]);
   getIt.registerSingletonAsync<SharedPreferences>(
       () => SharedPreferences.getInstance());
 }

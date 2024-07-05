@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:spiewnik_pielgrzyma/app/widgets/hymns/favorite_icon.dart';
-import 'package:spiewnik_pielgrzyma/domain/hymns/model.dart';
+import 'package:spiewnik_pielgrzyma/models/hymn.dart';
 
 class HymnPage extends StatelessWidget {
   final Hymn hymn;
@@ -19,7 +19,7 @@ class HymnPage extends StatelessWidget {
         body: Padding(
           padding: const EdgeInsets.all(8.0),
           child: ListView(
-            children: hymn.text
+            children: hymn.text!
                 .map((line) => Text(line,
                     textAlign: TextAlign.left,
                     style: Theme.of(context).textTheme.bodyLarge))

@@ -1,16 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:spiewnik_pielgrzyma/app/providers/custom_lists/provider.dart';
 import 'package:spiewnik_pielgrzyma/app/widgets/custom_lists/list_tile.dart';
-import 'package:spiewnik_pielgrzyma/domain/custom_lists/model.dart';
-import 'package:spiewnik_pielgrzyma/domain/custom_lists/repository.dart';
+import 'package:spiewnik_pielgrzyma/models/custom_list.dart';
 import 'package:watch_it/watch_it.dart';
 
-class CustomListsListWidget extends StatelessWidget with WatchItMixin {
+class CustomListsListWidget extends WatchingWidget {
   const CustomListsListWidget({super.key});
 
   @override
   Widget build(BuildContext context) {
     ScrollController scrollController = ScrollController();
-    List<CustomList> list = [];
+    CustomListProvider provider = GetIt.I<CustomListProvider>();
+    watch(provider);
+
+    List<CustomList> list = provider.getLists();
 
     if (list.isEmpty) {
       return const Text("Nie utworzyłeś jeszcze żadnej listy");
@@ -23,7 +26,12 @@ class CustomListsListWidget extends StatelessWidget with WatchItMixin {
       controller: scrollController,
       child: ReorderableListView.builder(
         onReorder: (oldIndex, newIndex) {
-          _updateItems(oldIndex, newIndex);
+          if (oldIndex < newIndex) {
+            newIndex -= 1;
+          }
+          final item = list.removeAt(oldIndex);
+          list.insert(newIndex, item);
+          provider.reindex(list);
         },
         itemCount: list.length,
         prototypeItem: const ListTile(),
@@ -33,18 +41,5 @@ class CustomListsListWidget extends StatelessWidget with WatchItMixin {
         ),
       ),
     );
-  }
-
-  void _updateItems(int oldIndex, int newIndex) {
-    final repository = GetIt.I<CustomListRepository>();
-
-    if (newIndex > oldIndex) {
-      newIndex -= 1;
-    }
-
-    List<CustomList> lists = [];
-    CustomList list = lists.removeAt(oldIndex);
-    lists.insert(newIndex, list);
-    repository.saveAll(lists);
   }
 }
