@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:rate_limiter/rate_limiter.dart';
 import 'package:spiewnik_pielgrzyma/app/providers/hymns/provider.dart';
 import 'package:spiewnik_pielgrzyma/app/widgets/hymns/hymns_list.dart';
 import 'package:watch_it/watch_it.dart';
@@ -26,6 +27,9 @@ class _HymnsListPageState extends State<HymnsListPage> {
   Widget build(BuildContext context) {
     watch(provider);
 
+    final debouncedSearch =
+        debounce(updateSearchText, const Duration(milliseconds: 500));
+
     return Scaffold(
         body: Column(children: [
       FutureBuilder(
@@ -45,7 +49,7 @@ class _HymnsListPageState extends State<HymnsListPage> {
           padding: const EdgeInsets.fromLTRB(24.0, 8.0, 24.0, 8.0),
           child: TextField(
               controller: searchController,
-              onChanged: (value) => updateSearchText(value),
+              onChanged: (value) => debouncedSearch([value]),
               decoration: const InputDecoration(
                 border: OutlineInputBorder(
                     borderRadius: BorderRadius.all(Radius.circular(25.0))),

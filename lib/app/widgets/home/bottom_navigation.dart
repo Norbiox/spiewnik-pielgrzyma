@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:spiewnik_pielgrzyma/app/widgets/custom_lists/page.dart';
 import 'package:spiewnik_pielgrzyma/app/widgets/favorites/page.dart';
 import 'package:spiewnik_pielgrzyma/app/widgets/hymns/page.dart';
@@ -18,9 +17,10 @@ class _BottomNavigationState extends State<BottomNavigation> {
     return Scaffold(
       body: Stack(
         children: [
-          Offstage(offstage: _currentIndex != 0, child: HymnsListPage()),
-          Offstage(offstage: _currentIndex != 1, child: FavoritesPage()),
-          Offstage(offstage: _currentIndex != 2, child: CustomListsPage()),
+          Offstage(offstage: _currentIndex != 0, child: const HymnsListPage()),
+          Offstage(offstage: _currentIndex != 1, child: const FavoritesPage()),
+          Offstage(
+              offstage: _currentIndex != 2, child: const CustomListsPage()),
         ],
       ),
       bottomNavigationBar: BottomNavigationBar(

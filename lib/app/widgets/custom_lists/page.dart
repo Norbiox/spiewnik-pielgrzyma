@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
 import 'package:spiewnik_pielgrzyma/app/providers/custom_lists/provider.dart';
 import 'package:spiewnik_pielgrzyma/app/widgets/custom_lists/list.dart';
-import 'package:spiewnik_pielgrzyma/infra/objectbox.dart';
-import 'package:spiewnik_pielgrzyma/models/custom_list.dart';
 
 class CustomListsPage extends StatelessWidget {
   const CustomListsPage({super.key});

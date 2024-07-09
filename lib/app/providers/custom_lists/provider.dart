@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:objectbox/objectbox.dart';
 import 'package:spiewnik_pielgrzyma/models/custom_list.dart';
 import 'package:spiewnik_pielgrzyma/objectbox.g.dart';
 
