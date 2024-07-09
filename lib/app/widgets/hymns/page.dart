@@ -28,17 +28,6 @@ class _HymnsListPageState extends State<HymnsListPage> {
 
     return Scaffold(
         body: Column(children: [
-      Padding(
-          padding: const EdgeInsets.fromLTRB(24.0, 8.0, 24.0, 8.0),
-          child: TextField(
-              controller: searchController,
-              onChanged: (value) => updateSearchText(value),
-              decoration: const InputDecoration(
-                border: OutlineInputBorder(
-                    borderRadius: BorderRadius.all(Radius.circular(25.0))),
-                labelText: 'Szukaj',
-                hintText: 'Wpisz numer, fragment tytułu lub tekstu pieśni',
-              ))),
       FutureBuilder(
           future: provider.searchHymns(searchText),
           builder: (BuildContext context, AsyncSnapshot snapshot) {
@@ -51,7 +40,18 @@ class _HymnsListPageState extends State<HymnsListPage> {
               }
               return Expanded(child: HymnsListWidget(hymnsList: hymns));
             }
-          })
+          }),
+      Padding(
+          padding: const EdgeInsets.fromLTRB(24.0, 8.0, 24.0, 8.0),
+          child: TextField(
+              controller: searchController,
+              onChanged: (value) => updateSearchText(value),
+              decoration: const InputDecoration(
+                border: OutlineInputBorder(
+                    borderRadius: BorderRadius.all(Radius.circular(25.0))),
+                labelText: 'Szukaj',
+                hintText: 'Wpisz numer, fragment tytułu lub tekstu pieśni',
+              ))),
     ]));
   }
 }
