@@ -3,7 +3,7 @@ import 'package:get_it/get_it.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:spiewnik_pielgrzyma/app/providers/custom_lists/provider.dart';
 import 'package:spiewnik_pielgrzyma/app/providers/hymns/provider.dart';
-import 'package:spiewnik_pielgrzyma/app/widgets/home.dart';
+import 'package:spiewnik_pielgrzyma/app/widgets/home/home.dart';
 import 'package:spiewnik_pielgrzyma/infra/objectbox.dart';
 
 final getIt = GetIt.instance;
