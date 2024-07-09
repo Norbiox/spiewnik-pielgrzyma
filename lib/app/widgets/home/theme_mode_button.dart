@@ -12,7 +12,7 @@ class ThemeModeButton extends WatchingWidget {
 
     return IconButton(
         onPressed: () => provider.toggleMode(),
-        icon: Icon(provider.currentThemeMode == ThemeMode.light
+        icon: Icon(provider.themeMode == ThemeMode.light
             ? Icons.dark_mode
             : Icons.light_mode));
   }

@@ -39,9 +39,9 @@ class MyApp extends WatchingWidget {
 
     return MaterialApp(
         title: 'Śpiewnik Pielgrzyma',
-        theme: themeProvider.lightTheme,
-        darkTheme: themeProvider.darkTheme,
-        themeMode: themeProvider.currentThemeMode,
+        theme: lightTheme,
+        darkTheme: darkTheme,
+        themeMode: themeProvider.themeMode ?? ThemeMode.system,
         home: const MyHomePage(),
         builder: (context, widget) {
           return FutureBuilder(
