@@ -26,7 +26,8 @@ class CustomListsPage extends StatelessWidget {
   }
 
   Future<String?> _showCreateListDialog(BuildContext context) async {
-    final textFieldController = TextEditingController();
+    final textFieldController =
+        TextEditingController(text: DateTime.now().toString().split(".").first);
 
     return showDialog<String?>(
         context: context,
