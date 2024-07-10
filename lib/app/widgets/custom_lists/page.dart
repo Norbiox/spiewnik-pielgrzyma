@@ -37,6 +37,7 @@ class CustomListsPage extends StatelessWidget {
               content: TextField(
                 controller: textFieldController,
                 decoration: const InputDecoration(hintText: "Nazwa listy"),
+                autofocus: true,
               ),
               actions: <Widget>[
                 FilledButton.tonal(
