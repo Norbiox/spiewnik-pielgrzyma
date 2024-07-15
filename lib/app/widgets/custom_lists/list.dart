@@ -21,7 +21,7 @@ class CustomListsListWidget extends WatchingWidget {
 
     return Scrollbar(
       thumbVisibility: true,
-      thickness: 10.0,
+      thickness: 20.0,
       interactive: true,
       controller: scrollController,
       child: ReorderableListView.builder(

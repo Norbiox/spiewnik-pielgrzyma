@@ -21,7 +21,7 @@ class _HymnsListWidgetState extends State<HymnsListWidget>
 
     return Scrollbar(
       thumbVisibility: true,
-      thickness: 10.0,
+      thickness: 20.0,
       interactive: true,
       controller: _scrollController,
       child: ListView.builder(
