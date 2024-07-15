@@ -29,7 +29,8 @@ class CustomListWidget extends WatchingWidget {
           itemCount: list.hymns.length,
           prototypeItem: const ListTile(),
           itemBuilder: (context, index) {
-            return HymnTileWidget(hymn: list.hymns[index]);
+            return HymnTileWidget(
+                hymn: list.hymns[index], withFavoriteIcon: false);
           }),
     );
   }
