@@ -4,30 +4,33 @@ import 'package:spiewnik_pielgrzyma/models/custom_list.dart';
 import 'package:spiewnik_pielgrzyma/models/hymn.dart';
 import 'package:watch_it/watch_it.dart';
 
-class AddHymnToCustomListDialog extends SimpleDialog {
-  final Hymn hymn;
+showDialogWithCustomListsToAddTheHymnTo(BuildContext context, Hymn hymn) {
+  CustomListProvider provider = GetIt.I<CustomListProvider>();
 
-  const AddHymnToCustomListDialog({super.key, required this.hymn});
+  // Get lists that does not contain the hymn
+  List<CustomList> lists = provider
+      .getLists()
+      .where((list) => !list.hymns.any((h) => h.id == hymn.id))
+      .toList();
 
-  @override
-  Widget build(BuildContext context) {
-    CustomListProvider provider = GetIt.I<CustomListProvider>();
-
-    List<CustomList> lists = provider
-        .getLists()
-        .where((list) => !list.hymns.contains(hymn))
-        .toList();
-
-    return SimpleDialog(
-      title: const Text("Wybierz listę"),
-      children: lists
-          .map((list) => SimpleDialogOption(
-                onPressed: addHymnToCustomList(context, list, hymn),
-                child: Text(list.name!),
-              ))
-          .toList(),
-    );
+  // Show SnackBar if there are no lists without the hymn or no lists at all
+  if (lists.isEmpty) {
+    return () => ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+        content: Text("Brak list, do których możnaby dodać tę pieśń")));
   }
+
+  // Show dialog with list of custom lists to add the hymn to
+  return () => showDialog(
+      context: context,
+      builder: (context) => SimpleDialog(
+            title: const Text("Wybierz listę"),
+            children: lists
+                .map((list) => SimpleDialogOption(
+                      onPressed: addHymnToCustomList(context, list, hymn),
+                      child: Text(list.name!),
+                    ))
+                .toList(),
+          ));
 }
 
 addHymnToCustomList(BuildContext context, CustomList list, Hymn hymn) {
