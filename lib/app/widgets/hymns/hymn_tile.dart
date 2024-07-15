@@ -14,6 +14,7 @@ class HymnTileWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListTile(
         leading: withFavoriteIcon ? FavoriteIconWidget(hymn: hymn) : null,
+        horizontalTitleGap: 0,
         title: Text(
           hymn.fullTitle,
           maxLines: 1,
