@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:spiewnik_pielgrzyma/app/widgets/custom_lists/add_hymn_to_custom_list_dialog.dart';
 import 'package:spiewnik_pielgrzyma/app/widgets/hymns/favorite_icon.dart';
 import 'package:spiewnik_pielgrzyma/models/hymn.dart';
 
@@ -14,6 +15,14 @@ class HymnPage extends StatelessWidget {
           title: Text(hymn.fullTitle),
           actions: <Widget>[
             FavoriteIconWidget(hymn: hymn),
+            IconButton(
+                onPressed: () {
+                  showDialog(
+                      context: context,
+                      builder: (context) =>
+                          AddHymnToCustomListDialog(hymn: hymn));
+                },
+                icon: const Icon(Icons.add))
           ],
         ),
         body: Padding(

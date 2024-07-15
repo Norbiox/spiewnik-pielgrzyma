@@ -37,4 +37,9 @@ class CustomListProvider with ChangeNotifier {
     customListBox.putMany(lists);
     notifyListeners();
   }
+
+  save(CustomList list) {
+    customListBox.put(list);
+    notifyListeners();
+  }
 }
