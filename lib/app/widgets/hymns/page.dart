@@ -33,7 +33,7 @@ class _HymnsListPageState extends State<HymnsListPage> {
     return Scaffold(
         body: Column(children: [
       FutureBuilder(
-          future: provider.searchHymns(searchText),
+          future: provider.searchHymns(provider.getAll(), searchText),
           builder: (BuildContext context, AsyncSnapshot snapshot) {
             if (!snapshot.hasData) {
               return const Center(child: CircularProgressIndicator());

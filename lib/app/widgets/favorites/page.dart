@@ -12,18 +12,15 @@ class FavoritesPage extends WatchingWidget {
     final HymnsListProvider provider = GetIt.I<HymnsListProvider>();
     watch(provider);
 
-    return FutureBuilder(
-        future: provider.searchHymns("", true),
-        builder: (BuildContext context, AsyncSnapshot<List<Hymn>> snapshot) {
-          if (!snapshot.hasData) {
-            return const Expanded(child: HymnsListWidget(hymnsList: []));
-          } else {
-            final hymns = snapshot.data;
-            if (hymns!.isEmpty) {
-              return const Text("Nie masz jeszcze ulubionych pieśni");
-            }
-            return Expanded(child: HymnsListWidget(hymnsList: hymns));
-          }
-        });
+    List<Hymn> hymns = provider.getFavorites();
+
+    if (hymns.isEmpty) {
+      return const Text("Nie masz jeszcze ulubionych pieśni");
+    }
+
+    return Scaffold(
+        body: Column(children: [
+      Expanded(child: HymnsListWidget(hymnsList: hymns)),
+    ]));
   }
 }

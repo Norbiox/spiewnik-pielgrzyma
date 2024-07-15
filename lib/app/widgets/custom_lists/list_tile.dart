@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
 import 'package:spiewnik_pielgrzyma/app/providers/custom_lists/provider.dart';
+import 'package:spiewnik_pielgrzyma/app/widgets/custom_lists/custom_list_page.dart';
 import 'package:spiewnik_pielgrzyma/models/custom_list.dart';
 
 class CustomListTileWidget extends StatelessWidget {
@@ -19,6 +20,11 @@ class CustomListTileWidget extends StatelessWidget {
           await _showDeleteListDialog(context, list);
         },
       ),
+      onTap: () {
+        Navigator.of(context).push(MaterialPageRoute(
+          builder: (context) => CustomListPage(list: list),
+        ));
+      },
     );
   }
 

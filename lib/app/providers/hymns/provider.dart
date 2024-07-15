@@ -9,9 +9,16 @@ class HymnsListProvider with ChangeNotifier {
 
   HymnsListProvider(this.hymnsBox);
 
-  Future<List<Hymn>> searchHymns(String query,
+  List<Hymn> getAll() {
+    return hymnsBox.getAll();
+  }
+
+  List<Hymn> getFavorites() {
+    return hymnsBox.query(Hymn_.isFavorite.equals(true)).build().find();
+  }
+
+  Future<List<Hymn>> searchHymns(List<Hymn> hymns, String query,
       [bool favoritesOnly = false]) async {
-    var hymns = hymnsBox.getAll();
     if (favoritesOnly) {
       hymns = hymns.where((element) => element.isFavorite == true).toList();
     }
