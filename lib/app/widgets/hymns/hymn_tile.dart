@@ -6,18 +6,16 @@ import 'package:spiewnik_pielgrzyma/app/widgets/hymns/hymn_page.dart';
 
 class HymnTileWidget extends StatelessWidget {
   final Hymn hymn;
-  final bool withFavoriteIcon;
 
   const HymnTileWidget({
     super.key,
     required this.hymn,
-    this.withFavoriteIcon = true,
   });
 
   @override
   Widget build(BuildContext context) {
     return ListTile(
-      leading: withFavoriteIcon ? FavoriteIconWidget(hymn: hymn) : null,
+      leading: FavoriteIconWidget(hymn: hymn),
       horizontalTitleGap: 0,
       title: Text(
         hymn.fullTitle,

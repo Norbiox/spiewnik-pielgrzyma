@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:spiewnik_pielgrzyma/app/providers/custom_lists/provider.dart';
+import 'package:spiewnik_pielgrzyma/app/widgets/custom_lists/hymn_tile.dart';
 import 'package:spiewnik_pielgrzyma/models/custom_list.dart';
-import 'package:spiewnik_pielgrzyma/app/widgets/hymns/hymn_tile.dart';
 import 'package:watch_it/watch_it.dart';
 
 class CustomListWidget extends WatchingWidget {
@@ -29,8 +29,7 @@ class CustomListWidget extends WatchingWidget {
           itemCount: list.hymns.length,
           prototypeItem: const ListTile(),
           itemBuilder: (context, index) {
-            return HymnTileWidget(
-                hymn: list.hymns[index], withFavoriteIcon: false);
+            return HymnTileWidget(list: list, hymn: list.hymns[index]);
           }),
     );
   }
