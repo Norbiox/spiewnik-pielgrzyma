@@ -28,7 +28,7 @@ class CustomListPage extends StatelessWidget {
       ),
       body: Padding(
           padding: const EdgeInsets.all(8.0),
-          child: CustomListWidget(list: list)),
+          child: CustomListWidget(listId: list.id)),
     );
   }
 }

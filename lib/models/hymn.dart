@@ -18,4 +18,7 @@ class Hymn {
   String get fullTitle => "$number. $title";
 
   toggleIsFavorite() => isFavorite = !isFavorite!;
+
+  @override
+  String toString() => 'Hymn $id - "$fullTitle"';
 }

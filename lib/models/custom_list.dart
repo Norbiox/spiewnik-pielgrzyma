@@ -8,8 +8,14 @@ class CustomList {
 
   String? name;
   int? index;
+  List<int> hymnsOrder;
 
-  CustomList(this.name, this.index);
+  CustomList(this.name, this.index, {List<int>? hymnsOrder})
+      : hymnsOrder = hymnsOrder ?? [];
 
   final hymns = ToMany<Hymn>();
+
+  Map<int, int> get hymnsOrderMap {
+    return {for (int i = 0; i < hymnsOrder.length; i++) hymnsOrder[i]: i};
+  }
 }

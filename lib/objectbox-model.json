@@ -49,7 +49,7 @@
     },
     {
       "id": "2:800589818453151630",
-      "lastPropertyId": "5:4319138308387980819",
+      "lastPropertyId": "6:3701565191530200251",
       "name": "CustomList",
       "properties": [
         {
@@ -67,6 +67,11 @@
           "id": "5:4319138308387980819",
           "name": "index",
           "type": 6
+        },
+        {
+          "id": "6:3701565191530200251",
+          "name": "hymnsOrder",
+          "type": 27
         }
       ],
       "relations": [

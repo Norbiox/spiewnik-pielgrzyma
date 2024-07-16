@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:spiewnik_pielgrzyma/app/providers/custom_lists/provider.dart';
-import 'package:spiewnik_pielgrzyma/app/widgets/custom_lists/add_hymn_to_custom_list_dialog.dart';
 import 'package:spiewnik_pielgrzyma/app/widgets/hymns/hymn_page.dart';
 import 'package:spiewnik_pielgrzyma/models/custom_list.dart';
 import 'package:spiewnik_pielgrzyma/models/hymn.dart';
@@ -28,7 +27,6 @@ class HymnTileWidget extends StatelessWidget {
           builder: (context) => HymnPage(hymn: hymn),
         ));
       },
-      onLongPress: showDialogWithCustomListsToAddTheHymnTo(context, hymn),
       trailing: IconButton(
           icon: const Icon(Icons.delete),
           onPressed: () => showDialog(
