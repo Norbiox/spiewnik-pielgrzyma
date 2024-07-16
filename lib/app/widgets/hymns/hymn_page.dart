@@ -16,7 +16,7 @@ class HymnPage extends StatelessWidget {
           actions: <Widget>[
             FavoriteIconWidget(hymn: hymn),
             IconButton(
-                onPressed:
+                onPressed: () =>
                     showDialogWithCustomListsToAddTheHymnTo(context, hymn),
                 icon: const Icon(Icons.add))
           ],

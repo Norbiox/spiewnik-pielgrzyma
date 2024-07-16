@@ -27,7 +27,7 @@ class HymnTileWidget extends StatelessWidget {
           builder: (context) => HymnPage(hymn: hymn),
         ));
       },
-      onLongPress: showDialogWithCustomListsToAddTheHymnTo(context, hymn),
+      onLongPress: () => showDialogWithCustomListsToAddTheHymnTo(context, hymn),
     );
   }
 }
