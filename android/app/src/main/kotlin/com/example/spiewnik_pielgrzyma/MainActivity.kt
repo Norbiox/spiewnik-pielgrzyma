@@ -1,4 +1,4 @@
-package com.example.spiewnik_pielgrzyma
+package pl.norbertchmiel.spiewnik_pielgrzyma
 
 import io.flutter.embedding.android.FlutterActivity
 
