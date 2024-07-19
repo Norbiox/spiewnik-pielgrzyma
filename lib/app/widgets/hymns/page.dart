@@ -50,12 +50,17 @@ class _HymnsListPageState extends State<HymnsListPage> {
           child: TextField(
               controller: searchController,
               onChanged: (value) => debouncedSearch([value]),
-              decoration: const InputDecoration(
-                border: OutlineInputBorder(
-                    borderRadius: BorderRadius.all(Radius.circular(25.0))),
-                labelText: 'Szukaj',
-                hintText: 'Wpisz numer, fragment tytułu lub tekstu pieśni',
-              ))),
+              decoration: InputDecoration(
+                  border: const OutlineInputBorder(
+                      borderRadius: BorderRadius.all(Radius.circular(25.0))),
+                  labelText: 'Szukaj',
+                  hintText: 'Wpisz numer, fragment tytułu lub tekstu pieśni',
+                  suffixIcon: IconButton(
+                      onPressed: () {
+                        updateSearchText("");
+                        searchController.clear();
+                      },
+                      icon: const Icon(Icons.clear))))),
     ]));
   }
 }
