@@ -28,18 +28,15 @@ class CustomListWidget extends WatchingWidget {
       controller: scrollController,
       child: ReorderableListView.builder(
           onReorder: (oldIndex, newIndex) {
-            if (oldIndex < newIndex) {
-              newIndex -= 1;
-            }
-            final item = list.hymns.removeAt(oldIndex);
-            list.hymns.insert(newIndex, item);
+            list.reorderHymns(oldIndex, newIndex);
             provider.save(list);
           },
           itemCount: list.hymns.length,
           prototypeItem: const ListTile(),
           itemBuilder: (context, index) => Container(
-                key: ValueKey(list.hymns[index]),
-                child: HymnTileWidget(list: list, hymn: list.hymns[index]),
+                key: ValueKey(list.getHymnByIndex(index)),
+                child: HymnTileWidget(
+                    list: list, hymn: list.getHymnByIndex(index)),
               )),
     );
   }

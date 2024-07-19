@@ -93,7 +93,7 @@ final _entities = <obx_int.ModelEntity>[
       ],
       relations: <obx_int.ModelRelation>[
         obx_int.ModelRelation(
-            id: const obx_int.IdUid(2, 8403263026867246630),
+            id: const obx_int.IdUid(3, 5917021287936638981),
             name: 'hymns',
             targetId: const obx_int.IdUid(1, 6152171362614126554))
       ],
@@ -137,7 +137,7 @@ obx_int.ModelDefinition getObjectBoxModel() {
       entities: _entities,
       lastEntityId: const obx_int.IdUid(3, 7711859934402844449),
       lastIndexId: const obx_int.IdUid(2, 6171407620707839973),
-      lastRelationId: const obx_int.IdUid(2, 8403263026867246630),
+      lastRelationId: const obx_int.IdUid(3, 5917021287936638981),
       lastSequenceId: const obx_int.IdUid(0, 0),
       retiredEntityUids: const [7711859934402844449],
       retiredIndexUids: const [],
@@ -148,7 +148,7 @@ obx_int.ModelDefinition getObjectBoxModel() {
         6432243859513444253,
         4310632892841414291
       ],
-      retiredRelationUids: const [3822870303656169706],
+      retiredRelationUids: const [3822870303656169706, 8403263026867246630],
       modelVersion: 5,
       modelVersionParserMinimum: 5,
       version: 1);
@@ -215,7 +215,7 @@ obx_int.ModelDefinition getObjectBoxModel() {
         model: _entities[1],
         toOneRelations: (CustomList object) => [],
         toManyRelations: (CustomList object) =>
-            {obx_int.RelInfo<CustomList>.toMany(2, object.id): object.hymns},
+            {obx_int.RelInfo<CustomList>.toMany(3, object.id): object.hymns},
         getId: (CustomList object) => object.id,
         setId: (CustomList object, int id) {
           object.id = id;
@@ -246,7 +246,7 @@ obx_int.ModelDefinition getObjectBoxModel() {
               hymnsOrder: hymnsOrderParam)
             ..id = const fb.Int64Reader().vTableGet(buffer, rootOffset, 4, 0);
           obx_int.InternalToManyAccess.setRelInfo<CustomList>(object.hymns,
-              store, obx_int.RelInfo<CustomList>.toMany(2, object.id));
+              store, obx_int.RelInfo<CustomList>.toMany(3, object.id));
           return object;
         })
   };
