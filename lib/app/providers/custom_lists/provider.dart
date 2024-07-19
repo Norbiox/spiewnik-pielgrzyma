@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:spiewnik_pielgrzyma/models/custom_list.dart';
-import 'package:spiewnik_pielgrzyma/models/hymn.dart';
 import 'package:spiewnik_pielgrzyma/objectbox.g.dart';
 
 class CustomListProvider with ChangeNotifier {
@@ -40,18 +39,11 @@ class CustomListProvider with ChangeNotifier {
   }
 
   save(CustomList list) {
-    list.hymnsOrder = list.hymns.map((hymn) => hymn.id).toList();
     customListBox.put(list);
     notifyListeners();
   }
 
   CustomList getList(int listId) {
-    CustomList list = customListBox.get(listId)!;
-    if (list.hymnsOrder.isEmpty) {
-      list.hymnsOrder = list.hymns.map((hymn) => hymn.id).toList();
-    }
-    list.hymns.sort((Hymn a, Hymn b) =>
-        list.hymnsOrderMap[a.id]!.compareTo(list.hymnsOrderMap[b.id]!));
-    return list;
+    return customListBox.get(listId)!;
   }
 }

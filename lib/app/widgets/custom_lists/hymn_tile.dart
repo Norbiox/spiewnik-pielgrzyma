@@ -43,7 +43,7 @@ class HymnTileWidget extends StatelessWidget {
                       FilledButton(
                           child: const Text("Tak"),
                           onPressed: () {
-                            list.hymns.remove(hymn);
+                            list.removeHymn(hymn);
                             provider.save(list);
                             Navigator.pop(context);
                           })

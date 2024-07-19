@@ -28,7 +28,7 @@ showDialogWithCustomListsToAddTheHymnTo(BuildContext context, Hymn hymn) {
             children: lists
                 .map((list) => SimpleDialogOption(
                       onPressed: () {
-                        list.hymns.add(hymn);
+                        list.addHymn(hymn);
                         GetIt.I<CustomListProvider>().save(list);
 
                         final SnackBar snackBar = SnackBar(
