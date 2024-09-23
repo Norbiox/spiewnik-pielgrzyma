@@ -105,15 +105,10 @@ flutter:
   # see https://flutter.dev/custom-fonts/#from-packages
 
 flutter_launcher_icons:
-  image_path: "assets/icon/base.png"
-  image_path_android: "assets/icon/android.png"
-  adaptive_icon_background: "#2262f7"
+  image_path: "assets/icon/icon.png"
   ios: true
   android: true
 
 flutter_native_splash:
-  color: "#2262f7"
-  image: "assets/icon/base.png"
-  android_12:
-    image: "assets/icon/foreground_432x432.png"
-    icon_background_color: "#2262f7"
+  icon_background_color: "#ffffff"
+  background_image: "assets/icon/icon.png"
