@@ -10,26 +10,38 @@ class HymnPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        appBar: AppBar(
-          title: Text(hymn.fullTitle),
-          actions: <Widget>[
-            FavoriteIconWidget(hymn: hymn),
-            IconButton(
-                onPressed: () =>
-                    showDialogWithCustomListsToAddTheHymnTo(context, hymn),
-                icon: const Icon(Icons.add))
-          ],
-        ),
-        body: Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: ListView(
-            children: hymn.text!
-                .map((line) => Text(line,
-                    textAlign: TextAlign.left,
-                    style: Theme.of(context).textTheme.bodyLarge))
-                .toList(),
-          ),
-        ));
+    return DefaultTabController(
+        length: 3,
+        initialIndex: 1,
+        child: Scaffold(
+            appBar: AppBar(
+                title: Text(hymn.fullTitle),
+                actions: <Widget>[
+                  FavoriteIconWidget(hymn: hymn),
+                  IconButton(
+                      onPressed: () => showDialogWithCustomListsToAddTheHymnTo(
+                          context, hymn),
+                      icon: const Icon(Icons.add))
+                ],
+                bottom: const TabBar(
+                  tabs: [
+                    Tab(text: "Tekst+akordy"),
+                    Tab(text: "Tekst"),
+                    Tab(text: "Nuty")
+                  ],
+                )),
+            body: TabBarView(children: [
+              Center(child: Text("Cierpliwości! 😉")),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: ListView(
+                    children: hymn.text!
+                        .map((line) => Text(line,
+                            textAlign: TextAlign.left,
+                            style: Theme.of(context).textTheme.bodyLarge))
+                        .toList()),
+              ),
+              Text("Nuty")
+            ])));
   }
 }
