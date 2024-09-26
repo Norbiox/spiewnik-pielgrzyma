@@ -47,6 +47,7 @@ dependencies:
   rate_limiter: ^1.0.0
   flutter_launcher_icons: ^0.13.1
   flutter_native_splash: ^2.4.0
+  syncfusion_flutter_pdfviewer: ^27.1.48
 
 dev_dependencies:
   flutter_test:
@@ -75,6 +76,7 @@ flutter:
   # To add assets to your application, add an assets section, like this:
   assets:
     - assets/hymns.csv
+    - assets/pdf/
     - assets/texts/
     - assets/icon/
 

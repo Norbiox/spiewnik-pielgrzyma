@@ -17,6 +17,8 @@ class Hymn {
 
   String get fullTitle => "$number. $title";
 
+  String get pdfPath => 'assets/pdf/nuty-${int.parse(number!) + 15}.pdf';
+
   toggleIsFavorite() => isFavorite = !isFavorite!;
 
   @override

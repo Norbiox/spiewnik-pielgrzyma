@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:syncfusion_flutter_pdfviewer/pdfviewer.dart';
+
 import 'package:spiewnik_pielgrzyma/app/widgets/custom_lists/add_hymn_to_custom_list_dialog.dart';
 import 'package:spiewnik_pielgrzyma/app/widgets/hymns/favorite_icon.dart';
 import 'package:spiewnik_pielgrzyma/models/hymn.dart';
@@ -11,8 +13,8 @@ class HymnPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
-        length: 3,
-        initialIndex: 1,
+        length: 2,
+        initialIndex: 0,
         child: Scaffold(
             appBar: AppBar(
                 title: Text(hymn.fullTitle),
@@ -25,13 +27,11 @@ class HymnPage extends StatelessWidget {
                 ],
                 bottom: const TabBar(
                   tabs: [
-                    Tab(text: "Tekst+akordy"),
                     Tab(text: "Tekst"),
-                    Tab(text: "Nuty")
+                    Tab(text: "Nuty"),
                   ],
                 )),
             body: TabBarView(children: [
-              Center(child: Text("Cierpliwości! 😉")),
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: ListView(
@@ -41,7 +41,7 @@ class HymnPage extends StatelessWidget {
                             style: Theme.of(context).textTheme.bodyLarge))
                         .toList()),
               ),
-              Text("Nuty")
+              SfPdfViewer.asset(hymn.pdfPath),
             ])));
   }
 }
