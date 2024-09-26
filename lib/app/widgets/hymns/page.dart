@@ -31,36 +31,41 @@ class _HymnsListPageState extends State<HymnsListPage> {
         debounce(updateSearchText, const Duration(milliseconds: 500));
 
     return Scaffold(
-        body: Column(children: [
-      FutureBuilder(
-          future: provider.searchHymns(provider.getAll(), searchText),
-          builder: (BuildContext context, AsyncSnapshot snapshot) {
-            if (!snapshot.hasData) {
-              return const Center(child: CircularProgressIndicator());
-            } else {
-              final hymns = snapshot.data;
-              if (hymns!.isEmpty) {
-                return const Text("Nic nie znaleziono");
+      body: Column(children: [
+        FutureBuilder(
+            future: provider.searchHymns(provider.getAll(), searchText),
+            builder: (BuildContext context, AsyncSnapshot snapshot) {
+              if (!snapshot.hasData) {
+                return const Center(child: CircularProgressIndicator());
+              } else {
+                final hymns = snapshot.data;
+                if (hymns!.isEmpty) {
+                  return const Text("Nic nie znaleziono");
+                }
+                return Expanded(child: HymnsListWidget(hymnsList: hymns));
               }
-              return Expanded(child: HymnsListWidget(hymnsList: hymns));
-            }
-          }),
-      Padding(
-          padding: const EdgeInsets.fromLTRB(24.0, 8.0, 24.0, 8.0),
-          child: TextField(
-              controller: searchController,
-              onChanged: (value) => debouncedSearch([value]),
-              decoration: InputDecoration(
-                  border: const OutlineInputBorder(
-                      borderRadius: BorderRadius.all(Radius.circular(25.0))),
-                  labelText: 'Szukaj',
-                  hintText: 'Wpisz numer, fragment tytułu lub tekstu pieśni',
-                  suffixIcon: IconButton(
-                      onPressed: () {
-                        updateSearchText("");
-                        searchController.clear();
-                      },
-                      icon: const Icon(Icons.clear))))),
-    ]));
+            }),
+        Padding(
+            padding: const EdgeInsets.fromLTRB(24.0, 8.0, 24.0, 8.0),
+            child: TextField(
+                onTapOutside: (event) =>
+                    FocusManager.instance.primaryFocus?.unfocus(),
+                onEditingComplete: () =>
+                    FocusManager.instance.primaryFocus?.unfocus(),
+                controller: searchController,
+                onChanged: (value) => debouncedSearch([value]),
+                decoration: InputDecoration(
+                    border: const OutlineInputBorder(
+                        borderRadius: BorderRadius.all(Radius.circular(25.0))),
+                    labelText: 'Szukaj',
+                    hintText: 'Wpisz numer, fragment tytułu lub tekstu pieśni',
+                    suffixIcon: IconButton(
+                        onPressed: () {
+                          updateSearchText("");
+                          searchController.clear();
+                        },
+                        icon: const Icon(Icons.clear))))),
+      ]),
+    );
   }
 }
