@@ -20,7 +20,7 @@ jobs:
         uses: actions/setup-java@v4
         with:
           distribution: 'zulu'
-          java-version: '21'
+          java-version: '17'
           cache: 'gradle'
 
       - name: Setup Flutter
@@ -60,7 +60,10 @@ jobs:
 
       - name: Updade version in pubspec.yaml
         run: |
-          sed -i "s/version: .*/${{ steps.gitversion.outputs.MajorMinorPatch }}+${{ github.run_number }}/g" pubspec.yaml
+          sed -i "s/version: .*/version: ${{ steps.gitversion.outputs.MajorMinorPatch }}+${{ github.run_number }}/g" pubspec.yaml
+
+      - name: Print pubspec.yaml
+        run: cat pubspec.yaml
 
       - name: Download Android keystore
         id: android_keystore
@@ -72,16 +75,34 @@ jobs:
 
       - name: Create key.properties
         run: |
-          echo "storeFile=${{ steps.android_keystore.outputs.fileName }}" > key.properties
-          echo "storePassword=${{ secrets.KEYSTORE_PASSWORD }}" >> key.properties
-          echo "keyAlias=${{ secrets.KEY_ALIAS }}" >> key.properties
-          echo "keyPassword=${{ secrets.KEY_PASSWORD }}" >> key.properties
+          echo "storeFile=android-upload-keystore.jks" > android/key.properties
+          echo "storePassword=${{ secrets.KEYSTORE_PASSWORD }}" >> android/key.properties
+          echo "keyAlias=${{ secrets.KEY_ALIAS }}" >> android/key.properties
+          echo "keyPassword=${{ secrets.KEY_PASSWORD }}" >> android/key.properties
+
+      - name: Setup Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'zulu'
+          java-version: '17'
+          cache: 'gradle'
+
+      - name: Setup Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          flutter-version: 3.24.3
+          channel: stable
+          cache: true
+
+      - name: Install dependencies
+        run: flutter pub get
 
       - name: Start Android Release Build
         run: flutter build appbundle
 
-      - name: Upload App Bundle
-        uses: actions/upload-artifact@v4
-        with:
-          name: app-bundle
-          path: build/app/outputs/flutter-apk/app-release.aab
+      # - name: Upload App Bundle
+      #   uses: actions/upload-artifact@v4
+      #   with:
+      #     name: app-bundle
+      #     path: build/app/outputs/flutter-apk/app-release.aab
+      #     retention-days: 1
