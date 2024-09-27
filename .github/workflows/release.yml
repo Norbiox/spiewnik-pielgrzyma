@@ -37,7 +37,7 @@ jobs:
           path: version.txt
 
 
-  build:
+  analyse:
     runs-on: ubuntu-latest
 
     steps:
@@ -66,3 +66,50 @@ jobs:
 
       - name: Analyze project source
         run: flutter analyze --fatal-infos
+
+  build:
+    runs-on: ubuntu-latest
+    needs: [version, analyse]
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          name: gitversion
+
+      - name: Create new file without newline char from version.txt
+        run: tr -d '\n' < version.txt > version_no_newline.txt
+
+      - name: Read version
+        id: version
+        uses: juliangruber/read-file-action@v1
+        with:
+          path: version_no_newline.txt
+
+      - name: Updade version in pubspec.yaml
+        run: |
+          sed -i "s/version: .*/${{ steps.version.outputs.content }}+${{ github.run_number }}/g" pubspec.yaml
+
+      - name: Download Android keystore
+        id: android_keystore
+        uses: timheuer/base64-to-file@v1.2
+        with:
+          fileName: android-upload-keystore.jks
+          encodedString: ${{ secrets.KEYSTORE_BASE64 }}
+          fileDir: ./android/app
+
+      - name: Create key.properties
+        run: |
+          echo "storeFile=${{ steps.android_keystore.outputs.fileName }}" > key.properties
+          echo "storePassword=${{ secrets.KEYSTORE_PASSWORD }}" >> key.properties
+          echo "keyAlias=${{ secrets.KEY_ALIAS }}" >> key.properties
+          echo "keyPassword=${{ secrets.KEY_PASSWORD }}" >> key.properties
+
+      - name: Start Android Release Build
+        run: flutter build appbundle
+
+      - name: Upload App Bundle
+        uses: actions/upload-artifact@v4
+        with:
+          name: app-bundle
+          path: build/app/outputs/flutter-apk/app-release.aab

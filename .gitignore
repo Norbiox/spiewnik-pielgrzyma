@@ -28,3 +28,6 @@ doc/api/
 
 .idea/
 upload_certificate.pem
+
+*.jks
+*.base64
