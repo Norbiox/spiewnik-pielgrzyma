@@ -9,3 +9,4 @@ test:
 
 gitversion:
 	docker run --rm -v ./:/app -w /app gittools/gitversion:latest /app
+	
