@@ -1,4 +1,4 @@
-baseURL = 'https://example.org/'
+baseURL = 'https://norbiox.github.io/'
 languageCode = 'pl-pl'
 title = 'Śpiewnik Pielgrzyma'
 theme = 'typo'
@@ -47,24 +47,24 @@ breadcrumbs = true
 
 [[params.social]]
 name = "github"
-url = "https://github.com/Norbiox"
+url = "https://github.com/Norbiox/spiewnik-pielgrzyma"
 
 # Main menu pages
 [[params.menu]]
 name = "strona główna"
-url = "/"
+url = "/spiewnik-pielgrzyma/"
 
 [[params.menu]]
 name = "co nowego"
-url = "/posts"
+url = "/spiewnik-pielgrzyma/posts"
 
 [[params.menu]]
 name = "o aplikacji"
-url = "/about"
+url = "/spiewnik-pielgrzyma/about"
 
 [[params.menu]]
 name = "polityka prywatności"
-url = "/privacy_policy"
+url = "/spiewnik-pielgrzyma/privacy_policy"
 
 # Syntax highligth on code blocks
 [markup]
