@@ -1,0 +1,83 @@
+baseURL = 'https://example.org/'
+languageCode = 'pl-pl'
+title = 'Śpiewnik Pielgrzyma'
+theme = 'typo'
+
+[taxonomies]
+tag = 'tags'
+
+# Google analytics code
+# googleAnalytics = "G-xxxxxxxxx"
+
+[params]
+# Meta description
+description = "Strona aplikacji mobilnej Śpiewnik Pielgrzyma"
+
+# Appearance settings
+theme = 'auto'
+colorPalette = 'default'
+hideHeader = false
+
+# Intro on main page, content is markdown
+homeIntroTitle = 'Śpiewnik Pielgrzyma'
+homeIntroContent = """
+"Śpiewnik Pielgrzyma" jest aplikacją mobilną pozwalającą na przeglądanie pieśni ze "Śpiewnika Pielgrzyma" wydawnictwa "Łaska i Pokój".
+"""
+
+# Collection to display on home
+homeCollectionTitle = 'Co nowego'
+homeCollection = 'posts'
+
+# Lists parameters
+paginationSize = 100
+listSummaries = true
+listDateFormat = '2 Jan 2006'
+
+# Breadcrumbs
+breadcrumbs = true
+
+# Social icons
+#[[params.social]]
+#name = "linkedin"
+#url = "https://www.linkedin.com/in/user/"
+
+#[[params.social]]
+#name = "medium"
+#url = "https://medium.com/@user"
+
+[[params.social]]
+name = "github"
+url = "https://github.com/Norbiox"
+
+# Main menu pages
+[[params.menu]]
+name = "strona główna"
+url = "/"
+
+[[params.menu]]
+name = "co nowego"
+url = "/posts"
+
+[[params.menu]]
+name = "o aplikacji"
+url = "/about"
+
+[[params.menu]]
+name = "polityka prywatności"
+url = "/privacy_policy"
+
+# Syntax highligth on code blocks
+[markup]
+[markup.highlight]
+style = 'algol'
+
+# Giscus comments
+#[params.giscus]
+#enable = false
+#repo = "user/repo"
+#repoid = "repoId"
+#category = "General"
+#categoryid = "categoryId"
+#mapping = "pathname"
+#theme = "preferred_color_scheme"
+#
