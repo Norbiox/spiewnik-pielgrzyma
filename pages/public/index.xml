@@ -1,11 +1,48 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Home on Śpiewnik Pielgrzyma</title>
-    <link>http://localhost:1313/</link>
-    <description>Recent content in Home on Śpiewnik Pielgrzyma</description>
+    <title>Strona główna on Śpiewnik Pielgrzyma</title>
+    <link>http://localhost:1313/spiewnik-pielgrzyma/</link>
+    <description>Recent content in Strona główna on Śpiewnik Pielgrzyma</description>
     <generator>Hugo</generator>
-    <language>pl-pl</language>
-    <atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
+    <language>pl-PL</language>
+    <copyright>Copyright © 2024, Norbert Chmiel.</copyright>
+    <lastBuildDate>Sat, 05 Oct 2024 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/spiewnik-pielgrzyma/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Aktualizacja 05.10.2024</title>
+      <link>http://localhost:1313/spiewnik-pielgrzyma/aktualizacja-05.10.2024/</link>
+      <pubDate>Sat, 05 Oct 2024 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/spiewnik-pielgrzyma/aktualizacja-05.10.2024/</guid>
+      <description>&lt;p&gt;Aplikacja jest przed testami zamkniętymi. Obecnie pracuję nad spełnieniem warunków do wydania aplikacji do testów zamkniętych, jakie stawia zespół Google. Jednym z wymagań jest utworzenie strony internetowej z polityką prywatności - stąd wynikło między innymi powstanie tej strony.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Łaska i Pokój</title>
+      <link>http://localhost:1313/spiewnik-pielgrzyma/wydawnictwo/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/spiewnik-pielgrzyma/wydawnictwo/</guid>
+      <description>&lt;h1 id=&#34;o-wydawnictwie-łaska-i-pokój&#34;&gt;O wydawnictwie &amp;ldquo;Łaska i Pokój&amp;rdquo;&lt;/h1&gt;&#xA;&lt;p&gt;Wydawnictwo &amp;ldquo;Łaska i Pokój&amp;rdquo; prowadzone przez &lt;a href=&#34;https://kwch.org&#34;&gt;Kościół Wolnych Chrześcijan w RP&lt;/a&gt; już od 1925 roku wydaje czasopismo o tej samej nazwie, jak również  książki i audiobooki chrześcijańskie.&lt;/p&gt;&#xA;&lt;p&gt;Na &lt;a href=&#34;https://kwch.org/wydawnictwo/&#34;&gt;stronie wydawnictwa&lt;/a&gt; można pobrać kwartalnik &amp;ldquo;Łaska i Pokój&amp;rdquo; oraz miesięcznik informacyjny &amp;ldquo;Łaska wam i Pokój&amp;rdquo;.&lt;/p&gt;&#xA;&lt;p&gt;Zapraszamy również do &lt;a href=&#34;https://kwch.org/shop/&#34;&gt;internetowej księgarni wydawnictwa&lt;/a&gt; gdzie można kupić drukowany &amp;ldquo;Śpiewnik Pielgrzyma&amp;rdquo; oraz inne wartościowe materiały.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>O aplikacji</title>
+      <link>http://localhost:1313/spiewnik-pielgrzyma/aplikacja/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/spiewnik-pielgrzyma/aplikacja/</guid>
+      <description>&lt;p&gt;Tu napiszę o funkcjonalnościach aplikacji&amp;hellip;&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>O autorze</title>
+      <link>http://localhost:1313/spiewnik-pielgrzyma/autor/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/spiewnik-pielgrzyma/autor/</guid>
+      <description>&lt;p&gt;Tu może pojawi się coś o mnie&amp;hellip;&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Polityka prywatności</title>
+      <link>http://localhost:1313/spiewnik-pielgrzyma/polityka_prywatnosci/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/spiewnik-pielgrzyma/polityka_prywatnosci/</guid>
+      <description>&lt;h1 id=&#34;polityka-prywatności-aplikacji-mobilnej-śpiewnik-pielgrzyma&#34;&gt;Polityka prywatności aplikacji mobilnej „Śpiewnik Pielgrzyma”&lt;/h1&gt;&#xA;&lt;p&gt;Niniejszy dokument opisuje politykę prywatności aplikacji mobilnej „Śpiewnik Pielgrzyma” zwanej dalej Aplikacją. Podmiotem odpowiedzialnym za prawidłowe świadczenie usług, w ramach Aplikacji jest Norbert Chmiel, zwany dalej Administratorem.&lt;/p&gt;&#xA;&lt;p&gt;Administrator przykłada wielką wagę do respektowania praw Użytkowników Aplikacji, ze szczególnym uwzględnieniem prawa do ochrony prywatności.&lt;/p&gt;&#xA;&lt;p&gt;Poniżej znajdziecie Państwo informacje na temat tego w jaki sposób gromadzimy, przetwarzamy i wykorzystujemy informacje o użytkownikach Aplikacji oraz w jaki sposób dbamy o ochronę prywatności Użytkowników, stosując odpowiednie rozwiązania technologiczne.&lt;/p&gt;</description>
+    </item>
   </channel>
 </rss>

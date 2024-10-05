@@ -1,3 +1,6 @@
 [submodule "pages/themes/typo"]
 	path = pages/themes/typo
 	url = https://github.com/tomfran/typo.git
+[submodule "pages/themes/hugo-bearblog"]
+	path = pages/themes/hugo-bearblog
+	url = https://github.com/janraasch/hugo-bearblog.git
