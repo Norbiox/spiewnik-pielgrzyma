@@ -9,6 +9,8 @@ class HymnsListProvider with ChangeNotifier {
 
   HymnsListProvider(this.hymnsBox);
 
+  Hymn getHymn(int id) => hymnsBox.get(id)!;
+
   List<Hymn> getAll() {
     return hymnsBox.getAll();
   }

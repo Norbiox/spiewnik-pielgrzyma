@@ -1,19 +1,24 @@
 import 'package:flutter/material.dart';
+import 'package:get_it/get_it.dart';
+import 'package:spiewnik_pielgrzyma/app/providers/hymns/provider.dart';
 import 'package:spiewnik_pielgrzyma/app/widgets/custom_lists/add_hymn_to_custom_list_dialog.dart';
 import 'package:spiewnik_pielgrzyma/app/widgets/hymns/favorite_icon.dart';
 import 'package:spiewnik_pielgrzyma/models/hymn.dart';
-import 'package:spiewnik_pielgrzyma/app/widgets/hymns/hymn_page.dart';
+import 'package:go_router/go_router.dart';
 
 class HymnTileWidget extends StatelessWidget {
-  final Hymn hymn;
+  final HymnsListProvider provider = GetIt.I<HymnsListProvider>();
+  final int hymnId;
 
-  const HymnTileWidget({
+  HymnTileWidget({
     super.key,
-    required this.hymn,
+    required this.hymnId,
   });
 
   @override
   Widget build(BuildContext context) {
+    final Hymn hymn = provider.getHymn(hymnId);
+
     return ListTile(
       leading: FavoriteIconWidget(hymn: hymn),
       horizontalTitleGap: 0,
@@ -22,11 +27,7 @@ class HymnTileWidget extends StatelessWidget {
         maxLines: 1,
         overflow: TextOverflow.ellipsis,
       ),
-      onTap: () {
-        Navigator.of(context).push(MaterialPageRoute(
-          builder: (context) => HymnPage(hymn: hymn),
-        ));
-      },
+      onTap: () => context.go('/${hymn.id}'),
       onLongPress: () => showDialogWithCustomListsToAddTheHymnTo(context, hymn),
     );
   }

@@ -3,8 +3,8 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:spiewnik_pielgrzyma/app/providers/custom_lists/provider.dart';
 import 'package:spiewnik_pielgrzyma/app/providers/home/theme.dart';
 import 'package:spiewnik_pielgrzyma/app/providers/hymns/provider.dart';
-import 'package:spiewnik_pielgrzyma/app/widgets/home/home.dart';
 import 'package:spiewnik_pielgrzyma/infra/objectbox.dart';
+import 'package:spiewnik_pielgrzyma/router.dart';
 import 'package:watch_it/watch_it.dart';
 
 final getIt = GetIt.instance;
@@ -37,12 +37,12 @@ class MyApp extends WatchingWidget {
     ThemeProvider themeProvider = GetIt.I<ThemeProvider>();
     watch(themeProvider);
 
-    return MaterialApp(
+    return MaterialApp.router(
         title: 'Śpiewnik Pielgrzyma',
         theme: lightTheme,
         darkTheme: darkTheme,
         themeMode: themeProvider.themeMode ?? ThemeMode.system,
-        home: const MyHomePage(),
+        routerConfig: router,
         builder: (context, widget) {
           return FutureBuilder(
               future: getIt.allReady(),
