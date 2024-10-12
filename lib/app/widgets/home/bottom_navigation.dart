@@ -4,13 +4,21 @@ import 'package:spiewnik_pielgrzyma/app/widgets/favorites/page.dart';
 import 'package:spiewnik_pielgrzyma/app/widgets/hymns/page.dart';
 
 class BottomNavigation extends StatefulWidget {
-  const BottomNavigation({super.key});
+  final int initialIndex;
+  const BottomNavigation({super.key, this.initialIndex = 0});
+
   @override
   State<BottomNavigation> createState() => _BottomNavigationState();
 }
 
 class _BottomNavigationState extends State<BottomNavigation> {
   int _currentIndex = 0;
+
+  @override
+  void initState() {
+    super.initState();
+    _currentIndex = widget.initialIndex;
+  }
 
   @override
   Widget build(BuildContext context) {

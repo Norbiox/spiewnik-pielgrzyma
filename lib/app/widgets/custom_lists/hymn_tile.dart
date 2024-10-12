@@ -24,7 +24,7 @@ class HymnTileWidget extends StatelessWidget {
       ),
       onTap: () {
         Navigator.of(context).push(MaterialPageRoute(
-          builder: (context) => HymnPage(hymn: hymn),
+          builder: (context) => HymnPage(hymnId: hymn.id),
         ));
       },
       trailing: IconButton(
