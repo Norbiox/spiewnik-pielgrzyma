@@ -17,7 +17,7 @@ class Hymn {
 
   String get fullTitle => "$number. $title";
 
-  String get pdfPath => 'assets/pdf/nuty-${int.parse(number!) + 15}.pdf';
+  String get pdfPath => 'assets/pdf/nuty-${number!.toUpperCase()}.pdf';
 
   toggleIsFavorite() => isFavorite = !isFavorite!;
 
