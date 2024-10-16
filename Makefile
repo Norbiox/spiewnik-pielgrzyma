@@ -1,3 +1,6 @@
+build_runner:
+	flutter pub run build_runner build
+
 emul:
 	flutter emulators --launch Pixel_3a_API_34
 
