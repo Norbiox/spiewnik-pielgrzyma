@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:spiewnik_pielgrzyma/app/providers/custom_lists/provider.dart';
+import 'package:spiewnik_pielgrzyma/app/providers/hymns/provider.dart';
 import 'package:spiewnik_pielgrzyma/app/widgets/custom_lists/hymn_tile.dart';
 import 'package:spiewnik_pielgrzyma/models/custom_list.dart';
 import 'package:watch_it/watch_it.dart';
@@ -13,11 +14,12 @@ class CustomListWidget extends WatchingWidget {
   Widget build(BuildContext context) {
     final ScrollController scrollController = ScrollController();
     final CustomListProvider provider = GetIt.I<CustomListProvider>();
+    final HymnsListProvider hymnsProvider = GetIt.I<HymnsListProvider>();
     watch(provider);
 
     CustomList list = provider.getList(listId);
 
-    if (list.hymns.isEmpty) {
+    if (list.hymnsIds.isEmpty) {
       return const Text("Nie dodałeś jeszcze żadnej pieśni do tej listy");
     }
 
@@ -31,12 +33,13 @@ class CustomListWidget extends WatchingWidget {
             list.reorderHymns(oldIndex, newIndex);
             provider.save(list);
           },
-          itemCount: list.hymns.length,
+          itemCount: list.hymnsIds.length,
           prototypeItem: const ListTile(),
           itemBuilder: (context, index) => Container(
-                key: ValueKey(list.getHymnByIndex(index)),
+                key: ValueKey(list.hymnsIds[index]),
                 child: HymnTileWidget(
-                    list: list, hymn: list.getHymnByIndex(index)),
+                    list: list,
+                    hymn: hymnsProvider.getHymnById(list.hymnsIds[index])!),
               )),
     );
   }

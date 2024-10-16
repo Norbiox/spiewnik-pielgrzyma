@@ -9,7 +9,7 @@ showDialogWithCustomListsToAddTheHymnTo(BuildContext context, Hymn hymn) {
 
   List<CustomList> lists = provider
       .getLists()
-      .where((list) => !list.hymns.any((h) => h.id == hymn.id))
+      .where((list) => !list.hymnsIds.contains(hymn.id))
       .toList();
 
   // Show SnackBar if there are no lists without the hymn or no lists at all

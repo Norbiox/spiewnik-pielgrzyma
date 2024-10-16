@@ -1,9 +1,10 @@
-import 'package:objectbox/objectbox.dart';
+import 'package:isar/isar.dart';
 
-@Entity()
+part 'hymn.g.dart';
+
+@collection
 class Hymn {
-  @Id()
-  int id = 0;
+  Id id = Isar.autoIncrement;
 
   String? number;
   String? title;

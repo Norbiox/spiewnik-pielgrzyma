@@ -1,42 +1,31 @@
-import 'package:objectbox/objectbox.dart';
+import 'package:isar/isar.dart';
 import 'package:spiewnik_pielgrzyma/models/hymn.dart';
+import 'package:spiewnik_pielgrzyma/utils/list.dart';
 
-@Entity()
+part 'custom_list.g.dart';
+
+@collection
 class CustomList {
-  @Id()
-  int id = 0;
+  Id id = Isar.autoIncrement;
 
   String? name;
   int? index;
-  List<int> hymnsOrder;
+  List<int> hymnsIds;
 
   CustomList(this.name, this.index, {List<int>? hymnsOrder})
-      : hymnsOrder = hymnsOrder ?? [];
-
-  final hymns = ToMany<Hymn>();
+      : hymnsIds = hymnsOrder ?? [];
 
   void addHymn(Hymn hymn) {
-    if (hymns.contains(hymn)) return;
-    hymns.add(hymn);
-    hymnsOrder.add(hymn.id);
+    if (hymnsIds.contains(hymn.id)) return;
+    hymnsIds = [...hymnsIds, hymn.id];
   }
 
   void removeHymn(Hymn hymn) {
-    if (!hymnsOrder.contains(hymn.id)) return;
-    hymns.remove(hymn);
-    hymnsOrder.remove(hymn.id);
+    if (!hymnsIds.contains(hymn.id)) return;
+    hymnsIds = hymnsIds.where((id) => id != hymn.id).toList();
   }
 
   void reorderHymns(int oldIndex, int newIndex) {
-    if (oldIndex == newIndex) return;
-    if (oldIndex < newIndex) {
-      newIndex -= 1;
-    }
-    final item = hymnsOrder.removeAt(oldIndex);
-    hymnsOrder.insert(newIndex, item);
-  }
-
-  Hymn getHymnByIndex(int index) {
-    return hymns.firstWhere((h) => h.id == hymnsOrder[index]);
+    hymnsIds = moveItem(hymnsIds, oldIndex, newIndex);
   }
 }

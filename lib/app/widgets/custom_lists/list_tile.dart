@@ -13,7 +13,7 @@ class CustomListTileWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListTile(
       title: Text(list.name!),
-      subtitle: Text("pieśni: ${list.hymns.length.toString()}"),
+      subtitle: Text("pieśni: ${list.hymnsIds.length.toString()}"),
       trailing: IconButton(
         icon: const Icon(Icons.delete),
         onPressed: () async {

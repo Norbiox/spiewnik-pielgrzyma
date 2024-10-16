@@ -40,8 +40,6 @@ dependencies:
   shared_preferences: ^2.2.2
   get_it: ^7.6.8
   watch_it: ^1.4.1
-  objectbox: ^4.0.1
-  objectbox_flutter_libs: any
   path: ^1.9.0
   path_provider: ^2.1.4
   rate_limiter: ^1.0.0
@@ -63,8 +61,8 @@ dev_dependencies:
   # rules and activating additional ones.
   flutter_lints: ^3.0.0
   build_runner: ^2.4.13
-  objectbox_generator: any
   isar_generator: ^3.1.0+1
+  analyzer: ^5.13.0
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec

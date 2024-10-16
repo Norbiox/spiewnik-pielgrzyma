@@ -8,7 +8,6 @@ import 'package:spiewnik_pielgrzyma/app/providers/custom_lists/provider.dart';
 import 'package:spiewnik_pielgrzyma/app/providers/home/theme.dart';
 import 'package:spiewnik_pielgrzyma/app/providers/hymns/provider.dart';
 import 'package:spiewnik_pielgrzyma/infra/db.dart';
-import 'package:spiewnik_pielgrzyma/infra/objectbox.dart';
 import 'package:spiewnik_pielgrzyma/router.dart';
 import 'package:watch_it/watch_it.dart';
 
@@ -17,13 +16,6 @@ final getIt = GetIt.instance;
 void setup() {
   WidgetsFlutterBinding.ensureInitialized();
   getIt.registerSingleton<ThemeProvider>(ThemeProvider());
-  getIt.registerSingletonAsync<ObjectBox>(() => ObjectBox.create());
-  getIt.registerSingletonWithDependencies<HymnsListProvider>(
-      () => HymnsListProvider(getIt<ObjectBox>().hymnBox),
-      dependsOn: [ObjectBox]);
-  getIt.registerSingletonWithDependencies<CustomListProvider>(
-      () => CustomListProvider(getIt<ObjectBox>().customListBox),
-      dependsOn: [ObjectBox]);
   getIt.registerSingletonAsync<SharedPreferences>(
       () => SharedPreferences.getInstance());
   getIt.registerSingletonAsync<Directory>(
@@ -31,6 +23,12 @@ void setup() {
   getIt.registerSingletonAsync<Isar>(() async {
     return await initIsar(getIt<Directory>(), getIt<SharedPreferences>());
   }, dependsOn: [Directory, SharedPreferences]);
+  getIt.registerSingletonWithDependencies<HymnsListProvider>(
+      () => HymnsListProvider(getIt<Isar>()),
+      dependsOn: [Isar]);
+  getIt.registerSingletonWithDependencies<CustomListProvider>(
+      () => CustomListProvider(getIt<Isar>()),
+      dependsOn: [Isar]);
 }
 
 void main() {
