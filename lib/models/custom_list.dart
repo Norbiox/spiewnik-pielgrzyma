@@ -1,19 +1,13 @@
-import 'package:isar/isar.dart';
 import 'package:spiewnik_pielgrzyma/models/hymn.dart';
 import 'package:spiewnik_pielgrzyma/utils/list.dart';
 
-part 'custom_list.g.dart';
-
-@collection
 class CustomList {
-  Id id = Isar.autoIncrement;
-
-  String? name;
-  int? index;
+  String id;
+  String name;
   List<int> hymnsIds;
 
-  CustomList(this.name, this.index, {List<int>? hymnsOrder})
-      : hymnsIds = hymnsOrder ?? [];
+  CustomList(this.id, this.name, {List<int>? hymnsIds})
+      : hymnsIds = hymnsIds ?? [];
 
   void addHymn(Hymn hymn) {
     if (hymnsIds.contains(hymn.id)) return;

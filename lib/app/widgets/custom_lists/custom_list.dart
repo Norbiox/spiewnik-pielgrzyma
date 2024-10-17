@@ -6,7 +6,7 @@ import 'package:spiewnik_pielgrzyma/models/custom_list.dart';
 import 'package:watch_it/watch_it.dart';
 
 class CustomListWidget extends WatchingWidget {
-  final int listId;
+  final String listId;
 
   const CustomListWidget({super.key, required this.listId});
 
@@ -39,7 +39,7 @@ class CustomListWidget extends WatchingWidget {
                 key: ValueKey(list.hymnsIds[index]),
                 child: HymnTileWidget(
                     list: list,
-                    hymn: hymnsProvider.getHymnById(list.hymnsIds[index])!),
+                    hymn: hymnsProvider.getHymn(list.hymnsIds[index])),
               )),
     );
   }

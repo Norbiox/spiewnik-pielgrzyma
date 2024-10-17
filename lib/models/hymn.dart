@@ -1,27 +1,21 @@
-import 'package:isar/isar.dart';
-
-part 'hymn.g.dart';
-
-@collection
 class Hymn {
-  Id id = Isar.autoIncrement;
+  final int id;
+  final String number;
+  final String title;
+  final String group;
+  final String subgroup;
+  final List<String> text;
+  bool isFavorite;
 
-  String? number;
-  String? title;
-  String? group;
-  String? subgroup;
-  List<String>? text;
-  bool? isFavorite;
-
-  Hymn(this.number, this.title, this.group, this.subgroup, this.text,
+  Hymn(this.id, this.number, this.title, this.group, this.subgroup, this.text,
       {this.isFavorite = false});
 
   String get fullTitle => "$number. $title";
 
-  String get pdfPath => 'assets/pdf/nuty-${number!.toUpperCase()}.pdf';
+  String get pdfPath => 'assets/pdf/nuty-${number.toUpperCase()}.pdf';
 
-  toggleIsFavorite() => isFavorite = !isFavorite!;
+  void toggleIsFavorite() => isFavorite = !isFavorite;
 
   @override
-  String toString() => 'Hymn $id - "$fullTitle"';
+  String toString() => 'Hymn $number - "$fullTitle"';
 }

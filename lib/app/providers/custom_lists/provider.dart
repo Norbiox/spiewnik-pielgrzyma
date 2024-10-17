@@ -1,50 +1,43 @@
+import 'package:uuid/uuid.dart';
 import 'package:flutter/material.dart';
-import 'package:isar/isar.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'package:spiewnik_pielgrzyma/infra/db.dart';
 import 'package:spiewnik_pielgrzyma/models/custom_list.dart';
 
 class CustomListProvider with ChangeNotifier {
-  final Isar isar;
+  SharedPreferences prefs;
 
-  CustomListProvider(this.isar);
+  CustomListProvider(this.prefs);
 
   List<CustomList> getLists() {
-    return isar.customLists.where().sortByIndex().findAllSync();
+    return loadCustomLists(prefs);
   }
 
   createNewList(String name) {
     List<CustomList> allLists = getLists();
-    allLists.insert(0, CustomList(name, 0));
-    isar.writeTxnSync(() {
-      isar.customLists.putAllSync(allLists);
-    });
-    reindex(allLists);
+    if (allLists.any((e) => e.name == name)) {
+      throw Exception('List with name $name already exists');
+    }
+    CustomList list = CustomList(const Uuid().v4(), name);
+    save(list);
   }
 
   deleteList(CustomList list) {
-    isar.writeTxnSync(() {
-      isar.customLists.deleteSync(list.id);
-    });
-    reindex(getLists());
+    deleteCustomList(list, prefs);
+    notifyListeners();
   }
 
   reindex(List<CustomList> lists) {
-    for (final (index, list) in lists.indexed) {
-      list.index = index;
-    }
-    isar.writeTxnSync(() {
-      isar.customLists.putAllSync(lists);
-    });
+    updateCustomListsOrder(lists, prefs);
     notifyListeners();
   }
 
   save(CustomList list) {
-    isar.writeTxnSync(() {
-      isar.customLists.putSync(list);
-    });
+    saveCustomList(list, prefs);
     notifyListeners();
   }
 
-  CustomList getList(int listId) {
-    return isar.customLists.getSync(listId)!;
+  CustomList getList(String listId) {
+    return getLists().firstWhere((e) => e.id == listId);
   }
 }

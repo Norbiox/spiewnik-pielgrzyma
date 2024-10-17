@@ -6,7 +6,7 @@ import 'package:watch_it/watch_it.dart';
 
 class CustomListPage extends StatelessWidget {
   final CustomListProvider provider = GetIt.I<CustomListProvider>();
-  final int listId;
+  final String listId;
 
   CustomListPage({super.key, required this.listId});
 

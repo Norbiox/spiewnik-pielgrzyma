@@ -1,13 +1,10 @@
-import 'dart:io';
-
 import 'package:flutter/material.dart';
-import 'package:isar/isar.dart';
-import 'package:path_provider/path_provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:spiewnik_pielgrzyma/app/providers/custom_lists/provider.dart';
 import 'package:spiewnik_pielgrzyma/app/providers/home/theme.dart';
 import 'package:spiewnik_pielgrzyma/app/providers/hymns/provider.dart';
 import 'package:spiewnik_pielgrzyma/infra/db.dart';
+import 'package:spiewnik_pielgrzyma/models/hymn.dart';
 import 'package:spiewnik_pielgrzyma/router.dart';
 import 'package:watch_it/watch_it.dart';
 
@@ -18,17 +15,17 @@ void setup() {
   getIt.registerSingleton<ThemeProvider>(ThemeProvider());
   getIt.registerSingletonAsync<SharedPreferences>(
       () => SharedPreferences.getInstance());
-  getIt.registerSingletonAsync<Directory>(
-      () => getApplicationDocumentsDirectory());
-  getIt.registerSingletonAsync<Isar>(() async {
-    return await initIsar(getIt<Directory>(), getIt<SharedPreferences>());
-  }, dependsOn: [Directory, SharedPreferences]);
+  getIt.registerSingletonAsync<List<Hymn>>(
+    () async => loadHymns(getIt.get<SharedPreferences>()),
+    dependsOn: [SharedPreferences],
+  );
   getIt.registerSingletonWithDependencies<HymnsListProvider>(
-      () => HymnsListProvider(getIt<Isar>()),
-      dependsOn: [Isar]);
+      () => HymnsListProvider(
+          getIt.get<SharedPreferences>(), getIt.get<List<Hymn>>()),
+      dependsOn: [SharedPreferences, List<Hymn>]);
   getIt.registerSingletonWithDependencies<CustomListProvider>(
-      () => CustomListProvider(getIt<Isar>()),
-      dependsOn: [Isar]);
+      () => CustomListProvider(getIt.get<SharedPreferences>()),
+      dependsOn: [SharedPreferences]);
 }
 
 void main() {

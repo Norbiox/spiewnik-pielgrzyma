@@ -43,7 +43,7 @@ showDialogWithCustomListsToAddTheHymnTo(BuildContext context, Hymn hymn) {
                       },
                       child: ListTile(
                         leading: const Icon(Icons.arrow_forward_sharp),
-                        title: Text(list.name!),
+                        title: Text(list.name),
                         visualDensity: const VisualDensity(vertical: -4.0),
                       ),
                     ))

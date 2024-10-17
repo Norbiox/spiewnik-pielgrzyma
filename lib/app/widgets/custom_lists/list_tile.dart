@@ -12,7 +12,7 @@ class CustomListTileWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListTile(
-      title: Text(list.name!),
+      title: Text(list.name),
       subtitle: Text("pieśni: ${list.hymnsIds.length.toString()}"),
       trailing: IconButton(
         icon: const Icon(Icons.delete),

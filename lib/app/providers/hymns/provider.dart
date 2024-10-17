@@ -1,26 +1,23 @@
 import 'package:flutter/material.dart';
-import 'package:isar/isar.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:spiewnik_pielgrzyma/app/providers/hymns/search_engine.dart';
+import 'package:spiewnik_pielgrzyma/infra/db.dart';
 import 'package:spiewnik_pielgrzyma/models/hymn.dart';
 
 class HymnsListProvider with ChangeNotifier {
-  // final HymnRepository hymnsRepository;
-  final Isar isar;
+  final SharedPreferences prefs;
+  final List<Hymn> hymns;
 
-  HymnsListProvider(this.isar);
+  HymnsListProvider(this.prefs, this.hymns);
 
-  Hymn getHymn(int id) => isar.hymns.getSync(id)!;
+  Hymn getHymn(int id) => hymns.firstWhere((element) => element.id == id);
 
   List<Hymn> getAll() {
-    return isar.hymns.where().findAllSync();
-  }
-
-  Hymn? getHymnById(int id) {
-    return isar.hymns.getSync(id);
+    return hymns;
   }
 
   List<Hymn> getFavorites() {
-    return isar.hymns.filter().isFavoriteEqualTo(true).findAllSync();
+    return hymns.where((element) => element.isFavorite).toList();
   }
 
   Future<List<Hymn>> searchHymns(List<Hymn> hymns, String query,
@@ -33,10 +30,8 @@ class HymnsListProvider with ChangeNotifier {
 
   Future<bool> toggleIsFavorite(Hymn hymn) async {
     hymn.toggleIsFavorite();
-    await isar.writeTxn(() async {
-      await isar.hymns.put(hymn);
-    });
+    await saveHymnIsFavorite(prefs, hymn.id, hymn.isFavorite);
     notifyListeners();
-    return hymn.isFavorite!;
+    return hymn.isFavorite;
   }
 }

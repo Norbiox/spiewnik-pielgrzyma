@@ -39,7 +39,7 @@ class HymnPage extends StatelessWidget {
             body: TabBarView(children: [
               Padding(
                 padding: const EdgeInsets.all(8.0),
-                child: SelectableText(hymn.text!.join('\n'),
+                child: SelectableText(hymn.text.join('\n'),
                     style: Theme.of(context).textTheme.bodyLarge),
               ),
               SfPdfViewer.asset(hymn.pdfPath),

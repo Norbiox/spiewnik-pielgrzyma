@@ -33,6 +33,6 @@ final GoRouter router = GoRouter(routes: <RouteBase>[
         GoRoute(
             path: ':id',
             builder: (BuildContext context, GoRouterState state) =>
-                CustomListPage(listId: int.parse(state.pathParameters['id']!)))
+                CustomListPage(listId: state.pathParameters['id']!))
       ]),
 ]);
