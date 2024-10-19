@@ -16,7 +16,9 @@ class CustomListsListWidget extends WatchingWidget {
     List<CustomList> list = provider.getLists();
 
     if (list.isEmpty) {
-      return const Text("Nie utworzyłeś jeszcze żadnej listy");
+      return const Center(
+        child: Text("Nie utworzyłeś jeszcze żadnej listy"),
+      );
     }
 
     return Scrollbar(

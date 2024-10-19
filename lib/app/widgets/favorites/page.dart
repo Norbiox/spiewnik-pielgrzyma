@@ -15,7 +15,7 @@ class FavoritesPage extends WatchingWidget {
     List<Hymn> hymns = provider.getFavorites();
 
     if (hymns.isEmpty) {
-      return const Text("Nie masz jeszcze ulubionych pieśni");
+      return const Center(child: Text("Nie masz jeszcze ulubionych pieśni"));
     }
 
     return Scaffold(
