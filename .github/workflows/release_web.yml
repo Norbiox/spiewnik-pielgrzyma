@@ -42,4 +42,4 @@ jobs:
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
           server-dir: /domains/spiewnikpielgrzyma.norbertchmiel.pl/public_html/
-          local-dir: build/web
+          local-dir: build/web/
