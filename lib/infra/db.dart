@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:csv/csv.dart';
 import 'package:flutter/services.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -7,21 +9,22 @@ import 'package:spiewnik_pielgrzyma/models/hymn.dart';
 // HYMNS
 
 const String hymnsCsvPath = 'assets/hymns.csv';
+const String hymnsTextsJsonPath = 'assets/hymns_texts.json';
 const String hymnIsFavoriteKey = 'hymn:isFavorite:';
 
 Future<List<Hymn>> loadHymns(SharedPreferences prefs) async {
-  final String hymnsData = await rootBundle.loadString(hymnsCsvPath);
+  final hymnsData = await rootBundle.loadString(hymnsCsvPath);
   final List<List<String>> hymnsDetails =
       const CsvToListConverter(fieldDelimiter: ',', shouldParseNumbers: false)
           .convert(hymnsData);
+
+  final hymnsTexts =
+      await rootBundle.loadString(hymnsTextsJsonPath).then(jsonDecode);
 
   final List<Hymn> hymns = [];
   for (final entry in hymnsDetails.sublist(1).asMap().entries) {
     final int index = entry.key;
     final List<String> hymnDetails = entry.value;
-
-    String filename = "assets/texts/${hymnDetails[0]}.txt";
-    String rawText = await rootBundle.loadString(filename);
 
     final Hymn hymn = Hymn(
       index,
@@ -29,7 +32,7 @@ Future<List<Hymn>> loadHymns(SharedPreferences prefs) async {
       hymnDetails[1],
       hymnDetails[2],
       hymnDetails[3],
-      rawText.split('\n').sublist(1),
+      List<String>.from(hymnsTexts[hymnDetails[0]]),
       isFavorite: prefs.getBool('$hymnIsFavoriteKey$index') ?? false,
     );
     hymns.add(hymn);

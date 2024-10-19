@@ -59,7 +59,7 @@ class MyApp extends WatchingWidget {
                 if (snapshot.hasData) {
                   return widget!;
                 } else {
-                  return Container(color: Colors.white);
+                  return const Center(child: CircularProgressIndicator());
                 }
               });
         });
