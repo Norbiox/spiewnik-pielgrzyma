@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
 import 'package:spiewnik_pielgrzyma/app/providers/custom_lists/provider.dart';
 import 'package:spiewnik_pielgrzyma/app/widgets/custom_lists/list.dart';
+import 'package:spiewnik_pielgrzyma/app/widgets/home/theme_mode_button.dart';
 
 class CustomListsPage extends StatelessWidget {
   const CustomListsPage({super.key});
@@ -11,6 +12,10 @@ class CustomListsPage extends StatelessWidget {
     CustomListProvider provider = GetIt.I<CustomListProvider>();
 
     return Scaffold(
+      appBar: AppBar(
+        title: const Text('Twoje listy'),
+        actions: const [ThemeModeButton()],
+      ),
       body: const CustomListsListWidget(),
       floatingActionButton: FloatingActionButton(
         onPressed: () async {

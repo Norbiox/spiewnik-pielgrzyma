@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:rate_limiter/rate_limiter.dart';
 import 'package:spiewnik_pielgrzyma/app/providers/hymns/provider.dart';
+import 'package:spiewnik_pielgrzyma/app/widgets/home/theme_mode_button.dart';
 import 'package:spiewnik_pielgrzyma/app/widgets/hymns/hymns_list.dart';
 import 'package:watch_it/watch_it.dart';
 
@@ -31,6 +32,10 @@ class _HymnsListPageState extends State<HymnsListPage> {
         debounce(updateSearchText, const Duration(milliseconds: 500));
 
     return Scaffold(
+      appBar: AppBar(
+        title: const Text('Śpiewnik Pielgrzyma'),
+        actions: const [ThemeModeButton()],
+      ),
       body: Column(children: [
         FutureBuilder(
             future: provider.searchHymns(provider.getAll(), searchText),
