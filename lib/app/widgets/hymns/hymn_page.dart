@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
+import 'package:spiewnik_pielgrzyma/app/providers/hymn_pdf.dart';
 import 'package:spiewnik_pielgrzyma/app/providers/hymns/provider.dart';
 import 'package:syncfusion_flutter_pdfviewer/pdfviewer.dart';
 
@@ -9,6 +10,7 @@ import 'package:spiewnik_pielgrzyma/models/hymn.dart';
 
 class HymnPage extends StatelessWidget {
   final HymnsListProvider provider = GetIt.I<HymnsListProvider>();
+  final HymnPdfProvider hymnPdfProvider = GetIt.I<HymnPdfProvider>();
   final int hymnId;
 
   HymnPage({super.key, required this.hymnId});
@@ -42,7 +44,29 @@ class HymnPage extends StatelessWidget {
                 child: SelectableText(hymn.text.join('\n'),
                     style: Theme.of(context).textTheme.bodyLarge),
               ),
-              SfPdfViewer.asset(hymn.pdfPath),
+              FutureBuilder(
+                future: hymnPdfProvider.getHymnPdfFile(hymn),
+                builder: (context, snapshot) {
+                  if (snapshot.hasData) {
+                    return SfPdfViewer.memory(snapshot.data!);
+                  } else if (snapshot.hasError) {
+                    return Center(
+                      child: Text(snapshot.error.toString()),
+                    );
+                  } else {
+                    return Center(
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          const CircularProgressIndicator(),
+                          const SizedBox(height: 16),
+                          Text(hymnPdfProvider.loadingMessage),
+                        ],
+                      ),
+                    );
+                  }
+                },
+              ),
             ])));
   }
 }
