@@ -1,6 +1,3 @@
-build_runner:
-	flutter pub run build_runner build
-
 emul:
 	flutter emulators --launch Pixel_3a_API_34
 
@@ -13,3 +10,5 @@ test:
 gitversion:
 	docker run --rm -v ./:/app -w /app gittools/gitversion:latest /app
 	
+build_web:
+	flutter build web --release
