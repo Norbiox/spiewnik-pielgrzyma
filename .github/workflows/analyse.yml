@@ -38,3 +38,9 @@ jobs:
 
       - name: Analyze project source
         run: flutter analyze --fatal-infos
+
+      - name: Build android version
+        run: flutter build appbundle
+
+      - name: Build web version
+        run: flutter build web --release
