@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:spiewnik_pielgrzyma/app/providers/home/theme.dart';
+import 'package:spiewnik_pielgrzyma/settings/theme.dart';
 import 'package:watch_it/watch_it.dart';
 
 class ThemeModeButton extends WatchingWidget {

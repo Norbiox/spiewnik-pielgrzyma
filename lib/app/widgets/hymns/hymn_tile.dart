@@ -22,7 +22,7 @@ class HymnTileWidget extends StatelessWidget {
         maxLines: 1,
         overflow: TextOverflow.ellipsis,
       ),
-      onTap: () => context.go('/${hymn.id}'),
+      onTap: () => context.go('/hymn/${hymn.id}'),
       onLongPress: () => showDialogWithCustomListsToAddTheHymnTo(context, hymn),
     );
   }
