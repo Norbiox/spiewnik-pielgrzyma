@@ -29,7 +29,7 @@ class _HymnsListWidgetState extends State<HymnsListWidget>
           itemCount: widget.hymnsList.length,
           prototypeItem: const ListTile(),
           itemBuilder: (context, index) {
-            return HymnTileWidget(hymnId: widget.hymnsList[index].id);
+            return HymnTileWidget(hymn: widget.hymnsList[index]);
           }),
     );
   }
