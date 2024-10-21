@@ -22,37 +22,16 @@ class AboutPage extends StatelessWidget {
                   style: Theme.of(context).textTheme.headlineSmall),
               const SizedBox(height: 16),
               Text(
-                  'Ponieważ oryginalna aplikacja „Śpiewnik Pielgrzyma" stworzona przez Kajetana Suchańskiego została przez zespół Google usunięta ze sklepu Play, podjąłem się wykonania nowej aplikacji na urządzenia mobilne o podobnych funkcjonalnościach.',
+                  'Ponieważ oryginalna aplikacja „Śpiewnik Pielgrzyma" została przez zespół Google usunięta ze sklepu Play, podjąłem się wykonania nowej aplikacji na urządzenia mobilne o podobnych funkcjonalnościach.',
                   style: Theme.of(context).textTheme.bodyMedium),
               const SizedBox(height: 16),
               Text(
-                  'Podobnie jak w poprzedniej wersji, znajdziemy tu listę 875 pieśni z oryginalnego „Śpiewnika Pielgrzyma" wydawnictwa „Łaska i Pokój", wraz z ich tekstami.',
+                  'Podobnie jak w poprzedniej wersji, znajdziemy tu teksty 875 pieśni z oryginalnego „Śpiewnika Pielgrzyma" wydawnictwa „Łaska i Pokój".',
                   style: Theme.of(context).textTheme.bodyMedium),
               const SizedBox(height: 16),
               Text(
                   'Pełna lista funkcjonalności dostępnych w aplikacji jak i tych w planach znajduje się niżej, w sekcji „Funkcjonalności”.',
                   style: Theme.of(context).textTheme.bodyMedium),
-              const SizedBox(height: 32),
-              // O WYDAWNICTWIE
-              Text('Wydawnictwo „Łaska i Pokój"',
-                  style: Theme.of(context).textTheme.headlineSmall),
-              const SizedBox(height: 16),
-              Text(
-                  'Kierujemy szczególne wyrazy wdzięczności dla wydawnictwa „Łaska i Pokój” za udostępnienie skanów pieśni z oryginalnego śpiewnika z nutami, co czyni aplikację jeszcze bardziej przydatną dla usługujących na instrumentach muzycznych.',
-                  style: Theme.of(context).textTheme.bodyMedium),
-              const SizedBox(height: 16),
-              Text(
-                  'Wydawnictwo prowadzone przez Kościół Wolnych Chrześcijan w RP już od 1925 roku wydaje czasopismo o tej samej nazwie, jak również książki i audiobooki chrześcijańskie.',
-                  style: Theme.of(context).textTheme.bodyMedium),
-              const SizedBox(height: 16),
-              Linkify(
-                onOpen: _launchUrl,
-                text:
-                    'Serdecznie zapraszamy na stronę wydawnictwa https://kwch.org/wydawnictwo/ oraz do internetowego sklepu https://kwch.org/shop/',
-                style: Theme.of(context).textTheme.bodyMedium,
-                linkStyle: const TextStyle(color: Colors.blue),
-                options: const LinkifyOptions(humanize: false),
-              ),
               const SizedBox(height: 32),
               // Funkcjonalności
               Text('Funkcjonalności',
@@ -97,13 +76,35 @@ class AboutPage extends StatelessWidget {
                 options: const LinkifyOptions(humanize: false),
               ),
               const SizedBox(height: 32),
+              // Podziękowania
+              Text('Podziękowania',
+                  style: Theme.of(context).textTheme.headlineSmall),
+              const SizedBox(height: 16),
+              const Text(
+                  'W tym miejscu chciałbym złożyć serdeczne podziękowania tym, dzięki którym możemy cieszyć się tą aplikacją.'),
+              const SizedBox(height: 16),
+              Text(
+                  'Na pierwszym miejscu dziękuję Panu Jezusowi Chrystusowi, bez którego nie mógłbym niczego dobrego uczynić, i któremu tę pracę w całości dedykuję. Tobie, o Panie, cześć, chwała i błogosławieństwo!',
+                  style: Theme.of(context).textTheme.bodyMedium),
+              const SizedBox(height: 16),
+              Text(
+                  'Dziękuję także mojej kochanej Żonie, za jej nieocenione wsparcie i wyrozumiałość w czasie tworzenia tej aplikacji.',
+                  style: Theme.of(context).textTheme.bodyMedium),
+              const SizedBox(height: 16),
+              Text(
+                  'Składam również podziękowania wydawnictwu „Łaska i Pokój” za zezwolenie na użycie tekstów pieśni i skanów z oryginalnego śpiewnika z nutami. Zapraszam do odwiedzenia strony wydawnictwa https://kwch.org/wydawnictwo/ oraz do internetowego sklepu https://kwch.org/shop/ gdzie można zakupić wydane przez wydawnictwo książki i audiobooki.',
+                  style: Theme.of(context).textTheme.bodyMedium),
+              const SizedBox(height: 16),
+              const Text(
+                  'Serdeczne dzięki dla wszystkich Braci i Sióstr w Chrystusie, którzy przyczynili się do rozwoju tej aplikacji. To wasze sugestie, kreatywność oraz wysiłki włożone w testowanie kolejnych wersji, uformowały jej obecny kształt.'),
+              const SizedBox(height: 32),
               // KONTAKT
               Text('Kontakt', style: Theme.of(context).textTheme.headlineSmall),
               const SizedBox(height: 16),
               SelectableLinkify(
                 onOpen: _launchUrl,
                 text:
-                    'W przypadku pytań, uwag czy sugestii dotyczących aplikacji, prosimy o kontakt na adres email: norbertchmiel.it@gmail.com',
+                    'W przypadku pytań, uwag czy sugestii dotyczących aplikacji, proszę o kontakt na adres email: norbertchmiel.it@gmail.com',
                 style: Theme.of(context).textTheme.bodyMedium,
                 linkStyle: const TextStyle(color: Colors.blue),
                 options: const LinkifyOptions(humanize: false),
@@ -117,7 +118,7 @@ class AboutPage extends StatelessWidget {
 
   Future<void> _launchUrl(LinkableElement link) async {
     if (!await launchUrl(Uri.parse(link.url))) {
-      throw Exception('Nie można otworzyć linku ${link.url}');
+      throw Exception('Nie można otworzyć ${link.url}');
     }
   }
 }

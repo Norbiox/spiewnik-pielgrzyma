@@ -36,5 +36,8 @@ jobs:
       - name: Verify formatting
         run: dart format --output=none --set-exit-if-changed .
 
+      - name: Create .env file
+        run: echo "" > .env
+
       - name: Analyze project source
         run: flutter analyze --fatal-infos
