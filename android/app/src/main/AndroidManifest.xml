@@ -31,7 +31,7 @@
                 <action android:name="android.intent.action.VIEW" />
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.BROWSABLE" />
-                <data android:scheme="http" android:host="norbiox.github.io" />
+                <data android:scheme="http" android:host="spiewnikpielgrzyma.norbertchmiel.pl" />
                 <data android:scheme="https" />
             </intent-filter>
         </activity>
