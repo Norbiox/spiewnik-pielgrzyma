@@ -1,3 +1,6 @@
+import 'dart:io';
+
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
 import 'package:spiewnik_pielgrzyma/app/providers/hymn_pdf.dart';
@@ -35,7 +38,7 @@ class HymnPage extends StatelessWidget {
                 bottom: const TabBar(
                   tabs: [
                     Tab(text: "Tekst"),
-                    Tab(text: "Nuty"),
+                    if (!kIsWeb) Tab(text: "Nuty"),
                   ],
                 )),
             body: TabBarView(children: [
@@ -44,29 +47,30 @@ class HymnPage extends StatelessWidget {
                 child: SelectableText(hymn.text.join('\n\n'),
                     style: Theme.of(context).textTheme.bodyLarge),
               ),
-              FutureBuilder(
-                future: hymnPdfProvider.getHymnPdfFile(hymn),
-                builder: (context, snapshot) {
-                  if (snapshot.hasData) {
-                    return SfPdfViewer.memory(snapshot.data!);
-                  } else if (snapshot.hasError) {
-                    return Center(
-                      child: Text(snapshot.error.toString()),
-                    );
-                  } else {
-                    return Center(
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          const CircularProgressIndicator(),
-                          const SizedBox(height: 16),
-                          Text(hymnPdfProvider.loadingMessage),
-                        ],
-                      ),
-                    );
-                  }
-                },
-              ),
+              if (!kIsWeb)
+                FutureBuilder(
+                  future: hymnPdfProvider.getHymnPdfFile(hymn),
+                  builder: (context, snapshot) {
+                    if (snapshot.hasData) {
+                      return SfPdfViewer.memory(snapshot.data!);
+                    } else if (snapshot.hasError) {
+                      return Center(
+                        child: Text(snapshot.error.toString()),
+                      );
+                    } else {
+                      return Center(
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            const CircularProgressIndicator(),
+                            const SizedBox(height: 16),
+                            Text(hymnPdfProvider.loadingMessage),
+                          ],
+                        ),
+                      );
+                    }
+                  },
+                )
             ])));
   }
 }

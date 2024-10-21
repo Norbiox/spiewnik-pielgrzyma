@@ -25,7 +25,8 @@ class ThemeProvider extends ChangeNotifier {
 
   void _loadTheme() {
     SharedPreferences.getInstance().then((prefs) {
-      String preferredTheme = prefs.getString(_preferenceKey) ?? 'light';
+      String preferredTheme =
+          prefs.getString(_preferenceKey) ?? ThemeMode.light.toString();
       ThemeMode themeMode =
           ThemeMode.values.firstWhere((e) => e.toString() == preferredTheme);
       this.themeMode = themeMode;
