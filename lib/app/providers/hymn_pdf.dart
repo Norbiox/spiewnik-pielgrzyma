@@ -78,7 +78,7 @@ Future<HymnPdfProvider> hymnPdfProviderFactory() async {
   final String hymnsPdfIds = await rootBundle.loadString(hymnsPdfIdsMapFile);
 
   await dotenv.load();
-  final String encryptionKey = await dotenv.env['PDF_ENCRYPTION_KEY']!;
+  final String encryptionKey = dotenv.env['PDF_ENCRYPTION_KEY']!;
 
   final Map<String, String> hymnNumberToId =
       const CsvToListConverter(fieldDelimiter: ',', shouldParseNumbers: false)

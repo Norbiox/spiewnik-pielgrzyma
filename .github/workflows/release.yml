@@ -69,7 +69,7 @@ jobs:
           echo "PDF_ENCRYPTION_KEY=${{ secrets.PDF_ENCRYPTION_KEY }}" > .env
 
       - name: Start Android Release Build
-        run: flutter build appbundle
+        run: flutter build appbundle --obfuscate --split-debug-info=build/
 
       - name: Release build to internal test track
         uses: r0adkll/upload-google-play@v1
