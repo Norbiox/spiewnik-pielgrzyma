@@ -35,6 +35,12 @@ showDialogWithCustomListsToAddTheHymnTo(BuildContext context, Hymn hymn) {
                           content: Text(
                               'Dodano pieśń "${hymn.fullTitle}" do listy "${list.name}"'),
                           duration: const Duration(seconds: 2),
+                          action: SnackBarAction(
+                              label: "Cofnij",
+                              onPressed: () {
+                                list.removeHymn(hymn);
+                                GetIt.I<CustomListProvider>().save(list);
+                              }),
                         );
                         ScaffoldMessenger.of(context).hideCurrentSnackBar();
                         ScaffoldMessenger.of(context).showSnackBar(snackBar);
