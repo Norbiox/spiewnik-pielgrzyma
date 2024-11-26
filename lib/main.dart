@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:spiewnik_pielgrzyma/app/providers/custom_lists/provider.dart';
 import 'package:spiewnik_pielgrzyma/settings/theme.dart';
@@ -7,6 +8,7 @@ import 'package:spiewnik_pielgrzyma/app/providers/hymns/provider.dart';
 import 'package:spiewnik_pielgrzyma/infra/db.dart';
 import 'package:spiewnik_pielgrzyma/models/hymn.dart';
 import 'package:spiewnik_pielgrzyma/router.dart';
+import 'package:syncfusion_localizations/syncfusion_localizations.dart';
 import 'package:watch_it/watch_it.dart';
 
 final getIt = GetIt.instance;
@@ -48,6 +50,15 @@ class MyApp extends WatchingWidget {
 
     return MaterialApp.router(
         title: 'Śpiewnik Pielgrzyma',
+        localizationsDelegates: const [
+          GlobalMaterialLocalizations.delegate,
+          GlobalWidgetsLocalizations.delegate,
+          SfGlobalLocalizations.delegate,
+        ],
+        supportedLocales: const [
+          Locale('pl', 'PL'),
+        ],
+        locale: const Locale('pl', 'PL'),
         theme: lightTheme,
         darkTheme: darkTheme,
         themeMode: themeProvider.themeMode ?? ThemeMode.system,

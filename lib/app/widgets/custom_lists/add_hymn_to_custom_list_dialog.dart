@@ -16,7 +16,7 @@ showDialogWithCustomListsToAddTheHymnTo(BuildContext context, Hymn hymn) {
   if (lists.isEmpty) {
     ScaffoldMessenger.of(context).hideCurrentSnackBar();
     ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-        content: Text("Brak list, do których możnaby dodać tę pieśń")));
+        content: Text("Brak list, do których można by dodać tę pieśń")));
     return null;
   }
 
@@ -35,6 +35,12 @@ showDialogWithCustomListsToAddTheHymnTo(BuildContext context, Hymn hymn) {
                           content: Text(
                               'Dodano pieśń "${hymn.fullTitle}" do listy "${list.name}"'),
                           duration: const Duration(seconds: 2),
+                          action: SnackBarAction(
+                              label: "Cofnij",
+                              onPressed: () {
+                                list.removeHymn(hymn);
+                                GetIt.I<CustomListProvider>().save(list);
+                              }),
                         );
                         ScaffoldMessenger.of(context).hideCurrentSnackBar();
                         ScaffoldMessenger.of(context).showSnackBar(snackBar);
