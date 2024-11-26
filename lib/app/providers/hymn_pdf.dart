@@ -1,8 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:http/http.dart' as http;
-import 'package:csv/csv.dart';
-import 'package:flutter/services.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:spiewnik_pielgrzyma/app/providers/hymn_pdf_storage.dart';
 import 'package:spiewnik_pielgrzyma/models/hymn.dart';
@@ -16,16 +14,15 @@ abstract class HymnPdfProvider {
 }
 
 class NetworkHymnPdfProvider implements HymnPdfProvider {
-  final String linkBase = "https://docs.google.com/uc?export=download&id=";
-  final Map<String, String> hymnNumberToId;
+  final String linkBase;
 
-  NetworkHymnPdfProvider(this.hymnNumberToId);
+  NetworkHymnPdfProvider(this.linkBase);
 
   @override
   String get loadingMessage => "Trwa pobieranie nut...";
 
   String getHymnPdfUrl(Hymn hymn) {
-    return linkBase + hymnNumberToId[hymn.number.toUpperCase()]!;
+    return linkBase + hymn.number.toUpperCase();
   }
 
   Future<Uint8List> fetchPdfFile(Hymn hymn) async {
@@ -52,9 +49,8 @@ class NetworkHymnPdfProvider implements HymnPdfProvider {
 class DecryptingNetworkHymnPdfProvider extends NetworkHymnPdfProvider {
   final String encryptionKey;
 
-  DecryptingNetworkHymnPdfProvider(
-      this.encryptionKey, Map<String, String> hymnNumberToId)
-      : super(hymnNumberToId);
+  DecryptingNetworkHymnPdfProvider(this.encryptionKey, String linkBase)
+      : super(linkBase);
 
   Future<Uint8List> decryptPdfFile(Uint8List pdf) async {
     final encryptionService = EncryptionService();
@@ -73,9 +69,9 @@ class DecryptingNetworkHymnPdfProviderWithStorage
     extends DecryptingNetworkHymnPdfProvider {
   final HymnPdfStorage hymnPdfStorage;
 
-  DecryptingNetworkHymnPdfProviderWithStorage(this.hymnPdfStorage,
-      String encryptionKey, Map<String, String> hymnNumberToId)
-      : super(encryptionKey, hymnNumberToId);
+  DecryptingNetworkHymnPdfProviderWithStorage(
+      this.hymnPdfStorage, String encryptionKey, String linkBase)
+      : super(encryptionKey, linkBase);
 
   @override
   Future<Uint8List> getHymnPdfFile(Hymn hymn) async {
@@ -87,23 +83,15 @@ class DecryptingNetworkHymnPdfProviderWithStorage
 }
 
 Future<HymnPdfProvider> hymnPdfProviderFactory() async {
-  final String hymnsPdfIds = await rootBundle.loadString(hymnsPdfIdsMapFile);
-
   await dotenv.load();
   final String encryptionKey = dotenv.env['PDF_ENCRYPTION_KEY']!;
-
-  final Map<String, String> hymnNumberToId =
-      const CsvToListConverter(fieldDelimiter: ',', shouldParseNumbers: false)
-          .convert(hymnsPdfIds)
-          .sublist(1)
-          .asMap()
-          .map((index, entry) => MapEntry(entry[0], entry[1]));
+  final String linkBase = dotenv.env['PDF_LINK_BASE']!;
 
   if (kIsWeb) {
-    return DecryptingNetworkHymnPdfProvider(encryptionKey, hymnNumberToId);
+    return DecryptingNetworkHymnPdfProvider(encryptionKey, linkBase);
   } else {
     final documentsPath = (await getApplicationDocumentsDirectory()).path;
     return DecryptingNetworkHymnPdfProviderWithStorage(
-        DocumentsHymnPdfStorage(documentsPath), encryptionKey, hymnNumberToId);
+        DocumentsHymnPdfStorage(documentsPath), encryptionKey, linkBase);
   }
 }
