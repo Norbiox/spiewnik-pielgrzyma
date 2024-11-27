@@ -67,6 +67,7 @@ jobs:
       - name: Create .env file
         run: |
           echo "PDF_ENCRYPTION_KEY=${{ secrets.PDF_ENCRYPTION_KEY }}" > .env
+          echo "PDF_LINK_BASE=https://spiewnikpielgrzyma.norbertchmiel.pl/note_files/" >> .env
 
       - name: Start Android Release Build
         run: flutter build appbundle --obfuscate --split-debug-info=build/
