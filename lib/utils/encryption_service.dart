@@ -20,6 +20,10 @@ class EncryptionService {
     _key = encrypt.Key.fromUtf8(keyString);
   }
 
+  bool isInitiated() {
+    return _key != null;
+  }
+
   // Method to encrypt data
   String encryptData(String plainText) {
     if (_key == null) {

@@ -1,5 +1,5 @@
 import 'package:flutter/foundation.dart';
-import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'package:get_it/get_it.dart';
 import 'package:http/http.dart' as http;
 import 'package:path_provider/path_provider.dart';
 import 'package:spiewnik_pielgrzyma/app/providers/hymn_pdf_storage.dart';
@@ -47,14 +47,11 @@ class NetworkHymnPdfProvider implements HymnPdfProvider {
 }
 
 class DecryptingNetworkHymnPdfProvider extends NetworkHymnPdfProvider {
-  final String encryptionKey;
+  final EncryptionService encryptionService = GetIt.I.get<EncryptionService>();
 
-  DecryptingNetworkHymnPdfProvider(this.encryptionKey, String linkBase)
-      : super(linkBase);
+  DecryptingNetworkHymnPdfProvider(super.linkBase);
 
   Future<Uint8List> decryptPdfFile(Uint8List pdf) async {
-    final encryptionService = EncryptionService();
-    encryptionService.init(encryptionKey);
     return Uint8List.fromList(
         encryptionService.decryptData(String.fromCharCodes(pdf)).codeUnits);
   }
@@ -70,28 +67,31 @@ class DecryptingNetworkHymnPdfProviderWithStorage
   final HymnPdfStorage hymnPdfStorage;
 
   DecryptingNetworkHymnPdfProviderWithStorage(
-      this.hymnPdfStorage, String encryptionKey, String linkBase)
-      : super(encryptionKey, linkBase);
+      this.hymnPdfStorage, String linkBase)
+      : super(linkBase);
 
   @override
   Future<Uint8List> getHymnPdfFile(Hymn hymn) async {
     final pdfBytes = await hymnPdfStorage.getHymnPdfFile(hymn.number) ??
         await fetchPdfFile(hymn);
     await hymnPdfStorage.saveHymnPdfFile(hymn.number, pdfBytes);
-    return decryptPdfFile(pdfBytes);
+    try {
+      return await decryptPdfFile(pdfBytes);
+    } catch (e) {
+      debugPrint("Failed to decrypt hymn pdf: $e, will try to re-download");
+      final pdfBytes = await fetchPdfFile(hymn);
+      await hymnPdfStorage.saveHymnPdfFile(hymn.number, pdfBytes, force: true);
+      return decryptPdfFile(pdfBytes);
+    }
   }
 }
 
-Future<HymnPdfProvider> hymnPdfProviderFactory() async {
-  await dotenv.load();
-  final String encryptionKey = dotenv.env['PDF_ENCRYPTION_KEY']!;
-  final String linkBase = dotenv.env['PDF_LINK_BASE']!;
-
+Future<HymnPdfProvider> hymnPdfProviderFactory(String linkBase) async {
   if (kIsWeb) {
-    return DecryptingNetworkHymnPdfProvider(encryptionKey, linkBase);
+    return DecryptingNetworkHymnPdfProvider(linkBase);
   } else {
     final documentsPath = (await getApplicationDocumentsDirectory()).path;
     return DecryptingNetworkHymnPdfProviderWithStorage(
-        DocumentsHymnPdfStorage(documentsPath), encryptionKey, linkBase);
+        DocumentsHymnPdfStorage(documentsPath), linkBase);
   }
 }

@@ -1,7 +1,0 @@
-<a href="{{ "" | relURL }}">Strona główna</a>
-{{ with .Site.GetPage "/blog" }}
-<a href="{{ "blog" | relURL }}">Co nowego?</a>
-{{ end }}
-{{ range .Site.Menus.main }}
-<a href="{{ .URL }}">{{ .Name }}</a>
-{{ end }}
