@@ -3,11 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
 import 'package:spiewnik_pielgrzyma/app/providers/hymn_pdf.dart';
 import 'package:spiewnik_pielgrzyma/app/providers/hymns/provider.dart';
-import 'package:syncfusion_flutter_pdfviewer/pdfviewer.dart';
-
 import 'package:spiewnik_pielgrzyma/app/widgets/custom_lists/add_hymn_to_custom_list_dialog.dart';
 import 'package:spiewnik_pielgrzyma/app/widgets/hymns/favorite_icon.dart';
 import 'package:spiewnik_pielgrzyma/models/hymn.dart';
+import 'package:syncfusion_flutter_pdfviewer/pdfviewer.dart';
 
 class HymnPage extends StatelessWidget {
   final HymnsListProvider provider = GetIt.I<HymnsListProvider>();

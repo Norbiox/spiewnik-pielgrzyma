@@ -3,7 +3,8 @@ import 'dart:typed_data';
 
 abstract class HymnPdfStorage {
   Future<Uint8List?> getHymnPdfFile(String hymnNumber);
-  Future<void> saveHymnPdfFile(String hymnNumber, Uint8List pdfBytes);
+  Future<void> saveHymnPdfFile(String hymnNumber, Uint8List pdfBytes,
+      {bool force = false});
 }
 
 class DocumentsHymnPdfStorage implements HymnPdfStorage {

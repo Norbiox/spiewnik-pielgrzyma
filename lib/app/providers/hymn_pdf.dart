@@ -75,7 +75,14 @@ class DecryptingNetworkHymnPdfProviderWithStorage
     final pdfBytes = await hymnPdfStorage.getHymnPdfFile(hymn.number) ??
         await fetchPdfFile(hymn);
     await hymnPdfStorage.saveHymnPdfFile(hymn.number, pdfBytes);
-    return decryptPdfFile(pdfBytes);
+    try {
+      return await decryptPdfFile(pdfBytes);
+    } catch (e) {
+      debugPrint("Failed to decrypt hymn pdf: $e, will try to re-download");
+      final pdfBytes = await fetchPdfFile(hymn);
+      await hymnPdfStorage.saveHymnPdfFile(hymn.number, pdfBytes, force: true);
+      return decryptPdfFile(pdfBytes);
+    }
   }
 }
 
