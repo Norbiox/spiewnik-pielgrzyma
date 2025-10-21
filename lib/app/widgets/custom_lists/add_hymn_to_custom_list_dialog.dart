@@ -4,7 +4,7 @@ import 'package:spiewnik_pielgrzyma/models/custom_list.dart';
 import 'package:spiewnik_pielgrzyma/models/hymn.dart';
 import 'package:watch_it/watch_it.dart';
 
-showDialogWithCustomListsToAddTheHymnTo(BuildContext context, Hymn hymn) {
+void showDialogWithCustomListsToAddTheHymnTo(BuildContext context, Hymn hymn) {
   CustomListProvider provider = GetIt.I<CustomListProvider>();
 
   List<CustomList> lists = provider
@@ -17,7 +17,7 @@ showDialogWithCustomListsToAddTheHymnTo(BuildContext context, Hymn hymn) {
     ScaffoldMessenger.of(context).hideCurrentSnackBar();
     ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
         content: Text("Brak list, do których można by dodać tę pieśń")));
-    return null;
+    return;
   }
 
   // Show dialog with list of custom lists to add the hymn to

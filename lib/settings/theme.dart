@@ -34,7 +34,7 @@ class ThemeProvider extends ChangeNotifier {
     });
   }
 
-  toggleMode() {
+  void toggleMode() {
     themeMode == ThemeMode.light
         ? themeMode = ThemeMode.dark
         : themeMode = ThemeMode.light;

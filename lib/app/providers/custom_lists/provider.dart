@@ -13,7 +13,7 @@ class CustomListProvider with ChangeNotifier {
     return loadCustomLists(prefs);
   }
 
-  createNewList(String name) {
+  void createNewList(String name) {
     List<CustomList> allLists = getLists();
     if (allLists.any((e) => e.name == name)) {
       throw Exception('List with name $name already exists');
@@ -22,17 +22,17 @@ class CustomListProvider with ChangeNotifier {
     save(list);
   }
 
-  deleteList(CustomList list) {
+  void deleteList(CustomList list) {
     deleteCustomList(list, prefs);
     notifyListeners();
   }
 
-  reindex(List<CustomList> lists) {
+  void reindex(List<CustomList> lists) {
     updateCustomListsOrder(lists, prefs);
     notifyListeners();
   }
 
-  save(CustomList list) {
+  void save(CustomList list) {
     saveCustomList(list, prefs);
     notifyListeners();
   }
