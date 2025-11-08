@@ -45,7 +45,8 @@ class BulkPdfDownloadService with ChangeNotifier {
   static const String _stateKey = 'bulkDownload:state';
   static const String _lastIndexKey = 'bulkDownload:lastDownloadedIndex';
   static const String _failedHymnsKey = 'bulkDownload:failedHymns';
-  static const String _successfulDownloadsKey = 'bulkDownload:successfulDownloads';
+  static const String _successfulDownloadsKey =
+      'bulkDownload:successfulDownloads';
   static const String _currentRetryCountKey = 'bulkDownload:currentRetryCount';
 
   BulkPdfDownloadService(
@@ -108,7 +109,8 @@ class BulkPdfDownloadService with ChangeNotifier {
         debugPrint('App resumed. Checking connectivity...');
         _connectivity.checkConnectivity().then((result) {
           if (!result.contains(ConnectivityResult.none)) {
-            debugPrint('App resumed with internet available. Resuming downloads...');
+            debugPrint(
+                'App resumed with internet available. Resuming downloads...');
             _isWaitingForConnectivity = false;
             _resumeDownload();
           }
@@ -139,7 +141,8 @@ class BulkPdfDownloadService with ChangeNotifier {
 
   Future<void> resumeDownload() async {
     if (_downloadState == DownloadState.paused ||
-        (_downloadState == DownloadState.downloading && _isWaitingForConnectivity)) {
+        (_downloadState == DownloadState.downloading &&
+            _isWaitingForConnectivity)) {
       _isWaitingForConnectivity = false;
       _downloadState = DownloadState.downloading;
       await _saveProgress();
@@ -255,7 +258,8 @@ class BulkPdfDownloadService with ChangeNotifier {
 
   Future<bool> areAllHymnsDownloaded() async {
     for (final hymn in hymns) {
-      final isDlProvider = pdfProvider as DecryptingNetworkHymnPdfProviderWithStorage;
+      final isDlProvider =
+          pdfProvider as DecryptingNetworkHymnPdfProviderWithStorage;
       final pdf = await isDlProvider.hymnPdfStorage.getHymnPdfFile(hymn.number);
       if (pdf == null) {
         return false;

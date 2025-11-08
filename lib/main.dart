@@ -51,17 +51,15 @@ void setup() {
   getIt.registerSingletonAsync<HymnPdfProvider>(
       () => hymnPdfProviderFactory(dotenv.env['PDF_LINK_BASE']!));
 
-  getIt.registerSingletonAsync<BulkPdfDownloadService>(
-      () async {
-        final service = BulkPdfDownloadService(
-          getIt.get<SharedPreferences>(),
-          getIt.get<List<Hymn>>(),
-          getIt.get<HymnPdfProvider>(),
-        );
-        await service.initialize();
-        return service;
-      },
-      dependsOn: [SharedPreferences, List<Hymn>, HymnPdfProvider]);
+  getIt.registerSingletonAsync<BulkPdfDownloadService>(() async {
+    final service = BulkPdfDownloadService(
+      getIt.get<SharedPreferences>(),
+      getIt.get<List<Hymn>>(),
+      getIt.get<HymnPdfProvider>(),
+    );
+    await service.initialize();
+    return service;
+  }, dependsOn: [SharedPreferences, List<Hymn>, HymnPdfProvider]);
 }
 
 void main() async {

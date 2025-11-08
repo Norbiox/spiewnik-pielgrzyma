@@ -97,8 +97,7 @@ class _BulkPdfDownloadSection extends WatchingWidget {
                 _DownloadProgressSection(downloadService),
               if (downloadService.downloadState == DownloadState.paused)
                 _PausedDownloadSection(downloadService),
-              if (allDownloaded)
-                _AllDownloadedIndicator(),
+              if (allDownloaded) _AllDownloadedIndicator(),
             ],
           ),
         );
