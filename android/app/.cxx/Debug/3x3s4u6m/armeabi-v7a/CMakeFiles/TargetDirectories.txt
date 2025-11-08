@@ -1,0 +1,2 @@
+/home/norbert/Projects/spiewnik_pielgrzyma/android/app/.cxx/Debug/3x3s4u6m/armeabi-v7a/CMakeFiles/edit_cache.dir
+/home/norbert/Projects/spiewnik_pielgrzyma/android/app/.cxx/Debug/3x3s4u6m/armeabi-v7a/CMakeFiles/rebuild_cache.dir
