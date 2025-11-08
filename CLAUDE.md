@@ -10,8 +10,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ### Build and Run
 - `flutter run` - Run the app in debug mode
-- `flutter emulators --launch Pixel_3a_API_34` - Launch Android emulator 
-- `flutter build web --release` - Build for web deployment
+- `flutter emulators --launch Pixel_9` - Launch Android emulator
 
 ### Testing and Analysis  
 - `flutter analyze` - Run static analysis and linting
