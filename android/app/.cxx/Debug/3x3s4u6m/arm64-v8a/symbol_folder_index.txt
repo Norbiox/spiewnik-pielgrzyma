@@ -1,0 +1,1 @@
+/home/norbert/Projects/spiewnik_pielgrzyma/build/app/intermediates/cxx/Debug/3x3s4u6m/obj/arm64-v8a

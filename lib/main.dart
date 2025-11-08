@@ -8,6 +8,7 @@ import 'package:spiewnik_pielgrzyma/app/providers/hymns/provider.dart';
 import 'package:spiewnik_pielgrzyma/infra/db.dart';
 import 'package:spiewnik_pielgrzyma/models/hymn.dart';
 import 'package:spiewnik_pielgrzyma/router.dart';
+import 'package:spiewnik_pielgrzyma/services/bulk_pdf_download_service.dart';
 import 'package:spiewnik_pielgrzyma/settings/theme.dart';
 import 'package:spiewnik_pielgrzyma/utils/encryption_service.dart';
 import 'package:syncfusion_localizations/syncfusion_localizations.dart';
@@ -49,6 +50,16 @@ void setup() {
 
   getIt.registerSingletonAsync<HymnPdfProvider>(
       () => hymnPdfProviderFactory(dotenv.env['PDF_LINK_BASE']!));
+
+  getIt.registerSingletonAsync<BulkPdfDownloadService>(() async {
+    final service = BulkPdfDownloadService(
+      getIt.get<SharedPreferences>(),
+      getIt.get<List<Hymn>>(),
+      getIt.get<HymnPdfProvider>(),
+    );
+    await service.initialize();
+    return service;
+  }, dependsOn: [SharedPreferences, List<Hymn>, HymnPdfProvider]);
 }
 
 void main() async {
