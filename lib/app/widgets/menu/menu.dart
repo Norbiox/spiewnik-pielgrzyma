@@ -9,7 +9,7 @@ class PopupMenu extends StatelessWidget {
     return PopupMenuButton<String>(
       icon: const Icon(Icons.more_vert),
       onSelected: (String item) {
-        context.go(item);
+        context.push(item);
       },
       itemBuilder: (BuildContext context) => <PopupMenuEntry<String>>[
         const PopupMenuItem<String>(

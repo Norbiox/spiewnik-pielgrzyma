@@ -20,7 +20,7 @@ class CustomListTileWidget extends StatelessWidget {
           await _showDeleteListDialog(context, list);
         },
       ),
-      onTap: () => context.go('/custom-lists/${list.id}'),
+      onTap: () => context.push('/custom-lists/${list.id}'),
     );
   }
 

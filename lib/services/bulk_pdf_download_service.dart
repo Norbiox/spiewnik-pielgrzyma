@@ -7,7 +7,7 @@ import 'package:spiewnik_pielgrzyma/models/hymn.dart';
 
 enum DownloadState { idle, downloading, paused, completed }
 
-class _AppLifecycleObserver implements WidgetsBindingObserver {
+class _AppLifecycleObserver with WidgetsBindingObserver {
   final BulkPdfDownloadService _service;
 
   _AppLifecycleObserver(this._service);
@@ -15,12 +15,6 @@ class _AppLifecycleObserver implements WidgetsBindingObserver {
   @override
   void didChangeAppLifecycleState(AppLifecycleState state) {
     _service._onAppLifecycleStateChanged(state);
-  }
-
-  @override
-  noSuchMethod(Invocation invocation) {
-    // Ignore all other method calls from WidgetsBindingObserver
-    super.noSuchMethod(invocation);
   }
 }
 

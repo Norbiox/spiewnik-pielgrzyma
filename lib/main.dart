@@ -17,8 +17,6 @@ import 'package:watch_it/watch_it.dart';
 final getIt = GetIt.instance;
 
 void setup() {
-  WidgetsFlutterBinding.ensureInitialized();
-
   // Load environment variables and initialize encryption service first
   final encryptionKey = dotenv.env['PDF_ENCRYPTION_KEY'];
   if (encryptionKey == null) {
@@ -63,8 +61,10 @@ void setup() {
 }
 
 void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
   await dotenv.load();
   setup();
+  await getIt.allReady();
   runApp(const MyApp());
 }
 
@@ -91,17 +91,6 @@ class MyApp extends WatchingWidget {
         theme: lightTheme,
         darkTheme: darkTheme,
         themeMode: themeProvider.themeMode ?? ThemeMode.system,
-        routerConfig: router,
-        builder: (context, widget) {
-          return FutureBuilder(
-              future: getIt.allReady(),
-              builder: (BuildContext context, AsyncSnapshot snapshot) {
-                if (snapshot.hasData) {
-                  return widget!;
-                } else {
-                  return const Center(child: CircularProgressIndicator());
-                }
-              });
-        });
+        routerConfig: router);
   }
 }

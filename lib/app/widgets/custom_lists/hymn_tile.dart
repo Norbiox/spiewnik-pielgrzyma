@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:spiewnik_pielgrzyma/app/providers/custom_lists/provider.dart';
-import 'package:spiewnik_pielgrzyma/app/widgets/hymns/hymn_page.dart';
 import 'package:spiewnik_pielgrzyma/models/custom_list.dart';
 import 'package:spiewnik_pielgrzyma/models/hymn.dart';
 import 'package:watch_it/watch_it.dart';
@@ -22,11 +22,7 @@ class HymnTileWidget extends StatelessWidget {
         maxLines: 1,
         overflow: TextOverflow.ellipsis,
       ),
-      onTap: () {
-        Navigator.of(context).push(MaterialPageRoute(
-          builder: (context) => HymnPage(hymnId: hymn.id),
-        ));
-      },
+      onTap: () => context.push('/hymn/${hymn.id}'),
       trailing: IconButton(
           icon: const Icon(Icons.delete),
           onPressed: () => showDialog(

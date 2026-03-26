@@ -42,7 +42,7 @@ final GoRouter router = GoRouter(initialLocation: '/', routes: <RouteBase>[
           const MyHomePage(initialIndex: 2),
       routes: <RouteBase>[
         GoRoute(
-            path: '/:id',
+            path: ':id',
             builder: (BuildContext context, GoRouterState state) =>
                 CustomListPage(listId: state.pathParameters['id']!))
       ]),
