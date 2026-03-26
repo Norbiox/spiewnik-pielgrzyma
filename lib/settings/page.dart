@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:spiewnik_pielgrzyma/services/bulk_pdf_download_service.dart';
 import 'package:spiewnik_pielgrzyma/settings/theme.dart';
 import 'package:watch_it/watch_it.dart';
@@ -34,6 +35,13 @@ class SettingsPage extends WatchingWidget {
             ),
           ),
           const _BulkPdfDownloadSection(),
+          const Divider(),
+          ListTile(
+            leading: const Icon(Icons.info_outline),
+            title: const Text('Informacje'),
+            trailing: const Icon(Icons.chevron_right),
+            onTap: () => context.push('/about'),
+          ),
         ],
       ),
     );

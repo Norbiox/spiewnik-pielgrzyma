@@ -23,42 +23,44 @@ class _BottomNavigationState extends State<BottomNavigation> {
   @override
   Widget build(BuildContext context) {
     return PopScope(
-      canPop: _currentIndex == 0,
-      onPopInvokedWithResult: (didPop, _) {
-        if (!didPop) {
-          setState(() => _currentIndex = 0);
-        }
-      },
-      child: Scaffold(
-      body: Stack(
-        children: [
-          Offstage(offstage: _currentIndex != 0, child: const HymnsListPage()),
-          Offstage(offstage: _currentIndex != 1, child: const FavoritesPage()),
-          Offstage(
-              offstage: _currentIndex != 2, child: const CustomListsPage()),
-        ],
-      ),
-      bottomNavigationBar: BottomNavigationBar(
-        currentIndex: _currentIndex,
-        onTap: (index) => setState(() => _currentIndex = index),
-        items: const [
-          BottomNavigationBarItem(
-            icon: Icon(Icons.music_note_outlined),
-            activeIcon: Icon(Icons.music_note),
-            label: 'Lista pieśni',
+        canPop: _currentIndex == 0,
+        onPopInvokedWithResult: (didPop, _) {
+          if (!didPop) {
+            setState(() => _currentIndex = 0);
+          }
+        },
+        child: Scaffold(
+          body: Stack(
+            children: [
+              Offstage(
+                  offstage: _currentIndex != 0, child: const HymnsListPage()),
+              Offstage(
+                  offstage: _currentIndex != 1, child: const FavoritesPage()),
+              Offstage(
+                  offstage: _currentIndex != 2, child: const CustomListsPage()),
+            ],
           ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.favorite_outline),
-            activeIcon: Icon(Icons.favorite),
-            label: 'Ulubione',
+          bottomNavigationBar: BottomNavigationBar(
+            currentIndex: _currentIndex,
+            onTap: (index) => setState(() => _currentIndex = index),
+            items: const [
+              BottomNavigationBarItem(
+                icon: Icon(Icons.music_note_outlined),
+                activeIcon: Icon(Icons.music_note),
+                label: 'Lista pieśni',
+              ),
+              BottomNavigationBarItem(
+                icon: Icon(Icons.favorite_outline),
+                activeIcon: Icon(Icons.favorite),
+                label: 'Ulubione',
+              ),
+              BottomNavigationBarItem(
+                icon: Icon(Icons.list_outlined),
+                activeIcon: Icon(Icons.list),
+                label: 'Twoje listy',
+              ),
+            ],
           ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.list_outlined),
-            activeIcon: Icon(Icons.list),
-            label: 'Twoje listy',
-          ),
-        ],
-      ),
-    ));
+        ));
   }
 }
