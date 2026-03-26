@@ -1,17 +1,17 @@
 emul:
-	flutter emulators --launch Pixel_3a_API_34
+	fvm flutter emulators --launch Pixel_9
 
 run:
-	flutter run
+	fvm flutter run
 
 test:
-	flutter analyze
+	fvm flutter analyze
 
 gitversion:
 	docker run --rm -v ./:/app -w /app gittools/gitversion:latest /app
 	
 build_web:
-	flutter build web --release
+	fvm flutter build web --release
 
 copy_web_files_to_hosting:
 	scp -r build/web/* Norbiox@spiewnikpielgrzyma.norbertchmiel.pl:~/domains/spiewnikpielgrzyma.norbertchmiel.pl/public_html/

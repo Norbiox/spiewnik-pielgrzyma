@@ -5,7 +5,8 @@
       "WebSearch",
       "Bash(flutter analyze)",
       "Bash(flutter test)",
-      "Bash(flutter analyze:*)"
+      "Bash(flutter analyze:*)",
+      "Bash(make run:*)"
     ],
     "deny": [],
     "ask": []

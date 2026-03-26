@@ -30,3 +30,6 @@ upload_certificate.pem
 
 *.jks
 *.base64
+
+# FVM Version Cache
+.fvm/

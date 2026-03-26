@@ -27,7 +27,7 @@ Aplikacja do przeglądania i wyświetlania pieśni chrześcijańskich ze Śpiewn
 
 3. **Install dependencies**
    ```bash
-   flutter pub get
+   fvm flutter pub get
    ```
 
 4. **Configure environment variables**
@@ -45,7 +45,7 @@ Aplikacja do przeglądania i wyświetlania pieśni chrześcijańskich ze Śpiewn
    ```bash
    make run
    ```
-   Or directly: `flutter run`
+   Or directly: `fvm flutter run`
 
 ### Available Commands
 
