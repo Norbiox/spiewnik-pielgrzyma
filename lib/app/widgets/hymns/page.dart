@@ -19,6 +19,7 @@ class HymnsListPage extends WatchingWidget {
 
     return Scaffold(
       appBar: AppBar(
+        forceMaterialTransparency: true,
         title: const Text('Śpiewnik Pielgrzyma'),
         actions: [
           IconButton(

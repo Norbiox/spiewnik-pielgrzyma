@@ -22,6 +22,7 @@ class FavoritesPage extends WatchingWidget {
 
     return Scaffold(
         appBar: AppBar(
+          forceMaterialTransparency: true,
           title: const Text('Ulubione'),
           actions: [
             IconButton(
