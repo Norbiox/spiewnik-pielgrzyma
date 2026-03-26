@@ -22,7 +22,14 @@ class _BottomNavigationState extends State<BottomNavigation> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return PopScope(
+      canPop: _currentIndex == 0,
+      onPopInvokedWithResult: (didPop, _) {
+        if (!didPop) {
+          setState(() => _currentIndex = 0);
+        }
+      },
+      child: Scaffold(
       body: Stack(
         children: [
           Offstage(offstage: _currentIndex != 0, child: const HymnsListPage()),
@@ -52,6 +59,6 @@ class _BottomNavigationState extends State<BottomNavigation> {
           ),
         ],
       ),
-    );
+    ));
   }
 }
