@@ -65,13 +65,15 @@ class _HymnPageState extends State<HymnPage> {
               GestureDetector(
                 onScaleStart: _onScaleStart,
                 onScaleUpdate: _onScaleUpdate,
-                child: SingleChildScrollView(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Text(hymn.text.join('\n\n'),
-                      style: Theme.of(context)
-                          .textTheme
-                          .bodyLarge
-                          ?.copyWith(fontSize: scaledSize)),
+                child: SelectionArea(
+                  child: SingleChildScrollView(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Text(hymn.text.join('\n\n'),
+                        style: Theme.of(context)
+                            .textTheme
+                            .bodyLarge
+                            ?.copyWith(fontSize: scaledSize)),
+                  ),
                 ),
               ),
               if (!kIsWeb)
