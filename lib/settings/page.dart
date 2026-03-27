@@ -295,9 +295,9 @@ class _FontSizeSettingsTile extends WatchingWidget {
                   builder: (context, constraints) {
                     const sliderPadding = 24.0;
                     final trackWidth = constraints.maxWidth - sliderPadding * 2;
-                    final defaultFraction =
-                        (FontSizeProvider.defaultScale - FontSizeProvider.minScale) /
-                            (FontSizeProvider.maxScale - FontSizeProvider.minScale);
+                    final defaultFraction = (FontSizeProvider.defaultScale -
+                            FontSizeProvider.minScale) /
+                        (FontSizeProvider.maxScale - FontSizeProvider.minScale);
                     final markerOffset =
                         sliderPadding + trackWidth * defaultFraction;
 
@@ -319,9 +319,8 @@ class _FontSizeSettingsTile extends WatchingWidget {
                           child: Container(
                             width: 1,
                             height: 8,
-                            color: Theme.of(context)
-                                .colorScheme
-                                .onSurfaceVariant,
+                            color:
+                                Theme.of(context).colorScheme.onSurfaceVariant,
                           ),
                         ),
                       ],

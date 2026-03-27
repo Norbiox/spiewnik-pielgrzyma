@@ -16,10 +16,10 @@ class SearchAppBar extends StatefulWidget implements PreferredSizeWidget {
   Size get preferredSize => const Size.fromHeight(kToolbarHeight);
 
   @override
-  State<SearchAppBar> createState() => _SearchAppBarState();
+  State<SearchAppBar> createState() => SearchAppBarState();
 }
 
-class _SearchAppBarState extends State<SearchAppBar> {
+class SearchAppBarState extends State<SearchAppBar> {
   bool _isSearching = false;
   final TextEditingController _controller = TextEditingController();
   Timer? _debounce;
@@ -35,7 +35,7 @@ class _SearchAppBarState extends State<SearchAppBar> {
     setState(() => _isSearching = true);
   }
 
-  void _closeSearch() {
+  void closeSearch() {
     _debounce?.cancel();
     _controller.clear();
     widget.onSearchChanged('');
@@ -55,11 +55,11 @@ class _SearchAppBarState extends State<SearchAppBar> {
       canPop: !_isSearching,
       onPopInvokedWithResult: (didPop, _) {
         if (!didPop) {
-          _closeSearch();
+          closeSearch();
         }
       },
       child: AppBar(
-        forceMaterialTransparency: true,
+        scrolledUnderElevation: 0,
         titleSpacing: 12,
         title: GestureDetector(
           onTap: _isSearching ? null : _openSearch,
@@ -101,7 +101,7 @@ class _SearchAppBarState extends State<SearchAppBar> {
                 ),
                 if (_isSearching)
                   GestureDetector(
-                    onTap: _closeSearch,
+                    onTap: closeSearch,
                     child: Icon(Icons.close,
                         color: Theme.of(context).colorScheme.onSurfaceVariant),
                   ),

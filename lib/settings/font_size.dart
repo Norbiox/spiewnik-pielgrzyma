@@ -10,8 +10,7 @@ class FontSizeProvider extends ChangeNotifier {
   final SharedPreferences _prefs;
   double _scale;
 
-  FontSizeProvider(this._prefs)
-      : _scale = _loadScale(_prefs);
+  FontSizeProvider(this._prefs) : _scale = _loadScale(_prefs);
 
   static double _loadScale(SharedPreferences prefs) {
     return prefs.getDouble(_preferenceKey) ?? defaultScale;
