@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:spiewnik_pielgrzyma/services/bulk_pdf_download_service.dart';
+import 'package:spiewnik_pielgrzyma/settings/font_size.dart';
 import 'package:spiewnik_pielgrzyma/settings/theme.dart';
 import 'package:watch_it/watch_it.dart';
 
@@ -25,6 +26,16 @@ class SettingsPage extends WatchingWidget {
             ),
           ),
           const _ThemeSettingsTile(),
+          const Divider(),
+          // Font size section
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+            child: Text(
+              'Rozmiar tekstu',
+              style: Theme.of(context).textTheme.titleMedium,
+            ),
+          ),
+          const _FontSizeSettingsTile(),
           const Divider(),
           // Bulk PDF download section
           Padding(
@@ -257,6 +268,102 @@ class _PausedDownloadSection extends StatelessWidget {
           ),
         ),
       ],
+    );
+  }
+}
+
+class _FontSizeSettingsTile extends WatchingWidget {
+  const _FontSizeSettingsTile();
+
+  @override
+  Widget build(BuildContext context) {
+    final fontSizeProvider = GetIt.I<FontSizeProvider>();
+    watch(fontSizeProvider);
+
+    final scale = fontSizeProvider.scale;
+    final percentage = (scale * 100).round();
+
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+      child: Column(
+        children: [
+          Row(
+            children: [
+              const Icon(Icons.text_fields, size: 16),
+              Expanded(
+                child: LayoutBuilder(
+                  builder: (context, constraints) {
+                    const sliderPadding = 24.0;
+                    final trackWidth = constraints.maxWidth - sliderPadding * 2;
+                    final defaultFraction =
+                        (FontSizeProvider.defaultScale - FontSizeProvider.minScale) /
+                            (FontSizeProvider.maxScale - FontSizeProvider.minScale);
+                    final markerOffset =
+                        sliderPadding + trackWidth * defaultFraction;
+
+                    return Stack(
+                      clipBehavior: Clip.none,
+                      children: [
+                        Slider(
+                          value: scale,
+                          min: FontSizeProvider.minScale,
+                          max: FontSizeProvider.maxScale,
+                          divisions: 13,
+                          label: '$percentage%',
+                          onChanged: (value) =>
+                              fontSizeProvider.setScale(value),
+                        ),
+                        Positioned(
+                          left: markerOffset - 0.5,
+                          bottom: 4,
+                          child: Container(
+                            width: 1,
+                            height: 8,
+                            color: Theme.of(context)
+                                .colorScheme
+                                .onSurfaceVariant,
+                          ),
+                        ),
+                      ],
+                    );
+                  },
+                ),
+              ),
+              const Icon(Icons.text_fields, size: 28),
+            ],
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Text('$percentage%',
+                  style: Theme.of(context).textTheme.bodySmall),
+              if (scale != FontSizeProvider.defaultScale)
+                TextButton(
+                  onPressed: () => fontSizeProvider.reset(),
+                  child: const Text('Resetuj'),
+                ),
+            ],
+          ),
+          const SizedBox(height: 8),
+          Container(
+            width: double.infinity,
+            padding: const EdgeInsets.all(12),
+            decoration: BoxDecoration(
+              color: Theme.of(context).colorScheme.surfaceContainerHighest,
+              borderRadius: BorderRadius.circular(8),
+            ),
+            child: Text(
+              'Alleluja, chwalcie Pana\n'
+              'Nućcie Jemu chwałę, cześć!',
+              style: Theme.of(context).textTheme.bodyLarge?.copyWith(
+                    fontSize: fontSizeProvider.scaledFontSize(
+                        Theme.of(context).textTheme.bodyLarge?.fontSize ??
+                            16.0),
+                  ),
+            ),
+          ),
+        ],
+      ),
     );
   }
 }

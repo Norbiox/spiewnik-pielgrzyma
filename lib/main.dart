@@ -9,6 +9,7 @@ import 'package:spiewnik_pielgrzyma/infra/db.dart';
 import 'package:spiewnik_pielgrzyma/models/hymn.dart';
 import 'package:spiewnik_pielgrzyma/router.dart';
 import 'package:spiewnik_pielgrzyma/services/bulk_pdf_download_service.dart';
+import 'package:spiewnik_pielgrzyma/settings/font_size.dart';
 import 'package:spiewnik_pielgrzyma/settings/theme.dart';
 import 'package:spiewnik_pielgrzyma/utils/encryption_service.dart';
 import 'package:syncfusion_localizations/syncfusion_localizations.dart';
@@ -38,6 +39,9 @@ void setup() {
     () async => loadHymns(getIt.get<SharedPreferences>()),
     dependsOn: [SharedPreferences],
   );
+  getIt.registerSingletonWithDependencies<FontSizeProvider>(
+      () => FontSizeProvider(getIt.get<SharedPreferences>()),
+      dependsOn: [SharedPreferences]);
   getIt.registerSingletonWithDependencies<HymnsListProvider>(
       () => HymnsListProvider(
           getIt.get<SharedPreferences>(), getIt.get<List<Hymn>>()),

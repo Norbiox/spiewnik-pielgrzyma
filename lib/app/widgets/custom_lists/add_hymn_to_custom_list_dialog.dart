@@ -41,7 +41,8 @@ void showDialogWithCustomListsToAddTheHymnTo(BuildContext context, Hymn hymn) {
                           content: Row(
                             children: [
                               Expanded(
-                                child: Text('Dodano pieśń "${hymn.number}" do "${list.name}"'),
+                                child: Text(
+                                    'Dodano pieśń "${hymn.number}" do "${list.name}"'),
                               ),
                               TextButton(
                                 onPressed: () {
