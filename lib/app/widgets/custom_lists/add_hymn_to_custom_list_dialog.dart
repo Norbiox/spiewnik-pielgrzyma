@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:spiewnik_pielgrzyma/app/providers/custom_lists/provider.dart';
 import 'package:spiewnik_pielgrzyma/models/custom_list.dart';
 import 'package:spiewnik_pielgrzyma/models/hymn.dart';
@@ -31,19 +32,45 @@ void showDialogWithCustomListsToAddTheHymnTo(BuildContext context, Hymn hymn) {
                         list.addHymn(hymn);
                         GetIt.I<CustomListProvider>().save(list);
 
-                        final SnackBar snackBar = SnackBar(
-                          content: Text(
-                              'Dodano pieśń "${hymn.fullTitle}" do listy "${list.name}"'),
-                          duration: const Duration(seconds: 2),
-                          action: SnackBarAction(
-                              label: "Cofnij",
-                              onPressed: () {
-                                list.removeHymn(hymn);
-                                GetIt.I<CustomListProvider>().save(list);
-                              }),
-                        );
-                        ScaffoldMessenger.of(context).hideCurrentSnackBar();
-                        ScaffoldMessenger.of(context).showSnackBar(snackBar);
+                        final scaffoldMessenger = ScaffoldMessenger.of(context);
+                        final router = GoRouter.of(context);
+                        final actionColor =
+                            Theme.of(context).colorScheme.inversePrimary;
+                        scaffoldMessenger.hideCurrentSnackBar();
+                        scaffoldMessenger.showSnackBar(SnackBar(
+                          content: Row(
+                            children: [
+                              Expanded(
+                                child: Text('Dodano pieśń "${hymn.number}" do "${list.name}"'),
+                              ),
+                              TextButton(
+                                onPressed: () {
+                                  scaffoldMessenger.hideCurrentSnackBar();
+                                  list.removeHymn(hymn);
+                                  GetIt.I<CustomListProvider>().save(list);
+                                  scaffoldMessenger.showSnackBar(SnackBar(
+                                    content: Text(
+                                        'Usunięto pieśń "${hymn.number}" z listy "${list.name}"'),
+                                    duration: const Duration(seconds: 2),
+                                  ));
+                                },
+                                child: Text("Cofnij",
+                                    style: TextStyle(color: actionColor)),
+                              ),
+                              TextButton(
+                                onPressed: () {
+                                  scaffoldMessenger.hideCurrentSnackBar();
+                                  router.push('/custom-lists/${list.id}');
+                                },
+                                child: Text("Do listy",
+                                    style: TextStyle(color: actionColor)),
+                              ),
+                            ],
+                          ),
+                          duration: const Duration(seconds: 3),
+                          padding: const EdgeInsets.only(
+                              left: 16, top: 4, bottom: 4, right: 4),
+                        ));
 
                         Navigator.pop(context);
                       },

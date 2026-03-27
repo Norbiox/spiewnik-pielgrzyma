@@ -24,15 +24,14 @@ class _CustomListsPageState extends State<CustomListsPage> {
     final isSearching = _searchQuery.isNotEmpty;
     if (isSearching) {
       lists = lists
-          .where((l) =>
-              l.name.toLowerCase().contains(_searchQuery.toLowerCase()))
+          .where(
+              (l) => l.name.toLowerCase().contains(_searchQuery.toLowerCase()))
           .toList();
     }
 
     Widget body;
     if (provider.getLists().isEmpty) {
-      body = const Center(
-          child: Text("Nie utworzyłeś jeszcze żadnej listy"));
+      body = const Center(child: Text("Nie utworzyłeś jeszcze żadnej listy"));
     } else if (lists.isEmpty) {
       body = const Center(child: Text("Nic nie znaleziono"));
     } else {

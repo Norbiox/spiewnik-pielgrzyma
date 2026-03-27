@@ -103,8 +103,7 @@ class _SearchAppBarState extends State<SearchAppBar> {
                   GestureDetector(
                     onTap: _closeSearch,
                     child: Icon(Icons.close,
-                        color:
-                            Theme.of(context).colorScheme.onSurfaceVariant),
+                        color: Theme.of(context).colorScheme.onSurfaceVariant),
                   ),
               ],
             ),

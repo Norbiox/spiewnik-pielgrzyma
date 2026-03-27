@@ -28,8 +28,7 @@ class _FavoritesPageState extends State<FavoritesPage> {
 
     Widget body;
     if (provider.getFavorites().isEmpty) {
-      body =
-          const Center(child: Text("Nie masz jeszcze ulubionych pieśni"));
+      body = const Center(child: Text("Nie masz jeszcze ulubionych pieśni"));
     } else if (hymns.isEmpty) {
       body = const Center(child: Text("Nic nie znaleziono"));
     } else {
