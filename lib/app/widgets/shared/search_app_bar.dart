@@ -42,6 +42,12 @@ class SearchAppBarState extends State<SearchAppBar> {
     setState(() => _isSearching = false);
   }
 
+  void collapseSearch() {
+    _debounce?.cancel();
+    _controller.clear();
+    setState(() => _isSearching = false);
+  }
+
   @override
   void dispose() {
     _debounce?.cancel();
@@ -61,8 +67,9 @@ class SearchAppBarState extends State<SearchAppBar> {
       child: AppBar(
         scrolledUnderElevation: 0,
         titleSpacing: 12,
-        title: GestureDetector(
+        title: InkWell(
           onTap: _isSearching ? null : _openSearch,
+          borderRadius: BorderRadius.circular(28),
           child: Container(
             height: 44,
             decoration: BoxDecoration(
@@ -100,10 +107,12 @@ class SearchAppBarState extends State<SearchAppBar> {
                         ),
                 ),
                 if (_isSearching)
-                  GestureDetector(
-                    onTap: closeSearch,
-                    child: Icon(Icons.close,
+                  IconButton(
+                    onPressed: closeSearch,
+                    icon: Icon(Icons.close,
                         color: Theme.of(context).colorScheme.onSurfaceVariant),
+                    padding: EdgeInsets.zero,
+                    constraints: const BoxConstraints(),
                   ),
               ],
             ),

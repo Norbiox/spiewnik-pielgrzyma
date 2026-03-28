@@ -43,9 +43,8 @@ class _HymnPageState extends State<HymnPage> {
                 actions: <Widget>[
                   FavoriteIconWidget(hymn: _hymn),
                   IconButton(
-                      onPressed: () =>
-                          showDialogWithCustomListsToAddTheHymnTo(
-                              context, _hymn),
+                      onPressed: () => showDialogWithCustomListsToAddTheHymnTo(
+                          context, _hymn),
                       icon: const Icon(Icons.add))
                 ],
                 bottom: const TabBar(

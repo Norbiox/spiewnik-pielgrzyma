@@ -24,6 +24,15 @@ class FontSizeProvider extends ChangeNotifier {
     notifyListeners();
   }
 
+  void setScaleVisual(double value) {
+    _scale = value.clamp(minScale, maxScale);
+    notifyListeners();
+  }
+
+  void persistScale() {
+    _prefs.setDouble(_preferenceKey, _scale);
+  }
+
   void reset() {
     setScale(defaultScale);
   }

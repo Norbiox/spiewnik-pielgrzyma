@@ -311,6 +311,8 @@ class _FontSizeSettingsTile extends WatchingWidget {
                           divisions: 13,
                           label: '$percentage%',
                           onChanged: (value) =>
+                              fontSizeProvider.setScaleVisual(value),
+                          onChangeEnd: (value) =>
                               fontSizeProvider.setScale(value),
                         ),
                         Positioned(

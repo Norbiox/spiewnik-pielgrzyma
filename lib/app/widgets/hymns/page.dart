@@ -6,6 +6,7 @@ import 'package:spiewnik_pielgrzyma/models/hymn.dart';
 import 'package:watch_it/watch_it.dart';
 
 class HymnsListPage extends WatchingWidget {
+  static final _searchEngine = HymnsSearchEngine();
   final String searchQuery;
 
   const HymnsListPage({super.key, this.searchQuery = ''});
@@ -17,7 +18,7 @@ class HymnsListPage extends WatchingWidget {
 
     List<Hymn> hymns = provider.getAll();
     if (searchQuery.isNotEmpty) {
-      hymns = HymnsSearchEngine().search(hymns, searchQuery);
+      hymns = _searchEngine.search(hymns, searchQuery);
     }
 
     return Column(children: [
