@@ -30,11 +30,37 @@ class ArchivedListsPage extends WatchingWidget {
                   subtitle: Text('pieśni: ${list.hymnsIds.length}'),
                   trailing: IconButton(
                     icon: const Icon(Icons.unarchive),
-                    onPressed: () => provider.restoreList(list),
+                    onPressed: () =>
+                        _showRestoreListDialog(context, provider, list),
                   ),
                 );
               },
             ),
+    );
+  }
+
+  void _showRestoreListDialog(
+      BuildContext context, CustomListProvider provider, CustomList list) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          content: Text("Na pewno chcesz przywrócić listę ${list.name}?"),
+          actions: <Widget>[
+            FilledButton.tonal(
+              child: const Text("Nie"),
+              onPressed: () => Navigator.pop(context),
+            ),
+            FilledButton(
+              child: const Text("Tak"),
+              onPressed: () {
+                provider.restoreList(list);
+                Navigator.pop(context);
+              },
+            ),
+          ],
+        );
+      },
     );
   }
 }
