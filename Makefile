@@ -4,8 +4,11 @@ emul:
 run:
 	fvm flutter run
 
-test:
+analyze:
 	fvm flutter analyze
+
+test: analyze
+	fvm flutter test
 
 gitversion:
 	docker run --rm -v ./:/app -w /app gittools/gitversion:latest /app

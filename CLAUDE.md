@@ -19,7 +19,8 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 ### Makefile shortcuts
 - `make run` - Run the app
 - `make emul` - Launch emulator
-- `make test` - Run analysis
+- `make analyze` - Run static analysis only
+- `make test` - Run analysis + unit tests
 - `make build_web` - Build web release
 
 ## Architecture
@@ -69,6 +70,13 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 ### Localization
 - Configured for Polish locale (`pl_PL`)
 - Uses `flutter_localizations` and `syncfusion_localizations`
+
+## CI/CD & Release
+
+- **CI**: Every push/PR to `master` runs formatting, `flutter analyze --fatal-infos`, and `flutter test` (`.github/workflows/analyse.yml`)
+- **Release**: Triggered by pushing a `v*` tag to `master`. Builds Android appbundle, uploads to Google Play internal track, deploys web, and creates a GitHub Release (`.github/workflows/release.yml`)
+- **Versioning**: GitVersion in Mainline mode (`GitVersion.yml`) — patch increments on `master`, minor on `feature/*` branches
+- **Web deploy**: SCP to hosting server, requires `WEB_HOST_USER`, `WEB_HOST`, `WEB_HOST_PATH` GitHub Secrets
 
 ## Key Features
 - Hymn browsing with search functionality

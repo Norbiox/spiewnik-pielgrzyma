@@ -50,9 +50,11 @@ Aplikacja do przeglądania i wyświetlania pieśni chrześcijańskich ze Śpiewn
 ### Available Commands
 
 - `make run` - Run app in debug mode
-- `make emul` - Launch Android emulator (Pixel 3a API 34)
-- `make test` - Run static analysis and linting
+- `make emul` - Launch Android emulator
+- `make analyze` - Run static analysis and linting
+- `make test` - Run analysis + unit tests
 - `make build_web` - Build web release
+- `make deploy_web` - Build and deploy web version
 
 ### Architecture & Documentation
 
@@ -67,11 +69,33 @@ The app requires a `.env` file (copy from `.env.example`):
 
 The `.env` file is git-ignored and should NOT be committed.
 
-### Release Builds
+## Development & Release Flow
 
-For release builds, Android signing is required:
-- See `.github/workflows/release.yml` for CI/CD configuration
-- Release builds are triggered on the `release` branch and signed automatically in GitHub Actions
+### Development
+
+All work happens on `master` or in short-lived `feature/*` branches merged back to `master`. On every push/PR to `master`, CI runs formatting checks, static analysis, and tests.
+
+### Releasing
+
+Releases are triggered by pushing a version tag:
+
+```bash
+git tag v1.3.0
+git push origin v1.3.0
+```
+
+This automatically:
+1. Computes the version using GitVersion
+2. Builds the Android appbundle (signed in CI)
+3. Uploads to Google Play **internal testing** track (immediately available)
+4. Builds and deploys the web version
+5. Creates a GitHub Release with auto-generated notes
+
+Production promotion is done manually from Play Console after verifying the internal build.
+
+### Versioning
+
+Versioning is handled by [GitVersion](https://gitversion.net/) in Mainline mode. Patch version increments automatically on `master`, minor on `feature/*` branches. No manual version bumps needed.
 
 ### Disaster Recovery
 
