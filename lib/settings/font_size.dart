@@ -13,7 +13,8 @@ class FontSizeProvider extends ChangeNotifier {
   FontSizeProvider(this._prefs) : _scale = _loadScale(_prefs);
 
   static double _loadScale(SharedPreferences prefs) {
-    return prefs.getDouble(_preferenceKey) ?? defaultScale;
+    final stored = prefs.getDouble(_preferenceKey) ?? defaultScale;
+    return stored.clamp(minScale, maxScale).toDouble();
   }
 
   double get scale => _scale;
