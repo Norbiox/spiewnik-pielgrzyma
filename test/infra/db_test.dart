@@ -59,8 +59,7 @@ void main() {
       // Active keys restored, at front
       expect(prefs.getStringList('customLists'), ['abc', 'x']);
       expect(prefs.getString('customList:name:abc'), 'My List');
-      expect(
-          prefs.getStringList('customList:hymnsIds:abc'), ['1', '2', '3']);
+      expect(prefs.getStringList('customList:hymnsIds:abc'), ['1', '2', '3']);
 
       // Archived keys removed
       expect(prefs.getStringList('archivedCustomLists'), isEmpty);

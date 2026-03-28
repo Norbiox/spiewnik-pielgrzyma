@@ -32,8 +32,7 @@ class CustomListTileWidget extends StatelessWidget {
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          content:
-              Text("Na pewno chcesz zarchiwizować listę ${list.name}?"),
+          content: Text("Na pewno chcesz zarchiwizować listę ${list.name}?"),
           actions: <Widget>[
             FilledButton.tonal(
               child: const Text("Nie"),
