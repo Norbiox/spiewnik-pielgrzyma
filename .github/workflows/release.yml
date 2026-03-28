@@ -56,6 +56,15 @@ jobs:
       - name: Install dependencies
         run: flutter pub get
 
+      - name: Verify formatting
+        run: dart format --output=none --set-exit-if-changed .
+
+      - name: Analyze project source
+        run: flutter analyze --fatal-infos
+
+      - name: Run tests
+        run: flutter test
+
       - name: Create .env file
         run: |
           echo "PDF_ENCRYPTION_KEY=${{ secrets.PDF_ENCRYPTION_KEY }}" > .env
