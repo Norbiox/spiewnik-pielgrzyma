@@ -282,6 +282,8 @@ class _FontSizeSettingsTile extends WatchingWidget {
 
     final scale = fontSizeProvider.scale;
     final percentage = (scale * 100).round();
+    final isDefaultScale =
+        (scale - FontSizeProvider.defaultScale).abs() < 0.001;
 
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
@@ -311,6 +313,8 @@ class _FontSizeSettingsTile extends WatchingWidget {
                           divisions: 13,
                           label: '$percentage%',
                           onChanged: (value) =>
+                              fontSizeProvider.setScaleVisual(value),
+                          onChangeEnd: (value) =>
                               fontSizeProvider.setScale(value),
                         ),
                         Positioned(
@@ -336,7 +340,7 @@ class _FontSizeSettingsTile extends WatchingWidget {
             children: [
               Text('$percentage%',
                   style: Theme.of(context).textTheme.bodySmall),
-              if (scale != FontSizeProvider.defaultScale)
+              if (!isDefaultScale)
                 TextButton(
                   onPressed: () => fontSizeProvider.reset(),
                   child: const Text('Resetuj'),

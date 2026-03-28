@@ -13,7 +13,8 @@ class FontSizeProvider extends ChangeNotifier {
   FontSizeProvider(this._prefs) : _scale = _loadScale(_prefs);
 
   static double _loadScale(SharedPreferences prefs) {
-    return prefs.getDouble(_preferenceKey) ?? defaultScale;
+    final stored = prefs.getDouble(_preferenceKey) ?? defaultScale;
+    return stored.clamp(minScale, maxScale).toDouble();
   }
 
   double get scale => _scale;
@@ -22,6 +23,15 @@ class FontSizeProvider extends ChangeNotifier {
     _scale = value.clamp(minScale, maxScale);
     _prefs.setDouble(_preferenceKey, _scale);
     notifyListeners();
+  }
+
+  void setScaleVisual(double value) {
+    _scale = value.clamp(minScale, maxScale);
+    notifyListeners();
+  }
+
+  void persistScale() {
+    _prefs.setDouble(_preferenceKey, _scale);
   }
 
   void reset() {
