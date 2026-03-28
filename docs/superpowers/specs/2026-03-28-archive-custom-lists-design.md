@@ -55,7 +55,7 @@ Existing `deleteList()` remains but is no longer called from the UI.
   - List name
   - Hymn count
   - `Icons.unarchive` button on the right
-- Tapping unarchive calls `provider.restoreList(list)` (no confirmation dialog — it's safe and reversible)
+- Tapping unarchive shows a confirmation dialog, then calls `provider.restoreList(list)`
 - Empty state text when no archived lists exist
 
 ### Routing (`lib/router.dart`)

@@ -129,7 +129,8 @@ void restoreCustomList(CustomList list, SharedPreferences prefs) {
   prefs.setStringList('$customListHymnsIdsKey${list.id}',
       list.hymnsIds.map((e) => e.toString()).toList());
   final activeIds = prefs.getStringList(customListsKey) ?? [];
-  prefs.setStringList(customListsKey, [list.id, ...activeIds]);
+  prefs.setStringList(
+      customListsKey, [list.id, ...activeIds.where((id) => id != list.id)]);
   // Remove from archived keys
   prefs.remove('$archivedCustomListNameKey${list.id}');
   prefs.remove('$archivedCustomListHymnsIdsKey${list.id}');
