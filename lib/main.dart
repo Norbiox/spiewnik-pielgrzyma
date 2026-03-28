@@ -44,8 +44,7 @@ void setup() {
       () => FontSizeProvider(getIt.get<SharedPreferences>()),
       dependsOn: [SharedPreferences]);
   getIt.registerSingletonWithDependencies<ConfirmFavoriteRemovalProvider>(
-      () =>
-          ConfirmFavoriteRemovalProvider(getIt.get<SharedPreferences>()),
+      () => ConfirmFavoriteRemovalProvider(getIt.get<SharedPreferences>()),
       dependsOn: [SharedPreferences]);
   getIt.registerSingletonWithDependencies<HymnsListProvider>(
       () => HymnsListProvider(
