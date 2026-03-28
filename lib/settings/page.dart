@@ -48,6 +48,21 @@ class SettingsPage extends WatchingWidget {
           ),
           const _ConfirmFavoriteRemovalTile(),
           const Divider(),
+          // Archived lists section
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+            child: Text(
+              'Przywracanie list',
+              style: Theme.of(context).textTheme.titleMedium,
+            ),
+          ),
+          ListTile(
+            leading: const Icon(Icons.archive_outlined),
+            title: const Text('Zarchiwizowane listy'),
+            trailing: const Icon(Icons.chevron_right),
+            onTap: () => context.push('/settings/archived-lists'),
+          ),
+          const Divider(),
           // Bulk PDF download section
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
