@@ -89,3 +89,53 @@ void deleteCustomList(CustomList list, SharedPreferences prefs) {
 void updateCustomListsOrder(List<CustomList> lists, SharedPreferences prefs) {
   prefs.setStringList(customListsKey, lists.map((e) => e.id).toList());
 }
+
+// ARCHIVED CUSTOM LISTS
+
+const String archivedCustomListsKey = 'archivedCustomLists';
+const String archivedCustomListHymnsIdsKey = 'archivedCustomList:hymnsIds:';
+const String archivedCustomListNameKey = 'archivedCustomList:name:';
+
+List<CustomList> loadArchivedCustomLists(SharedPreferences prefs) {
+  final List<String> ids = prefs.getStringList(archivedCustomListsKey) ?? [];
+  final List<CustomList> lists = [];
+  for (final id in ids) {
+    final List<int> hymnsIds =
+        (prefs.getStringList('$archivedCustomListHymnsIdsKey$id') ?? [])
+            .map((e) => int.parse(e))
+            .toList();
+    final String name = prefs.getString('$archivedCustomListNameKey$id') ?? '';
+    lists.add(CustomList(id, name, hymnsIds: hymnsIds));
+  }
+  return lists;
+}
+
+void archiveCustomList(CustomList list, SharedPreferences prefs) {
+  // Copy to archived keys
+  prefs.setString('$archivedCustomListNameKey${list.id}', list.name);
+  prefs.setStringList('$archivedCustomListHymnsIdsKey${list.id}',
+      list.hymnsIds.map((e) => e.toString()).toList());
+  final archivedIds = prefs.getStringList(archivedCustomListsKey) ?? [];
+  if (!archivedIds.contains(list.id)) {
+    prefs.setStringList(archivedCustomListsKey, [list.id, ...archivedIds]);
+  }
+  // Remove from active keys
+  deleteCustomList(list, prefs);
+}
+
+void restoreCustomList(CustomList list, SharedPreferences prefs) {
+  // Copy to active keys (prepend to front)
+  prefs.setString('$customListNameKey${list.id}', list.name);
+  prefs.setStringList('$customListHymnsIdsKey${list.id}',
+      list.hymnsIds.map((e) => e.toString()).toList());
+  final activeIds = prefs.getStringList(customListsKey) ?? [];
+  prefs.setStringList(customListsKey, [list.id, ...activeIds]);
+  // Remove from archived keys
+  prefs.remove('$archivedCustomListNameKey${list.id}');
+  prefs.remove('$archivedCustomListHymnsIdsKey${list.id}');
+  prefs.setStringList(
+      archivedCustomListsKey,
+      (prefs.getStringList(archivedCustomListsKey) ?? [])
+          .where((e) => e != list.id)
+          .toList());
+}
