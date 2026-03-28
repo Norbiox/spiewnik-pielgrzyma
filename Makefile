@@ -10,9 +10,12 @@ analyze:
 test: analyze
 	fvm flutter test
 
-gitversion:
-	docker run --rm -v ./:/app -w /app gittools/gitversion:latest /app
-	
+release-patch:
+	./scripts/bump-patch.sh
+
+release-minor:
+	./scripts/bump-minor.sh
+
 build_web:
 	fvm flutter build web --release
 

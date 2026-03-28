@@ -95,7 +95,7 @@ Production promotion is done manually from Play Console after verifying the inte
 
 ### Versioning
 
-Versioning is handled by [GitVersion](https://gitversion.net/) in Mainline mode. Patch version increments automatically on `master`, minor on `feature/*` branches. No manual version bumps needed.
+Version is derived from the git tag name (e.g., `v1.3.0` → `1.3.0`). The Android build number (`versionCode`) is the GitHub Actions run number, which auto-increments.
 
 ### Disaster Recovery
 

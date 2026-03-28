@@ -75,7 +75,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 - **CI**: Every push/PR to `master` runs formatting, `flutter analyze --fatal-infos`, and `flutter test` (`.github/workflows/analyse.yml`)
 - **Release**: Triggered by pushing a `v*` tag to `master`. Builds Android appbundle, uploads to Google Play internal track, deploys web, and creates a GitHub Release (`.github/workflows/release.yml`)
-- **Versioning**: GitVersion in Mainline mode (`GitVersion.yml`) — patch increments on `master`, minor on `feature/*` branches
+- **Versioning**: Version is derived from the git tag (e.g., `v1.3.0` → `1.3.0`), build number from GitHub Actions run number
 - **Web deploy**: SCP to hosting server, requires `WEB_HOST_USER`, `WEB_HOST`, `WEB_HOST_PATH` GitHub Secrets
 
 ## Key Features

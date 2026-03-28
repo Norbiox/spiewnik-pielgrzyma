@@ -20,18 +20,9 @@ jobs:
         id: version
         run: echo "VERSION=${GITHUB_REF_NAME#v}" >> $GITHUB_OUTPUT
 
-      - name: Install GitVersion
-        uses: gittools/actions/gitversion/setup@v4.4.2
-        with:
-          versionSpec: '6.x'
-
-      - name: Use GitVersion
-        id: gitversion
-        uses: gittools/actions/gitversion/execute@v4.4.2
-
       - name: Update version in pubspec.yaml
         run: |
-          sed -i "s/version: .*/version: ${{ steps.gitversion.outputs.MajorMinorPatch }}+${{ github.run_number }}/g" pubspec.yaml
+          sed -i "s/version: .*/version: ${{ steps.version.outputs.VERSION }}+${{ github.run_number }}/g" pubspec.yaml
 
       - name: Download Android keystore
         id: android_keystore
