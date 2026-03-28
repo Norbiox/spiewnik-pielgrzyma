@@ -4,6 +4,7 @@ import 'package:spiewnik_pielgrzyma/app/about.dart';
 import 'package:spiewnik_pielgrzyma/app/widgets/custom_lists/custom_list_page.dart';
 import 'package:spiewnik_pielgrzyma/app/widgets/home/home.dart';
 import 'package:spiewnik_pielgrzyma/app/widgets/hymns/hymn_page.dart';
+import 'package:spiewnik_pielgrzyma/settings/archived_lists_page.dart';
 import 'package:spiewnik_pielgrzyma/settings/page.dart';
 
 final GoRouter router = GoRouter(initialLocation: '/', routes: <RouteBase>[
@@ -20,7 +21,13 @@ final GoRouter router = GoRouter(initialLocation: '/', routes: <RouteBase>[
         GoRoute(
             path: 'settings',
             builder: (BuildContext context, GoRouterState state) =>
-                const SettingsPage()),
+                const SettingsPage(),
+            routes: <RouteBase>[
+              GoRoute(
+                  path: 'archived-lists',
+                  builder: (BuildContext context, GoRouterState state) =>
+                      const ArchivedListsPage()),
+            ]),
         GoRoute(
             path: 'about',
             builder: (BuildContext context, GoRouterState state) =>

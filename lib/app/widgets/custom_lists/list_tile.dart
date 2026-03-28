@@ -15,16 +15,16 @@ class CustomListTileWidget extends StatelessWidget {
       title: Text(list.name),
       subtitle: Text("pieśni: ${list.hymnsIds.length.toString()}"),
       trailing: IconButton(
-        icon: const Icon(Icons.delete),
+        icon: const Icon(Icons.archive_outlined),
         onPressed: () async {
-          await _showDeleteListDialog(context, list);
+          await _showArchiveListDialog(context, list);
         },
       ),
       onTap: () => context.push('/custom-lists/${list.id}'),
     );
   }
 
-  Future<void> _showDeleteListDialog(
+  Future<void> _showArchiveListDialog(
       BuildContext context, CustomList list) async {
     CustomListProvider provider = GetIt.I<CustomListProvider>();
 
@@ -32,7 +32,7 @@ class CustomListTileWidget extends StatelessWidget {
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          content: Text("Na pewno chcesz trwale usunąć listę ${list.name}?"),
+          content: Text("Na pewno chcesz zarchiwizować listę ${list.name}?"),
           actions: <Widget>[
             FilledButton.tonal(
               child: const Text("Nie"),
@@ -41,7 +41,7 @@ class CustomListTileWidget extends StatelessWidget {
             FilledButton(
                 child: const Text("Tak"),
                 onPressed: () {
-                  provider.deleteList(list);
+                  provider.archiveList(list);
                   Navigator.pop(context);
                 })
           ],
