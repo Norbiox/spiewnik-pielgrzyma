@@ -38,7 +38,7 @@ class _BottomNavigationState extends State<BottomNavigation> {
   }
 
   void _onPageChanged(int index) {
-    _searchAppBarKey.currentState?.closeSearch();
+    _searchAppBarKey.currentState?.collapseSearch();
     setState(() => _currentIndex = index);
   }
 
