@@ -9,7 +9,7 @@ import 'package:spiewnik_pielgrzyma/settings/font_size.dart';
 import 'package:syncfusion_flutter_pdfviewer/pdfviewer.dart';
 import 'package:watch_it/watch_it.dart';
 
-class HymnPage extends WatchingStatefulWidget {
+class HymnPage extends StatefulWidget {
   final int hymnId;
 
   const HymnPage({super.key, required this.hymnId});
@@ -21,38 +21,31 @@ class HymnPage extends WatchingStatefulWidget {
 class _HymnPageState extends State<HymnPage> {
   final HymnsListProvider provider = GetIt.I<HymnsListProvider>();
   final HymnPdfProvider hymnPdfProvider = GetIt.I<HymnPdfProvider>();
-  final FontSizeProvider fontSizeProvider = GetIt.I<FontSizeProvider>();
 
-  double _scaleAtStart = 1.0;
+  late final Hymn _hymn;
+  late final Future<Uint8List> _pdfFuture;
 
-  void _onScaleStart(ScaleStartDetails details) {
-    _scaleAtStart = fontSizeProvider.scale;
-  }
-
-  void _onScaleUpdate(ScaleUpdateDetails details) {
-    if (details.pointerCount < 2) return;
-    fontSizeProvider.setScale(_scaleAtStart * details.scale);
+  @override
+  void initState() {
+    super.initState();
+    _hymn = provider.getHymn(widget.hymnId);
+    _pdfFuture = hymnPdfProvider.getHymnPdfFile(_hymn);
   }
 
   @override
   Widget build(BuildContext context) {
-    watch(fontSizeProvider);
-    final Hymn hymn = provider.getHymn(widget.hymnId);
-    final baseFontSize =
-        Theme.of(context).textTheme.bodyLarge?.fontSize ?? 16.0;
-    final scaledSize = fontSizeProvider.scaledFontSize(baseFontSize);
-
     return DefaultTabController(
         length: 2,
         initialIndex: 0,
         child: Scaffold(
             appBar: AppBar(
-                title: Text(hymn.fullTitle),
+                title: Text(_hymn.fullTitle),
                 actions: <Widget>[
-                  FavoriteIconWidget(hymn: hymn),
+                  FavoriteIconWidget(hymn: _hymn),
                   IconButton(
-                      onPressed: () => showDialogWithCustomListsToAddTheHymnTo(
-                          context, hymn),
+                      onPressed: () =>
+                          showDialogWithCustomListsToAddTheHymnTo(
+                              context, _hymn),
                       icon: const Icon(Icons.add))
                 ],
                 bottom: const TabBar(
@@ -62,23 +55,10 @@ class _HymnPageState extends State<HymnPage> {
                   ],
                 )),
             body: TabBarView(children: [
-              GestureDetector(
-                onScaleStart: _onScaleStart,
-                onScaleUpdate: _onScaleUpdate,
-                child: SelectionArea(
-                  child: SingleChildScrollView(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Text(hymn.text.join('\n\n'),
-                        style: Theme.of(context)
-                            .textTheme
-                            .bodyLarge
-                            ?.copyWith(fontSize: scaledSize)),
-                  ),
-                ),
-              ),
+              _HymnTextTab(hymn: _hymn),
               if (!kIsWeb)
                 FutureBuilder(
-                  future: hymnPdfProvider.getHymnPdfFile(hymn),
+                  future: _pdfFuture,
                   builder: (context, snapshot) {
                     if (snapshot.hasData) {
                       return SfPdfViewer.memory(snapshot.data!);
@@ -101,5 +81,71 @@ class _HymnPageState extends State<HymnPage> {
                   },
                 )
             ])));
+  }
+}
+
+class _HymnTextTab extends WatchingStatefulWidget {
+  final Hymn hymn;
+
+  const _HymnTextTab({required this.hymn});
+
+  @override
+  State<_HymnTextTab> createState() => _HymnTextTabState();
+}
+
+class _HymnTextTabState extends State<_HymnTextTab> {
+  final FontSizeProvider _fontSizeProvider = GetIt.I<FontSizeProvider>();
+
+  double _scaleAtStart = 1.0;
+  double _visualScale = 1.0;
+  bool _isPinching = false;
+
+  void _onScaleStart(ScaleStartDetails details) {
+    _scaleAtStart = _fontSizeProvider.scale;
+  }
+
+  void _onScaleUpdate(ScaleUpdateDetails details) {
+    if (details.pointerCount < 2) return;
+    setState(() {
+      _isPinching = true;
+      _visualScale = details.scale;
+    });
+  }
+
+  void _onScaleEnd(ScaleEndDetails details) {
+    if (!_isPinching) return;
+    final newScale = _scaleAtStart * _visualScale;
+    setState(() {
+      _isPinching = false;
+      _visualScale = 1.0;
+    });
+    _fontSizeProvider.setScale(newScale);
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    watch(_fontSizeProvider);
+    final baseFontSize =
+        Theme.of(context).textTheme.bodyLarge?.fontSize ?? 16.0;
+    final scaledSize = _fontSizeProvider.scaledFontSize(baseFontSize);
+
+    return GestureDetector(
+      onScaleStart: _onScaleStart,
+      onScaleUpdate: _onScaleUpdate,
+      onScaleEnd: _onScaleEnd,
+      child: Transform.scale(
+        scale: _isPinching ? _visualScale : 1.0,
+        child: SelectionArea(
+          child: SingleChildScrollView(
+            padding: const EdgeInsets.all(8.0),
+            child: Text(widget.hymn.text.join('\n\n'),
+                style: Theme.of(context)
+                    .textTheme
+                    .bodyLarge
+                    ?.copyWith(fontSize: scaledSize)),
+          ),
+        ),
+      ),
+    );
   }
 }
