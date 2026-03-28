@@ -60,8 +60,7 @@ class SearchForHymnToAddToCustomList extends SearchDelegate<Hymn> {
           if (snapshot.data!.isEmpty) {
             return const Center(child: Text("Nic nie znaleziono"));
           }
-          return HymnsSearchListWidget(
-              hymns: snapshot.data!, listId: listId);
+          return HymnsSearchListWidget(hymns: snapshot.data!, listId: listId);
         });
   }
 }

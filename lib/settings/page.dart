@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:spiewnik_pielgrzyma/services/bulk_pdf_download_service.dart';
+import 'package:spiewnik_pielgrzyma/settings/confirm_favorite_removal.dart';
 import 'package:spiewnik_pielgrzyma/settings/font_size.dart';
 import 'package:spiewnik_pielgrzyma/settings/theme.dart';
 import 'package:watch_it/watch_it.dart';
@@ -36,6 +37,16 @@ class SettingsPage extends WatchingWidget {
             ),
           ),
           const _FontSizeSettingsTile(),
+          const Divider(),
+          // Favorites section
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+            child: Text(
+              'Ulubione',
+              style: Theme.of(context).textTheme.titleMedium,
+            ),
+          ),
+          const _ConfirmFavoriteRemovalTile(),
           const Divider(),
           // Bulk PDF download section
           Padding(
@@ -367,6 +378,23 @@ class _FontSizeSettingsTile extends WatchingWidget {
           ),
         ],
       ),
+    );
+  }
+}
+
+class _ConfirmFavoriteRemovalTile extends WatchingWidget {
+  const _ConfirmFavoriteRemovalTile();
+
+  @override
+  Widget build(BuildContext context) {
+    final provider = GetIt.I<ConfirmFavoriteRemovalProvider>();
+    watch(provider);
+
+    return SwitchListTile(
+      title: const Text('Potwierdzanie usunięcia z ulubionych'),
+      subtitle: const Text('Wyświetlaj dialog potwierdzenia'),
+      value: provider.isEnabled,
+      onChanged: (_) => provider.toggle(),
     );
   }
 }
