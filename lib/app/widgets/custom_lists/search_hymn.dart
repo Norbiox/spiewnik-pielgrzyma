@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:spiewnik_pielgrzyma/app/providers/custom_lists/provider.dart';
 import 'package:spiewnik_pielgrzyma/app/providers/hymns/provider.dart';
-import 'package:spiewnik_pielgrzyma/models/custom_list.dart';
+
 import 'package:spiewnik_pielgrzyma/models/hymn.dart';
 import 'package:watch_it/watch_it.dart';
 import 'package:go_router/go_router.dart';
@@ -9,10 +9,10 @@ import 'package:go_router/go_router.dart';
 class SearchForHymnToAddToCustomList extends SearchDelegate<Hymn> {
   final HymnsListProvider provider;
   final List<Hymn> hymns;
-  final CustomList customList;
+  final String listId;
 
   SearchForHymnToAddToCustomList(
-      {required this.provider, required this.hymns, required this.customList});
+      {required this.provider, required this.hymns, required this.listId});
 
   @override
   String get searchFieldLabel => 'Szukaj';
@@ -61,17 +61,17 @@ class SearchForHymnToAddToCustomList extends SearchDelegate<Hymn> {
             return const Center(child: Text("Nic nie znaleziono"));
           }
           return HymnsSearchListWidget(
-              hymns: snapshot.data!, customList: customList);
+              hymns: snapshot.data!, listId: listId);
         });
   }
 }
 
 class HymnsSearchListWidget extends StatelessWidget {
   final List<Hymn> hymns;
-  final CustomList customList;
+  final String listId;
 
   const HymnsSearchListWidget(
-      {super.key, required this.hymns, required this.customList});
+      {super.key, required this.hymns, required this.listId});
 
   @override
   Widget build(BuildContext context) {
@@ -85,6 +85,7 @@ class HymnsSearchListWidget extends StatelessWidget {
           itemCount: hymns.length,
           prototypeItem: const ListTile(),
           itemBuilder: (context, index) {
+            final customList = provider.getList(listId);
             return ListTile(
               title: Text(hymns[index].fullTitle,
                   maxLines: 1, overflow: TextOverflow.ellipsis),

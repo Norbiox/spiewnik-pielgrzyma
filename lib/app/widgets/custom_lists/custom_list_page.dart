@@ -40,7 +40,7 @@ class CustomListPage extends StatelessWidget {
             delegate: SearchForHymnToAddToCustomList(
                 provider: hymnsProvider,
                 hymns: hymnsProvider.getAll(),
-                customList: list)),
+                listId: listId)),
         tooltip: "Dodaj pieśń do listy",
         child: const Icon(Icons.add),
       ),

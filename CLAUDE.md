@@ -9,12 +9,12 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 ## Development Commands
 
 ### Build and Run
-- `flutter run` - Run the app in debug mode
-- `flutter emulators --launch Pixel_9` - Launch Android emulator
+- `fvm flutter run` - Run the app in debug mode
+- `fvm flutter emulators --launch Pixel_9` - Launch Android emulator
 
 ### Testing and Analysis  
-- `flutter analyze` - Run static analysis and linting
-- `flutter test` - Run unit tests
+- `fvm flutter analyze` - Run static analysis and linting
+- `fvm flutter test` - Run unit tests
 
 ### Makefile shortcuts
 - `make run` - Run the app
@@ -73,7 +73,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## CI/CD & Release
 
-- **CI**: Every push/PR to `master` runs formatting, `flutter analyze --fatal-infos`, and `flutter test` (`.github/workflows/analyse.yml`)
+- **CI**: Every push/PR to `master` runs formatting, `fvm flutter analyze --fatal-infos`, and `fvm flutter test` (`.github/workflows/analyse.yml`)
 - **Release**: Triggered by pushing a `v*` tag to `master`. Builds Android appbundle, uploads to Google Play internal track, deploys web, and creates a GitHub Release (`.github/workflows/release.yml`)
 - **Versioning**: Version is derived from the git tag (e.g., `v1.3.0` → `1.3.0`), build number from GitHub Actions run number
 - **Web deploy**: SCP to hosting server, requires `WEB_HOST_USER`, `WEB_HOST`, `WEB_HOST_PATH` GitHub Secrets
