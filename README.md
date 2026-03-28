@@ -77,14 +77,17 @@ All work happens on `master` or in short-lived `feature/*` branches merged back 
 
 ### Releasing
 
-Releases are triggered by pushing a version tag:
+Releases can be triggered two ways:
 
+**From terminal** (checks CI passed before tagging):
 ```bash
-git tag v1.3.0
-git push origin v1.3.0
+make release-patch   # v0.1.2 → v0.1.3
+make release-minor   # v0.1.2 → v0.2.0
 ```
 
-This automatically:
+**From GitHub UI / phone**: Go to Actions → "Build & Release" → Run workflow → enter version number.
+
+Either way, this automatically:
 1. Computes the version using GitVersion
 2. Builds the Android appbundle (signed in CI)
 3. Uploads to Google Play **internal testing** track (immediately available)
