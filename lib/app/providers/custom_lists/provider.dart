@@ -27,6 +27,20 @@ class CustomListProvider with ChangeNotifier {
     notifyListeners();
   }
 
+  void archiveList(CustomList list) {
+    archiveCustomList(list, prefs);
+    notifyListeners();
+  }
+
+  void restoreList(CustomList list) {
+    restoreCustomList(list, prefs);
+    notifyListeners();
+  }
+
+  List<CustomList> getArchivedLists() {
+    return loadArchivedCustomLists(prefs);
+  }
+
   void reindex(List<CustomList> lists) {
     updateCustomListsOrder(lists, prefs);
     notifyListeners();
