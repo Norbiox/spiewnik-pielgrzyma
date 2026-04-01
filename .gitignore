@@ -36,7 +36,5 @@ upload_certificate.pem
 # FVM Version Cache
 .fvm/
 
-# Search API generated data
-search/data/hymns_embeddings.bin
-search/data/hymns_embeddings_meta.json
+# Search API runtime data
 search/data/search_logs.db

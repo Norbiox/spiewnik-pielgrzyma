@@ -8,12 +8,13 @@ from pydantic import BaseModel
 
 from search.config import DATA_DIR, DB_PATH, EMBEDDING_DIMS, DEFAULT_TOP_K
 from search.embeddings import EmbeddingsStore
-from search.gemini import embed_query
+from search.model import embed_query, load_model
 from search.logger import SearchLogger
 
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
+    load_model()
     app.state.store = EmbeddingsStore(
         bin_path=os.path.join(DATA_DIR, "hymns_embeddings.bin"),
         meta_path=os.path.join(DATA_DIR, "hymns_embeddings_meta.json"),

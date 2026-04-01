@@ -10,7 +10,7 @@ from fastapi.testclient import TestClient
 @pytest.fixture
 def fake_data_dir(tmp_path):
     """Create minimal embeddings data for the test server."""
-    dims = 256
+    dims = 384
     n_vectors = 3
     vectors = np.random.randn(n_vectors, dims).astype(np.float32)
     norms = np.linalg.norm(vectors, axis=1, keepdims=True)
@@ -33,12 +33,12 @@ def fake_data_dir(tmp_path):
 @pytest.fixture
 def client(fake_data_dir):
     with (
-        patch.dict(os.environ, {"GEMINI_API_KEY": "fake-key"}),
         patch("search.main.DATA_DIR", fake_data_dir),
         patch("search.main.DB_PATH", os.path.join(fake_data_dir, "test.db")),
+        patch("search.main.load_model"),
         patch(
             "search.main.embed_query",
-            return_value=np.random.randn(256).astype(np.float32),
+            return_value=np.random.randn(384).astype(np.float32),
         ),
     ):
         from search.main import app

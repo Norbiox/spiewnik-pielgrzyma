@@ -2,16 +2,18 @@
 name = "spiewnik-search"
 version = "0.1.0"
 description = "Semantic search API for Śpiewnik Pielgrzyma"
-requires-python = ">=3.11"
+requires-python = ">=3.14"
 dependencies = [
-    "fastapi>=0.115,<1",
-    "uvicorn>=0.34,<1",
-    "numpy>=2.0,<3",
-    "google-genai>=1.0,<2",
+    "fastapi>=0.135.3",
+    "huggingface-hub>=1.8.0",
+    "onnxruntime>=1.24.4",
+    "transformers>=5.4.0",
+    "uvicorn>=0.42.0",
 ]
 
 [dependency-groups]
 dev = [
-    "pytest>=8,<9",
-    "httpx>=0.28,<1",
+    "httpx>=0.28.1",
+    "pytest>=9.0.2",
+    "ruff>=0.15.8",
 ]

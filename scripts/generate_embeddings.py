@@ -1,12 +1,12 @@
 #!/usr/bin/env python3
 """Generate pre-computed embeddings for all hymn verses and titles.
 
-Reads assets/hymns_texts.json and assets/hymns.csv, calls Gemini batch
-embedding API, writes search/data/hymns_embeddings.bin and
+Reads assets/hymns_texts.json and assets/hymns.csv, runs local
+multilingual-e5-small model, writes search/data/hymns_embeddings.bin and
 search/data/hymns_embeddings_meta.json.
 
 Usage:
-    GEMINI_API_KEY=your-key uv run --project search python scripts/generate_embeddings.py
+    uv run --project search python scripts/generate_embeddings.py
 """
 
 import csv
@@ -17,14 +17,13 @@ import sys
 import numpy as np
 
 # Add project root to path so we can import search modules
-sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "search"))
+sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), ".."))
 
-from search.gemini import embed_batch
+from search.model import embed_passages
 from search.config import EMBEDDING_DIMS
 
 ASSETS_DIR = os.path.join(os.path.dirname(__file__), "..", "assets")
 OUTPUT_DIR = os.path.join(os.path.dirname(__file__), "..", "search", "data")
-BATCH_SIZE = 250
 
 
 def load_hymns():
@@ -53,7 +52,6 @@ def build_texts_and_metadata(hymns_meta, hymns_texts):
     texts = []
     metadata = []
 
-    # Verses
     for hymn_number, verses in hymns_texts.items():
         for verse_index, verse_text in enumerate(verses):
             texts.append(verse_text)
@@ -61,27 +59,12 @@ def build_texts_and_metadata(hymns_meta, hymns_texts):
                 {"hymn_number": hymn_number, "verse_index": verse_index}
             )
 
-    # Titles with group/subgroup context
     for hymn_number, meta in hymns_meta.items():
         title_text = f"{meta['group']} - {meta['subgroup']} - {meta['title']}"
         texts.append(title_text)
         metadata.append({"hymn_number": hymn_number, "type": "title"})
 
     return texts, metadata
-
-
-def generate_embeddings(texts):
-    """Embed all texts in batches."""
-    all_embeddings = []
-    total = len(texts)
-
-    for i in range(0, total, BATCH_SIZE):
-        batch = texts[i : i + BATCH_SIZE]
-        print(f"  Embedding batch {i // BATCH_SIZE + 1}/{(total + BATCH_SIZE - 1) // BATCH_SIZE} ({len(batch)} texts)...")
-        embeddings = embed_batch(batch)
-        all_embeddings.extend(embeddings)
-
-    return np.array(all_embeddings, dtype=np.float32)
 
 
 def main():
@@ -93,8 +76,9 @@ def main():
     texts, metadata = build_texts_and_metadata(hymns_meta, hymns_texts)
     print(f"  {len(texts)} total texts to embed ({len(texts) - len(hymns_meta)} verses + {len(hymns_meta)} titles)")
 
-    print("Generating embeddings...")
-    embeddings = generate_embeddings(texts)
+    print("Generating embeddings (local model, no API limits)...")
+    embeddings = embed_passages(texts)
+    embeddings = np.array(embeddings, dtype=np.float32)
     print(f"  Shape: {embeddings.shape}")
 
     os.makedirs(OUTPUT_DIR, exist_ok=True)
