@@ -11,9 +11,10 @@ class EmbeddingsStore:
         with open(meta_path) as f:
             self.metadata = json.load(f)
 
-        assert len(self.metadata) == self.embeddings.shape[0], (
-            f"Metadata length {len(self.metadata)} != embeddings rows {self.embeddings.shape[0]}"
-        )
+        if len(self.metadata) != self.embeddings.shape[0]:
+            raise ValueError(
+                f"Metadata length {len(self.metadata)} != embeddings rows {self.embeddings.shape[0]}"
+            )
 
         # Pre-compute normalized vectors for cosine similarity
         norms = np.linalg.norm(self.embeddings, axis=1, keepdims=True)

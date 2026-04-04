@@ -91,3 +91,8 @@ def test_search_empty_query_returns_400(client):
 def test_search_missing_query_returns_422(client):
     response = client.post("/search", json={})
     assert response.status_code == 422
+
+
+def test_search_whitespace_query_returns_400(client):
+    response = client.post("/search", json={"query": "   "})
+    assert response.status_code == 400
