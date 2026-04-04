@@ -1,4 +1,7 @@
 .claude/settings.local.json
+.claude/scheduled_tasks.lock
+uv.lock
+pubspec.lock
 
 # See https://www.dartlang.org/guides/libraries/private-files
 
@@ -35,3 +38,20 @@ upload_certificate.pem
 
 # FVM Version Cache
 .fvm/
+
+# Search API runtime data
+search/data/search_logs.db
+
+# Alembic
+search/alembic/__pycache__/
+
+# Python files and directories
+__pycache__/
+venv/
+.venv/
+.pytest_cache/
+
+# Miscellaneous
+.DS_Store
+Thumbs.db
+*.egg-info/
