@@ -13,7 +13,7 @@ def read_csv_to_dict(file_path: str) -> list[dict[str, Any]]:
     return data
 
 
-def read_json_to_dict(file_path: str) -> list[dict[str, Any]]:
+def read_json_to_dict(file_path: str) -> dict[str, Any]:
     with open(file_path, "r", encoding="utf-8") as json_file:
         data = json.load(json_file)
     return data
@@ -41,6 +41,8 @@ if __name__ == "__main__":
 
         markdown += f"\n#### {hymn['number']}. {hymn['title']}\n"
 
+        if hymn["number"] not in hymns_texts:
+            continue
         for line in hymns_texts[hymn["number"]]:
             markdown += f"{line}\n"
 

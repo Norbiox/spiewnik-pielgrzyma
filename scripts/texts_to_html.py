@@ -12,54 +12,54 @@ def read_csv_to_dict(file_path: str) -> list[dict[str, Any]]:
             data.append(dict(row))
     return data
 
-def read_json_to_dict(file_path: str) -> list[dict[str, Any]]:
+def read_json_to_dict(file_path: str) -> dict[str, Any]:
     with open(file_path, "r", encoding="utf-8") as json_file:
         data = json.load(json_file)
     return data
 
 def generate_html(hymns_info: list[dict], hymns_texts: dict) -> str:
-    html = f"""<!DOCTYPE html>
+    html = """<!DOCTYPE html>
 <html lang="pl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Śpiewnik Pielgrzyma</title>
     <style>
-        body {{
+        body {
             font-family: Arial, sans-serif;
             line-height: 1.6;
             max-width: 800px;
             margin: 0 auto;
             padding: 20px;
-        }}
-        h1 {{
+        }
+        h1 {
             text-align: center;
             color: #333;
             border-bottom: 2px solid #333;
             padding-bottom: 10px;
-        }}
-        h2 {{
+        }
+        h2 {
             color: #444;
             border-bottom: 1px solid #777;
             padding-bottom: 5px;
             margin-top: 30px;
-        }}
-        h3 {{
+        }
+        h3 {
             color: #555;
             margin-top: 20px;
-        }}
-        .hymn-title {{
+        }
+        .hymn-title {
             font-weight: bold;
             color: #333;
             margin-top: 15px;
-        }}
-        .hymn-text {{
+        }
+        .hymn-text {
             margin-bottom: 20px;
-        }}
-        .hymn-text p {{
+        }
+        .hymn-text p {
             white-space: pre-line;
             line-height: 1.5;
-        }}
+        }
     </style>
 </head>
 <body>
@@ -86,6 +86,8 @@ def generate_html(hymns_info: list[dict], hymns_texts: dict) -> str:
         html += '    <div class="hymn-text">'
         
         # Convert verses to paragraphs
+        if hymn["number"] not in hymns_texts:
+            continue
         for verse in hymns_texts[hymn["number"]]:
             html += f'        <p>{escape(verse)}</p>\n'
         

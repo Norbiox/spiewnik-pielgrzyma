@@ -49,6 +49,10 @@ jobs:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           TAG="search-api/$(git rev-parse --short HEAD)"
-          gh release create "$TAG" search-api.tar.gz \
-            --title "Search API $TAG" \
-            --notes "Automated release from commit $(git rev-parse --short HEAD)"
+          if gh release view "$TAG" > /dev/null 2>&1; then
+            echo "Release $TAG already exists, skipping"
+          else
+            gh release create "$TAG" search-api.tar.gz \
+              --title "Search API $TAG" \
+              --notes "Automated release from commit $(git rev-parse --short HEAD)"
+          fi
