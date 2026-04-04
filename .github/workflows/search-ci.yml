@@ -1,0 +1,55 @@
+name: Search API CI
+
+on:
+  push:
+    paths:
+      - "search/**"
+    branches: [master]
+  pull_request:
+    paths:
+      - "search/**"
+  workflow_dispatch:
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: search
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v4
+      - run: uv sync
+      - run: make lint
+
+  test:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: search
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v4
+      - run: uv sync
+      - run: make test
+
+  release:
+    if: github.ref == 'refs/heads/master' && github.event_name == 'push'
+    needs: [lint, test]
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Package search API
+        run: tar -czf search-api.tar.gz -C search --exclude='__pycache__' --exclude='.pytest_cache' --exclude='*.egg-info' --exclude='.venv' --exclude='.env' --exclude='tests' .
+
+      - name: Create release
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          TAG="search-api/$(git rev-parse --short HEAD)"
+          gh release create "$TAG" search-api.tar.gz \
+            --title "Search API $TAG" \
+            --notes "Automated release from commit $(git rev-parse --short HEAD)"
