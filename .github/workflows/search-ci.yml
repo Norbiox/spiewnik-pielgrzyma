@@ -4,7 +4,6 @@ on:
   push:
     paths:
       - "search/**"
-    branches: [master]
   pull_request:
     paths:
       - "search/**"
