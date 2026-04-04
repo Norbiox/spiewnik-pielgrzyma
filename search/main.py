@@ -5,8 +5,9 @@ from contextlib import asynccontextmanager
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
+from sqlalchemy.ext.asyncio import async_sessionmaker, create_async_engine
 
-from search.config import DATA_DIR, DB_PATH, EMBEDDING_DIMS, DEFAULT_TOP_K
+from search.config import DATA_DIR, DATABASE_URL, EMBEDDING_DIMS, DEFAULT_TOP_K
 from search.embeddings import EmbeddingsStore
 from search.model import embed_query, load_model
 from search.logger import SearchLogger
@@ -20,8 +21,12 @@ async def lifespan(app: FastAPI):
         meta_path=os.path.join(DATA_DIR, "hymns_embeddings_meta.json"),
         dims=EMBEDDING_DIMS,
     )
-    app.state.logger = SearchLogger(DB_PATH)
+    engine = create_async_engine(DATABASE_URL)
+    session_factory = async_sessionmaker(engine, expire_on_commit=False)
+    app.state.logger = SearchLogger(session_factory)
+    app.state.engine = engine
     yield
+    await engine.dispose()
 
 
 app = FastAPI(lifespan=lifespan)
@@ -40,7 +45,7 @@ class SearchRequest(BaseModel):
 
 
 @app.post("/search")
-def search(req: SearchRequest):
+async def search(req: SearchRequest):
     if not req.query.strip():
         raise HTTPException(status_code=400, detail="Query must not be empty")
 
@@ -49,5 +54,5 @@ def search(req: SearchRequest):
     results = app.state.store.search(query_embedding, top_k=req.top_k)
     latency_ms = int((time.monotonic() - start) * 1000)
 
-    app.state.logger.log(req.query, results, latency_ms)
+    await app.state.logger.log(req.query, results, latency_ms)
     return {"results": results}

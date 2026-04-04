@@ -19,4 +19,6 @@ RUN PYTHONPATH=/app uv run python -c "from search.model import load_model; load_
 EXPOSE 8000
 
 ENV PYTHONPATH=/app
-CMD ["uv", "run", "uvicorn", "search.main:app", "--host", "0.0.0.0", "--port", "8000"]
+ENV DATABASE_URL=""
+
+CMD ["sh", "-c", "cd search && uv run alembic upgrade head && uv run uvicorn search.main:app --host 0.0.0.0 --port 8000"]

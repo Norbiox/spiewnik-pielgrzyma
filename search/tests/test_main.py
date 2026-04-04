@@ -1,6 +1,5 @@
 import json
-import os
-from unittest.mock import patch
+from unittest.mock import AsyncMock, MagicMock, patch
 
 import numpy as np
 import pytest
@@ -31,11 +30,21 @@ def fake_data_dir(tmp_path):
 
 
 @pytest.fixture
-def client(fake_data_dir):
+def mock_logger():
+    logger = MagicMock()
+    logger.log = AsyncMock()
+    return logger
+
+
+@pytest.fixture
+def client(fake_data_dir, mock_logger):
     with (
         patch("search.main.DATA_DIR", fake_data_dir),
-        patch("search.main.DB_PATH", os.path.join(fake_data_dir, "test.db")),
+        patch("search.main.DATABASE_URL", "sqlite+aiosqlite:///:memory:"),
         patch("search.main.load_model"),
+        patch("search.main.create_async_engine", return_value=AsyncMock()),
+        patch("search.main.async_sessionmaker"),
+        patch("search.main.SearchLogger", return_value=mock_logger),
         patch(
             "search.main.embed_query",
             return_value=np.random.randn(384).astype(np.float32),
