@@ -9,3 +9,7 @@ binding = "AI"
 binding = "SPIEWNIK_PIELGRZYMA"
 id = "f65ffcc6fbf9447487725c2e4206d763"
 preview_id = "f65ffcc6fbf9447487725c2e4206d763"
+
+[observability.logs]
+enabled = true
+invocation_logs = true
