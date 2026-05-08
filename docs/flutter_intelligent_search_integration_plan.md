@@ -43,7 +43,7 @@ Update `lib/app/providers/hymns/search_engine.dart`:
 
 Add to `.env`:
 ```
-SEARCH_API_BASE=https://search.spiewnik.example.com
+SEARCH_API_BASE=https://spiewnik-pielgrzyma-search.norbertchmiel-it.workers.dev
 ```
 
 Register the search API client in `main.dart:setup()` via GetIt.

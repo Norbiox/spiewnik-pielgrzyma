@@ -2,26 +2,46 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
+## Behavioral foundation
+
+Don't assume. Don't hide confusion. Surface tradeoffs.
+Minimum code that solves the problem. Nothing speculative.
+Touch only what you must. Clean up only your own mess.
+Define success criteria. Loop until verified.
+
 ## Project Overview
 
 Śpiewnik Pielgrzyma is a Flutter mobile application for browsing and displaying Christian hymns. The app provides hymn browsing, search functionality, favorites management, custom playlists, and PDF viewing capabilities.
 
+## Monorepo Structure
+
+| Directory | Description |
+|---|---|
+| `lib/` | Flutter app source |
+| `search-worker/` | Cloudflare Worker for semantic search (TypeScript) |
+| `scripts/` | Build-time scripts (embedding generation) |
+| `docs/` | Design docs and ADRs |
+| `assets/` | Hymn data (CSV + JSON) |
+
+Tools managed via `mise` (`mise.toml`). Secrets managed via `fnox` (`fnox.toml`, encrypted with age).
+
 ## Development Commands
 
-### Build and Run
+### Flutter App
 - `fvm flutter run` - Run the app in debug mode
 - `fvm flutter emulators --launch Pixel_9` - Launch Android emulator
-
-### Testing and Analysis  
 - `fvm flutter analyze` - Run static analysis and linting
 - `fvm flutter test` - Run unit tests
+- `make run` / `make emul` / `make analyze` / `make test` / `make build_web` - Makefile shortcuts
 
-### Makefile shortcuts
-- `make run` - Run the app
-- `make emul` - Launch emulator
-- `make analyze` - Run static analysis only
-- `make test` - Run analysis + unit tests
-- `make build_web` - Build web release
+### Search Worker (`search-worker/`)
+- `cd search-worker && wrangler dev --remote` - Local dev against real CF infra
+- `cd search-worker && wrangler deploy` - Deploy to Cloudflare
+- `cd search-worker && wrangler tail` - Stream live logs
+
+### Embedding Generation
+- `fnox exec -- uv run --project search-worker --group dev python scripts/generate_embeddings_bge_m3.py` - Regenerate BGE-M3 embeddings (needs `CLOUDFLARE_ACCOUNT_ID` + `CLOUDFLARE_API_TOKEN` from fnox)
+- After regeneration, upload to KV: `wrangler kv key put --namespace-id=<id> --remote "hymns_embeddings_bge_m3.bin" --path=search-worker/data/hymns_embeddings_bge_m3.bin`
 
 ## Architecture
 
@@ -70,6 +90,18 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 ### Localization
 - Configured for Polish locale (`pl_PL`)
 - Uses `flutter_localizations` and `syncfusion_localizations`
+
+## Search Worker
+
+Cloudflare Worker in `search-worker/` serving semantic search over hymns.
+
+- **Model**: `@cf/baai/bge-m3` via Cloudflare Workers AI, truncated to 384 dims (Matryoshka)
+- **Embeddings**: pre-computed at build time, stored in Workers KV (binding: `SPIEWNIK_PIELGRZYMA`)
+- **Endpoint**: `POST https://spiewnik-pielgrzyma-search.norbertchmiel-it.workers.dev/search`
+- **Request**: `{"query": "...", "top_k": 20}`
+- **Response**: `{"results": [{"hymn_number": "123", "verse_index": 0, "score": 0.87}, ...]}`
+- **KV upload**: always use `--remote` flag with `wrangler kv key put`, otherwise writes go to local storage only
+- **Secrets**: `CLOUDFLARE_ACCOUNT_ID` and `CLOUDFLARE_API_TOKEN` in `fnox.toml`
 
 ## CI/CD & Release
 
