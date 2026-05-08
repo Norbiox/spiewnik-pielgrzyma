@@ -1,0 +1,11 @@
+name = "spiewnik-pielgrzyma-search"
+main = "src/index.ts"
+compatibility_date = "2026-05-08"
+
+[ai]
+binding = "AI"
+
+[[kv_namespaces]]
+binding = "SPIEWNIK_PIELGRZYMA"
+id = "f65ffcc6fbf9447487725c2e4206d763"
+preview_id = "f65ffcc6fbf9447487725c2e4206d763"

@@ -2,6 +2,8 @@
 .claude/scheduled_tasks.lock
 uv.lock
 pubspec.lock
+.kugutsu/
+.wrangler/
 
 # See https://www.dartlang.org/guides/libraries/private-files
 
