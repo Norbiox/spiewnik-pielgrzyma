@@ -73,7 +73,7 @@ export default {
       return new Response(null, { headers: CORS_HEADERS });
     }
 
-if (request.method !== "POST" || url.pathname !== "/search") {
+  if (request.method !== "POST" || url.pathname !== "/search") {
       return new Response("Not found", { status: 404 });
     }
 

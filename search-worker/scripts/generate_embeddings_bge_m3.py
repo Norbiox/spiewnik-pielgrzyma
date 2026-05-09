@@ -24,8 +24,8 @@ import numpy as np
 
 DIMS = 384  # Matryoshka truncation from 1024
 BATCH_SIZE = 100
-ASSETS_DIR = os.path.join(os.path.dirname(__file__), "..", "assets")
-OUTPUT_DIR = os.path.join(os.path.dirname(__file__), "..", "search", "data")
+ASSETS_DIR = os.path.join(os.path.dirname(__file__), "..", "..", "assets")
+OUTPUT_DIR = os.path.join(os.path.dirname(__file__), "..", "data")
 
 
 def load_hymns():
