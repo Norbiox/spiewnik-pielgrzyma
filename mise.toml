@@ -1,0 +1,14 @@
+[tools]
+fnox = "latest"
+uv = "latest"
+wrangler = "latest"
+
+[tasks."search-worker:dev"]
+description = "Start a local dev server for the search worker"
+dir = "search-worker"
+run = "wrangler dev --remote"
+
+[tasks."search-worker:deploy"]
+description = "Deploy the search worker to Cloudflare"
+dir = "search-worker"
+run = "wrangler deploy"
