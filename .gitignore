@@ -1,4 +1,8 @@
 .claude/settings.local.json
+.claude/scheduled_tasks.lock
+pubspec.lock
+.kugutsu/
+.wrangler/
 
 # See https://www.dartlang.org/guides/libraries/private-files
 
