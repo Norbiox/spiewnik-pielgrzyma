@@ -4,6 +4,8 @@ import 'package:spiewnik_pielgrzyma/app/providers/custom_lists/provider.dart';
 import 'package:spiewnik_pielgrzyma/models/custom_list.dart';
 import 'package:go_router/go_router.dart';
 
+import 'package:spiewnik_pielgrzyma/app/widgets/utils/dismissible.dart';
+
 class CustomListTileWidget extends StatelessWidget {
   final CustomList list;
 
@@ -12,8 +14,10 @@ class CustomListTileWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Dismissible(
-      background: slideRightBackground(context),
-      secondaryBackground: slideLeftBackground(context),
+      background:
+          slideRightBackground(Icons.archive_outlined, "Archiwizuj", context),
+      secondaryBackground:
+          slideLeftBackground(Icons.archive_outlined, "Archiwizuj", context),
       key: ValueKey(list.id),
       onDismissed: (DismissDirection direction) {
         _archiveList(context, list);
@@ -53,62 +57,4 @@ class CustomListTileWidget extends StatelessWidget {
     );
     // );
   }
-}
-
-Widget slideRightBackground(BuildContext context) {
-  return Container(
-    color: Theme.of(context).colorScheme.primary,
-    child: Align(
-      alignment: Alignment.centerLeft,
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.start,
-        children: <Widget>[
-          SizedBox(
-            width: 20,
-          ),
-          Icon(
-            Icons.archive_outlined,
-            color: Theme.of(context).colorScheme.inversePrimary,
-          ),
-          Text(
-            " Archiwizuj",
-            style: TextStyle(
-              color: Theme.of(context).colorScheme.inversePrimary,
-              fontWeight: FontWeight.w700,
-            ),
-            textAlign: TextAlign.left,
-          ),
-        ],
-      ),
-    ),
-  );
-}
-
-Widget slideLeftBackground(BuildContext context) {
-  return Container(
-    color: Theme.of(context).colorScheme.primary,
-    child: Align(
-      alignment: Alignment.centerRight,
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.end,
-        children: <Widget>[
-          Icon(
-            Icons.archive_outlined,
-            color: Theme.of(context).colorScheme.inversePrimary,
-          ),
-          Text(
-            " Archiwizuj",
-            style: TextStyle(
-              color: Theme.of(context).colorScheme.inversePrimary,
-              fontWeight: FontWeight.w700,
-            ),
-            textAlign: TextAlign.right,
-          ),
-          SizedBox(
-            width: 20,
-          ),
-        ],
-      ),
-    ),
-  );
 }
