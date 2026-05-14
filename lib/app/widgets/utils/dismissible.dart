@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 
-Widget slideRightBackground(IconData icon, String text, BuildContext context) {
+Widget slideRightBackground(IconData icon, String text, BuildContext context,
+    {Color? color, Color? secondColor}) {
   return Container(
-    color: Theme.of(context).colorScheme.primary,
+    color: color ?? Theme.of(context).colorScheme.primary,
     child: Align(
       alignment: Alignment.centerLeft,
       child: Row(
@@ -13,12 +14,13 @@ Widget slideRightBackground(IconData icon, String text, BuildContext context) {
           ),
           Icon(
             icon,
-            color: Theme.of(context).colorScheme.inversePrimary,
+            color: secondColor ?? Theme.of(context).colorScheme.inversePrimary,
           ),
           Text(
             " $text",
             style: TextStyle(
-              color: Theme.of(context).colorScheme.inversePrimary,
+              color:
+                  secondColor ?? Theme.of(context).colorScheme.inversePrimary,
               fontWeight: FontWeight.w700,
             ),
             textAlign: TextAlign.left,
@@ -29,9 +31,10 @@ Widget slideRightBackground(IconData icon, String text, BuildContext context) {
   );
 }
 
-Widget slideLeftBackground(IconData icon, String text, BuildContext context) {
+Widget slideLeftBackground(IconData icon, String text, BuildContext context,
+    {Color? color, Color? secondColor}) {
   return Container(
-    color: Theme.of(context).colorScheme.primary,
+    color: color ?? Theme.of(context).colorScheme.primary,
     child: Align(
       alignment: Alignment.centerRight,
       child: Row(
@@ -39,12 +42,13 @@ Widget slideLeftBackground(IconData icon, String text, BuildContext context) {
         children: <Widget>[
           Icon(
             icon,
-            color: Theme.of(context).colorScheme.inversePrimary,
+            color: secondColor ?? Theme.of(context).colorScheme.inversePrimary,
           ),
           Text(
             " $text",
             style: TextStyle(
-              color: Theme.of(context).colorScheme.inversePrimary,
+              color:
+                  secondColor ?? Theme.of(context).colorScheme.inversePrimary,
               fontWeight: FontWeight.w700,
             ),
             textAlign: TextAlign.right,
