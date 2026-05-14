@@ -11,42 +11,104 @@ class CustomListTileWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ListTile(
-      title: Text(list.name),
-      subtitle: Text("pieśni: ${list.hymnsIds.length.toString()}"),
-      trailing: IconButton(
-        icon: const Icon(Icons.archive_outlined),
-        onPressed: () async {
-          await _showArchiveListDialog(context, list);
-        },
-      ),
-      onTap: () => context.push('/custom-lists/${list.id}'),
-    );
-  }
-
-  Future<void> _showArchiveListDialog(
-      BuildContext context, CustomList list) async {
-    CustomListProvider provider = GetIt.I<CustomListProvider>();
-
-    return showDialog(
-      context: context,
-      builder: (BuildContext context) {
-        return AlertDialog(
-          content: Text("Na pewno chcesz zarchiwizować listę ${list.name}?"),
-          actions: <Widget>[
-            FilledButton.tonal(
-              child: const Text("Nie"),
-              onPressed: () => Navigator.pop(context),
-            ),
-            FilledButton(
-                child: const Text("Tak"),
-                onPressed: () {
-                  provider.archiveList(list);
-                  Navigator.pop(context);
-                })
-          ],
-        );
+    return Dismissible(
+      background: slideRightBackground(context),
+      secondaryBackground: slideLeftBackground(context),
+      key: ValueKey(list.id),
+      onDismissed: (DismissDirection direction) {
+        _archiveList(context, list);
       },
+      child: ListTile(
+        title: Text(list.name),
+        subtitle: Text("pieśni: ${list.hymnsIds.length.toString()}"),
+        onTap: () => context.push('/custom-lists/${list.id}'),
+      ),
     );
   }
+
+  Future<void> _archiveList(BuildContext context, CustomList list) async {
+    final messenger = ScaffoldMessenger.of(context);
+    final provider = GetIt.I<CustomListProvider>();
+
+    provider.archiveList(list);
+
+    // show snackbar with 'Undo' button
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        content: Row(children: [
+          Expanded(
+            child: Text('Lista "${list.name}" została zarchiwizowana"'),
+          ),
+          TextButton(
+            onPressed: () {
+              messenger.hideCurrentSnackBar();
+              provider.restoreList(list);
+            },
+            child: Text("Przywróć",
+                style: TextStyle(
+                    color: Theme.of(context).colorScheme.inversePrimary)),
+          ),
+        ]),
+      ),
+    );
+    // );
+  }
+}
+
+Widget slideRightBackground(BuildContext context) {
+  return Container(
+    color: Theme.of(context).colorScheme.primary,
+    child: Align(
+      alignment: Alignment.centerLeft,
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.start,
+        children: <Widget>[
+          SizedBox(
+            width: 20,
+          ),
+          Icon(
+            Icons.archive_outlined,
+            color: Theme.of(context).colorScheme.inversePrimary,
+          ),
+          Text(
+            " Archiwizuj",
+            style: TextStyle(
+              color: Theme.of(context).colorScheme.inversePrimary,
+              fontWeight: FontWeight.w700,
+            ),
+            textAlign: TextAlign.left,
+          ),
+        ],
+      ),
+    ),
+  );
+}
+
+Widget slideLeftBackground(BuildContext context) {
+  return Container(
+    color: Theme.of(context).colorScheme.primary,
+    child: Align(
+      alignment: Alignment.centerRight,
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.end,
+        children: <Widget>[
+          Icon(
+            Icons.archive_outlined,
+            color: Theme.of(context).colorScheme.inversePrimary,
+          ),
+          Text(
+            " Archiwizuj",
+            style: TextStyle(
+              color: Theme.of(context).colorScheme.inversePrimary,
+              fontWeight: FontWeight.w700,
+            ),
+            textAlign: TextAlign.right,
+          ),
+          SizedBox(
+            width: 20,
+          ),
+        ],
+      ),
+    ),
+  );
 }

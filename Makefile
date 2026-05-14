@@ -4,6 +4,9 @@ emul:
 run:
 	fvm flutter run
 
+format:
+	fvm dart format .
+
 analyze:
 	fvm flutter analyze
 
