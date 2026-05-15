@@ -50,6 +50,7 @@ Future<void> saveHymnIsFavorite(
 
 const String customListsKey = 'customLists';
 const String customListHymnsIdsKey = 'customList:hymnsIds:';
+const String customListArchivedHymnsIdsKey = 'customList:archivedHymnsIds:';
 const String customListNameKey = 'customList:name:';
 
 List<CustomList> loadCustomLists(SharedPreferences prefs) {
@@ -60,8 +61,13 @@ List<CustomList> loadCustomLists(SharedPreferences prefs) {
         (prefs.getStringList('$customListHymnsIdsKey$id') ?? [])
             .map((e) => int.parse(e))
             .toList();
+    final List<int> archivedHymnsIds =
+        (prefs.getStringList('$customListArchivedHymnsIdsKey$id') ?? [])
+            .map((e) => int.parse(e))
+            .toList();
     final String name = prefs.getString('$customListNameKey$id') ?? '';
-    customLists.add(CustomList(id, name, hymnsIds: hymnsIds));
+    customLists.add(CustomList(id, name,
+        hymnsIds: hymnsIds, archivedHymnsIds: archivedHymnsIds));
   }
   return customLists;
 }
@@ -70,6 +76,8 @@ void saveCustomList(CustomList list, SharedPreferences prefs) {
   prefs.setString('$customListNameKey${list.id}', list.name);
   prefs.setStringList('$customListHymnsIdsKey${list.id}',
       list.hymnsIds.map((e) => e.toString()).toList());
+  prefs.setStringList('$customListArchivedHymnsIdsKey${list.id}',
+      list.archivedHymnsIds.map((e) => e.toString()).toList());
   if (!(prefs.getStringList(customListsKey) ?? []).contains(list.id)) {
     prefs.setStringList(customListsKey,
         [list.id, ...(prefs.getStringList(customListsKey) ?? [])]);
@@ -79,6 +87,7 @@ void saveCustomList(CustomList list, SharedPreferences prefs) {
 void deleteCustomList(CustomList list, SharedPreferences prefs) {
   prefs.remove('$customListNameKey${list.id}');
   prefs.remove('$customListHymnsIdsKey${list.id}');
+  prefs.remove('$customListArchivedHymnsIdsKey${list.id}');
   prefs.setStringList(
       customListsKey,
       (prefs.getStringList(customListsKey) ?? [])
