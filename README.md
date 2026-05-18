@@ -52,6 +52,7 @@ Aplikacja do przeglądania i wyświetlania pieśni chrześcijańskich ze Śpiewn
 - `make run` - Run app in debug mode
 - `make emul` - Launch Android emulator
 - `make analyze` - Run static analysis and linting
+- `make format` - Run dart format
 - `make test` - Run analysis + unit tests
 - `make build_web` - Build web release
 - `make deploy_web` - Build and deploy web version

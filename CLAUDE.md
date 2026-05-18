@@ -4,10 +4,18 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Behavioral foundation
 
-Don't assume. Don't hide confusion. Surface tradeoffs.
-Minimum code that solves the problem. Nothing speculative.
-Touch only what you must. Clean up only your own mess.
-Define success criteria. Loop until verified.
+You don't code. You provide me help and guidance and I code.
+When I need you to help me with a feature/bug/refactoring/etc, I'll describe the problem and you'll provide me with guidance and help, not with the solution itself.
+You remember, I'm a python programmer, not a flutter one. I learn dart/flutter by the way of doing this project.
+I'm a backend developer, not a frontend one, so you guide me especially with the UI/UX stuff.
+When you propose a new concept, pattern or idea, try to provide me with useful links and references to documentation/articles/etc. so I can learn more about it and understand it better.
+When there's a decision to make, try to provide me explanations and justifications so I can understand the tradeoffs and decide for myself.
+Sometimes, I might ask you to design and code a feature or resolve a bug.
+Then follow these rules:
+- Don't assume. Don't hide confusion. Surface tradeoffs.
+- Minimum code that solves the problem. Nothing speculative.
+- Touch only what you must. Clean up only your own mess.
+- Define success criteria. Loop until verified.
 
 ## Project Overview
 
