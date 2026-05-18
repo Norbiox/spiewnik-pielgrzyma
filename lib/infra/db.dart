@@ -15,8 +15,7 @@ const String hymnIsFavoriteKey = 'hymn:isFavorite:';
 Future<List<Hymn>> loadHymns(SharedPreferences prefs) async {
   final hymnsData = await rootBundle.loadString(hymnsCsvPath);
   final List<List<String>> hymnsDetails =
-      const CsvToListConverter(fieldDelimiter: ',', shouldParseNumbers: false)
-          .convert(hymnsData);
+      csv.decode(hymnsData).map((row) => row.cast<String>()).toList();
 
   final hymnsTexts =
       await rootBundle.loadString(hymnsTextsJsonPath).then(jsonDecode);
