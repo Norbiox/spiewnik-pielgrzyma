@@ -1,0 +1,48 @@
+name: Build iOS (unsigned)
+
+on:
+  push:
+    tags:
+      - 'v*'
+  workflow_dispatch:
+
+jobs:
+  build-ios:
+    runs-on: macos-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          flutter-version: 3.41.6
+          channel: stable
+          cache: true
+
+      - name: Install dependencies
+        run: flutter pub get
+
+      - name: Create .env file
+        run: |
+          echo "PDF_ENCRYPTION_KEY=${{ secrets.PDF_ENCRYPTION_KEY }}" > .env
+          echo "PDF_LINK_BASE=https://spiewnikpielgrzyma.norbertchmiel.pl/note_files/" >> .env
+
+      - name: Build unsigned .app
+        run: flutter build ios --release --no-codesign
+
+      # ponytail: unsigned IPA = zip the .app into Payload/. AltStore/Sideloadly re-signs on device.
+      - name: Package into .ipa
+        run: |
+          cd build/ios/iphoneos
+          mkdir Payload
+          cp -r Runner.app Payload/
+          zip -r spiewnik-pielgrzyma.ipa Payload
+
+      - name: Upload .ipa artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: spiewnik-pielgrzyma-ipa
+          path: build/ios/iphoneos/spiewnik-pielgrzyma.ipa
+          retention-days: 30
