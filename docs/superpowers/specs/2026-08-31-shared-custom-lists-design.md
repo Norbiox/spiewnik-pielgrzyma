@@ -350,15 +350,59 @@ An `Icons.share` marker appears as `trailing` in `CustomListTileWidget` and in t
 1. **`android/app/src/main/AndroidManifest.xml`** — the current intent filter claims the *entire*
    host, including `/note_files/*.pdf`. Narrow it to `android:pathPrefix="/dolacz"`.
 2. **`web/.well-known/assetlinks.json`** — does not exist, so `autoVerify` fails and App Links do
-   not work at all on Android 12+. Needs the SHA-256 fingerprint of the Play App Signing key.
+   not work at all on Android 12+.
+
+   ```json
+   [{
+     "relation": ["delegate_permission/common.handle_all_urls"],
+     "target": {
+       "namespace": "android_app",
+       "package_name": "pl.norbertchmiel.spiewnik_pielgrzyma",
+       "sha256_cert_fingerprints": ["AA:BB:CC:..."]
+     }
+   }]
+   ```
+
+   The fingerprint is the **app signing key certificate** from Play Console
+   (Test and release → Setup → App integrity → App signing), not the upload key certificate, which
+   never reaches a device. The debug keystore fingerprint is deliberately kept out of the production
+   file — it would let anyone holding that keystore claim the domain's links. For local testing,
+   bypass verification instead:
+
+   ```bash
+   adb shell pm set-app-links-user-selection --package pl.norbertchmiel.spiewnik_pielgrzyma \
+       --user cur true spiewnikpielgrzyma.norbertchmiel.pl
+   ```
+
+   The file must be served over HTTPS with no redirects and `Content-Type: application/json`;
+   serving it as `text/html` is the usual silent failure. Verification runs once at install time, so
+   after changing the file force a re-check with
+   `adb shell pm verify-app-links --re-verify pl.norbertchmiel.spiewnik_pielgrzyma`. To confirm
+   Google can read it without installing anything:
+
+   ```bash
+   curl "https://digitalassetlinks.googleapis.com/v1/statements:list?\
+   source.web.site=https://spiewnikpielgrzyma.norbertchmiel.pl&\
+   relation=delegate_permission/common.handle_all_urls"
+   ```
 3. **`.github/workflows/release.yml`** — `scp -r build/web/*` skips dotfiles, so `.well-known/`
    would never reach the server. Change to `build/web/.` or add a second `scp`.
 4. **Secrets** — `SUPABASE_URL` and `SUPABASE_PUBLISHABLE_KEY` in `.env`, `.env.example`, and both
    the Android and web jobs of the release workflow. Supabase has replaced the legacy `anon` JWT
    with a publishable key (`sb_publishable_...`, found under Settings → API Keys); the legacy key is
    deprecated by end of 2026. The publishable key is safe to ship in the client — RLS is the actual
-   guard, which is why the policies must be complete before anything reaches production. Verify at
-   implementation time that the installed `supabase_flutter` version accepts the new key format.
+   guard, which is why the policies must be complete before anything reaches production.
+   `supabase_flutter` takes both as named arguments:
+
+   ```dart
+   await Supabase.initialize(
+     url: dotenv.env['SUPABASE_URL']!,               // https://<project-ref>.supabase.co
+     publishableKey: dotenv.env['SUPABASE_PUBLISHABLE_KEY']!,
+   );
+   ```
+
+   Both values come from the project's Connect dialog, or Settings → Data API and
+   Settings → API Keys respectively.
 
 ## Testing
 
