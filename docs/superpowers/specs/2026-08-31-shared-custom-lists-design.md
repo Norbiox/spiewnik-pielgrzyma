@@ -96,6 +96,45 @@ requires knowing the list. Two `security definer` functions are the only place t
 
 Both are granted to `authenticated` and revoked from `anon`.
 
+### Schema management
+
+The schema lives in `supabase/migrations/` under version control, created with
+`supabase migration new` and applied with `supabase db push` against the single linked project.
+Supabase's own branching feature is not used: it is unavailable on the Free plan and costs about
+$0.32 per branch per day on Pro, which buys nothing at the scale of two tables, four policies and
+two functions. Versioned migrations give the part that actually matters.
+
+### Abuse prevention on anonymous sign-in
+
+Supabase strongly recommends invisible CAPTCHA or Cloudflare Turnstile for anonymous sign-ins. This
+design deliberately ships without it, for now:
+
+- sign-in fires only on the first share or join, never at app start, so the exposed surface is a
+  handful of calls per day rather than a public registration endpoint
+- the default IP rate limit of 30 requests per hour already applies and can be lowered under
+  Authentication → Rate Limits
+- CAPTCHA would land at the single highest-friction moment — a user who just tapped a friend's
+  invite link — and needs a webview on Flutter
+
+`signInAnonymously(captchaToken: ...)` accepts a token, so adding Turnstile later is a config change
+plus one widget, not a rework. Revisit if Auth Logs show abuse.
+
+### Cleaning up dormant anonymous users
+
+Anonymous accounts are never removed automatically. The cleanup query from the Supabase docs
+(`delete from auth.users where is_anonymous is true and created_at < now() - interval '30 days'`)
+**must not be used as written**: `owner_id` cascades, so it would delete the shared lists of every
+owner whose account is older than 30 days — precisely the lists that have been working longest.
+The safe form skips users who still own or belong to a list:
+
+```sql
+delete from auth.users u
+where u.is_anonymous
+  and u.created_at < now() - interval '30 days'
+  and not exists (select 1 from public.shared_lists        where owner_id = u.id)
+  and not exists (select 1 from public.shared_list_members where user_id  = u.id);
+```
+
 ## Local Storage
 
 `CustomList` gains three fields: `String? shareToken`, `bool isOwner`, `int version`, plus
@@ -216,8 +255,12 @@ An `Icons.share` marker appears as `trailing` in `CustomListTileWidget` and in t
    not work at all on Android 12+. Needs the SHA-256 fingerprint of the Play App Signing key.
 3. **`.github/workflows/release.yml`** — `scp -r build/web/*` skips dotfiles, so `.well-known/`
    would never reach the server. Change to `build/web/.` or add a second `scp`.
-4. **Secrets** — `SUPABASE_URL` and `SUPABASE_ANON_KEY` in `.env`, `.env.example`, and both the
-   Android and web jobs of the release workflow.
+4. **Secrets** — `SUPABASE_URL` and `SUPABASE_PUBLISHABLE_KEY` in `.env`, `.env.example`, and both
+   the Android and web jobs of the release workflow. Supabase has replaced the legacy `anon` JWT
+   with a publishable key (`sb_publishable_...`, found under Settings → API Keys); the legacy key is
+   deprecated by end of 2026. The publishable key is safe to ship in the client — RLS is the actual
+   guard, which is why the policies must be complete before anything reaches production. Verify at
+   implementation time that the installed `supabase_flutter` version accepts the new key format.
 
 ## Testing
 
@@ -249,8 +292,9 @@ RLS, realtime and App Links are verified manually — testing them in Dart prove
 
 Each phase leaves the app in a working state. Phases 1 and 2 can ship with no user-visible change.
 
-1. **Infrastructure** — schema, RLS, RPC functions in Supabase; `supabase_flutter` in pubspec;
-   on-demand anonymous sign-in; secrets in `.env` and the release workflow
+1. **Infrastructure** — schema, RLS and RPC functions as a migration in `supabase/migrations/`;
+   `supabase_flutter` in pubspec; on-demand anonymous sign-in; secrets in `.env` and the release
+   workflow; lowered anonymous sign-in rate limit
 2. **Sync without UI** — `SharedListGateway`, refactor mutations to intents, retry and rollback,
    cache in `db.dart`, the tests above
 3. **Sharing UX** — share button and `share_plus`, share marker icon, delete/leave dialogs, offline
@@ -268,4 +312,4 @@ resumed. Phase 1 adds a scheduled GitHub Actions workflow that pings the API eve
 
 Deliberately deferred until there is evidence they are needed: token revocation, member lists,
 offline editing with a queue, iOS Universal Links, archiving shared lists, push notifications about
-changes, change history.
+changes, change history, CAPTCHA on anonymous sign-in (rationale above), Supabase branching.
