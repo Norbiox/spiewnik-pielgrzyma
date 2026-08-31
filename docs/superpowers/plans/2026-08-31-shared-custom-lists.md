@@ -1682,16 +1682,104 @@ git commit -m "feat: mark shared lists and confirm leaving or deleting them"
 - Modify: `lib/app/providers/custom_lists/provider.dart`, `lib/app/widgets/custom_lists/custom_list.dart`, `lib/app/widgets/custom_lists/custom_list_page.dart`
 
 **Interfaces:**
-- Consumes: Task 6's `subscribe` and `fetchAll`.
+- Consumes: Task 6's `subscribe`, `fetchAll`, `join` and `fetch`.
 - Produces: `Future<void> refreshSharedLists()` on `CustomListProvider`.
 
-- [ ] **Step 1: Add the pull method**
+**A list that comes back missing means one of two things.** Usually the owner deleted it. But it can
+also mean this device lost its anonymous account — app data cleared, app reinstalled, refresh token
+lapsed — and with it its membership row, so RLS now hides a list that is still very much alive. The
+two are indistinguishable from a failed read, so the refresh tries to re-join with the stored token
+before giving up. Success means the list is alive and the user is a member again; `list_not_found`
+means it really is gone. Ownership is not recoverable this way — the re-joined user comes back as an
+ordinary member, which is exactly what the UI should then offer them.
+
+- [ ] **Step 1: Write the failing tests**
+
+Extend `FakeGateway` in `test/app/providers/custom_lists/sync_test.dart`. Add the field:
+
+```dart
+  /// Lists this user can no longer read, simulating a lost anonymous account.
+  final Set<String> notAMember = {};
+```
+
+and replace `fetch`, `fetchAll` and `join`:
+
+```dart
+  @override
+  Future<CustomList?> fetch(String id) async =>
+      notAMember.contains(id) ? null : rows[id]?.copy();
+
+  @override
+  Future<List<CustomList>> fetchAll(List<String> ids) async => ids
+      .where((id) => !notAMember.contains(id))
+      .map((id) => rows[id])
+      .whereType<CustomList>()
+      .map((l) => l.copy())
+      .toList();
+
+  @override
+  Future<String> join(String token) async {
+    final match = rows.values.where((l) => l.shareToken == token);
+    if (match.isEmpty) throw Exception('list_not_found');
+    final row = match.first;
+    // A device that lost its account comes back as a member, not the owner.
+    row.isOwner = false;
+    notAMember.remove(row.id);
+    return row.id;
+  }
+```
+
+Then add the tests, inside `main()`:
+
+```dart
+  test('a list the owner deleted is dropped locally', () async {
+    givenSharedList(hymnsIds: [1]);
+    gateway.rows.remove('list-1');
+
+    await provider.refreshSharedLists();
+
+    expect(provider.getLists(), isEmpty);
+  });
+
+  test('a list gone unreadable is re-joined with the stored token', () async {
+    givenSharedList(hymnsIds: [1]);
+    // The account behind this device is gone, so RLS hides the row.
+    gateway.notAMember.add('list-1');
+    gateway.rows['list-1']!.hymnsIds = [1, 5];
+
+    await provider.refreshSharedLists();
+
+    final recovered = provider.getList('list-1');
+    expect(recovered.hymnsIds, [1, 5]);
+    expect(recovered.shareToken, 'token-1');
+    // Edit rights are back; ownership is not.
+    expect(recovered.isOwner, isFalse);
+  });
+
+  test('a readable list is refreshed from the server', () async {
+    givenSharedList(hymnsIds: [1]);
+    gateway.rows['list-1']!
+      ..hymnsIds = [1, 2]
+      ..version = 4;
+
+    await provider.refreshSharedLists();
+
+    expect(provider.getList('list-1').hymnsIds, [1, 2]);
+    expect(provider.getList('list-1').version, 4);
+  });
+```
+
+- [ ] **Step 2: Run the tests to verify they fail**
+
+Run: `fvm flutter test test/app/providers/custom_lists/sync_test.dart`
+Expected: FAIL — `The method 'refreshSharedLists' isn't defined for the type 'CustomListProvider'`.
+
+- [ ] **Step 3: Add the pull method with token recovery**
 
 In `lib/app/providers/custom_lists/provider.dart`:
 
 ```dart
-  /// Refreshes every shared list from the server. Lists that came back missing
-  /// were deleted by their owner and are dropped locally.
+  /// Refreshes every shared list from the server.
   Future<void> refreshSharedLists() async {
     final gateway = this.gateway;
     if (gateway == null) return;
@@ -1703,7 +1791,7 @@ In `lib/app/providers/custom_lists/provider.dart`:
     final remoteById = {for (final l in remote) l.id: l};
 
     for (final local in shared) {
-      final fresh = remoteById[local.id];
+      final fresh = remoteById[local.id] ?? await _rejoin(local, gateway);
       if (fresh == null) {
         deleteCustomList(local, prefs);
       } else {
@@ -1713,9 +1801,32 @@ In `lib/app/providers/custom_lists/provider.dart`:
     }
     notifyListeners();
   }
+
+  /// Last resort for a shared list we hold a token for but can no longer read.
+  ///
+  /// Usually it is genuinely deleted. But this device may instead have lost the
+  /// anonymous account that held its membership, and the stored token is enough
+  /// to get back in — as a member, not as the owner. Returns null when the list
+  /// really is gone.
+  Future<CustomList?> _rejoin(
+      CustomList local, SharedListGateway gateway) async {
+    final token = local.shareToken;
+    if (token == null) return null;
+    try {
+      await gateway.join(token);
+      return await gateway.fetch(local.id);
+    } catch (_) {
+      return null;
+    }
+  }
 ```
 
-- [ ] **Step 2: Subscribe while a shared list is open**
+- [ ] **Step 4: Run the tests to verify they pass**
+
+Run: `fvm flutter test test/app/providers/custom_lists/sync_test.dart`
+Expected: all nine tests pass.
+
+- [ ] **Step 5: Subscribe while a shared list is open**
 
 In `lib/app/widgets/custom_lists/custom_list.dart`, extend `_CustomListWidgetState`:
 
@@ -1759,7 +1870,7 @@ In `lib/app/widgets/custom_lists/custom_list.dart`, extend `_CustomListWidgetSta
 
 Add the imports: `dart:async` for `unawaited`, `package:go_router/go_router.dart`, and the gateway.
 
-- [ ] **Step 3: Refresh when the app returns from the background**
+- [ ] **Step 6: Refresh when the app returns from the background**
 
 In the same state class, mix in `WidgetsBindingObserver`:
 
@@ -1779,7 +1890,7 @@ register in `initState` with `WidgetsBinding.instance.addObserver(this)`, remove
   }
 ```
 
-- [ ] **Step 4: Lock editing when offline**
+- [ ] **Step 7: Lock editing when offline**
 
 A shared list stays readable offline but must not be editable. `connectivity_plus` is already a
 dependency; a `StreamBuilder` on `onConnectivityChanged` reacts the moment the connection drops,
@@ -1842,7 +1953,7 @@ In `lib/app/widgets/custom_lists/custom_list_page.dart`, replace the whole `buil
 
 Add the import `package:connectivity_plus/connectivity_plus.dart`.
 
-- [ ] **Step 5: Disable the drag handles when locked**
+- [ ] **Step 8: Disable the drag handles when locked**
 
 In `lib/app/widgets/custom_lists/custom_list.dart`, add the flag to the widget:
 
@@ -1860,22 +1971,22 @@ and in both `ReorderableListView.builder` calls, replace `buildDefaultDragHandle
       buildDefaultDragHandles: !widget.locked,
 ```
 
-- [ ] **Step 6: Verify with two clients**
+- [ ] **Step 9: Verify with two clients**
 
 Run the app on a device and `fvm flutter run -d chrome` in parallel, both joined to the same list (use Task 12's join flow, or insert the membership row by hand in the dashboard for now).
 Expected: adding a hymn on one side appears on the other within about two seconds while both have the list open.
 
-- [ ] **Step 7: Verify the offline lock**
+- [ ] **Step 10: Verify the offline lock**
 
 Turn on airplane mode with a shared list open.
 Expected: the list still renders, the banner appears, the add button is gone and the drag handles
 disappear. A private list opened in airplane mode stays fully editable.
 
-- [ ] **Step 8: Commit**
+- [ ] **Step 11: Commit**
 
 ```bash
 fvm flutter analyze --fatal-infos && fvm flutter test
-git add lib/app/providers/custom_lists/provider.dart lib/app/widgets/custom_lists
+git add lib/app/providers/custom_lists test/app/providers/custom_lists lib/app/widgets/custom_lists
 git commit -m "feat: sync shared lists live and block editing offline"
 ```
 
@@ -2202,10 +2313,10 @@ Run through these once Task 12 is done. They are the spec's list, with the task 
 |---|---|---|
 | 1 | `analyze --fatal-infos` and `test` pass | every task's final step |
 | 2 | Issue scenario 1→5b works on two devices | Task 12, Step 8 |
-| 3 | Change propagates in under ~2s with the list open | Task 10, Step 6 |
+| 3 | Change propagates in under ~2s with the list open | Task 10, Step 9 |
 | 4 | `pm get-app-links` reports `verified` | Task 12, Step 7 |
 | 5 | Android without the app → Play; desktop → web build | Task 12, Step 8 |
-| 6 | Airplane mode: readable, not editable | Task 10, Step 7 |
+| 6 | Airplane mode: readable, not editable | Task 10, Step 10 |
 | 7 | Owner deletion propagates | Task 12, Step 8 |
 | 8 | Pre-existing private lists unchanged | Task 7, Step 4 |
 | 9 | Security Advisor clean; raw key gets `[]` and 401 | Task 1, Steps 6-7 |

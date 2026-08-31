@@ -182,9 +182,7 @@ Both are declared `security definer set search_path = ''` with fully qualified r
   reinstalling, or letting the token lapse loses it, and with it ownership of any shared list the
   user created — the row survives but nobody can delete it for everyone any more. This is inherent
   to anonymous accounts and is the strongest argument for eventually offering `linkIdentity()` to a
-  real account. A cheap partial recovery exists and is not built yet: the local copy still holds
-  `share_token`, so a re-signed-in user could call `join_shared_list` and come back as a member,
-  keeping edit rights while losing ownership.
+  real account. Edit access does recover automatically: see token recovery under Realtime and Pull.
 - `auth.users` lives in a schema PostgREST does not expose, so the account list never leaks.
 
 ### Verifying rather than assuming
@@ -305,6 +303,22 @@ filter is `id=eq.<uuid>`, and only shared lists subscribe.
 Plain pull (no WebSocket) happens at three moments: app start, return from background
 (`AppLifecycleState.resumed`), and entering the custom lists tab. All shared lists refresh in a
 single `select ... in (...)`.
+
+### Token recovery
+
+A list that comes back missing from that select usually means the owner deleted it. But it can also
+mean this device lost the anonymous account holding its membership — app data cleared, app
+reinstalled, refresh token lapsed — so RLS now hides a list that is still alive. A failed read looks
+identical either way.
+
+Before dropping a list locally, the refresh therefore retries with the token it still holds:
+`join_shared_list(share_token)`. Success means the list is alive and the user is a member again;
+`list_not_found` means it really is gone and the local copy goes. Ownership does not come back — the
+re-joined user returns as an ordinary member, and the UI follows automatically, since `isOwner` is
+derived from `owner_id` on every read.
+
+Without this, losing a session would lock a user out of a list they created, with a local copy still
+on screen that could never sync again.
 
 ## Offline
 
