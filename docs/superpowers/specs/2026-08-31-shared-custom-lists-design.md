@@ -358,7 +358,9 @@ An `Icons.share` marker appears as `trailing` in `CustomListTileWidget` and in t
      "target": {
        "namespace": "android_app",
        "package_name": "pl.norbertchmiel.spiewnik_pielgrzyma",
-       "sha256_cert_fingerprints": ["AA:BB:CC:..."]
+       "sha256_cert_fingerprints": [
+         "90:C4:FF:90:97:1C:05:1D:80:7B:BC:E4:46:7A:1B:7E:56:DD:45:6D:7C:1B:84:A7:75:71:16:A1:4E:D8:46:90"
+       ]
      }
    }]
    ```
