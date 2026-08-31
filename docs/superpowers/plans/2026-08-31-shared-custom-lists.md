@@ -233,9 +233,13 @@ Expected: green, log shows `HTTP 200`.
 
 - [ ] **Step 11: Save the cleanup query for dormant anonymous accounts**
 
-Anonymous accounts are never removed automatically, and each one counts toward MAU. Append to the
-migration file as a comment, so the query lives next to the schema it depends on rather than in
-someone's shell history:
+Anonymous accounts are never removed automatically. This is **not** a billing measure: MAU counts
+distinct users who sign in or refresh a token during the cycle, dormant accounts do not count, and
+the Free plan allows 50,000 of them. It is a lever for one situation only — bots hammering
+anonymous sign-in and leaving orphaned rows behind. Do not run it on a schedule.
+
+Append to the migration file as a comment, so the query lives next to the schema it depends on
+rather than in someone's shell history:
 
 ```sql
 -- Run by hand from the SQL editor when anonymous user count grows.
@@ -325,9 +329,21 @@ SupabaseClient get supabase => Supabase.instance.client;
 /// Sign-in is deliberately lazy: it happens when a user first shares or joins
 /// a list, never at startup, so users who never touch sharing never get an
 /// account.
+///
+/// A cached session is not trusted blindly. The account behind it can be gone —
+/// deleted by the dormant-account cleanup, or lost when the refresh token
+/// expired — and a stale id would then fail a foreign key check on insert with
+/// no useful error. [getUser] costs one round trip on an action that happens
+/// rarely, and turns that into a clean re-sign-in.
 Future<String> ensureSignedIn() async {
-  final existing = supabase.auth.currentUser;
-  if (existing != null) return existing.id;
+  if (supabase.auth.currentSession != null) {
+    try {
+      final user = (await supabase.auth.getUser()).user;
+      if (user != null) return user.id;
+    } on AuthException {
+      await supabase.auth.signOut();
+    }
+  }
   final response = await supabase.auth.signInAnonymously();
   return response.user!.id;
 }

@@ -177,7 +177,14 @@ Both are declared `security definer set search_path = ''` with fully qualified r
   of a group, the owner currently has no way to cut it off — which is why token revocation is first
   in line among the deferred items.
 - **Anyone can create arbitrarily many anonymous accounts and their own lists.** Bounded by the
-  30-requests-per-hour IP limit and the periodic cleanup query.
+  IP rate limit and, if it ever becomes a problem, the cleanup query.
+- **An anonymous identity lives only in the device's stored refresh token.** Clearing app data,
+  reinstalling, or letting the token lapse loses it, and with it ownership of any shared list the
+  user created — the row survives but nobody can delete it for everyone any more. This is inherent
+  to anonymous accounts and is the strongest argument for eventually offering `linkIdentity()` to a
+  real account. A cheap partial recovery exists and is not built yet: the local copy still holds
+  `share_token`, so a re-signed-in user could call `join_shared_list` and come back as a member,
+  keeping edit rights while losing ownership.
 - `auth.users` lives in a schema PostgREST does not expose, so the account list never leaks.
 
 ### Verifying rather than assuming
