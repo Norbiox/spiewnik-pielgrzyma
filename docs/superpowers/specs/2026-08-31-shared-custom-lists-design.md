@@ -80,9 +80,72 @@ an access key.
 | `shared_lists` | `select`, `update` | owner or member |
 | `shared_lists` | `delete` | owner only |
 | `shared_lists` | `insert` | `owner_id = auth.uid()` |
-| `shared_list_members` | `delete` | own row only (= "leave list") |
+| `shared_list_members` | `select`, `delete` | own row only (= "leave list") |
+| `shared_list_members` | `insert` | nobody — joining goes through `join_shared_list()` |
 
-Membership is checked with `exists (select 1 from shared_list_members where list_id = id and user_id = auth.uid())`.
+The publishable key shipped in the client is an identifier, not a permission: it tells PostgREST
+which Postgres role to run as — `anon` without a JWT, `authenticated` after `signInAnonymously()`.
+All authorization happens in Postgres. Two consequences drive the policies below.
+
+**RLS must be enabled explicitly.** Supabase grants `anon` and `authenticated` full CRUD on tables
+in `public` by default. A table created by SQL migration without
+`enable row level security` is fully readable and writable by anyone holding the publishable key.
+The Table Editor ticks that box for you; a migration does not.
+
+**`authenticated` does not mean trusted.** Anyone can call `signInAnonymously()` and obtain that
+role, so no policy may stop at `to authenticated` — each one checks ownership or membership.
+
+```sql
+alter table public.shared_lists        enable row level security;
+alter table public.shared_list_members enable row level security;
+
+-- Supabase grants CRUD to anon/authenticated by default; strip anon entirely.
+revoke all on public.shared_lists, public.shared_list_members from anon;
+
+-- Members may edit contents, but never reassign ownership or the invite token.
+revoke update on public.shared_lists from authenticated;
+grant  update (name, hymns_ids, archived_hymns_ids, version)
+       on public.shared_lists to authenticated;
+
+create or replace function public.is_list_participant(p_list_id uuid)
+returns boolean language sql stable security invoker set search_path = '' as $$
+  select exists (
+    select 1 from public.shared_lists l
+    where l.id = p_list_id and l.owner_id = (select auth.uid())
+  ) or exists (
+    select 1 from public.shared_list_members m
+    where m.list_id = p_list_id and m.user_id = (select auth.uid())
+  );
+$$;
+
+create policy shared_lists_select on public.shared_lists
+  for select to authenticated using (public.is_list_participant(id));
+
+create policy shared_lists_update on public.shared_lists
+  for update to authenticated using (public.is_list_participant(id));
+
+create policy shared_lists_insert on public.shared_lists
+  for insert to authenticated with check (owner_id = (select auth.uid()));
+
+create policy shared_lists_delete on public.shared_lists
+  for delete to authenticated using (owner_id = (select auth.uid()));
+
+create policy members_select on public.shared_list_members
+  for select to authenticated using (user_id = (select auth.uid()));
+
+create policy members_delete on public.shared_list_members
+  for delete to authenticated using (user_id = (select auth.uid()));
+-- Deliberately no INSERT policy: joining is only possible through join_shared_list().
+```
+
+Three of these are load-bearing in ways that are easy to miss:
+
+- **Column-level update grants.** Without them a member could `PATCH` `owner_id` to themselves and
+  take over the list, or replace `share_token`. Row-level policies do not constrain columns.
+- **No INSERT policy on `shared_list_members`.** This is what forces every join through the token.
+  With such a policy, knowing a list `id` would be enough to add yourself.
+- **`(select auth.uid())`** rather than a bare `auth.uid()` — Postgres caches it as an InitPlan
+  instead of re-evaluating per row.
 
 ### Joining by token
 
@@ -94,7 +157,42 @@ requires knowing the list. Two `security definer` functions are the only place t
 - `join_shared_list(p_token uuid) returns uuid` — inserts the membership row with
   `on conflict do nothing`, returns the list id, raises when the token is unknown
 
-Both are granted to `authenticated` and revoked from `anon`.
+These two functions are the only code that bypasses RLS, so they are hardened explicitly. Postgres
+grants `EXECUTE` to `public` by default, and a `security definer` function without a pinned
+`search_path` can be hijacked by shadowing the objects it references.
+
+```sql
+revoke all on function public.preview_shared_list(uuid) from public, anon;
+revoke all on function public.join_shared_list(uuid)    from public, anon;
+grant execute on function public.preview_shared_list(uuid) to authenticated;
+grant execute on function public.join_shared_list(uuid)    to authenticated;
+```
+
+Both are declared `security definer set search_path = ''` with fully qualified references.
+
+### Residual risk, accepted
+
+- **Anyone holding the link can edit or vandalise that one list.** Not a hole but the design
+  decision: the link *is* write access, with no invitations and no moderation. If a link leaks out
+  of a group, the owner currently has no way to cut it off — which is why token revocation is first
+  in line among the deferred items.
+- **Anyone can create arbitrarily many anonymous accounts and their own lists.** Bounded by the
+  30-requests-per-hour IP limit and the periodic cleanup query.
+- `auth.users` lives in a schema PostgREST does not expose, so the account list never leaks.
+
+### Verifying rather than assuming
+
+Dashboard → Advisors → Security Advisor flags tables without RLS and functions with a mutable
+`search_path`. In addition, with the raw publishable key and no sign-in:
+
+```bash
+curl "$SUPABASE_URL/rest/v1/shared_lists?select=*" -H "apikey: $KEY"      # → []
+curl -X POST "$SUPABASE_URL/rest/v1/shared_lists" -H "apikey: $KEY" \
+     -H "Content-Type: application/json" -d '{"id":"...","name":"x"}'     # → 401
+```
+
+A read blocked by RLS returns an **empty array, not an error**, so `[]` is the correct result. Any
+rows coming back means RLS is off.
 
 ### Schema management
 
@@ -287,6 +385,10 @@ RLS, realtime and App Links are verified manually — testing them in Dart prove
 7. The owner deleting a list removes it for a member — immediately if the list is open, otherwise on
    the next pull
 8. Every pre-existing private list works unchanged after the update
+9. Security Advisor reports no findings, and with the raw publishable key and no sign-in a `select`
+   on `shared_lists` returns `[]` while an `insert` returns 401
+10. A signed-in user who is neither owner nor member of a list gets `[]` for it, and cannot `PATCH`
+    its `owner_id` or `share_token`
 
 ## Implementation Phases
 
