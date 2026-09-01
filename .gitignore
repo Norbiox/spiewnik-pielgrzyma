@@ -38,3 +38,7 @@ upload_certificate.pem
 
 # FVM Version Cache
 .fvm/
+
+# Supabase CLI local state
+supabase/.branches
+supabase/.temp
