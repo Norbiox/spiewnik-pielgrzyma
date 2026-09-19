@@ -118,7 +118,7 @@ jobs:
           ssh-keyscan -H ${{ secrets.WEB_HOST }} >> ~/.ssh/known_hosts
 
       - name: Deploy web
-        run: scp -i ~/.ssh/deploy_key -r build/web/* ${{ secrets.WEB_HOST_USER }}@${{ secrets.WEB_HOST }}:${{ secrets.WEB_HOST_PATH }}
+        run: scp -i ~/.ssh/deploy_key -r build/web/. ${{ secrets.WEB_HOST_USER }}@${{ secrets.WEB_HOST }}:${{ secrets.WEB_HOST_PATH }}
 
   github-release:
     runs-on: ubuntu-latest
