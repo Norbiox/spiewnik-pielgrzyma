@@ -1,5 +1,4 @@
 import 'package:spiewnik_pielgrzyma/models/hymn.dart';
-import 'package:spiewnik_pielgrzyma/utils/list.dart';
 
 class CustomList {
   String id;
@@ -50,8 +49,13 @@ class CustomList {
     hymnsIds = hymnsIds.where((id) => id != hymn.id).toList();
   }
 
-  void reorderHymns(int oldIndex, int newIndex) {
-    hymnsIds = moveItem(hymnsIds, oldIndex, newIndex);
+  /// Moves [hymnId] directly in front of [beforeHymnId], or to the end when
+  /// [beforeHymnId] is null or no longer present.
+  ///
+  /// Expressed with ids rather than indices so that it can be re-applied to
+  /// state another user has changed in the meantime.
+  void moveHymnBefore(int hymnId, int? beforeHymnId) {
+    hymnsIds = _moved(hymnsIds, hymnId, beforeHymnId);
   }
 
   // archived hymns
@@ -72,8 +76,16 @@ class CustomList {
     hymnsIds = [...hymnsIds, hymn.id];
   }
 
-  void reorderArchivedHymns(int oldIndex, int newIndex) {
-    archivedHymnsIds = moveItem(archivedHymnsIds, oldIndex, newIndex);
+  void moveArchivedHymnBefore(int hymnId, int? beforeHymnId) {
+    archivedHymnsIds = _moved(archivedHymnsIds, hymnId, beforeHymnId);
+  }
+
+  static List<int> _moved(List<int> ids, int hymnId, int? beforeHymnId) {
+    if (!ids.contains(hymnId)) return ids;
+    final rest = ids.where((id) => id != hymnId).toList();
+    final at = beforeHymnId == null ? -1 : rest.indexOf(beforeHymnId);
+    rest.insert(at < 0 ? rest.length : at, hymnId);
+    return rest;
   }
 
   void removeHymnFromArchive(Hymn hymn) {

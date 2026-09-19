@@ -68,7 +68,11 @@ class _CustomListWidgetState extends State<CustomListWidget> {
           list: list,
           hymn: hymnsProvider.getHymn(list.hymnsIds[index])),
       onReorder: (oldIndex, newIndex) {
-        list.reorderHymns(oldIndex, newIndex);
+        if (oldIndex < newIndex) newIndex -= 1;
+        final hymnId = list.hymnsIds[oldIndex];
+        final rest = list.hymnsIds.where((id) => id != hymnId).toList();
+        final beforeHymnId = newIndex < rest.length ? rest[newIndex] : null;
+        list.moveHymnBefore(hymnId, beforeHymnId);
         provider.save(list);
       },
     );
@@ -112,7 +116,11 @@ class _CustomListWidgetState extends State<CustomListWidget> {
           list: list,
           hymn: hymnsProvider.getHymn(list.archivedHymnsIds[index])),
       onReorder: (oldIndex, newIndex) {
-        list.reorderArchivedHymns(oldIndex, newIndex);
+        if (oldIndex < newIndex) newIndex -= 1;
+        final hymnId = list.archivedHymnsIds[oldIndex];
+        final rest = list.archivedHymnsIds.where((id) => id != hymnId).toList();
+        final beforeHymnId = newIndex < rest.length ? rest[newIndex] : null;
+        list.moveArchivedHymnBefore(hymnId, beforeHymnId);
         provider.save(list);
       },
     );
