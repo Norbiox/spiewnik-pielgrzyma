@@ -102,6 +102,19 @@ class CustomListProvider with ChangeNotifier {
     notifyListeners();
   }
 
+  /// Uploads a private list so it can be shared. Returns it with its token and
+  /// version filled in. Calling it on an already-shared list is a no-op.
+  Future<CustomList> shareList(CustomList list) async {
+    if (list.isShared) return list;
+    final gateway = this.gateway;
+    if (gateway == null) throw Exception('Sharing is unavailable');
+
+    final shared = await gateway.create(list);
+    saveCustomList(shared, prefs);
+    notifyListeners();
+    return shared;
+  }
+
   Future<void> _mutate(CustomList list, ListMutation mutation) async {
     final before = list.copy();
     mutation(list);
