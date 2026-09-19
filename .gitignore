@@ -42,3 +42,6 @@ upload_certificate.pem
 # Supabase CLI local state
 supabase/.branches
 supabase/.temp
+
+# Local-only planning docs (superpowers skill), not tracked
+docs/superpowers/
