@@ -101,8 +101,7 @@ class CustomListPage extends WatchingWidget {
     try {
       final shared = await provider.shareList(list);
       await SharePlus.instance.share(ShareParams(
-        text: 'Śpiewnik Pielgrzyma — lista „${shared.name}”:\n'
-            '$_shareBase?t=${shared.shareToken}',
+        text: '$_shareBase?t=${shared.shareToken}',
       ));
     } catch (e) {
       debugPrint('shareList failed: $e');
