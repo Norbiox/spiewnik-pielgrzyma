@@ -20,17 +20,25 @@ class CustomListPage extends StatelessWidget {
     final CustomList list = provider.getList(listId);
     return Scaffold(
       appBar: AppBar(
-        title: TextField(
-          controller: TextEditingController(text: list.name),
-          decoration: InputDecoration(
-            border: InputBorder.none,
-            hintText: "Kliknij aby nazwać listę",
-            hintStyle: Theme.of(context).textTheme.titleLarge,
+        title: Row(children: [
+          if (list.isShared)
+            const Padding(
+              padding: EdgeInsets.only(right: 8.0),
+              child: Icon(Icons.share, size: 18),
+            ),
+          Expanded(
+            child: TextField(
+              controller: TextEditingController(text: list.name),
+              decoration: InputDecoration(
+                border: InputBorder.none,
+                hintText: "Kliknij aby nazwać listę",
+                hintStyle: Theme.of(context).textTheme.titleLarge,
+              ),
+              onSubmitted: (value) =>
+                  runListAction(context, () => provider.rename(list, value)),
+            ),
           ),
-          onSubmitted: (value) {
-            runListAction(context, () => provider.rename(list, value));
-          },
-        ),
+        ]),
         actions: [
           IconButton(
             icon: const Icon(Icons.share),

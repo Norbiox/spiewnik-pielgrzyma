@@ -102,6 +102,20 @@ class CustomListProvider with ChangeNotifier {
     notifyListeners();
   }
 
+  /// Deletes a shared list for everyone. Owner only.
+  Future<void> deleteSharedList(CustomList list) async {
+    await gateway?.delete(list.id);
+    deleteCustomList(list, prefs);
+    notifyListeners();
+  }
+
+  /// Drops this device's membership. The list stays alive for everyone else.
+  Future<void> leaveSharedList(CustomList list) async {
+    await gateway?.leave(list.id);
+    deleteCustomList(list, prefs);
+    notifyListeners();
+  }
+
   /// Uploads a private list so it can be shared. Returns it with its token and
   /// version filled in. Calling it on an already-shared list is a no-op.
   Future<CustomList> shareList(CustomList list) async {
