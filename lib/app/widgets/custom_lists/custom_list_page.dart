@@ -9,7 +9,7 @@ import 'package:spiewnik_pielgrzyma/app/widgets/utils/list_action.dart';
 import 'package:spiewnik_pielgrzyma/models/custom_list.dart';
 import 'package:watch_it/watch_it.dart';
 
-class CustomListPage extends StatelessWidget {
+class CustomListPage extends WatchingWidget {
   final CustomListProvider provider = GetIt.I<CustomListProvider>();
   final HymnsListProvider hymnsProvider = GetIt.I<HymnsListProvider>();
   final String listId;
@@ -18,6 +18,7 @@ class CustomListPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    watch(provider);
     final CustomList list = provider.getList(listId);
 
     return StreamBuilder<List<ConnectivityResult>>(
@@ -103,7 +104,8 @@ class CustomListPage extends StatelessWidget {
         text: 'Śpiewnik Pielgrzyma — lista „${shared.name}”:\n'
             '$_shareBase?t=${shared.shareToken}',
       ));
-    } catch (_) {
+    } catch (e) {
+      debugPrint('shareList failed: $e');
       messenger.showSnackBar(
         const SnackBar(
           content: Text('Nie udało się udostępnić listy. Sprawdź połączenie.'),
