@@ -116,6 +116,47 @@ class CustomListProvider with ChangeNotifier {
     notifyListeners();
   }
 
+  /// Refreshes every shared list from the server.
+  Future<void> refreshSharedLists() async {
+    final gateway = this.gateway;
+    if (gateway == null) return;
+
+    final shared = getLists().where((l) => l.isShared).toList();
+    if (shared.isEmpty) return;
+
+    final remote = await gateway.fetchAll(shared.map((l) => l.id).toList());
+    final remoteById = {for (final l in remote) l.id: l};
+
+    for (final local in shared) {
+      final fresh = remoteById[local.id] ?? await _rejoin(local, gateway);
+      if (fresh == null) {
+        deleteCustomList(local, prefs);
+      } else {
+        fresh.shareToken = local.shareToken;
+        saveCustomList(fresh, prefs);
+      }
+    }
+    notifyListeners();
+  }
+
+  /// Last resort for a shared list we hold a token for but can no longer read.
+  ///
+  /// Usually it is genuinely deleted. But this device may instead have lost the
+  /// anonymous account that held its membership, and the stored token is enough
+  /// to get back in — as a member, not as the owner. Returns null when the list
+  /// really is gone.
+  Future<CustomList?> _rejoin(
+      CustomList local, SharedListGateway gateway) async {
+    final token = local.shareToken;
+    if (token == null) return null;
+    try {
+      await gateway.join(token);
+      return await gateway.fetch(local.id);
+    } catch (_) {
+      return null;
+    }
+  }
+
   /// Uploads a private list so it can be shared. Returns it with its token and
   /// version filled in. Calling it on an already-shared list is a no-op.
   Future<CustomList> shareList(CustomList list) async {

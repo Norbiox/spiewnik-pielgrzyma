@@ -1,3 +1,4 @@
+import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter/material.dart';
 import 'package:share_plus/share_plus.dart';
 import 'package:spiewnik_pielgrzyma/app/providers/custom_lists/provider.dart';
@@ -18,48 +19,76 @@ class CustomListPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final CustomList list = provider.getList(listId);
-    return Scaffold(
-      appBar: AppBar(
-        title: Row(children: [
-          if (list.isShared)
-            const Padding(
-              padding: EdgeInsets.only(right: 8.0),
-              child: Icon(Icons.share, size: 18),
-            ),
-          Expanded(
-            child: TextField(
-              controller: TextEditingController(text: list.name),
-              decoration: InputDecoration(
-                border: InputBorder.none,
-                hintText: "Kliknij aby nazwać listę",
-                hintStyle: Theme.of(context).textTheme.titleLarge,
+
+    return StreamBuilder<List<ConnectivityResult>>(
+      stream: Connectivity().onConnectivityChanged,
+      initialData: const <ConnectivityResult>[],
+      builder: (context, snapshot) {
+        final offline = snapshot.data!.contains(ConnectivityResult.none);
+        // Private lists are local, so they stay editable with no connection.
+        final locked = list.isShared && offline;
+
+        return Scaffold(
+          appBar: AppBar(
+            title: Row(children: [
+              if (list.isShared)
+                const Padding(
+                  padding: EdgeInsets.only(right: 8.0),
+                  child: Icon(Icons.share, size: 18),
+                ),
+              Expanded(
+                child: TextField(
+                  controller: TextEditingController(text: list.name),
+                  decoration: InputDecoration(
+                    border: InputBorder.none,
+                    hintText: "Kliknij aby nazwać listę",
+                    hintStyle: Theme.of(context).textTheme.titleLarge,
+                  ),
+                  onSubmitted: (value) => runListAction(
+                      context, () => provider.rename(list, value)),
+                ),
               ),
-              onSubmitted: (value) =>
-                  runListAction(context, () => provider.rename(list, value)),
+            ]),
+            actions: [
+              IconButton(
+                icon: const Icon(Icons.share),
+                tooltip: 'Udostępnij listę',
+                onPressed: () => _share(context, list),
+              ),
+            ],
+          ),
+          body: Column(children: [
+            if (locked)
+              Container(
+                width: double.infinity,
+                color: Theme.of(context).colorScheme.secondaryContainer,
+                padding: const EdgeInsets.all(12.0),
+                child: Text(
+                  'Brak połączenia — listy współdzielonej nie można teraz edytować',
+                  style: Theme.of(context).textTheme.bodySmall,
+                ),
+              ),
+            Expanded(
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: CustomListWidget(listId: list.id, locked: locked),
+              ),
             ),
-          ),
-        ]),
-        actions: [
-          IconButton(
-            icon: const Icon(Icons.share),
-            tooltip: 'Udostępnij listę',
-            onPressed: () => _share(context, list),
-          ),
-        ],
-      ),
-      body: Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: CustomListWidget(listId: list.id)),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () => showSearch(
-            context: context,
-            delegate: SearchForHymnToAddToCustomList(
-                provider: hymnsProvider,
-                hymns: hymnsProvider.getAll(),
-                listId: listId)),
-        tooltip: "Dodaj pieśń do listy",
-        child: const Icon(Icons.add),
-      ),
+          ]),
+          floatingActionButton: locked
+              ? null
+              : FloatingActionButton(
+                  onPressed: () => showSearch(
+                      context: context,
+                      delegate: SearchForHymnToAddToCustomList(
+                          provider: hymnsProvider,
+                          hymns: hymnsProvider.getAll(),
+                          listId: listId)),
+                  tooltip: "Dodaj pieśń do listy",
+                  child: const Icon(Icons.add),
+                ),
+        );
+      },
     );
   }
 

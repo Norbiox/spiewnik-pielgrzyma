@@ -1,4 +1,8 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
+import 'package:spiewnik_pielgrzyma/app/providers/custom_lists/gateway.dart';
 import 'package:spiewnik_pielgrzyma/app/providers/custom_lists/provider.dart';
 import 'package:spiewnik_pielgrzyma/app/providers/hymns/provider.dart';
 import 'package:spiewnik_pielgrzyma/app/widgets/custom_lists/archived_hymn_tile.dart';
@@ -9,25 +13,60 @@ import 'package:watch_it/watch_it.dart';
 
 class CustomListWidget extends WatchingStatefulWidget {
   final String listId;
+  final bool locked;
 
-  const CustomListWidget({super.key, required this.listId});
+  const CustomListWidget(
+      {super.key, required this.listId, this.locked = false});
 
   @override
   State<CustomListWidget> createState() => _CustomListWidgetState();
 }
 
-class _CustomListWidgetState extends State<CustomListWidget> {
+class _CustomListWidgetState extends State<CustomListWidget>
+    with WidgetsBindingObserver {
   late final ScrollController scrollController;
   bool _archiveExpanded = true;
+  SharedListSubscription? _subscription;
 
   @override
   void initState() {
     super.initState();
     scrollController = ScrollController();
+    WidgetsBinding.instance.addObserver(this);
+
+    final provider = GetIt.I<CustomListProvider>();
+    final list = provider.getList(widget.listId);
+    if (!list.isShared) return;
+
+    unawaited(provider.refreshSharedLists());
+    _subscription = GetIt.I<SharedListGateway>().subscribe(
+      widget.listId,
+      onChange: (remote) {
+        remote.shareToken = list.shareToken;
+        provider.applyRemote(remote);
+      },
+      onDelete: () {
+        provider.deleteList(list);
+        if (!mounted) return;
+        ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+          content: Text('Lista została usunięta przez właściciela'),
+        ));
+        context.pop();
+      },
+    );
+  }
+
+  @override
+  void didChangeAppLifecycleState(AppLifecycleState state) {
+    if (state == AppLifecycleState.resumed) {
+      unawaited(GetIt.I<CustomListProvider>().refreshSharedLists());
+    }
   }
 
   @override
   void dispose() {
+    WidgetsBinding.instance.removeObserver(this);
+    unawaited(_subscription?.close());
     scrollController.dispose();
     super.dispose();
   }
@@ -61,7 +100,7 @@ class _CustomListWidgetState extends State<CustomListWidget> {
     return ReorderableListView.builder(
       shrinkWrap: true,
       physics: const NeverScrollableScrollPhysics(),
-      buildDefaultDragHandles: true,
+      buildDefaultDragHandles: !widget.locked,
       itemCount: list.hymnsIds.length,
       prototypeItem: const ListTile(),
       itemBuilder: (context, index) => HymnTileWidget(
@@ -109,7 +148,7 @@ class _CustomListWidgetState extends State<CustomListWidget> {
     return ReorderableListView.builder(
       shrinkWrap: true,
       physics: const NeverScrollableScrollPhysics(),
-      buildDefaultDragHandles: true,
+      buildDefaultDragHandles: !widget.locked,
       itemCount: list.archivedHymnsIds.length,
       prototypeItem: const ListTile(),
       itemBuilder: (context, index) => ArchivedHymnTileWidget(

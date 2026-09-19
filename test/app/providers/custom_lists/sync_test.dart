@@ -18,6 +18,9 @@ class FakeGateway implements SharedListGateway {
   /// When true, [update] throws instead of answering.
   bool failNetwork = false;
 
+  /// Lists this user can no longer read, simulating a lost anonymous account.
+  final Set<String> notAMember = {};
+
   int updateCalls = 0;
 
   @override
@@ -37,10 +40,12 @@ class FakeGateway implements SharedListGateway {
   }
 
   @override
-  Future<CustomList?> fetch(String id) async => rows[id]?.copy();
+  Future<CustomList?> fetch(String id) async =>
+      notAMember.contains(id) ? null : rows[id]?.copy();
 
   @override
   Future<List<CustomList>> fetchAll(List<String> ids) async => ids
+      .where((id) => !notAMember.contains(id))
       .map((id) => rows[id])
       .whereType<CustomList>()
       .map((l) => l.copy())
@@ -66,7 +71,15 @@ class FakeGateway implements SharedListGateway {
   Future<SharedListPreview?> preview(String token) async => null;
 
   @override
-  Future<String> join(String token) async => throw UnimplementedError();
+  Future<String> join(String token) async {
+    final match = rows.values.where((l) => l.shareToken == token);
+    if (match.isEmpty) throw Exception('list_not_found');
+    final row = match.first;
+    // A device that lost its account comes back as a member, not the owner.
+    row.isOwner = false;
+    notAMember.remove(row.id);
+    return row.id;
+  }
 
   @override
   SharedListSubscription subscribe(String id,
@@ -165,5 +178,41 @@ void main() {
 
     expect(gateway.updateCalls, 0);
     expect(provider.getList(list.id).hymnsIds, [1]);
+  });
+
+  test('a list the owner deleted is dropped locally', () async {
+    givenSharedList(hymnsIds: [1]);
+    gateway.rows.remove('list-1');
+
+    await provider.refreshSharedLists();
+
+    expect(provider.getLists(), isEmpty);
+  });
+
+  test('a list gone unreadable is re-joined with the stored token', () async {
+    givenSharedList(hymnsIds: [1]);
+    // The account behind this device is gone, so RLS hides the row.
+    gateway.notAMember.add('list-1');
+    gateway.rows['list-1']!.hymnsIds = [1, 5];
+
+    await provider.refreshSharedLists();
+
+    final recovered = provider.getList('list-1');
+    expect(recovered.hymnsIds, [1, 5]);
+    expect(recovered.shareToken, 'token-1');
+    // Edit rights are back; ownership is not.
+    expect(recovered.isOwner, isFalse);
+  });
+
+  test('a readable list is refreshed from the server', () async {
+    givenSharedList(hymnsIds: [1]);
+    gateway.rows['list-1']!
+      ..hymnsIds = [1, 2]
+      ..version = 4;
+
+    await provider.refreshSharedLists();
+
+    expect(provider.getList('list-1').hymnsIds, [1, 2]);
+    expect(provider.getList('list-1').version, 4);
   });
 }
