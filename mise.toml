@@ -1,5 +1,6 @@
 [tools]
 fnox = "latest"
+supabase = "latest"
 uv = "latest"
 wrangler = "latest"
 
