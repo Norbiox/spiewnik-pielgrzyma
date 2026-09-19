@@ -103,8 +103,8 @@ class CustomListPage extends WatchingWidget {
         context: context,
         builder: (context) => AlertDialog(
           content: const Text(
-              'To spowoduje udostępnienie listy innym. Ta operacja jest '
-              'nieodwracalna. Kontynuować?'),
+              'Gdy zaczniesz udostępniać listę innym, każdy posiadacz linku '
+              'będzie mógł ją edytować. Kontynuować?'),
           actions: [
             FilledButton.tonal(
               onPressed: () => Navigator.pop(context, false),
