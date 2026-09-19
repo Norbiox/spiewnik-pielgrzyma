@@ -3,8 +3,10 @@
 #
 
 list(APPEND FLUTTER_PLUGIN_LIST
+  app_links
   connectivity_plus
   flutter_localization
+  share_plus
   syncfusion_pdfviewer_windows
   url_launcher_windows
 )

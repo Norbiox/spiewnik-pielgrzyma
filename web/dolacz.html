@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Śpiewnik Pielgrzyma — udostępniona lista</title>
+</head>
+<body>
+  <p>Otwieram udostępnioną listę…</p>
+  <script>
+    // Reached only when the app did not intercept the link: either it is not
+    // installed, or this is a desktop browser.
+    var token = new URLSearchParams(location.search).get('t') || '';
+    var isAndroid = /Android/i.test(navigator.userAgent);
+    location.replace(isAndroid
+      ? 'https://play.google.com/store/apps/details?id=pl.norbertchmiel.spiewnik_pielgrzyma'
+      : '/#/dolacz?t=' + encodeURIComponent(token));
+  </script>
+  <noscript>
+    <p>Włącz JavaScript albo
+      <a href="https://play.google.com/store/apps/details?id=pl.norbertchmiel.spiewnik_pielgrzyma">
+        zainstaluj aplikację</a>.</p>
+  </noscript>
+</body>
+</html>

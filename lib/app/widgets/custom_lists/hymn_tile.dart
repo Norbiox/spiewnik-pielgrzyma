@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:spiewnik_pielgrzyma/app/providers/custom_lists/provider.dart';
 import 'package:spiewnik_pielgrzyma/app/widgets/utils/dismissible.dart';
+import 'package:spiewnik_pielgrzyma/app/widgets/utils/list_action.dart';
 import 'package:spiewnik_pielgrzyma/models/custom_list.dart';
 import 'package:spiewnik_pielgrzyma/models/hymn.dart';
 import 'package:watch_it/watch_it.dart';
@@ -44,8 +45,7 @@ class HymnTileWidget extends StatelessWidget {
     final messenger = ScaffoldMessenger.of(context);
     final provider = GetIt.I<CustomListProvider>();
 
-    list.removeHymn(hymn);
-    provider.save(list);
+    runListAction(context, () => provider.removeHymn(list, hymn));
 
     // show snackbar with 'Undo' button
     ScaffoldMessenger.of(context).showSnackBar(
@@ -58,8 +58,7 @@ class HymnTileWidget extends StatelessWidget {
           TextButton(
             onPressed: () {
               messenger.hideCurrentSnackBar();
-              list.addHymn(hymn);
-              provider.save(list);
+              runListAction(context, () => provider.addHymn(list, hymn));
             },
             child: Text("Przywróć",
                 style: TextStyle(
@@ -73,7 +72,6 @@ class HymnTileWidget extends StatelessWidget {
   Future<void> _archiveHymn(
       BuildContext context, CustomList list, Hymn hymn) async {
     final provider = GetIt.I<CustomListProvider>();
-    list.archiveHymn(hymn);
-    provider.save(list);
+    await runListAction(context, () => provider.archiveHymn(list, hymn));
   }
 }

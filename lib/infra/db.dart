@@ -51,6 +51,9 @@ const String customListsKey = 'customLists';
 const String customListHymnsIdsKey = 'customList:hymnsIds:';
 const String customListArchivedHymnsIdsKey = 'customList:archivedHymnsIds:';
 const String customListNameKey = 'customList:name:';
+const String sharedListTokenKey = 'sharedList:token:';
+const String sharedListOwnerKey = 'sharedList:owner:';
+const String sharedListVersionKey = 'sharedList:version:';
 
 List<CustomList> loadCustomLists(SharedPreferences prefs) {
   final List<String> customListsIds = prefs.getStringList(customListsKey) ?? [];
@@ -65,8 +68,15 @@ List<CustomList> loadCustomLists(SharedPreferences prefs) {
             .map((e) => int.parse(e))
             .toList();
     final String name = prefs.getString('$customListNameKey$id') ?? '';
-    customLists.add(CustomList(id, name,
-        hymnsIds: hymnsIds, archivedHymnsIds: archivedHymnsIds));
+    customLists.add(CustomList(
+      id,
+      name,
+      hymnsIds: hymnsIds,
+      archivedHymnsIds: archivedHymnsIds,
+      shareToken: prefs.getString('$sharedListTokenKey$id'),
+      isOwner: prefs.getBool('$sharedListOwnerKey$id') ?? false,
+      version: prefs.getInt('$sharedListVersionKey$id') ?? 0,
+    ));
   }
   return customLists;
 }
@@ -81,12 +91,25 @@ void saveCustomList(CustomList list, SharedPreferences prefs) {
     prefs.setStringList(customListsKey,
         [list.id, ...(prefs.getStringList(customListsKey) ?? [])]);
   }
+  final token = list.shareToken;
+  if (token != null) {
+    prefs.setString('$sharedListTokenKey${list.id}', token);
+    prefs.setBool('$sharedListOwnerKey${list.id}', list.isOwner);
+    prefs.setInt('$sharedListVersionKey${list.id}', list.version);
+  } else {
+    prefs.remove('$sharedListTokenKey${list.id}');
+    prefs.remove('$sharedListOwnerKey${list.id}');
+    prefs.remove('$sharedListVersionKey${list.id}');
+  }
 }
 
 void deleteCustomList(CustomList list, SharedPreferences prefs) {
   prefs.remove('$customListNameKey${list.id}');
   prefs.remove('$customListHymnsIdsKey${list.id}');
   prefs.remove('$customListArchivedHymnsIdsKey${list.id}');
+  prefs.remove('$sharedListTokenKey${list.id}');
+  prefs.remove('$sharedListOwnerKey${list.id}');
+  prefs.remove('$sharedListVersionKey${list.id}');
   prefs.setStringList(
       customListsKey,
       (prefs.getStringList(customListsKey) ?? [])

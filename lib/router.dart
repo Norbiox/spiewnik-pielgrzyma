@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:spiewnik_pielgrzyma/app/about.dart';
 import 'package:spiewnik_pielgrzyma/app/widgets/custom_lists/custom_list_page.dart';
+import 'package:spiewnik_pielgrzyma/app/widgets/custom_lists/join_page.dart';
 import 'package:spiewnik_pielgrzyma/app/widgets/home/home.dart';
 import 'package:spiewnik_pielgrzyma/app/widgets/hymns/hymn_page.dart';
 import 'package:spiewnik_pielgrzyma/settings/archived_lists_page.dart';
@@ -53,4 +54,8 @@ final GoRouter router = GoRouter(initialLocation: '/', routes: <RouteBase>[
             builder: (BuildContext context, GoRouterState state) =>
                 CustomListPage(listId: state.pathParameters['id']!))
       ]),
+  GoRoute(
+      path: '/dolacz',
+      builder: (BuildContext context, GoRouterState state) =>
+          JoinListPage(token: state.uri.queryParameters['t'] ?? '')),
 ]);

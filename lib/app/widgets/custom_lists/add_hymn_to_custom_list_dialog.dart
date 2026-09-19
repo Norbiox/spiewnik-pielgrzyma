@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:spiewnik_pielgrzyma/app/providers/custom_lists/provider.dart';
+import 'package:spiewnik_pielgrzyma/app/widgets/utils/list_action.dart';
 import 'package:spiewnik_pielgrzyma/models/custom_list.dart';
 import 'package:spiewnik_pielgrzyma/models/hymn.dart';
 import 'package:watch_it/watch_it.dart';
@@ -29,8 +30,9 @@ void showDialogWithCustomListsToAddTheHymnTo(BuildContext context, Hymn hymn) {
             children: lists
                 .map((list) => SimpleDialogOption(
                       onPressed: () {
-                        list.addHymn(hymn);
-                        GetIt.I<CustomListProvider>().save(list);
+                        final provider = GetIt.I<CustomListProvider>();
+                        runListAction(
+                            context, () => provider.addHymn(list, hymn));
 
                         final scaffoldMessenger = ScaffoldMessenger.of(context);
                         final router = GoRouter.of(context);
@@ -47,8 +49,8 @@ void showDialogWithCustomListsToAddTheHymnTo(BuildContext context, Hymn hymn) {
                               TextButton(
                                 onPressed: () {
                                   scaffoldMessenger.hideCurrentSnackBar();
-                                  list.removeHymn(hymn);
-                                  GetIt.I<CustomListProvider>().save(list);
+                                  runListAction(context,
+                                      () => provider.removeHymn(list, hymn));
                                   scaffoldMessenger.showSnackBar(SnackBar(
                                     content: Text(
                                         'Usunięto pieśń "${hymn.number}" z listy "${list.name}"'),

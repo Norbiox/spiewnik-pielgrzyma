@@ -38,3 +38,10 @@ upload_certificate.pem
 
 # FVM Version Cache
 .fvm/
+
+# Supabase CLI local state
+supabase/.branches
+supabase/.temp
+
+# Local-only planning docs (superpowers skill), not tracked
+docs/superpowers/

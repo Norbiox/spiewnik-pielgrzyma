@@ -59,6 +59,8 @@ dependencies:
     sdk: flutter
   intl: any
   connectivity_plus: ^7.1.1
+  supabase_flutter: ^2.17.2
+  share_plus: ^12.0.2
 
 dev_dependencies:
   flutter_test:

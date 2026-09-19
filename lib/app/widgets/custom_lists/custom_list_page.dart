@@ -1,12 +1,15 @@
+import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter/material.dart';
+import 'package:share_plus/share_plus.dart';
 import 'package:spiewnik_pielgrzyma/app/providers/custom_lists/provider.dart';
 import 'package:spiewnik_pielgrzyma/app/providers/hymns/provider.dart';
 import 'package:spiewnik_pielgrzyma/app/widgets/custom_lists/custom_list.dart';
 import 'package:spiewnik_pielgrzyma/app/widgets/custom_lists/search_hymn.dart';
+import 'package:spiewnik_pielgrzyma/app/widgets/utils/list_action.dart';
 import 'package:spiewnik_pielgrzyma/models/custom_list.dart';
 import 'package:watch_it/watch_it.dart';
 
-class CustomListPage extends StatelessWidget {
+class CustomListPage extends WatchingWidget {
   final CustomListProvider provider = GetIt.I<CustomListProvider>();
   final HymnsListProvider hymnsProvider = GetIt.I<HymnsListProvider>();
   final String listId;
@@ -15,35 +18,119 @@ class CustomListPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    watch(provider);
     final CustomList list = provider.getList(listId);
-    return Scaffold(
-      appBar: AppBar(
-        title: TextField(
-          controller: TextEditingController(text: list.name),
-          decoration: InputDecoration(
-            border: InputBorder.none,
-            hintText: "Kliknij aby nazwać listę",
-            hintStyle: Theme.of(context).textTheme.titleLarge,
+
+    return StreamBuilder<List<ConnectivityResult>>(
+      stream: Connectivity().onConnectivityChanged,
+      initialData: const <ConnectivityResult>[],
+      builder: (context, snapshot) {
+        final offline = snapshot.data!.contains(ConnectivityResult.none);
+        // Private lists are local, so they stay editable with no connection.
+        final locked = list.isShared && offline;
+
+        return Scaffold(
+          appBar: AppBar(
+            title: Row(children: [
+              if (list.isShared)
+                const Padding(
+                  padding: EdgeInsets.only(right: 8.0),
+                  child: Icon(Icons.share, size: 18),
+                ),
+              Expanded(
+                child: TextField(
+                  controller: TextEditingController(text: list.name),
+                  decoration: InputDecoration(
+                    border: InputBorder.none,
+                    hintText: "Kliknij aby nazwać listę",
+                    hintStyle: Theme.of(context).textTheme.titleLarge,
+                  ),
+                  onSubmitted: (value) => runListAction(
+                      context, () => provider.rename(list, value)),
+                ),
+              ),
+            ]),
+            actions: [
+              IconButton(
+                icon: const Icon(Icons.share),
+                tooltip: 'Udostępnij listę',
+                onPressed: () => _share(context, list),
+              ),
+            ],
           ),
-          onSubmitted: (value) {
-            list.name = value;
-            GetIt.I<CustomListProvider>().save(list);
-          },
-        ),
-      ),
-      body: Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: CustomListWidget(listId: list.id)),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () => showSearch(
-            context: context,
-            delegate: SearchForHymnToAddToCustomList(
-                provider: hymnsProvider,
-                hymns: hymnsProvider.getAll(),
-                listId: listId)),
-        tooltip: "Dodaj pieśń do listy",
-        child: const Icon(Icons.add),
-      ),
+          body: Column(children: [
+            if (locked)
+              Container(
+                width: double.infinity,
+                color: Theme.of(context).colorScheme.secondaryContainer,
+                padding: const EdgeInsets.all(12.0),
+                child: Text(
+                  'Brak połączenia — listy współdzielonej nie można teraz edytować',
+                  style: Theme.of(context).textTheme.bodySmall,
+                ),
+              ),
+            Expanded(
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: CustomListWidget(listId: list.id, locked: locked),
+              ),
+            ),
+          ]),
+          floatingActionButton: locked
+              ? null
+              : FloatingActionButton(
+                  onPressed: () => showSearch(
+                      context: context,
+                      delegate: SearchForHymnToAddToCustomList(
+                          provider: hymnsProvider,
+                          hymns: hymnsProvider.getAll(),
+                          listId: listId)),
+                  tooltip: "Dodaj pieśń do listy",
+                  child: const Icon(Icons.add),
+                ),
+        );
+      },
     );
+  }
+
+  static const String _shareBase =
+      'https://spiewnikpielgrzyma.norbertchmiel.pl/dolacz.html';
+
+  Future<void> _share(BuildContext context, CustomList list) async {
+    final messenger = ScaffoldMessenger.of(context);
+    if (!list.isShared) {
+      final confirmed = await showDialog<bool>(
+        context: context,
+        builder: (context) => AlertDialog(
+          content: const Text(
+              'Gdy zaczniesz udostępniać listę innym, każdy posiadacz linku '
+              'będzie mógł ją edytować. Kontynuować?'),
+          actions: [
+            FilledButton.tonal(
+              onPressed: () => Navigator.pop(context, false),
+              child: const Text('Nie'),
+            ),
+            FilledButton(
+              onPressed: () => Navigator.pop(context, true),
+              child: const Text('Tak'),
+            ),
+          ],
+        ),
+      );
+      if (confirmed != true) return;
+    }
+    try {
+      final shared = await provider.shareList(list);
+      await SharePlus.instance.share(ShareParams(
+        text: '$_shareBase?t=${shared.shareToken}',
+      ));
+    } catch (e) {
+      debugPrint('shareList failed: $e');
+      messenger.showSnackBar(
+        const SnackBar(
+          content: Text('Nie udało się udostępnić listy. Sprawdź połączenie.'),
+        ),
+      );
+    }
   }
 }
