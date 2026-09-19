@@ -86,4 +86,40 @@ void main() {
       expect(archived[0].hymnsIds, [1, 2, 3]);
     });
   });
+
+  group('shared list metadata', () {
+    test('round-trips token, ownership and version', () {
+      final list = CustomList('id-1', 'Shared',
+          hymnsIds: [1, 2], shareToken: 'tok-1', isOwner: true, version: 7);
+
+      saveCustomList(list, prefs);
+      final loaded = loadCustomLists(prefs).first;
+
+      expect(loaded.shareToken, 'tok-1');
+      expect(loaded.isOwner, isTrue);
+      expect(loaded.version, 7);
+      expect(loaded.isShared, isTrue);
+    });
+
+    test('a list without a token loads as private', () {
+      saveCustomList(CustomList('id-2', 'Private', hymnsIds: [3]), prefs);
+      final loaded = loadCustomLists(prefs).first;
+
+      expect(loaded.shareToken, isNull);
+      expect(loaded.isOwner, isFalse);
+      expect(loaded.version, 0);
+      expect(loaded.isShared, isFalse);
+    });
+
+    test('deleting a list clears its sharing metadata', () {
+      final list =
+          CustomList('id-3', 'Shared', shareToken: 'tok-3', version: 2);
+      saveCustomList(list, prefs);
+      deleteCustomList(list, prefs);
+
+      expect(prefs.getString('$sharedListTokenKey${list.id}'), isNull);
+      expect(prefs.getBool('$sharedListOwnerKey${list.id}'), isNull);
+      expect(prefs.getInt('$sharedListVersionKey${list.id}'), isNull);
+    });
+  });
 }

@@ -7,10 +7,38 @@ class CustomList {
   List<int> hymnsIds;
   List<int> archivedHymnsIds;
 
-  CustomList(this.id, this.name,
-      {List<int>? hymnsIds, List<int>? archivedHymnsIds})
-      : hymnsIds = hymnsIds ?? [],
+  /// Invite token. Null means the list is private and lives only on this device.
+  String? shareToken;
+
+  /// Whether this device's user created the list. Owners may delete it for
+  /// everyone; members may only leave it.
+  bool isOwner;
+
+  /// Server-side optimistic-locking counter. Meaningless for private lists.
+  int version;
+
+  CustomList(
+    this.id,
+    this.name, {
+    List<int>? hymnsIds,
+    List<int>? archivedHymnsIds,
+    this.shareToken,
+    this.isOwner = false,
+    this.version = 0,
+  })  : hymnsIds = hymnsIds ?? [],
         archivedHymnsIds = archivedHymnsIds ?? [];
+
+  bool get isShared => shareToken != null;
+
+  CustomList copy() => CustomList(
+        id,
+        name,
+        hymnsIds: [...hymnsIds],
+        archivedHymnsIds: [...archivedHymnsIds],
+        shareToken: shareToken,
+        isOwner: isOwner,
+        version: version,
+      );
 
   void addHymn(Hymn hymn) {
     if (hymnsIds.contains(hymn.id)) return;
