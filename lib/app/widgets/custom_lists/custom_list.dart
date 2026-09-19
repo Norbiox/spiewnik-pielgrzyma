@@ -3,6 +3,7 @@ import 'package:spiewnik_pielgrzyma/app/providers/custom_lists/provider.dart';
 import 'package:spiewnik_pielgrzyma/app/providers/hymns/provider.dart';
 import 'package:spiewnik_pielgrzyma/app/widgets/custom_lists/archived_hymn_tile.dart';
 import 'package:spiewnik_pielgrzyma/app/widgets/custom_lists/hymn_tile.dart';
+import 'package:spiewnik_pielgrzyma/app/widgets/utils/list_action.dart';
 import 'package:spiewnik_pielgrzyma/models/custom_list.dart';
 import 'package:watch_it/watch_it.dart';
 
@@ -72,8 +73,8 @@ class _CustomListWidgetState extends State<CustomListWidget> {
         final hymnId = list.hymnsIds[oldIndex];
         final rest = list.hymnsIds.where((id) => id != hymnId).toList();
         final beforeHymnId = newIndex < rest.length ? rest[newIndex] : null;
-        list.moveHymnBefore(hymnId, beforeHymnId);
-        provider.save(list);
+        runListAction(
+            context, () => provider.moveHymn(list, hymnId, beforeHymnId));
       },
     );
   }
@@ -120,8 +121,8 @@ class _CustomListWidgetState extends State<CustomListWidget> {
         final hymnId = list.archivedHymnsIds[oldIndex];
         final rest = list.archivedHymnsIds.where((id) => id != hymnId).toList();
         final beforeHymnId = newIndex < rest.length ? rest[newIndex] : null;
-        list.moveArchivedHymnBefore(hymnId, beforeHymnId);
-        provider.save(list);
+        runListAction(context,
+            () => provider.moveArchivedHymn(list, hymnId, beforeHymnId));
       },
     );
   }

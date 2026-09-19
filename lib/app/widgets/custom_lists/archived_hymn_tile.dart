@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:spiewnik_pielgrzyma/app/providers/custom_lists/provider.dart';
 import 'package:spiewnik_pielgrzyma/app/widgets/utils/dismissible.dart';
+import 'package:spiewnik_pielgrzyma/app/widgets/utils/list_action.dart';
 import 'package:spiewnik_pielgrzyma/models/custom_list.dart';
 import 'package:spiewnik_pielgrzyma/models/hymn.dart';
 import 'package:watch_it/watch_it.dart';
@@ -44,8 +45,7 @@ class ArchivedHymnTileWidget extends StatelessWidget {
       BuildContext context, CustomList list, Hymn hymn) async {
     final provider = GetIt.I<CustomListProvider>();
 
-    list.restoreHymn(hymn);
-    provider.save(list);
+    await runListAction(context, () => provider.restoreHymn(list, hymn));
   }
 
   Future<void> _deleteHymnFromList(
@@ -53,8 +53,7 @@ class ArchivedHymnTileWidget extends StatelessWidget {
     final messenger = ScaffoldMessenger.of(context);
     final provider = GetIt.I<CustomListProvider>();
 
-    list.removeHymnFromArchive(hymn);
-    provider.save(list);
+    runListAction(context, () => provider.removeHymnFromArchive(list, hymn));
 
     // show snackbar with 'Undo' button
     ScaffoldMessenger.of(context).showSnackBar(
@@ -67,8 +66,8 @@ class ArchivedHymnTileWidget extends StatelessWidget {
           TextButton(
             onPressed: () {
               messenger.hideCurrentSnackBar();
-              list.addHymnToArchive(hymn);
-              provider.save(list);
+              runListAction(
+                  context, () => provider.addHymnToArchive(list, hymn));
             },
             child: Text("Przywróć",
                 style: TextStyle(

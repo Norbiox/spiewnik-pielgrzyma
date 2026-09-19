@@ -3,6 +3,7 @@ import 'package:spiewnik_pielgrzyma/app/providers/custom_lists/provider.dart';
 import 'package:spiewnik_pielgrzyma/app/providers/hymns/provider.dart';
 import 'package:spiewnik_pielgrzyma/app/widgets/custom_lists/custom_list.dart';
 import 'package:spiewnik_pielgrzyma/app/widgets/custom_lists/search_hymn.dart';
+import 'package:spiewnik_pielgrzyma/app/widgets/utils/list_action.dart';
 import 'package:spiewnik_pielgrzyma/models/custom_list.dart';
 import 'package:watch_it/watch_it.dart';
 
@@ -26,8 +27,7 @@ class CustomListPage extends StatelessWidget {
             hintStyle: Theme.of(context).textTheme.titleLarge,
           ),
           onSubmitted: (value) {
-            list.name = value;
-            GetIt.I<CustomListProvider>().save(list);
+            runListAction(context, () => provider.rename(list, value));
           },
         ),
       ),

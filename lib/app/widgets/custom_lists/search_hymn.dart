@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:spiewnik_pielgrzyma/app/providers/custom_lists/provider.dart';
 import 'package:spiewnik_pielgrzyma/app/providers/hymns/provider.dart';
+import 'package:spiewnik_pielgrzyma/app/widgets/utils/list_action.dart';
 
 import 'package:spiewnik_pielgrzyma/models/hymn.dart';
 import 'package:watch_it/watch_it.dart';
@@ -90,8 +91,8 @@ class HymnsSearchListWidget extends StatelessWidget {
                   maxLines: 1, overflow: TextOverflow.ellipsis),
               enabled: !customList.hymnsIds.contains(hymns[index].id),
               onTap: () {
-                customList.addHymn(hymns[index]);
-                provider.save(customList);
+                runListAction(
+                    context, () => provider.addHymn(customList, hymns[index]));
                 context.pop();
               },
             );
