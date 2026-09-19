@@ -98,6 +98,27 @@ class CustomListPage extends WatchingWidget {
 
   Future<void> _share(BuildContext context, CustomList list) async {
     final messenger = ScaffoldMessenger.of(context);
+    if (!list.isShared) {
+      final confirmed = await showDialog<bool>(
+        context: context,
+        builder: (context) => AlertDialog(
+          content: const Text(
+              'To spowoduje udostępnienie listy innym. Ta operacja jest '
+              'nieodwracalna. Kontynuować?'),
+          actions: [
+            FilledButton.tonal(
+              onPressed: () => Navigator.pop(context, false),
+              child: const Text('Nie'),
+            ),
+            FilledButton(
+              onPressed: () => Navigator.pop(context, true),
+              child: const Text('Tak'),
+            ),
+          ],
+        ),
+      );
+      if (confirmed != true) return;
+    }
     try {
       final shared = await provider.shareList(list);
       await SharePlus.instance.share(ShareParams(
