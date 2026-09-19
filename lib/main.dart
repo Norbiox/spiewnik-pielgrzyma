@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:spiewnik_pielgrzyma/app/providers/custom_lists/gateway.dart';
 import 'package:spiewnik_pielgrzyma/app/providers/custom_lists/provider.dart';
+import 'package:spiewnik_pielgrzyma/app/providers/custom_lists/supabase_gateway.dart';
 import 'package:spiewnik_pielgrzyma/app/providers/hymn_pdf.dart';
 import 'package:spiewnik_pielgrzyma/app/providers/hymns/provider.dart';
 import 'package:spiewnik_pielgrzyma/infra/db.dart';
@@ -51,8 +53,10 @@ void setup() {
       () => HymnsListProvider(
           getIt.get<SharedPreferences>(), getIt.get<List<Hymn>>()),
       dependsOn: [SharedPreferences, List<Hymn>]);
+  getIt.registerSingleton<SharedListGateway>(SupabaseSharedListGateway());
   getIt.registerSingletonWithDependencies<CustomListProvider>(
-      () => CustomListProvider(getIt.get<SharedPreferences>()),
+      () => CustomListProvider(getIt.get<SharedPreferences>(),
+          gateway: getIt.get<SharedListGateway>()),
       dependsOn: [SharedPreferences]);
 
   getIt.registerSingletonAsync<HymnPdfProvider>(
