@@ -36,17 +36,23 @@ class SupabaseSharedListGateway implements SharedListGateway {
   @override
   Future<CustomList> create(CustomList list) async {
     final userId = await ensureSignedIn();
-    final row = await supabase
-        .from(_table)
-        .insert({
-          'id': list.id,
-          'owner_id': userId,
-          'name': list.name,
-          'hymns_ids': list.hymnsIds,
-          'archived_hymns_ids': list.archivedHymnsIds,
-        })
-        .select()
-        .single();
+    // Deliberately not `.insert(...).select().single()`. Under RLS, an INSERT
+    // with RETURNING also has to pass the SELECT policy for the new row, and
+    // shared_lists_select depends on is_list_participant() — a security
+    // definer function running its own SELECT against shared_lists. That
+    // inner SELECT does not reliably see a row inserted earlier in the same
+    // statement, so the RETURNING clause fails with "new row violates
+    // row-level security policy" even though owner_id matches auth.uid().
+    // A plain insert followed by a separate select (new statement, row
+    // already committed) sidesteps it.
+    await supabase.from(_table).insert({
+      'id': list.id,
+      'owner_id': userId,
+      'name': list.name,
+      'hymns_ids': list.hymnsIds,
+      'archived_hymns_ids': list.archivedHymnsIds,
+    });
+    final row = await supabase.from(_table).select().eq('id', list.id).single();
     return _fromRow(row);
   }
 
