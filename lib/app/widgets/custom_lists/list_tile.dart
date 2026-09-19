@@ -39,7 +39,7 @@ class CustomListTileWidget extends StatelessWidget {
     final message = list.isOwner
         ? 'Ta lista jest współdzielona, zostanie usunięta u wszystkich, '
             'którzy z niej korzystają. Kontynuować?'
-        : 'Czy opuścić listę „${list.name}”? Zniknie tylko u Ciebie.';
+        : 'Czy chcesz opuścić współdzieloną listę „${list.name}”? Zniknie tylko u Ciebie.';
 
     return showDialog<bool>(
       context: context,
