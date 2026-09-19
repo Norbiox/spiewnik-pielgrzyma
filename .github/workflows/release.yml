@@ -68,6 +68,8 @@ jobs:
         run: |
           echo "PDF_ENCRYPTION_KEY=${{ secrets.PDF_ENCRYPTION_KEY }}" > .env
           echo "PDF_LINK_BASE=https://spiewnikpielgrzyma.norbertchmiel.pl/note_files/" >> .env
+          echo "SUPABASE_URL=${{ secrets.SUPABASE_URL }}" >> .env
+          echo "SUPABASE_PUBLISHABLE_KEY=${{ secrets.SUPABASE_PUBLISHABLE_KEY }}" >> .env
 
       - name: Build Android appbundle
         run: flutter build appbundle --obfuscate --split-debug-info=build/
@@ -102,6 +104,8 @@ jobs:
         run: |
           echo "PDF_ENCRYPTION_KEY=${{ secrets.PDF_ENCRYPTION_KEY }}" > .env
           echo "PDF_LINK_BASE=https://spiewnikpielgrzyma.norbertchmiel.pl/note_files/" >> .env
+          echo "SUPABASE_URL=${{ secrets.SUPABASE_URL }}" >> .env
+          echo "SUPABASE_PUBLISHABLE_KEY=${{ secrets.SUPABASE_PUBLISHABLE_KEY }}" >> .env
 
       - name: Build web
         run: flutter build web --release

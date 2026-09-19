@@ -6,6 +6,7 @@ import 'package:spiewnik_pielgrzyma/app/providers/custom_lists/provider.dart';
 import 'package:spiewnik_pielgrzyma/app/providers/hymn_pdf.dart';
 import 'package:spiewnik_pielgrzyma/app/providers/hymns/provider.dart';
 import 'package:spiewnik_pielgrzyma/infra/db.dart';
+import 'package:spiewnik_pielgrzyma/infra/supabase.dart';
 import 'package:spiewnik_pielgrzyma/models/hymn.dart';
 import 'package:spiewnik_pielgrzyma/router.dart';
 import 'package:spiewnik_pielgrzyma/services/bulk_pdf_download_service.dart';
@@ -71,6 +72,7 @@ void setup() {
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await dotenv.load();
+  await initSupabase();
   setup();
   await getIt.allReady();
   runApp(const MyApp());
